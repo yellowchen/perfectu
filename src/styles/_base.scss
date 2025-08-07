@@ -1,0 +1,201 @@
+//Roboto Slab
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+//Roboto
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+//Lato
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+//Limelight
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+
+//Noto Serif
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+//Noto Sans TC
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+
+//Playwrite Tanzania
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@100..400&family=Playwrite+NO+Guides&family=Playwrite+TZ:wght@100..400&display=swap');
+
+//Edu TAS Beginner
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    
+}
+
+html {
+    font-family: 'Noto Serif', "Noto Sans TC";
+    font-size: 16px;  //16px
+    // font-weight: $fw-bold;
+}
+
+body {
+    // line-height: $lh-base;
+    background-color: #eee;
+}
+
+
+img {
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+    // color: #000;
+}
+
+.btn {
+    &:focus {
+        outline: none;
+        border: none;
+    }
+}
+
+//login
+.eyeToggle {
+    top: 30px;
+    right: 30px;
+}
+
+//navbar
+.cart-icon {
+    @include media-lg {
+        margin-right: 3.8rem;
+    }
+}
+.nav-logo {
+    width: 80px;
+    height: auto;
+    margin-top: -20px;
+    margin-left: -16px;
+    @include media-md {
+        width: 60px;
+        padding-top: 8px;
+    }
+    // clip-path: inset( 0 0 35px 0);
+}
+
+.nav-menu {
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 0%;
+        background-color: currentColor;
+        left: 50%;
+        bottom: -10px;
+    }
+    &:hover {
+        &::before {
+            width: 100%;
+            left: 0;
+            transition: .3s ease;
+        }
+    }
+}
+
+
+//banner
+.playWrite {
+    font-family: "Playwrite TZ", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.eduTas {
+    font-family: "Edu TAS Beginner", cursive;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.title {
+    font-family: "Limelight", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 3vw 0 6vw 0;
+    // position: relative;
+    display: flex;
+    &::before,
+    &::after {
+        content: "";
+        top: 50%;
+        width: 0;
+        height: 3px;
+        background-color: currentColor;
+        flex-grow: 1;
+        margin: auto 2vw;
+    }
+}
+
+.subTitle {
+    font-family: "Limelight", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+//intro
+.shape-RB {
+    @include media-md {
+        // background: red;
+        float: left;
+        width: 15%; 
+        height: 120px;
+        shape-outside: radial-gradient(farthest-side ellipse at right top, transparent 100%, #fff);
+    }
+}
+
+.shape-RT {
+    @include media-md {
+        // background: red;
+        float: left;
+        width: 12%; 
+        height: 100px;
+        shape-outside: radial-gradient(farthest-side ellipse at right bottom, transparent 100%, #fff);
+    }
+}
+
+.shape-LB {
+    @include media-md {
+        // background: red;
+        float: right;
+        width: 15%; 
+        height: 100px;
+        shape-outside: radial-gradient(farthest-side ellipse at left top, transparent 100%, #fff);
+    }
+}
+
+.shape-LT {
+    @include media-md {
+        // background: red;
+        float: right;
+        width: 12%; 
+        height: 100px;
+        shape-outside: radial-gradient(farthest-side ellipse at left bottom, transparent 100%, #fff);
+    }
+}
+
+//products
+.card-products {
+    &::before {
+        content: "";
+        position: absolute;
+        top: 46%;
+        left: 0;
+        border-top: transparent 50px solid;
+        // border-bottom: transparent 30px solid;
+        border-left: #EA9C3F 144px solid; 
+    }
+}
