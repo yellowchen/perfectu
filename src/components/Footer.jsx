@@ -5,9 +5,9 @@ const Footer = () => {
     return (
 		<div className='flex-shrink-0' style={{ backgroundColor: "#dbb292" }}>
 			<div className='container'>
-				<div className='row justify-content-center'>
-					<div className='footer-logo col-md-5 col-sm-10'>
-						<div className='d-flex flex-column align-items-center border border-danger'>
+				<div className='d-flex flex-column flex-md-row justify-content-center justify-content-md-around align-items-center'>
+					<div className='footer-logo'>
+						<div className='d-flex flex-column align-items-center'>
 							<NavLink
 								className='col-8 mb-2'
 								to='/'
@@ -31,14 +31,14 @@ const Footer = () => {
 									}}
 								/>
 							</NavLink>
-							<ul className='d-flex list-unstyled h4' style={{ fontSize: "2.5rem" }}>
+							<ul className='d-flex list-unstyled gap-4' style={{ fontSize: "2.5rem" }}>
 								<li>
-									<NavLink to='/' className='text-white me-3'>
+									<NavLink to='/' className='text-white'>
 										<i className='fab fa-facebook' style={{ color: "#E47C01" }}></i>
 									</NavLink>
 								</li>
 								<li>
-									<NavLink to='/' className='text-white mx-3'>
+									<NavLink to='/' className='text-white'>
 										<i
 											className='fab fa-instagram'
 											style={{
@@ -48,16 +48,16 @@ const Footer = () => {
 									</NavLink>
 								</li>
 								<li>
-									<NavLink to='/' className='text-white ms-3'>
+									<NavLink to='/' className='text-white'>
 										<i className='fab fa-line' style={{ color: "#E47C01" }}></i>
 									</NavLink>
 								</li>
 							</ul>
 						</div>
 					</div>
-					<div className='footer-contact text-white col-md-5 col-sm-10 border border-danger'>
+					<div className='footer-contact text-white mx-md-5'>
 						<h4 className='mb-3'>Contact Us</h4>
-						<ul className='p-0 m-auto' style={{ fontSize: "1rem" }}>
+						<ul className='p-0 m-auto' style={{ fontSize: "1.2rem" }}>
 							<li>
 								<p>
 									<i className='bi bi-house pe-3'></i>
