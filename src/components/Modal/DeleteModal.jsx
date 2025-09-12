@@ -1,4 +1,5 @@
 const DeleteModal = ({ closeModal, tempItem, deleteItem }) => {
+    console.log(tempItem);
     const {title, id} = tempItem;
 	return (
 		<div

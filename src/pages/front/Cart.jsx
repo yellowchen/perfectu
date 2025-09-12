@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useOutletContext, Link, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { thousandFormat } from "./../../utils/ThousandFormat";
+import { thousandFormat } from "./../../utils/string-utils";
 import CartCard from './../../components/Card/CartCard';
 import { createAsyncMessage } from "../../slice/messageSlice";
 

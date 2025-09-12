@@ -1,4 +1,4 @@
-import { thousandFormat } from "./../../utils/ThousandFormat";
+import { thousandFormat } from "./../../utils/string-utils";
 
 const CheckoutCard = ({ item }) => {
 	const {product, qty, final_total} = item;

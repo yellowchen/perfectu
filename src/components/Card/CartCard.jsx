@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { thousandFormat } from "./../../utils/ThousandFormat";
+import { thousandFormat } from "./../../utils/string-utils";
 
 const CartCard = ({ item, remove, update }) => {
 	const { id, qty, product_id, product, final_total } = item;

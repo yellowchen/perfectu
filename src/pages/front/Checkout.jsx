@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import { useOutletContext, useNavigate, Navigate } from 'react-router-dom';
 import axios from "axios";
 
-import { thousandFormat } from '../../utils/ThousandFormat';
+import { thousandFormat } from "../../utils/string-utils";
 import CheckoutCard from '../../components/Card/CheckoutCard';
 import { FormInput, FormSelect } from "./../../components/FormElements";
 import {InputRules, CheckRules } from '../../components/FormRules';

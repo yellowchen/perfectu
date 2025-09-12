@@ -29,7 +29,7 @@ const Product = () => {
     return (
 		<div className='container my-5'>
 			<h1 className='title'>Products</h1>
-			<div className='row justify-content-center gap-3'>
+			<div className='d-flex flex-wrap justify-content-center gap-5'>
 				{products
                     .sort((a, b) => a.num > b.num ? -1 : 1)
                     .map((item) => (

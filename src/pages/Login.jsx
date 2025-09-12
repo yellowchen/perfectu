@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios  from 'axios';
-import { SubmitKey } from "../utils/SubmitKey";
+import { SubmitKey } from "../utils/validation-utils";
 
 
 const Login = () => {

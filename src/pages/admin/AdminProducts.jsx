@@ -7,7 +7,7 @@ import DeleteModal from '../../components/Modal/DeleteModal';
 import Pagination from './../../components/Pagination';
 
 import { createAsyncMessage } from "../../slice/messageSlice";
-import { thousandFormat } from './../../utils/ThousandFormat';
+import { thousandFormat } from "./../../utils/string-utils";
 import { useDispatch } from 'react-redux';
 
 

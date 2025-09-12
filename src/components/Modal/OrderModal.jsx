@@ -187,7 +187,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 										value={tempData?.status}
 										onChange={handleChange}
 									>
-										<option value='1' selected>未確認</option>
+										<option value='1' defaultValue>未確認</option>
 										<option value='2'>已確認</option>
 										<option value='3'>外送中</option>
 										<option value='4'>已送達</option>

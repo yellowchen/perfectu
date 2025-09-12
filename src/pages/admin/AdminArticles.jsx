@@ -12,7 +12,6 @@ import { useDispatch } from 'react-redux';
 
 const AdminArticles = () => {
 	const [articles, setArticles] = useState([]);
-    // const [article, setArticle] = useState([]);
 	const [type, setType] = useState("create");
 	const [tempArticle, setTempArticle] = useState({});
 	const [pagination, setPagination] = useState({});
@@ -31,19 +30,16 @@ const AdminArticles = () => {
 			console.log(err);
 		}
 	};
-	console.log("articles: ", articles);
 
 	//getArticle
-	// const getArticle = async (item) => {
-	// 	try {
-	// 		const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/article/${item.id}`);
-    //         console.log("getArticle: ",res.data.article);
-    //         setArticle(res.data.article);
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 	}
-	// };
-    // console.log("article: ",article);
+	const getArticle = async (id) => {
+		try {
+			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/article/${id}`);
+            await setTempArticle(res.data.article);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
 	//02刪除單個項目API
 	const deleteArticle = async (id) => {
@@ -74,12 +70,15 @@ const AdminArticles = () => {
 		getArticles();
 	}, []);
 
+
 	//ArticleModal
-	const openArticleModal = (type, item) => {
-        console.log(item.id);
+	const openArticleModal = async (type, item) => {
 		setType(type);
-        // getArticle(item);
-		setTempArticle(item);
+        if(item.id) {
+            await getArticle(item.id);
+        }else {
+            setTempArticle(item);
+        }
 		articleModal.current.show();
 	};
 	const closeArticleModal = () => {

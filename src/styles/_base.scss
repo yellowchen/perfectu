@@ -145,6 +145,46 @@ a {
     text-align: center;
 }
 
+//article
+.article-bg {
+    background-color: #c3ebf7;
+    height: 500px;
+    clip-path: polygon(0 0, 68% 35%, 100% 100%, 23% 71%);
+
+}
+
+//Home
+.cloud {
+    margin: 12rem auto 2rem;
+    padding: 1rem;
+    max-width: 600px;
+    min-width: 300px;
+    // min-height: 150px;
+    aspect-ratio: 4/1;
+    background-color: aqua;
+    border-radius: 180px 180px 100px 100px;
+    position: relative;
+    &::before, &::after {
+        content: "";
+        position: absolute;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background-color: aqua;
+        z-index: -1;
+    }
+    &::before {
+        min-width: 38%;
+        left: 15%;
+        bottom: 30%; 
+    }
+    &::after {
+        min-width: 48%;
+        right: 13%;
+        bottom: 25%;
+    }
+}
+
+
 
 //intro
 .shape-RB {
@@ -188,7 +228,14 @@ a {
 }
 
 //products
-.card-products {
+
+// .card-product {
+//     &:hover {
+//         box-shadow: 0 5px 15px 0 yellow;
+//         transition: all .5;
+//     }
+// }
+.card-product-content {
     &::before {
         content: "";
         position: absolute;
@@ -196,6 +243,131 @@ a {
         left: 0;
         border-top: transparent 50px solid;
         // border-bottom: transparent 30px solid;
-        border-left: #EA9C3F 144px solid; 
+        border-left: #f4d3ad 144px solid; 
+        overflow: hidden;
+    }
+}
+
+//article
+.tag, .tag-edit {
+    border-radius: 15px;
+    padding: .3rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tag {
+    background: #ddd;
+    font-weight: bold;
+}
+
+.tag-edit {
+    background: #f4d3ad;
+}
+
+.tag-btn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #f4d3ad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+//test
+.group {
+    padding: 30px 20px 60px 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.group > div {
+    position: relative;
+    font-size: 13px;
+    box-sizing: border-box;
+    padding-top: 60px;
+    text-align: center;
+    margin: 30px;
+}
+
+.box {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+}
+
+.circle {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.box, .circle{
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.neumorphism {
+    // background-color: rgb(190, 205, 214);
+    background-color: #f4d3ad;
+    padding: 50px;
+}
+.neumorphism .box {
+    border-radius: 10px;
+}
+.neumorphism .box, .neumorphism .circle {
+    // background-color: rgb(190, 205, 214);
+    background-color: #f4d3ad;
+    transition: box-shadow 0.5s;
+    box-shadow:
+        // 10px 10px 30px rgba(18, 47, 61, 0.5),
+        // -10px -10px 30px rgba(248, 253, 255, 0.9),
+        10px 10px 30px #f29e3e,
+        -10px -10px 30px #f2e9de,
+        inset 10px 10px 30px transparent,
+        inset -10px -10px 30px transparent;
+}
+.neumorphism .box, 
+.neumorphism .circle{
+    &:hover {
+        box-shadow:
+            10px 10px 30px transparent,
+            -10px -10px 30px transparent,
+            // inset 10px 10px 30px rgba(18, 47, 61, 0.5),
+            // inset -10px -10px 30px rgba(248, 253, 255, 0.9);
+            inset 10px 10px 30px #f29e3e,
+            inset -10px -10px 30px #f2e9de,
+    }
+}
+
+.btn-shadow {
+    transition: box-shadow 0.5s;
+    box-shadow:
+        10px 10px 30px #f4d3ad,
+        -10px -10px 30px rgba(248, 253, 255, 0.9),
+        inset 10px 10px 30px transparent,
+        inset -10px -10px 30px transparent;
+    &:hover {
+        box-shadow:
+            10px 10px 30px transparent,
+            -10px -10px 30px transparent,
+            inset 10px 10px 30px #f4d3ad,
+            inset -10px -10px 30px rgba(248, 253, 255, 0.9);
     }
 }

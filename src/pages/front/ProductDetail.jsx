@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, useOutletContext } from "react-router-dom";
 import axios from "axios";
-import { thousandFormat } from './../../utils/ThousandFormat';
+import { thousandFormat } from './../../utils/string-utils';
 
 
 

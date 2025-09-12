@@ -2,7 +2,7 @@ import { useEffect, useState, useContext} from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import CheckoutCard from './../../components/Card/CheckoutCard';
-import { thousandFormat } from './../../utils/ThousandFormat';
+import { thousandFormat } from './../../utils/string-utils';
 import { PaymentContext } from './FrontLayout';
 import Banner from './../../components/Banner';
 

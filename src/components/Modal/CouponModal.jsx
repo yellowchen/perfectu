@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import { Input, ModalInput, ModalSelect } from "../FormElements";
+import { Input, DateInput, ModalInput, EnableCheck } from "../FormElements";
 import { CouponModalInputRules } from "../FormRules";
 import { createAsyncMessage } from "../../slice/messageSlice";
-import { addZero } from '../../utils/AddZero';
+// import { dateAddZero } from './../../utils/date-utils';
 
 
 
@@ -39,7 +39,7 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 			setDate(new Date(tempCoupon.due_date));
 		}
 	}, [type, tempCoupon]);
-	const { title } = tempData;
+
 
 	//02 <input>輸入值轉型與否
 	console.log(tempData);
@@ -144,39 +144,38 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 								type='text'
 								name='title'
 								placeholder='請輸入標題'
-								value={title}
+								value={tempData.title}
 								onChange={handleChange}
 							/>
 							<div className='row'>
 								{CouponModalInputRules.map((item) => (
 									<div className='col-md-6 mb-2' key={item.id}>
-                                        <ModalInput 
-                                            item={item}
-                                            data={tempData}
-                                            handleChange={handleChange}
+										<ModalInput 
+                                            item={item} 
+                                            data={tempData} 
+                                            onChange={handleChange} 
                                         />
-                                    </div>
+									</div>
 								))}
 								<div className='col-md-6 mb-2'>
-									<Input
+									<DateInput
 										id='due_date'
 										labelText='到期日'
 										type='date'
 										name='due_date'
 										placeholder='請輸入到期日'
-										value={`${date.getFullYear().toString()}-${addZero(
-											date.getMonth() + 1
-										)}-${addZero(date.getDate())}`}
 										onChange={handleDateRange}
+										date={date}
 									/>
 								</div>
 							</div>
-                            <ModalSelect
-                                id='is_enabled'
-                                name='is_enabled'
-                                data={tempData}
-                                handleChange={handleChange}
-                            />
+							<EnableCheck
+								id='is_enabled'
+								name='is_enabled'
+								data={tempData}
+								handleChange={handleChange}
+								labelText='是否啟用'
+							/>
 						</div>
 						{/* Footer */}
 						<div className='modal-footer'>

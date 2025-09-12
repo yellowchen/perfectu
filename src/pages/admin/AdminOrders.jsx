@@ -4,7 +4,7 @@ import axios from "axios";
 
 import OrderModal from "../../components/Modal/OrderModal";
 import Pagination from './../../components/Pagination';
-import { thousandFormat } from './../../utils/ThousandFormat';
+import { thousandFormat } from "./../../utils/string-utils";
 
 
 

@@ -1,41 +1,4 @@
-export const ModalInput = ({ item, handleChange, data }) => {
-    const { id, labelText, type, name, placeholder} = item;
-	return (
-		<>
-			<label className='w-100 form-label' htmlFor={id}>
-				{labelText}
-				<input
-					className='form-control'
-					type={type}
-					id={id}
-					name={name}
-					placeholder={placeholder}
-					value={data[id]}
-					onChange={handleChange}
-                    
-				/>
-			</label>
-		</>
-	);
-};
-
-export const ModalSelect = ({id, name, handleChange, data}) => {
-    return (
-		<div className='form-check'>
-			<label htmlFor={id} className='w-100 form-check-label'>
-				<input
-					className='form-check-input'
-					type='checkbox'
-					id={id}
-					name={name}
-					checked={!!data[id]}
-					onChange={handleChange}
-				/>
-				是否啟用
-			</label>
-		</div>
-	);
-}
+import { dateAddZero } from './../utils/date-utils';
 
 export const Input = ({ id, labelText, type, name, placeholder, value, onChange }) => {
 	return (
@@ -48,7 +11,7 @@ export const Input = ({ id, labelText, type, name, placeholder, value, onChange 
 					id={id}
 					name={name}
 					placeholder={placeholder}
-					value={value}
+					value={value || ""}
 					onChange={onChange}
 				/>
 			</label>
@@ -56,6 +19,136 @@ export const Input = ({ id, labelText, type, name, placeholder, value, onChange 
 	);
 };
 
+export const DateInput = ({ id, labelText, type, name, placeholder, value, onChange, date }) => {
+	return (
+		<>
+			<label className='w-100 form-label' htmlFor={id}>
+				{labelText}
+				<input
+					className='form-control'
+					type={type}
+					id={id}
+					name={name}
+					placeholder={placeholder}
+					value={`${date.getFullYear().toString()}-${dateAddZero(date.getMonth() + 1)}-${dateAddZero(date.getDate())}`}
+					onChange={onChange}
+				/>
+			</label>
+		</>
+	);
+};
+
+//另外又有資料引進(item)
+export const ModalInput = ({ item, onChange, data }) => {
+	const { id, labelText, type, name, placeholder } = item;
+	return (
+		<>
+			<label className='w-100 form-label' htmlFor={id}>
+				{labelText}
+				<input
+					className='form-control'
+					type={type}
+					id={id}
+					name={name}
+					placeholder={placeholder}
+					value={data[id] || ""}
+					onChange={onChange}
+				/>
+			</label>
+		</>
+	);
+};
+
+//Check
+export const EnableCheck = ({ id, name, handleChange, data, labelText }) => {
+	return (
+		<div className='form-check'>
+			<label htmlFor={id} className='w-100 form-check-label'>
+				<input
+					className='form-check-input'
+					type='checkbox'
+					id={id}
+					name={name}
+					checked={!!data[id]}
+					onChange={handleChange}
+				/>
+				{labelText}
+			</label>
+		</div>
+	);
+};
+
+
+export const TagInput = ({ data, handleTag, removeTag, setTyping, typing, tagInputRef }) => {
+	return (
+		<div className='w-100 form-label'>
+			標籤
+			<div className='d-flex flex-wrap gap-2 align-items-center'>
+				{data?.tag?.map((item, index) => (
+					<div key={index} className='d-inline-block tag'>
+						<span className=''>{item}</span>
+						<span
+							className='d-inline-block '
+							onClick={() => removeTag(index)}
+							style={{
+								borderRadius: "50%",
+								color: "red",
+								marginLeft: "10px",
+								textAlign: "center",
+								cursor: "pointer",
+							}}
+						>
+							&times;
+						</span>
+					</div>
+				))}
+				{typing ? (
+					<span
+						className='tag-edit'
+						ref={tagInputRef}
+						onKeyDown={handleTag}
+						onBlur={() => {
+							setTyping(false);
+						}}
+						contentEditable
+					></span>
+				) : (
+					<button
+						className='btn tag-btn'
+						type='button'
+						onClick={() => {
+							setTyping(true);
+							setTimeout(() => {
+								tagInputRef.current.focus();
+							}, 200);
+						}}
+					>
+						+
+					</button>
+				)}
+			</div>
+		</div>
+	);
+};
+
+export const TextArea = ({ id, labelText, name, placeholder, value, onChange }) => {
+	return (
+		<>
+			<label htmlFor='content'>{labelText}</label>
+			<textarea
+				className='form-control'
+				placeholder={placeholder}
+				id={id}
+				name={name}
+				style={{ height: "100px" }}
+				value={value[id] || ""}
+				onChange={onChange}
+			></textarea>
+		</>
+	);
+};
+
+//React Hook Form
 export const FormInput = ({ item, register, errors }) => {
 	const { id, labelText, type, rules } = item;
 	return (
@@ -97,3 +190,27 @@ export const FormSelect = ({ item, register, errors, setPayment }) => {
 		</div>
 	);
 };
+
+export const ImagePreview = ({title, img, handleRemove}) => {
+    return (
+		<>
+			{img && (
+				<div className='text-center position-relative'>
+					<img
+						className='img-fluid rounded-2 mb-3'
+						style={{ width: "200px", aspectRatio: "1/1" }}
+						src={img || null}
+						alt={title}
+					/>
+					<button
+						type='button'
+						onClick={handleRemove}
+						className='btn btn-sm btn-close position-absolute'
+						style={{ top: ".5rem", right: ".5rem" }}
+					></button>
+					<p className='text-secondary'>《圖片預覽》</p>
+				</div>
+			)}
+		</>
+	);
+}

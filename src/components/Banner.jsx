@@ -27,7 +27,7 @@ const Banner = ({imgUrl}) => {
 					className='playWrite position-absolute'
 					style={{
 						top: "30%",
-						left: "10%",
+						left: "13%",
 						fontSize: "3.2rem",
 						textShadow: "3px 5px #f7ebbb",
 					}}
@@ -39,7 +39,7 @@ const Banner = ({imgUrl}) => {
 						style={{
 							width: "50px",
 							top: "7%",
-							left: "-16%",
+							left: "-15%",
 							aspectRatio: "1/1",
 							overflow: "hidden",
 							// border: "2px solid red"
@@ -52,7 +52,7 @@ const Banner = ({imgUrl}) => {
 								width: "110px",
 								height: "auto",
 								marginTop: "-11px",
-								marginLeft: "-32px",
+								marginLeft: "-30px",
 								objectFit: "cover",
 							}}
 						/>
@@ -62,8 +62,8 @@ const Banner = ({imgUrl}) => {
 					className='position-absolute playWrite'
 					style={{
 						bottom: "30%",
-						left: "15%",
-						fontSize: "2rem",
+						left: "14%",
+						fontSize: "1.8rem",
 						// textShadow: "3px 5px #f7ebbb",
 					}}
 				>

@@ -2,9 +2,10 @@ import { useState, useEffect} from 'react';
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import { Input, ModalInput, ModalSelect } from '../FormElements';
+import { Input, ModalInput, EnableCheck, TextArea, ImagePreview } from "../FormElements";
 import { createAsyncMessage } from "../../slice/messageSlice";
 import { ProductModalFirstInputRules, ProductModalSecondInputRules } from '../FormRules';
+import useImagePreviews from './../../utils/hooks/useImagePreviews';
 
 
 
@@ -24,7 +25,7 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
         num: 0,
 	});
 
-	//04 Message推播處理
+	//00 Message推播處理
     const dispatch = useDispatch();
 
 	//01 判斷是格式是新增還是修改
@@ -46,7 +47,6 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 			setTempData(tempProduct);
 		}
 	}, [type, tempProduct]);
-	const { title, imageUrl } = tempData;
 
 	//02 <input>輸入值轉型與否
 	const handleChange = (e) => {
@@ -62,7 +62,7 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 				...prevState,
 				[name]: +e.target.checked,
 			}));
-		} else {
+		}  else {
 			setTempData((prevState) => ({
 				...prevState,
 				[name]: value,
@@ -71,35 +71,10 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 	};
     console.log(tempData);
 
-	//上傳圖片
-	const uploadFile = async (e) => {
-		const file = e.target.files[0];
-		if (!file) return;
-		const formData = new FormData();
-		formData.append("file-to-upload", file);
-		try {
-			const imgUrl = await uploadImg(formData);
-			setTempData({
-				...tempData,
-				imageUrl: imgUrl,
-			});
-		} catch (err) {
-			console.log(err);
-		}
-	};
-	const uploadImg = async (formData) => {
-		const imgRes = await axios.post(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/upload`, formData);
-		return imgRes.data.imageUrl;
-	};
-	//刪除圖片
-	const delImage = (image) => {
-		setTempData({
-			...tempData,
-			imageUrl: "",
-		});
-	};
+    //03 圖片處理
+    const {handleUpload, handleRemove} = useImagePreviews({setTempData, tempData});
 
-	//03 遞交輸入內容(新增產品內容、修產品改內容)
+	//04 遞交輸入內容(新增產品內容、修產品改內容)
 	const submit = async () => {
 		try {
 			//create
@@ -167,25 +142,13 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 										name='file-to-upload'
 										placeholder=''
 										value={""}
-										onChange={uploadFile}
+										onChange={handleUpload}
 									/>
-									{imageUrl && (
-										<div className='text-center position-relative'>
-											<img
-												className='img-fluid rounded-2 mb-3'
-												style={{ width: "200px", aspectRatio: "1/1" }}
-												src={imageUrl || null}
-												alt={title}
-											/>
-                                            <button
-													type='button'
-													onClick={delImage}
-													className='btn btn-sm btn-close position-absolute'
-													style={{ top: ".5rem", right: "1.8rem" }}
-												></button>
-											<p className='text-secondary'>《圖片預覽》</p>
-										</div>
-									)}
+                                    <ImagePreview
+                                        title={tempData.title}
+                                        img={tempData.imageUrl}
+                                        handleRemove={handleRemove}
+                                    />
 								</div>
 								{/* RIGHT */}
 								<div className='col-sm-8 d-flex flex-column gap-2'>
@@ -195,27 +158,40 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 										type='text'
 										name='title'
 										placeholder='請輸入標題'
-										value={title}
+										value={tempData.title}
 										onChange={handleChange}
 									/>
 									<div className='row'>
 										{ProductModalFirstInputRules.map((item) => (
 											<div className='col-md-6' key={item.id}>
-												<ModalInput item={item} data={tempData} handleChange={handleChange} />
+												<ModalInput 
+                                                    item={item} 
+                                                    data={tempData} 
+                                                    onChange={handleChange} 
+                                                />
 											</div>
 										))}
 									</div>
 									<hr />
 									{ProductModalSecondInputRules.map((item) => (
 										<div key={item.id}>
-											<ModalInput item={item} data={tempData} handleChange={handleChange} />
+											<TextArea
+												id={item.id}
+												labelText={item.labelText}
+												data={tempData}
+												name={item.name}
+												placeholder={item.placeholder}
+												value={tempData}
+												onChange={handleChange}
+											/>
 										</div>
 									))}
-									<ModalSelect
+									<EnableCheck
 										id='is_enabled'
 										name='is_enabled'
 										data={tempData}
 										handleChange={handleChange}
+										labelText='是否啟用'
 									/>
 								</div>
 							</div>
