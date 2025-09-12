@@ -173,12 +173,10 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 				api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/article/${tempArticle.id}`;
 				method = "put";
 			}
-
 			const res = await axios[method](api, {
 				data: {
 					...tempData,
 					create_at: date.getTime(),
-					// tag: tags,
 				}, //資料沒寫全，就會failed axios
 			});
 
