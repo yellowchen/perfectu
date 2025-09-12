@@ -90,35 +90,6 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 	//04 圖片處理
 	const { handleUpload, handleRemove } = useImagePreviews({ setTempData, tempData });
 
-	//上傳圖片
-	// const uploadFile = async (e) => {
-	// 	const file = e.target.files[0];
-	// 	if (!file) return;
-	// 	const formData = new FormData();
-	// 	formData.append("file-to-upload", file);
-	// 	try {
-	// 		const imgUrl = await uploadImg(formData);
-	// 		setTempData({
-	// 			...tempData,
-	// 			image: imgUrl,
-	// 		});
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 	}
-	// };
-	// const uploadImg = async (formData) => {
-	// 	const imgRes = await axios.post(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/upload`, formData);
-	//     // console.log(imgRes);
-	// 	return imgRes.data.imageUrl;
-	// };
-	// //刪除圖片
-	// const delImage = (image) => {
-	// 	setTempData({
-	// 		...tempData,
-	// 		image: "",
-	// 	});
-	// };
-
 	//05 Tag標籤
 	console.log("tempDataTag: ", tempData.tag);
 	const handleTag = (e) => {
@@ -237,23 +208,6 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 										img={tempData.image}
 										handleRemove={handleRemove}
 									/>
-									{/* {tempData.image && (
-										<div className='text-center position-relative'>
-											<img
-												className='img-fluid rounded-2 mb-3'
-												style={{ width: "200px", aspectRatio: "1/1" }}
-												src={tempData.image || null}
-												alt={tempData.title}
-											/>
-											<button
-												type='button'
-												onClick={delImage}
-												className='btn btn-sm btn-close position-absolute'
-												style={{ top: ".5rem", right: "1.8rem" }}
-											></button>
-											<p className='text-secondary'>《圖片預覽》</p>
-										</div>
-									)} */}
 								</div>
 								{/* RIGHT */}
 								<div className='col-sm-8 d-flex flex-column gap-2'>
