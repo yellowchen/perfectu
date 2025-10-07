@@ -36,22 +36,20 @@ const ProductCard = ({ item, wish }) => {
 				/>
 				<div className='card-body card-product-content'>
 					<h4
-						className='card-title'
+						className='card-title uoq_mun'
 						style={{
 							position: "absolute",
 							top: "55%",
 							color: "#309dc1",
-							fontWeight: "700",
 							letterSpacing: "1rem",
 						}}
 					>
 						{title}
 					</h4>
 					<p
-						className='text-end'
+						className='text-end limelight'
 						style={{
 							color: "#309dc1",
-							fontWeight: "700",
 						}}
 					>
 						NT$ {thousandFormat(price)}

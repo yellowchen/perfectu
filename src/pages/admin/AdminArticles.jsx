@@ -97,24 +97,20 @@ const AdminArticles = () => {
 
 
 	return (
-		<div className='p-3'>
+		<div className='p-1'>
 			<ArticleModal
 				closeModal={closeArticleModal}
 				type={type}
 				tempArticle={tempArticle}
 				getArticles={getArticles}
 			/>
-			<DeleteModal 
-                closeModal={closeDeleteModal} 
-                tempItem={tempArticle} 
-                deleteItem={deleteArticle} 
-            />
-			<h4>Articles</h4>
+			<DeleteModal closeModal={closeDeleteModal} tempItem={tempArticle} deleteItem={deleteArticle} />
+			<h4 className='pt-3'>Articles</h4>
 			<hr />
 			<div className='addNew text-end mb-3'>
 				<button
 					type='button'
-					className='btn btn-outline-primary p-1'
+					className='btn btn-outline-primary p-1 me-2'
 					onClick={() => {
 						openArticleModal("create", {});
 					}}
@@ -122,15 +118,14 @@ const AdminArticles = () => {
 					Create New
 				</button>
 			</div>
-			<table className='table text-center align-middle'>
+			<table className='table text-center align-middle table-modal'>
 				<thead>
 					<tr>
-						<th scope='col'>創建時間</th>
+						<th scope='col'>創建</th>
 						<th scope='col'>作者</th>
-						{/* <th scope='col'>描述</th> */}
 						<th scope='col'>標題</th>
 						<th scope='col'>縮圖</th>
-						<th scope='col'>開放狀態</th>
+						<th scope='col'>狀態</th>
 						<th scope='col'>編輯</th>
 					</tr>
 				</thead>
@@ -141,13 +136,12 @@ const AdminArticles = () => {
 							<tr key={item.id}>
 								<td>{new Date(item.create_at).toDateString()}</td>
 								<td>{item.author}</td>
-								{/* <td>{item.description}</td> */}
 								<td>{item.title}</td>
 								<td>
 									<img
 										src={item?.image || null}
 										alt={item.title}
-										style={{ width: "70px", height: "70px" }}
+										style={{ width: "60px", height: "60px" }}
 										className='rounded-1'
 									/>
 								</td>

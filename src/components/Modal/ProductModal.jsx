@@ -2,7 +2,7 @@ import { useState, useEffect} from 'react';
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import { Input, ModalInput, EnableCheck, TextArea, ImagePreview } from "../FormElements";
+import { Input, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooter } from "../FormElements";
 import { createAsyncMessage } from "../../slice/messageSlice";
 import { ProductModalFirstInputRules, ProductModalSecondInputRules } from '../FormRules';
 import useImagePreviews from './../../utils/hooks/useImagePreviews';
@@ -75,7 +75,7 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
     const {handleUpload, handleRemove} = useImagePreviews({setTempData, tempData});
 
 	//04 遞交輸入內容(新增產品內容、修產品改內容)
-	const submit = async () => {
+	const handleSubmit = async () => {
 		try {
 			//create
 			let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product`;
@@ -197,7 +197,12 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 							</div>
 						</div>
 						{/* Footer */}
-						<div className='modal-footer'>
+                        <ModalFooter 
+                            handleCancel={handleCancel}
+                            handleSubmit={handleSubmit}
+                            data={tempProduct}
+                        />
+						{/* <div className='modal-footer'>
 							<button
 								type='button'
 								className='btn btn-secondary'
@@ -209,7 +214,8 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 							<button type='button' className='btn btn-primary' onClick={submit}>
 								Save changes
 							</button>
-						</div>
+						</div> */}
+
 					</div>
 				</div>
 			</div>

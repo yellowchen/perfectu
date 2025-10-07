@@ -5,7 +5,7 @@ const Intro = () => {
     
     return (
 		<div className='container'>
-			<h1 className='title'>Our Story</h1>
+			<h1 className='title limelight'>Our Story</h1>
 
 			<div
 				className='mb-3 p-2 m-auto border-0 row row-cols-lg-2 justify-content-center'
@@ -37,7 +37,7 @@ const Intro = () => {
 						</div>
 						<div className='col-md-8 m-auto p-3' style={{ height: "200px" }}>
 							<div className='card-body'>
-								<h4 className='card-title subTitle'>Principle</h4>
+								<h4 className='card-title subTitle limelight'>Principle</h4>
 								<div className='shape-RB'></div>
 								<p className='card-text lh-lg' style={{ textAlign: "justify" }}>
 									四時運轉，是為季節；生命即在此周而復始的規律變化裡流逝、滋長。PerfectU結合季節花草、在地花農，把生活中瞬變的獨特記憶轉化為香氛產品，伴你歲月。
@@ -59,7 +59,7 @@ const Intro = () => {
 					>
 						<div className='col-md-8 m-auto p-3' style={{ height: "200px" }}>
 							<div className='card-body'>
-								<h4 className='card-title subTitle'>Perfect</h4>
+								<h4 className='card-title subTitle limelight'>Perfect</h4>
 								<div className='shape-RT'></div>
 								<p className='card-text lh-lg' style={{ textAlign: "justify" }}>
 									PerfectU的堅持手作，傳承古法，細心選作原料，每款皆為純天然香氛，亦不經動物測試，愛惜自己同時為地球出一分力。
@@ -107,7 +107,7 @@ const Intro = () => {
 						</div>
 						<div className='col-md-8 m-auto p-3' style={{ height: "200px" }}>
 							<div className='card-body'>
-								<h4 className='card-title subTitle'>Present</h4>
+								<h4 className='card-title subTitle limelight'>Present</h4>
 								<div className='shape-LB'></div>
 								<p className='card-text lh-lg' style={{ textAlign: "justify" }}>
 									您可以將PerfectU的每一份作品，作為禮物呈現給你和家人朋友，或獻給自己，視作美好的祝福。
@@ -129,7 +129,7 @@ const Intro = () => {
 					>
 						<div className='col-md-8 m-auto p-3' style={{ height: "200px" }}>
 							<div className='card-body'>
-								<h4 className='card-title subTitle'>Pease</h4>
+								<h4 className='card-title subTitle limelight'>Pease</h4>
 								<div className='shape-LT'></div>
 								<p className='card-text lh-lg' style={{ textAlign: "justify" }}>
 									透過專屬的香氛，自己決定擁有：好天氣與壞天氣、喜悅與痛苦、冬天與夏天、沮喪與快樂。在這兩極之間，學習如何保持平衡，學到了如何去生活。

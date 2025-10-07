@@ -153,7 +153,7 @@ export const FormInput = ({ item, register, errors }) => {
 	const { id, labelText, type, rules } = item;
 	return (
 		<div className='mb-3'>
-			<label className='form-label mb-0' htmlFor={id}>
+			<label className='w-100 form-label mb-0' htmlFor={id}>
 				{labelText}
 				<input
 					type={type}
@@ -198,7 +198,7 @@ export const ImagePreview = ({title, img, handleRemove}) => {
 				<div className='text-center position-relative'>
 					<img
 						className='img-fluid rounded-2 mb-3'
-						style={{ width: "200px", aspectRatio: "1/1" }}
+						style={{ width: "170px", aspectRatio: "1/1" }}
 						src={img || null}
 						alt={title}
 					/>
@@ -212,5 +212,23 @@ export const ImagePreview = ({title, img, handleRemove}) => {
 				</div>
 			)}
 		</>
+	);
+}
+
+export const ModalFooter = ({handleCancel, data, handleSubmit}) => {
+    return (
+		<div className='modal-footer'>
+			<button
+				type='button'
+				className='btn btn-secondary'
+				data-bs-dismiss='modal'
+				onClick={() => handleCancel(data)}
+			>
+				Close
+			</button>
+			<button type='button' className='btn btn-primary' onClick={handleSubmit}>
+				Save changes
+			</button>
+		</div>
 	);
 }

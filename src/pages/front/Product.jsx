@@ -28,13 +28,13 @@ const Product = () => {
 
     return (
 		<div className='container my-5'>
-			<h1 className='title'>Products</h1>
+			<h1 className='title limelight'>Products</h1>
 			<div className='d-flex flex-wrap justify-content-center gap-5'>
 				{products
-                    .sort((a, b) => a.num > b.num ? -1 : 1)
-                    .map((item) => (
-					<ProductCard item={item} key={item.id} wish={wish} />
-				))}
+					.sort((a, b) => (a.num > b.num ? -1 : 1))
+					.map((item) => (
+						<ProductCard item={item} key={item.id} wish={wish} />
+					))}
 			</div>
 		</div>
 	);

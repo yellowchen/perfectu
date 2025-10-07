@@ -81,7 +81,7 @@ const AdminProducts = () => {
 	};
 
 	return (
-		<div className='p-3'>
+		<div className='p-1'>
 			<ProductModal
 				closeModal={closeProductModal}
 				type={type}
@@ -89,12 +89,12 @@ const AdminProducts = () => {
 				getProducts={getProducts}
 			/>
 			<DeleteModal closeModal={closeDeleteModal} tempItem={tempProduct} deleteItem={deleteProduct} />
-			<h4>Products</h4>
+			<h4 className='pt-3'>Products</h4>
 			<hr />
 			<div className='addNew text-end mb-3'>
 				<button
 					type='button'
-					className='btn btn-outline-primary p-1'
+					className='btn btn-outline-primary p-1 me-2'
 					onClick={() => {
 						openProductModal("create", {});
 					}}
@@ -102,56 +102,56 @@ const AdminProducts = () => {
 					Create New
 				</button>
 			</div>
-			<table className='table text-center align-middle'>
+			<table className='table text-center align-middle table-modal'>
 				<thead>
 					<tr>
 						<th scope='col'>分類</th>
 						<th scope='col'>縮圖</th>
 						<th scope='col'>名稱</th>
 						<th scope='col'>售價</th>
-						<th scope='col'>啟用狀態</th>
+						<th scope='col'>狀態</th>
 						<th scope='col'>編輯</th>
 					</tr>
 				</thead>
 				<tbody>
 					{products
-                        .sort((a, b) => a.num > b.num ? -1 : 1)
-                        .map((item) => (
-						<tr key={item.id}>
-							<td>{item.category}</td>
-							<td>
-								<img
-									src={item?.imageUrl || null}
-									alt={item.title}
-									style={{ width: "70px", height: "70px" }}
-									className='rounded-1'
-								/>
-							</td>
-							<td>{item.title}</td>
-							<td>{thousandFormat(item.price)}</td>
-							<td>{item.is_enabled ? "啟用" : "未啟用"}</td>
-							<td>
-								<button
-									type='button'
-									className='btn btn-outline-primary p-1 m-1'
-									onClick={() => {
-										openProductModal("edit", item);
-									}}
-								>
-									Edit
-								</button>
-								<button
-									type='button'
-									className='btn btn-outline-danger p-1 m-1'
-									onClick={() => {
-										openDeleteModal(item);
-									}}
-								>
-									Del
-								</button>
-							</td>
-						</tr>
-					))}
+						.sort((a, b) => (a.num > b.num ? -1 : 1))
+						.map((item) => (
+							<tr key={item.id}>
+								<td>{item.category}</td>
+								<td>
+									<img
+										src={item?.imageUrl || null}
+										alt={item.title}
+										style={{ width: "70px", height: "70px" }}
+										className='rounded-1'
+									/>
+								</td>
+								<td>{item.title}</td>
+								<td>{thousandFormat(item.price)}</td>
+								<td>{item.is_enabled ? "啟用" : "未啟用"}</td>
+								<td>
+									<button
+										type='button'
+										className='btn btn-outline-primary p-1 m-1'
+										onClick={() => {
+											openProductModal("edit", item);
+										}}
+									>
+										Edit
+									</button>
+									<button
+										type='button'
+										className='btn btn-outline-danger p-1 m-1'
+										onClick={() => {
+											openDeleteModal(item);
+										}}
+									>
+										Del
+									</button>
+								</td>
+							</tr>
+						))}
 				</tbody>
 			</table>
 

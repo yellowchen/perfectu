@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { createAsyncMessage } from '../../slice/messageSlice';
+import { ModalFooter } from '../FormElements';
 
 
 
@@ -44,7 +45,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
     const dispatch = useDispatch();
 
 	//04 遞交輸入內容(新增產品內容、修產品改內容)
-	const submit = async () => {
+	const handleSubmit = async () => {
 		// console.log(type);
 		try {
 			const res = await axios.put(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/order/${tempOrder.id}`, {data: tempData});
@@ -195,8 +196,13 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 								</div>
 							</div>
 						</div>
-
-						<div className='modal-footer'>
+                        {/* Footer */}
+                        <ModalFooter 
+                            handleCancel={handleCancel}
+                            handleSubmit={handleSubmit}
+                            data={tempOrder}
+                        />
+						{/* <div className='modal-footer'>
 							<button
 								type='button'
 								className='btn btn-secondary'
@@ -208,7 +214,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 							<button type='button' className='btn btn-primary' onClick={submit}>
 								Save changes
 							</button>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>

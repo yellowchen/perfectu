@@ -43,52 +43,48 @@ const AdminOrders = () => {
         orderModal.current.hide();
     };
     return (
-		<div className='p-3'>
+		<div className='p-1'>
 			<OrderModal closeModal={closeOrderModal} tempOrder={tempOrder} getOrders={getOrders} />
-			<h4>Orders</h4>
+			<h4 className='pt-3'>Orders</h4>
 			<hr />
-			<div className='table-responsive'>
-				<table className='table text-center align-middle'>
-					<thead>
-						<tr>
-							<th scope='col'>訂單ID</th>
-							<th scope='col'>日期</th>
-							<th scope='col'>用戶</th>
-							<th scope='col'>金額</th>
-							<th scope='col'>付款狀態</th>
-							<th scope='col'>處理進度</th>
-							<th scope='col'>留言訊息</th>
-							<th scope='col'>編輯</th>
+			<table className='table text-center align-middle table-fixed'>
+				<thead>
+					<tr>
+						<th scope='col'>訂單</th>
+						<th scope='col'>日期</th>
+						<th scope='col'>用戶</th>
+						<th scope='col'>金額</th>
+						<th scope='col'>狀態</th>
+						<th scope='col'>進度</th>
+						<th scope='col'>留言</th>
+						<th scope='col'>編輯</th>
+					</tr>
+				</thead>
+				<tbody>
+					{orders.map((item) => (
+						<tr key={item.id}>
+							<td className='text-ellipsis'>{item.id}</td>
+							<td>{new Date(item.create_at * 1000).toDateString()}</td>
+							<td>{item.user.name}</td>
+							<td className='text-ellipsis'>{thousandFormat(item.total)}</td>
+							<td>{item.is_paid ? <span className='text-success fw-bold'>付款完成</span> : "未付款"}</td>
+							<td>{item.status ? <span>{item.status}</span> : "1"}</td>
+							<td>{item.message}</td>
+							<td>
+								<button
+									type='button'
+									className='btn btn-outline-primary p-1 me-2'
+									onClick={() => {
+										openOrderModal(item);
+									}}
+								>
+									查看
+								</button>
+							</td>
 						</tr>
-					</thead>
-					<tbody>
-						{orders.map((item) => (
-							<tr key={item.id}>
-								<td>{item.id}</td>
-								<td>{new Date(item.create_at * 1000).toDateString()}</td>
-								<td>{item.user.name}</td>
-								<td>{thousandFormat(item.total)}</td>
-								<td>
-									{item.is_paid ? <span className='text-success fw-bold'>付款完成</span> : "未付款"}
-								</td>
-								<td>{item.status ? <span>{item.status}</span> : "1"}</td>
-								<td>{item.message}</td>
-								<td>
-									<button
-										type='button'
-										className='btn btn-outline-primary p-1 me-2'
-										onClick={() => {
-											openOrderModal(item);
-										}}
-									>
-										查看
-									</button>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-			</div>
+					))}
+				</tbody>
+			</table>
 			<Pagination changePage={getOrders} pagination={pagination} />
 		</div>
 	);

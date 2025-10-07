@@ -1,37 +1,43 @@
 
 import { NavLink } from 'react-router-dom';
+import Wave from './Effect/Wave';
 
 const Footer = () => {
     return (
-		<div className='flex-shrink-0' style={{ backgroundColor: "#dbb292" }}>
-			<div className='container'>
-				<div className='d-flex flex-column flex-md-row justify-content-center justify-content-md-around align-items-center'>
+		<div className='flex-shrink-0 position-relative'>
+			<Wave />
+			<div className='px-5' style={{ backgroundColor: "#309dc1" }}>
+				<div className='d-flex flex-column flex-md-row justify-content-center justify-content-around align-items-center'>
 					<div className='footer-logo'>
-						<div className='d-flex flex-column align-items-center'>
+						<div className='d-flex flex-column flex-md-row align-items-center gap-0 gap-md-4'>
 							<NavLink
-								className='col-8 mb-2'
+								className='col-8'
 								to='/'
 								style={{
-									width: "150px",
+									width: "170px",
 									top: "0",
 									left: "45%",
 									aspectRatio: "1/1",
 									overflow: "hidden",
+									// border: "2px solid red",
 								}}
 							>
 								<img
 									src='https://res.cloudinary.com/da85u8p5e/image/upload/v1754450026/logo_gozatp.png'
 									alt='logo'
 									style={{
-										width: "220px",
+										width: "300px",
 										height: "auto",
-										marginTop: "-20px",
-										marginLeft: "-35px",
+										marginTop: "-50px",
+										marginLeft: "-70px",
 										objectFit: "cover",
 									}}
 								/>
 							</NavLink>
-							<ul className='d-flex list-unstyled gap-4' style={{ fontSize: "2.5rem" }}>
+							<ul
+								className='d-flex flex-row flex-md-column list-unstyled gap-4 gap-md-0 ms-0 ms-md-3'
+								style={{ fontSize: "2.5rem" }}
+							>
 								<li>
 									<NavLink to='/' className='text-white'>
 										<i className='fab fa-facebook' style={{ color: "#E47C01" }}></i>
@@ -55,8 +61,8 @@ const Footer = () => {
 							</ul>
 						</div>
 					</div>
-					<div className='footer-contact text-white mx-md-5'>
-						<h4 className='mb-3'>Contact Us</h4>
+					<div className='footer-contact text-white mx-md-5 roboto_slab'>
+						<h4 className='mb-4 text-center text-md-start'>Contact Us</h4>
 						<ul className='p-0 m-auto' style={{ fontSize: "1.2rem" }}>
 							<li>
 								<p>
@@ -79,10 +85,11 @@ const Footer = () => {
 						</ul>
 					</div>
 				</div>
-			</div>
-			<div className='copyright bg-black text-white text-center py-1 d-flex flex-column flex-md-row justify-content-center'>
-				<small>© Copyright perfectU All right Reserved.</small>
-				<small className='ps-3'>本網站為技術練習作品，不具任何商業行為</small>
+				<hr className="m-0 text-white border-2" />
+				<div className='copyright text-white text-center py-2 d-flex flex-column flex-md-row justify-content-center'>
+					<small>© Copyright perfectU All right Reserved.</small>
+					<small className=''>本網站為技術練習作品，不具任何商業行為</small>
+				</div>
 			</div>
 		</div>
 	);

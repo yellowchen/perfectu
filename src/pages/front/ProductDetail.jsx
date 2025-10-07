@@ -30,9 +30,9 @@ const ProductDetail = () => {
 
 	return (
 		<div className='container my-5 clearfix'>
-			<h1 className='title'>{title}</h1>
+			<h1 className='title uoq_mun'>{title}</h1>
 
-			<div className='card mb-3 border-0'>
+			<div className='card m-4 border-0'>
 				<div className='row g-0'>
 					<div className='col-md-5'>
 						<img
@@ -44,9 +44,9 @@ const ProductDetail = () => {
 					</div>
 					<div className='col-md-7'>
 						<div className='card-body'>
-							<p>NT$ {thousandFormat(price)}</p>
+							<p className="limelight">NT$ {thousandFormat(price)}</p>
 							<p className='card-text'>{description}</p>
-							<div className='input-group mb-3'>
+							<div className='input-group mt-5'>
 								<button
 									className='input-group-text'
 									onClick={() => {
@@ -66,7 +66,7 @@ const ProductDetail = () => {
 								</button>
 							</div>
 							<button
-								className='form-control btn btn-dark'
+								className='form-control btn btn-dark mt-3'
 								onClick={() => {
 									addToCart(id);
 								}}

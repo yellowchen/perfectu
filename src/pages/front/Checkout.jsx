@@ -62,8 +62,8 @@ const Checkout = () => {
 				) : (
 					<>
 						{/* Order */}
-						<div className='col-md-4 p-2 bg-light'>
-							<h3 className='mb-4'>Order Detail</h3>
+						<div className='col-md-4 p-3 bg-light'>
+							<h3 className='mb-5 text-center limelight'>Order Detail</h3>
 							{carts?.map((item) => (
 								<CheckoutCard item={item} key={item.id} />
 							))}
@@ -84,16 +84,11 @@ const Checkout = () => {
 						</div>
 
 						{/* Info */}
-						<form className='col-md-6 p-2 bg-light' onSubmit={handleSubmit(onSubmit)}>
+						<form className='col-md-6 p-3 bg-light' onSubmit={handleSubmit(onSubmit)}>
 							<div className='bg-white mb-5'>
-								<h3 className='mb-4'>Contact Information</h3>
+								<h3 className='mb-5 text-center limelight'>Contact Information</h3>
 								{InputRules.map((item) => (
-									<FormInput 
-                                        key={item.id} 
-                                        item={item} 
-                                        register={register} 
-                                        errors={errors} 
-                                    />
+									<FormInput key={item.id} item={item} register={register} errors={errors} />
 								))}
 								<p className='mb-1'>Payment</p>
 								{CheckRules.map((item) => (
@@ -111,7 +106,7 @@ const Checkout = () => {
 							<div className='d-flex justify-content-between'>
 								<button
 									type='button'
-									className='btn'
+									className='btn fs-4'
 									onClick={() => {
 										navigate(-1);
 									}}
@@ -119,7 +114,7 @@ const Checkout = () => {
 									<i className='fas fa-chevron-left me-2'></i>Back To Cart
 								</button>
 								<button type='submit' className='btn btn-dark rounded-0'>
-									GET PAYED
+									Check Out
 								</button>
 							</div>
 						</form>

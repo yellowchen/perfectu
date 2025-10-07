@@ -8,14 +8,15 @@ const Wishlist = () => {
     console.log("wish: ", wish);
 
     return (
-		<div className='container my-5'>
-			<div className='row justify-content-center'>
-				{wish.wishlistItems?.length === 0 ? (
-					<div className='text-center mt-5'>
-						<h4>Your Wishlist is empty</h4>
-						<Link to='/product'>Continue Shopping</Link>
-					</div>
-				) : (
+		<div className='container'>
+			<h1 className='title limelight'>My Wishlist</h1>
+			{wish.wishlistItems?.length === 0 ? (
+				<div className='text-center limelight mt-5'>
+					<h4 className='mb-3'>Your wishlist is empty.</h4>
+					<Link to='/product'>Continue Shopping</Link>
+				</div>
+			) : (
+				<div className='row justify-content-center'>
 					<div className='col-md-6 py-5'>
 						{wish.wishlistItems?.map((item) => (
 							<WishCard item={item} key={item.id} />
@@ -30,8 +31,8 @@ const Wishlist = () => {
 							Back
 						</button>
 					</div>
-				)}
-			</div>
+				</div>
+			)}
 		</div>
 	);
 }

@@ -85,15 +85,15 @@ const AdminCoupons = () => {
 	console.log(new Date());
 
 	return (
-		<div className='p-3'>
+		<div className='p-1'>
 			<CouponModal closeModal={closeCouponModal} type={type} tempCoupon={tempCoupon} getCoupons={getCoupons} />
 			<DeleteModal closeModal={closeDeleteModal} tempItem={tempCoupon} deleteItem={deleteCoupon} />
-			<h4>Coupons</h4>
+			<h4 className='pt-3'>Coupons</h4>
 			<hr />
 			<div className='addNew text-end mb-3'>
 				<button
 					type='button'
-					className='btn btn-outline-primary p-1'
+					className='btn btn-outline-primary p-1 me-2'
 					onClick={() => {
 						openCouponModal("create", {});
 					}}
@@ -101,14 +101,14 @@ const AdminCoupons = () => {
 					Create New
 				</button>
 			</div>
-			<table className='table text-center align-middle'>
+			<table className='table text-center align-middle table-modal'>
 				<thead>
 					<tr>
 						<th scope='col'>標題</th>
 						<th scope='col'>折扣</th>
-						<th scope='col'>到期日</th>
+						<th scope='col'>期限</th>
 						<th scope='col'>優惠碼</th>
-						<th scope='col'>啟用狀態</th>
+						<th scope='col'>狀態</th>
 						<th scope='col'>編輯</th>
 					</tr>
 				</thead>

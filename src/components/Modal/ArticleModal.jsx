@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import { ArticleModalRules } from "../FormRules";
-import { Input, DateInput, TagInput, ModalInput, EnableCheck, TextArea, ImagePreview } from "../FormElements";
+import { Input, DateInput, TagInput, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooter } from "../FormElements";
 import useImagePreviews from "../../utils/hooks/useImagePreviews";
 import { createAsyncMessage } from "../../slice/messageSlice";
 import { setTextIndicator } from '../../utils/string-utils';
@@ -132,7 +132,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 	};
 
 	//06 遞交輸入內容(新增產品內容、修產品改內容)
-	const submit = async () => {
+	const handleSubmit = async () => {
 		try {
 			//create
 			let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/article`;
@@ -271,7 +271,12 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 							</div>
 						</div>
 						{/* Footer */}
-						<div className='modal-footer'>
+                        <ModalFooter 
+                            handleCancel={handleCancel}
+                            handleSubmit={handleSubmit}
+                            data={tempArticle}
+                        />
+						{/* <div className='modal-footer'>
 							<button
 								type='button'
 								className='btn btn-secondary'
@@ -283,7 +288,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 							<button type='button' className='btn btn-primary' onClick={submit}>
 								Save changes
 							</button>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>

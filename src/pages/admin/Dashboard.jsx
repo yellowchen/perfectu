@@ -49,40 +49,40 @@ const Dashboard = () => {
 			</nav>
 			<div className='bg-light d-flex flex-md-row flex-column'>
 				<ul className='list-group list-group-flush d-flex flex-row flex-md-column'>
-					<li className='flex-md-grow-0 flex-grow-1'>
+					<li className='flex-1'>
 						<NavLink
 							to='products'
 							className='list-group-item list-group-item-action text-center'
 							aria-current='true'
 						>
-							<i className='bi bi-archive pe-2'></i>
+							<i className='bi bi-archive'></i>
 							<br />
 							Products
 						</NavLink>
 					</li>
-					<li className='flex-md-grow-0 flex-grow-1'>
+					<li className='flex-1'>
 						<NavLink
 							to='coupon'
 							className='list-group-item list-group-item-action text-center'
 							aria-current='true'
 						>
-							<i className='bi bi-ticket-fill pe-2'></i>
+							<i className='bi bi-ticket-fill'></i>
 							<br />
 							Coupons
 						</NavLink>
 					</li>
-					<li className='flex-md-grow-0 flex-grow-1'>
+					<li className='flex-1'>
 						<NavLink
 							to='orders'
 							className='list-group-item list-group-item-action text-center'
 							aria-current='true'
 						>
-							<i className='bi bi-list-ul pe-2'></i>
+							<i className='bi bi-list-ul'></i>
 							<br />
 							Orders
 						</NavLink>
 					</li>
-					<li className='flex-md-grow-0 flex-grow-1'>
+					<li className='flex-1'>
 						<NavLink
 							to='articles'
 							className='list-group-item list-group-item-action text-center'

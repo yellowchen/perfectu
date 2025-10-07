@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import { Input, DateInput, ModalInput, EnableCheck } from "../FormElements";
+import { Input, DateInput, ModalInput, EnableCheck, ModalFooter } from "../FormElements";
 import { CouponModalInputRules } from "../FormRules";
 import { createAsyncMessage } from "../../slice/messageSlice";
 // import { dateAddZero } from './../../utils/date-utils';
@@ -69,7 +69,7 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
     const dispatch = useDispatch();
 
 	//04 遞交輸入內容(新增產品內容、修產品改內容)
-	const submit = async () => {
+	const handleSubmit = async () => {
 		try {
 			//create
 			let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon`;
@@ -178,7 +178,12 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 							/>
 						</div>
 						{/* Footer */}
-						<div className='modal-footer'>
+                        <ModalFooter 
+                            handleCancel={handleCancel}
+                            handleSubmit={handleSubmit}
+                            data={tempCoupon}
+                        />
+						{/* <div className='modal-footer'>
 							<button
 								type='button'
 								className='btn btn-secondary'
@@ -190,7 +195,7 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 							<button type='button' className='btn btn-primary' onClick={submit}>
 								Save changes
 							</button>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>
