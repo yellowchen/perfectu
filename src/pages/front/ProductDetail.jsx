@@ -44,7 +44,7 @@ const ProductDetail = () => {
 					</div>
 					<div className='col-md-7'>
 						<div className='card-body'>
-							<p className="limelight">NT$ {thousandFormat(price)}</p>
+							<p className='limelight'>NT$ {thousandFormat(price)}</p>
 							<p className='card-text'>{description}</p>
 							<div className='input-group mt-5'>
 								<button
@@ -80,7 +80,7 @@ const ProductDetail = () => {
 
 			<button
 				className='btn btn-outline-primary rounded-circle float-end'
-				style={{ width: "60px", height: "60px" }}
+				style={{ width: "60px", height: "60px", }}
 				onClick={() => {
 					navigate(-1);
 				}}
