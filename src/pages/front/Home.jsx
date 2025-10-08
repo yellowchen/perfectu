@@ -68,14 +68,9 @@ const Home = () => {
         getArticles();
     }, []);
 
-
-    // const id = articles[Math.floor(Math.random() * (articles?.length - 1 - 0 + 1) + 0)].id;
-	// console.log(id);
-
-
-
+    console.log("products: ", products);
     const tagId = products.filter(item => item.title === tag[0])[0]?.id;
-    // console.log(tagId);
+    console.log(tagId);
 
     return (
 		<>

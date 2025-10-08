@@ -202,20 +202,6 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
                             handleSubmit={handleSubmit}
                             data={tempProduct}
                         />
-						{/* <div className='modal-footer'>
-							<button
-								type='button'
-								className='btn btn-secondary'
-								data-bs-dismiss='modal'
-								onClick={() => handleCancel(tempProduct)}
-							>
-								Close
-							</button>
-							<button type='button' className='btn btn-primary' onClick={submit}>
-								Save changes
-							</button>
-						</div> */}
-
 					</div>
 				</div>
 			</div>
