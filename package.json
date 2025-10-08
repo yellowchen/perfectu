@@ -2,7 +2,7 @@
 	"name": "perfectu",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://yellowchen.github.io/perfect",
+	"homepage": "https://yellowchen.github.io/perfectu/",
 	"dependencies": {
 		"@popperjs/core": "^2.11.8",
 		"@reduxjs/toolkit": "^2.8.2",
