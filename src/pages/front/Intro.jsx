@@ -23,7 +23,7 @@ const Intro = () => {
 					>
 						<div className='col-md-4 m-auto'>
 							<img
-								src='/cedar.jpg'
+								src='https://res.cloudinary.com/da85u8p5e/image/upload/v1759912247/cedar_sra7c4.jpg'
 								className='img-fluid'
 								alt='...'
 								style={{
@@ -68,7 +68,7 @@ const Intro = () => {
 						</div>
 						<div className='col-md-4 m-auto d-flex justify-content-end'>
 							<img
-								src='/lavender02.jpg'
+								src='https://res.cloudinary.com/da85u8p5e/image/upload/v1759912263/lavender_jjblw0.jpg'
 								className='img-fluid'
 								alt='...'
 								style={{
@@ -94,7 +94,7 @@ const Intro = () => {
 					>
 						<div className='col-md-4 m-auto'>
 							<img
-								src='/jerry-wang-02yj-33Wfxw-unsplash.jpg'
+								src='https://res.cloudinary.com/da85u8p5e/image/upload/v1759912258/jerry-wang-02yj-33Wfxw-unsplash_mforjr.jpg'
 								className='img-fluid'
 								alt='...'
 								style={{
@@ -138,7 +138,7 @@ const Intro = () => {
 						</div>
 						<div className='col-md-4 m-auto'>
 							<img
-								src='/rose.jpg'
+								src='https://res.cloudinary.com/da85u8p5e/image/upload/v1759912270/rose_ukxdqq.jpg'
 								className='img-fluid'
 								alt='...'
 								style={{

@@ -1,9 +1,9 @@
 
 
-const Banner = ({imgUrl}) => {
+const Banner = ({imgUrl, position}) => {
     return (
 		<div className='position-relative'>
-			<img
+			{/* <img
 				className='banner'
 				src={imgUrl}
 				alt='cover'
@@ -11,14 +11,26 @@ const Banner = ({imgUrl}) => {
 					width: "100%",
 					height: "350px",
 					opacity: "0.8",
+                    backgroundPosition: "top",
 				}}
-			/>
+			/> */}
+			<div
+				className='banner'
+				style={{
+					width: "100%",
+					height: "450px",
+					backgroundImage: imgUrl,
+					backgroundSize: "cover",
+                    backgroundPosition: position,
+                    opacity: ".9"
+				}}
+			></div>
 			<div
 				className='position-absolute'
 				style={{
 					top: "0%",
 					width: "100%",
-					height: "350px",
+					height: "450px",
 					backdropFilter: "blur(4px)",
 					// border: "2px solid red",
 				}}

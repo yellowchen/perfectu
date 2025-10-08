@@ -80,7 +80,8 @@ const Home = () => {
     return (
 		<>
 			<Banner
-				imgUrl={`https://res.cloudinary.com/da85u8p5e/image/upload/v1754556524/sergey-shmidt-koy6FlCCy5s-unsplash_pyw5fq.jpg`}
+				imgUrl="url(https://res.cloudinary.com/da85u8p5e/image/upload/v1754556524/sergey-shmidt-koy6FlCCy5s-unsplash_pyw5fq.jpg)"
+                position="center 45%"
 			/>
 			<p
 				className='eduTas text-center'

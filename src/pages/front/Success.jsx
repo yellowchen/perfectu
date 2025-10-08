@@ -33,7 +33,10 @@ const Success = () => {
 	console.log(orderId);
 	return (
 		<>
-			<Banner imgUrl={`/pexels-vlada-karpovich-4452373.jpg`} />
+			<Banner
+				imgUrl='url(https://res.cloudinary.com/da85u8p5e/image/upload/v1759912280/pexels-vlada-karpovich-4452373_p9rs8a.jpg)'
+				position='center 40%'
+			/>
 			<div className='container'>
 				<div className='row text-center'>
 					<div className='col-md-6 mt-5 p-3'>
