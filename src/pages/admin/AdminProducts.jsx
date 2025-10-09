@@ -24,7 +24,6 @@ const AdminProducts = () => {
 	const getProducts = async (page = 1) => {
 		try {
 			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/products?page=${page}`);
-			console.log(res.data);  //{success: true/false, message:[], products: [...], pagination: {...}}
 			setProducts(res.data.products);
 			setPagination(res.data.pagination);
 		} catch (err) {
@@ -36,7 +35,6 @@ const AdminProducts = () => {
 	const deleteProduct = async (id) => {
 		try {
 			const res = await axios.delete(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${id}`);
-			// console.log(res);
 			if (res.data.success) {
                 dispatch(createAsyncMessage(res.data));
 				closeDeleteModal();
@@ -88,10 +86,14 @@ const AdminProducts = () => {
 				tempProduct={tempProduct}
 				getProducts={getProducts}
 			/>
-			<DeleteModal closeModal={closeDeleteModal} tempItem={tempProduct} deleteItem={deleteProduct} />
+			<DeleteModal 
+                closeModal={closeDeleteModal} 
+                tempItem={tempProduct} 
+                deleteItem={deleteProduct} 
+            />
 			<h4 className='pt-3'>Products</h4>
 			<hr />
-			<div className='addNew text-end mb-3'>
+			<div className='text-end mb-3'>
 				<button
 					type='button'
 					className='btn btn-outline-primary p-1 me-2'
@@ -154,7 +156,6 @@ const AdminProducts = () => {
 						))}
 				</tbody>
 			</table>
-
 			<Pagination changePage={getProducts} pagination={pagination} />
 		</div>
 	);

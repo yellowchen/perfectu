@@ -6,15 +6,13 @@ import axios from "axios";
 import { thousandFormat } from "../../utils/string-utils";
 import CheckoutCard from '../../components/Card/CheckoutCard';
 import { FormInput, FormSelect } from "./../../components/FormElements";
-import {InputRules, CheckRules } from '../../components/FormRules';
+import { InputRules, CheckRules } from '../../components/Data/FormRules';
 import { PaymentContext } from './FrontLayout';
-
 
 
 const Checkout = () => {
 	const { cartData } = useOutletContext();
 	const { carts, total } = cartData;
-	// console.log(carts);
     const {payment, setPayment} = useContext(PaymentContext);
     const navigate = useNavigate();
 
@@ -29,7 +27,6 @@ const Checkout = () => {
 
 	//react-hook-form[02] --> <form></form>
 	const onSubmit = async (data) => {
-        console.log(data);
         const {name, email, tel, address} = data;
 		const form = {
 			create_at: Date.now(),
@@ -42,17 +39,14 @@ const Checkout = () => {
 				},
 			},
 		};
-        console.log("form: ", form);
 		try {
 			const res = await axios.post(`/v2/api/${process.env.REACT_APP_API_PATH}/order`, form);
-			console.log(res);
             navigate(`/success/${res.data.orderId}`);
 		} catch (err) {
 			console.log(err);
 		}
 	};
 
-    
 
 	return (
 		<div className='container'>

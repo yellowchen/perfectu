@@ -44,7 +44,6 @@ const Login = () => {
 		<div className='container py-5'>
 			<h1 className='text-center mb-5'>Backend Admin</h1>
 			<div className='row justify-content-center mb-5'>
-				{/* {loginState?.message && <div className='alert alert-danger text-center'>{loginState?.message}</div>} */}
 				<div className='col-md-6 d-flex flex-column gap-4'>
 					<div>
 						{loginState?.message && (

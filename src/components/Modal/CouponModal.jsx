@@ -3,10 +3,8 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import { Input, DateInput, ModalInput, EnableCheck, ModalFooter } from "../FormElements";
-import { CouponModalInputRules } from "../FormRules";
+import { CouponModalInputRules } from "../Data/FormRules";
 import { createAsyncMessage } from "../../slice/messageSlice";
-// import { dateAddZero } from './../../utils/date-utils';
-
 
 
 
@@ -20,7 +18,6 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 	});
 
 	const [date, setDate] = useState(new Date());
-	//console.log("date: ", date); //Thu Jun 26 2025 12:46:16 GMT+0800 (台北標準時間)
 
 	//01 判斷是格式是新增還是修改
 	useEffect(() => {
@@ -42,10 +39,8 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 
 
 	//02 <input>輸入值轉型與否
-	console.log(tempData);
 	const handleChange = (e) => {
 		const { value, name } = e.target;
-		console.log(e.target);
 		if (["num", "percent"].includes(name)) {
 			setTempData({
 				...tempData,
@@ -65,7 +60,6 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 	};
 
 	//03 Message處理
-	// const [, dispatch] = useContext(MessageContext);
     const dispatch = useDispatch();
 
 	//04 遞交輸入內容(新增產品內容、修產品改內容)
@@ -89,7 +83,6 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 				}, //資料沒寫全，就會failed axios
 			});
 
-			// console.log(res);
             dispatch(createAsyncMessage(res.data));
 			closeModal();
 			getCoupons();
@@ -127,7 +120,7 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 						{/* Header */}
 						<div className='modal-header'>
 							<div className='modal-title' id='couponModalLabel'>
-								<h5>{type === "create" ? "建立新優惠券" : `編輯${tempCoupon.title}`}</h5>
+								<h5>{type === "create" ? "建立新優惠券" : `編輯：${tempCoupon.title}`}</h5>
 							</div>
 							<button
 								type='button'
@@ -183,19 +176,6 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
                             handleSubmit={handleSubmit}
                             data={tempCoupon}
                         />
-						{/* <div className='modal-footer'>
-							<button
-								type='button'
-								className='btn btn-secondary'
-								data-bs-dismiss='modal'
-								onClick={() => handleCancel(tempCoupon)}
-							>
-								Close
-							</button>
-							<button type='button' className='btn btn-primary' onClick={submit}>
-								Save changes
-							</button>
-						</div> */}
 					</div>
 				</div>
 			</div>

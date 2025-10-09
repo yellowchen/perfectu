@@ -18,16 +18,13 @@ import { debounce } from "../../utils/ui-utils";
 const Home = () => {
     const [articles, setArticles] = useState();
     const [article, setArticle] = useState();
-    // const [id, setId] = useState();
     const [tag, setTag] = useState([])
     const [products, setProducts] = useState([]);
 
     const slideRef = useRef();
-    // console.log(slideRef.current.offsetTop);
     const checkSlide = () => {
         const slideTxt = slideRef.current?.children[0].children[1];
         const slideImg = slideRef.current?.children[1].children[0];
-
         if (window.scrollY + window.innerHeight > slideRef?.current?.offsetTop) {
 			slideTxt.classList.add("active");
             slideImg.classList.add("active");
@@ -39,7 +36,6 @@ const Home = () => {
     const getProducts = async(page = 1) => {
         try {
             const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`);
-            console.log(res.data);
             setProducts(res.data.products);
         }catch(err) {
             console.log(err);
@@ -52,9 +48,7 @@ const Home = () => {
     
     const getArticle = async() => {
         const id = articles[Math.floor(Math.random() * (articles?.length - 1 - 0 + 1) + 0)].id;
-        console.log(id);
         const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/article/${id}`);
-        // console.log(res.data.article);
         setArticle(res.data.article);
         setTag(res.data.article.tag);
     }
@@ -62,24 +56,21 @@ const Home = () => {
     useEffect(() => {
         const getArticles = async () => {
 			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/articles`);
-			console.log(res.data);
 			await setArticles(res.data.articles);
 		};
         getArticles();
     }, []);
-
-    console.log("products: ", products);
+    
     const tagId = products.filter(item => item.title === tag[0])[0]?.id;
-    console.log(tagId);
 
     return (
 		<>
 			<Banner
-				imgUrl="url(https://res.cloudinary.com/da85u8p5e/image/upload/v1754556524/sergey-shmidt-koy6FlCCy5s-unsplash_pyw5fq.jpg)"
-                position="center 45%"
+				imgUrl='url(https://res.cloudinary.com/da85u8p5e/image/upload/v1754556524/sergey-shmidt-koy6FlCCy5s-unsplash_pyw5fq.jpg)'
+				position='center 45%'
 			/>
 			<p
-				className='eduTas text-center'
+				className='edu_tas text-center'
 				style={{
 					fontSize: "2rem",
 					margin: "10vw auto",
@@ -136,47 +127,45 @@ const Home = () => {
 					</button>
 				</div>
 				{article && (
-					<div className=''>
+					<div>
 						<div className='cloud'>
-							<div className=''>
-								<div
+							<div
+								className='rounded-circle'
+								style={{
+									position: "absolute",
+									bottom: "38%",
+									right: "14%",
+									border: ".5rem solid transparent",
+									width: "43%",
+								}}
+							>
+								<img
+									src={article?.image}
+									alt={article?.title}
 									className='rounded-circle'
 									style={{
-										position: "absolute",
-										bottom: "36%",
-										right: "15%",
-										border: ".5rem solid transparent",
-										width: "43%",
+										height: "auto",
+										maxWidth: "96%",
+										aspectRatio: "1 / 1",
 									}}
-								>
-									<img
-										src={article?.image}
-										alt={article?.title}
-										className='rounded-circle'
-										style={{
-											height: "auto",
-											maxWidth: "100%",
-											aspectRatio: "1 / 1",
-										}}
-									/>
-								</div>
+								/>
+							</div>
 
-								<div className='text'>
-									<p className='limelight'>{article?.title}</p>
-									<p>
-										<i className='bi bi-flower1 me-1'></i>
-										{article?.description}
-									</p>
-									<div className='m-0'>
-										{tag.map((item, index) => (
-											<div key={index}>
-												<span>
-													<i className='bi bi-flower1 me-1'></i>推薦：
-												</span>
-												<NavLink to={`/product/${tagId}`}>#{item}</NavLink>
-											</div>
-										))}
-									</div>
+							<div className='text'>
+								<p className='limelight'>{article?.title}</p>
+								<p>
+									<i className='bi bi-flower1 me-1'></i>
+									{article?.description}
+								</p>
+								<div className='m-0'>
+									{tag.map((item, index) => (
+										<div key={index}>
+											<span>
+												<i className='bi bi-flower1 me-1'></i>推薦：
+											</span>
+											<NavLink to={`/product/${tagId}`}>#{item}</NavLink>
+										</div>
+									))}
 								</div>
 							</div>
 						</div>

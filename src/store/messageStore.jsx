@@ -70,20 +70,6 @@ export function deleteSuccessMessage(dispatch, res) {
 }
 
 
-//新增訊息: 更新尚未儲存訊息
-// export function handleNotSavedMessage(dispatch) {
-//     dispatch({
-//         type: "POST_MESSAGE",
-//         payload: {
-//             type: "danger",
-//             title: "更新尚未儲存",
-//             text: "更新的內容尚未儲存，仍確定關掉視窗"
-//         }
-//     })
-//     setTimeClear(dispatch);
-// }
-
-
 function setTimeClear(dispatch) {
     setTimeout(() => {
 		dispatch({

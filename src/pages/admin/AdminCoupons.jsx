@@ -9,9 +9,6 @@ import Pagination from "./../../components/Pagination";
 import { createAsyncMessage } from "../../slice/messageSlice";
 
 
-
-
-
 const AdminCoupons = () => {
 	const [coupons, setCoupons] = useState([]);
 	const [type, setType] = useState("create");
@@ -25,7 +22,6 @@ const AdminCoupons = () => {
 	const getCoupons = async (page = 1) => {
 		try {
 			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupons?page=${page}`);
-			//console.log(res.data);  //{success: true/false, message:[], products: [...], pagination: {...}}
 			setCoupons(res.data.coupons);
 			setPagination(res.data.pagination);
 		} catch (err) {
@@ -33,13 +29,10 @@ const AdminCoupons = () => {
 		}
 	};
 
-	console.log(coupons);
-
 	//02刪除單個項目API
 	const deleteCoupon = async (id) => {
 		try {
 			const res = await axios.delete(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon/${id}`);
-			// console.log(res);
 			if (res.data.success) {
                 dispatch(createAsyncMessage(res.data));
 				closeDeleteModal();
@@ -86,8 +79,17 @@ const AdminCoupons = () => {
 
 	return (
 		<div className='p-1'>
-			<CouponModal closeModal={closeCouponModal} type={type} tempCoupon={tempCoupon} getCoupons={getCoupons} />
-			<DeleteModal closeModal={closeDeleteModal} tempItem={tempCoupon} deleteItem={deleteCoupon} />
+			<CouponModal 
+                closeModal={closeCouponModal} 
+                type={type} 
+                tempCoupon={tempCoupon} 
+                getCoupons={getCoupons} 
+            />
+			<DeleteModal 
+                closeModal={closeDeleteModal} 
+                tempItem={tempCoupon} 
+                deleteItem={deleteCoupon} 
+            />
 			<h4 className='pt-3'>Coupons</h4>
 			<hr />
 			<div className='addNew text-end mb-3'>
@@ -155,7 +157,6 @@ const AdminCoupons = () => {
 						))}
 				</tbody>
 			</table>
-
 			<Pagination changePage={getCoupons} pagination={pagination} />
 		</div>
 	);

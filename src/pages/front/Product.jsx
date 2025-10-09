@@ -10,7 +10,6 @@ const Product = () => {
     const getProducts = async(page = 1) => {
         try {
             const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`);
-            // console.log(res.data.products);
             setProducts(res.data.products);
         }catch(err) {
             console.log(err);

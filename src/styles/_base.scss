@@ -1,5 +1,5 @@
 //【English】
-//Roboto Slab
+//Roboto Slab (roboto_slab)
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 
 //Limelight (limelight)
@@ -11,7 +11,7 @@
 //Noto Sans TC
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
 
-//Playwrite Tanzania
+//Playwrite Tanzania (play_write)
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@100..400&family=Playwrite+NO+Guides&family=Playwrite+TZ:wght@100..400&display=swap');
 
 
@@ -19,7 +19,7 @@
 //UoqMunThenKhung (uoq_mun)
 @import url('https://fonts.googleapis.com/css2?family=UoqMunThenKhung&display=swap');
 
-//Edu TAS Beginner
+//Edu TAS Beginner (edu_tas)
 @import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&display=swap');
 
 *,
@@ -49,7 +49,6 @@ img {
 
 a {
     text-decoration: none;
-    // color: #000;
 }
 
 .btn {
@@ -80,20 +79,29 @@ a {
     font-weight: 400;
     font-style: normal;
 }
+
 .edu_tas {
     font-family: "Edu TAS Beginner", cursive;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
 }
+
 .uoq_mun {
     font-family: "UoqMunThenKhung", serif;
     font-weight: 400;
     font-style: normal;
 }
 
-//【Backend】
+.play_write {
+    font-family: "Playwrite TZ", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
 
+
+
+//【Backend】
 //Login
 .eyeToggle {
     top: 30px;
@@ -116,6 +124,40 @@ a {
     white-space: nowrap;
 }
 
+//article
+.article-bg {
+    background-color: #c3ebf7;
+    height: 500px;
+    clip-path: polygon(0 0, 68% 35%, 100% 100%, 23% 71%);
+}
+
+.tag, .tag-edit {
+    border-radius: 15px;
+    padding: .3rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tag {
+    background: #ddd;
+    font-weight: bold;
+}
+.tag-edit {
+    background: #f4d3ad;
+}
+
+.tag-btn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #f4d3ad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #fff;
+}
 
 
 //【Front】
@@ -135,7 +177,6 @@ a {
         width: 60px;
         padding-top: 8px;
     }
-    // clip-path: inset( 0 0 35px 0);
 }
 .nav-menu {
     position: relative;
@@ -161,33 +202,6 @@ a {
 
 
 //[Home]
-//banner
-.playWrite {
-    font-family: "Playwrite TZ", cursive;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.eduTas {
-    font-family: "Edu TAS Beginner", cursive;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-}
-
-//carousel
-.slick-slider {
-    .slick-list {
-        .slick-track {
-            margin-bottom: 3rem;
-        }
-    }
-    .slick-dots {
-        margin: 2rem 0;
-    }
-}
-
-//recommend
 .recommend {
     display: flex;
     padding: 0 4vw;
@@ -262,7 +276,7 @@ a {
 }
 
 .game {
-    background-color: #f4d3ad;
+    background: linear-gradient(98deg,rgba(247, 225, 200, 1) 0%, rgba(244, 211, 173, 1) 41%, rgba(245, 187, 120, 1) 100%);
     position: relative;
     &::before, &::after {
         content: "";
@@ -280,8 +294,9 @@ a {
         right: 0;
     }
     div {
-        .cloud {            
-            margin: 15vw auto 5vw;
+        .cloud {   
+            opacity: .8;         
+            margin: 15vw auto 7vw;
             padding: 1rem;
             max-width: 700px;
             min-width: 200px;
@@ -334,7 +349,7 @@ a {
         .cloud:nth-child(3) {
             position: absolute;
             width: 15%;
-            bottom: -1%;
+            bottom: -3%;
             right: 6%;
             display: block;
             background-color: #c4e7f2;
@@ -342,34 +357,6 @@ a {
             @include media-lg {
                 display: none;
             }
-        }
-    }
-}
-
-.cloud {
-    .text {
-        color: #000;
-        margin: 1rem 5rem;
-        font-size: 1.5rem;
-        font-weight: 600;
-        line-height: 2;
-        // border: 2px solid red;
-        @include media-md {
-            margin: 1rem 3rem;
-            line-height: 1.5;
-        }
-        @include media-sm {
-            margin: 0 1rem;
-            font-size: 19px;
-        }
-        @include  media-xs {
-            font-size: 16px;
-        }
-        p {
-            margin: 0;
-        }
-        div a {
-            color: #309DC1;
         }
     }
 }
@@ -396,53 +383,43 @@ a {
             -5px -5px 20px #f2e9de,
             inset 5px 5px 20px transparent,
             inset -5px -5px 20px transparent;
-            &:hover {
-                box-shadow:
-                    5px 5px 20px transparent,
-                    -5px -5px 20px transparent,
-                    inset 5px 5px 20px #f29e3e,
-                    inset -5px -5px 20px #f2e9de,
-            }
+        &:hover {
+            box-shadow:
+                5px 5px 20px transparent,
+                -5px -5px 20px transparent,
+                inset 5px 5px 20px #f29e3e,
+                inset -5px -5px 20px #f2e9de,
+        }
     }
 }
 
-
-
-//article
-.article-bg {
-    background-color: #c3ebf7;
-    height: 500px;
-    clip-path: polygon(0 0, 68% 35%, 100% 100%, 23% 71%);
+.cloud {
+    .text {
+        color: #000;
+        margin: 1rem 5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 2;
+        @include media-md {
+            margin: 1rem 3rem;
+            line-height: 1.5;
+        }
+        @include media-sm {
+            margin: 0 1rem;
+            font-size: 19px;
+        }
+        @include  media-xs {
+            font-size: 16px;
+        }
+        p {
+            margin: 0;
+        }
+        div a {
+            color: #309DC1;
+        }
+    }
 }
 
-.tag, .tag-edit {
-    border-radius: 15px;
-    padding: .3rem 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.tag {
-    background: #ddd;
-    font-weight: bold;
-}
-
-.tag-edit {
-    background: #f4d3ad;
-}
-
-.tag-btn {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background: #f4d3ad;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #fff;
-}
 
 //[Intro]
 .title {
@@ -460,53 +437,49 @@ a {
     }
 }
 
-.subTitle {
-    margin-bottom: 1rem;
-    text-align: center;
-
-}
-
-.shape-RB {
-    @include media-md {
-        // background: red;
-        float: left;
-        width: 15%; 
-        height: 120px;
-        shape-outside: radial-gradient(farthest-side ellipse at right top, transparent 100%, #fff);
+.card-body {
+    .subTitle {
+        margin-bottom: .5rem;
+        text-align: center;
     }
-}
-
-.shape-RT {
-    @include media-md {
-        // background: red;
-        float: left;
-        width: 12%; 
-        height: 100px;
-        shape-outside: radial-gradient(farthest-side ellipse at right bottom, transparent 100%, #fff);
+    .shape-RT {
+        @include media-md {
+            float: left;
+            width: 15%; 
+            height: 120px;
+            shape-outside: radial-gradient(farthest-side ellipse at right top, transparent 100%, #fff);
+        }
     }
-}
-
-.shape-LB {
-    @include media-md {
-        // background: red;
-        float: right;
-        width: 15%; 
-        height: 100px;
-        shape-outside: radial-gradient(farthest-side ellipse at left top, transparent 100%, #fff);
+    .shape-RB {
+        @include media-md {
+            float: left;
+            width: 12%; 
+            height: 100px;
+            shape-outside: radial-gradient(farthest-side ellipse at right bottom, transparent 100%, #fff);
+        }
     }
-}
-
-.shape-LT {
-    @include media-md {
-        // background: red;
-        float: right;
-        width: 12%; 
-        height: 100px;
-        shape-outside: radial-gradient(farthest-side ellipse at left bottom, transparent 100%, #fff);
+    .shape-LT {
+        @include media-md {
+            float: right;
+            width: 15%; 
+            height: 100px;
+            shape-outside: radial-gradient(farthest-side ellipse at left top, transparent 100%, #fff);
+        }
+    }
+    .shape-LB {
+        @include media-md {
+            float: right;
+            width: 12%; 
+            height: 100px;
+            shape-outside: radial-gradient(farthest-side ellipse at left bottom, transparent 100%, #fff);
+        }
     }
 }
 
 
+
+
+//[Product]
 .card-product {
     &:hover {
         transform: translate(0%, -5%);
@@ -520,13 +493,11 @@ a {
         top: 47%;
         left: 0%;
         border-top: transparent 50px solid;
-        // border-bottom: transparent 30px solid;
         border-left: #f4d3ad 154px solid; 
         overflow: hidden;
     }
 }
 
-//article
 
 
 

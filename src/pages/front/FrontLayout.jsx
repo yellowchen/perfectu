@@ -9,7 +9,6 @@ import { createAsyncMessage } from "../../slice/messageSlice";
 import Loading from "../../components/Effect/Loading";
 
 
-
 export const PaymentContext = createContext();
 
 const FrontLayout = () => {
@@ -29,7 +28,6 @@ const FrontLayout = () => {
         setIsLoading(true);
 		try {
 			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/cart`);
-			// console.log(res.data.data);
 			setCartData(res.data.data);
             setIsLoading(false);
 		} catch (err) {
@@ -46,11 +44,10 @@ const FrontLayout = () => {
 		};
 		try {
 			const res = await axios.post(`/v2/api/${process.env.REACT_APP_API_PATH}/cart`, data);
-			console.log(res);
             dispatch(createAsyncMessage(res.data));
 			getCart();
 		} catch (err) {
-			// console.log(err);
+			console.log(err);
             dispatch(createAsyncMessage(err.response.data));
 		}
 	};

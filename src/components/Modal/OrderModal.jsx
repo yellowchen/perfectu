@@ -5,9 +5,7 @@ import { createAsyncMessage } from '../../slice/messageSlice';
 import { ModalFooter } from '../FormElements';
 
 
-
 const OrderModal = ({closeModal, tempOrder, getOrders}) => {
-    // console.log(tempOrder);
 	const [tempData, setTempData] = useState({
         ...tempOrder,
         is_paid: "",
@@ -22,7 +20,6 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 			status: tempOrder.status,
 		});
 	}, [tempOrder]);
-	// const { user, message, products, is_paid, status  } = tempData;
 
 	//02 <input>輸入值轉型與否
 	const handleChange = (e) => {
@@ -39,17 +36,14 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 			}));
 		}
 	};
-    console.log("tempData", tempData);
 
 	//03 Message處理
     const dispatch = useDispatch();
 
 	//04 遞交輸入內容(新增產品內容、修產品改內容)
 	const handleSubmit = async () => {
-		// console.log(type);
 		try {
 			const res = await axios.put(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/order/${tempOrder.id}`, {data: tempData});
-            console.log(res);
             dispatch(createAsyncMessage(res.data));
 			closeModal();
 			getOrders();
@@ -77,7 +71,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 					<div className='modal-content'>
 						<div className='modal-header'>
 							<div className='modal-title' id='orderModalLabel'>
-								<h5>{`編輯訂單 ${tempData?.id}`}</h5>
+								<h5>{`編輯訂單： ${tempData?.id}`}</h5>
 							</div>
 							<button
 								type='button'
@@ -169,7 +163,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 								<span>修改訂單狀態</span>
 								<label className='form-check-label' htmlFor='is_paid'>
 									<input
-										className='form-check-input'
+										className='form-check-input me-2'
 										type='checkbox'
 										id='is_paid'
 										name='is_paid'
@@ -202,19 +196,6 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
                             handleSubmit={handleSubmit}
                             data={tempOrder}
                         />
-						{/* <div className='modal-footer'>
-							<button
-								type='button'
-								className='btn btn-secondary'
-								data-bs-dismiss='modal'
-								onClick={() => handleCancel(tempOrder)}
-							>
-								Close
-							</button>
-							<button type='button' className='btn btn-primary' onClick={submit}>
-								Save changes
-							</button>
-						</div> */}
 					</div>
 				</div>
 			</div>

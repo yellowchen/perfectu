@@ -9,7 +9,6 @@ const ProductDetail = () => {
 	const [product, setProduct] = useState([]);
 	const navigate = useNavigate();
 	const { id } = useParams();
-	// console.log(id);
 	const { setCartQuantity, cartQuantity, addToCart, setIsLoading } = useOutletContext();
 	const { description, imageUrl, price, title } = product;
 
@@ -18,7 +17,6 @@ const ProductDetail = () => {
 			setIsLoading(true);
 			try {
 				const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/product/${id}`);
-				console.log(res.data.product);
 				setProduct(res.data.product);
 				setIsLoading(false);
 			} catch (err) {

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef} from 'react';
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import { ArticleModalRules } from "../FormRules";
+import { ArticleModalRules } from '../Data/FormRules';
 import { Input, DateInput, TagInput, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooter } from "../FormElements";
 import useImagePreviews from "../../utils/hooks/useImagePreviews";
 import { createAsyncMessage } from "../../slice/messageSlice";
@@ -11,7 +11,6 @@ import { removeAllSpace } from '../../utils/string-utils';
 
 
 const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
-	console.log("tempArticle: ", tempArticle);
 	const [date, setDate] = useState(new Date());
 
 	//tag
@@ -59,11 +58,9 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 			setDate(new Date(tempArticle.create_at));
 		}
 	}, [type, tempArticle]);
-	console.log("tempData: ", tempData);
 
 	//02 <input>輸入值轉型與否
 	const handleChange = (e) => {
-		console.log(e.target.value);
 		const { value, name } = e.target;
 		if (name === "isPublic") {
 			setTempData((prevState) => ({
@@ -91,13 +88,10 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 	const { handleUpload, handleRemove } = useImagePreviews({ setTempData, tempData });
 
 	//05 Tag標籤
-	console.log("tempDataTag: ", tempData.tag);
 	const handleTag = (e) => {
 		if (e.key === "Enter") {
 			e.preventDefault();
-			console.log(e);
 			let tagText = tagInputRef.current.textContent;
-			console.log(tagText);
 			if (tagText.trim() && tagText !== "" && !tempData?.tag.includes(tagText)) {
 				setTempData((prevState) => ({
 					...prevState,
@@ -180,7 +174,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 						{/* Header */}
 						<div className='modal-header'>
 							<div className='modal-title' id='articleModalLabel'>
-								<h5>{type === "create" ? "建立新文章" : `編輯${tempArticle.title}`}</h5>
+								<h5>{type === "create" ? "建立新文章" : `編輯：${tempArticle.title}`}</h5>
 							</div>
 							<button
 								type='button'
@@ -226,7 +220,11 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 										<div className='row mb-2'>
 											{ArticleModalRules.map((item) => (
 												<div className='col-md-6' key={item.id}>
-													<ModalInput item={item} data={tempData} onChange={handleChange} />
+													<ModalInput 
+                                                        item={item} 
+                                                        data={tempData} 
+                                                        onChange={handleChange} 
+                                                    />
 												</div>
 											))}
 											<Input
@@ -276,19 +274,6 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
                             handleSubmit={handleSubmit}
                             data={tempArticle}
                         />
-						{/* <div className='modal-footer'>
-							<button
-								type='button'
-								className='btn btn-secondary'
-								data-bs-dismiss='modal'
-								onClick={() => handleCancel(tempArticle)}
-							>
-								Close
-							</button>
-							<button type='button' className='btn btn-primary' onClick={submit}>
-								Save changes
-							</button>
-						</div> */}
 					</div>
 				</div>
 			</div>

@@ -23,7 +23,6 @@ const AdminArticles = () => {
 	const getArticles = async (page = 1) => {
 		try {
 			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/articles?page=${page}`);
-			console.log("getArticles: ", res.data); //{success: true/false, message:[], products: [...], pagination: {...}}
 			setArticles(res.data.articles);
 			setPagination(res.data.pagination);
 		} catch (err) {
@@ -45,7 +44,6 @@ const AdminArticles = () => {
 	const deleteArticle = async (id) => {
 		try {
 			const res = await axios.delete(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/article/${id}`);
-			// console.log(res);
 			if (res.data.success) {
 				dispatch(createAsyncMessage(res.data));
 				closeDeleteModal();
@@ -93,8 +91,6 @@ const AdminArticles = () => {
 	const closeDeleteModal = () => {
 		deleteModal.current.hide();
 	};
-
-
 
 	return (
 		<div className='p-1'>

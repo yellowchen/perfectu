@@ -4,11 +4,8 @@ import axios from "axios";
 
 import { Input, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooter } from "../FormElements";
 import { createAsyncMessage } from "../../slice/messageSlice";
-import { ProductModalFirstInputRules, ProductModalSecondInputRules } from '../FormRules';
+import { ProductModalFirstInputRules, ProductModalSecondInputRules } from '../Data/FormRules';
 import useImagePreviews from './../../utils/hooks/useImagePreviews';
-
-
-
 
 
 const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
@@ -25,7 +22,7 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
         num: 0,
 	});
 
-	//00 Message推播處理
+	//dMessage推播處理
     const dispatch = useDispatch();
 
 	//01 判斷是格式是新增還是修改
@@ -51,7 +48,6 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 	//02 <input>輸入值轉型與否
 	const handleChange = (e) => {
 		const { value, name } = e.target;
-		console.log(e.target);
 		if (["origin_price", "price", "num"].includes(name)) {
 			setTempData((prevState) => ({
 				...prevState,
@@ -69,7 +65,6 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 			}));
 		}
 	};
-    console.log(tempData);
 
     //03 圖片處理
     const {handleUpload, handleRemove} = useImagePreviews({setTempData, tempData});
@@ -91,8 +86,6 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 			const res = await axios[method](api, {
 				data: tempData, //資料沒寫全，就會failed axios
 			});
-
-			console.log(res);
             dispatch(createAsyncMessage(res.data));
 			closeModal();
 			getProducts();
@@ -121,7 +114,7 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 						{/* Header */}
 						<div className='modal-header'>
 							<div className='modal-title' id='productModalLabel'>
-								<h5>{type === "create" ? "建立新商品" : `編輯${tempProduct.title}`}</h5>
+								<h5>{type === "create" ? "建立新商品" : `編輯：${tempProduct.title}`}</h5>
 							</div>
 							<button
 								type='button'

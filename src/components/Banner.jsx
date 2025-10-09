@@ -36,7 +36,7 @@ const Banner = ({imgUrl, position}) => {
 				}}
 			>
 				<h1
-					className='playWrite position-absolute'
+					className='play_write position-absolute'
 					style={{
 						top: "30%",
 						left: "13%",
@@ -71,7 +71,7 @@ const Banner = ({imgUrl, position}) => {
 					</div>
 				</h1>
 				<h3
-					className='position-absolute playWrite'
+					className='position-absolute play_write'
 					style={{
 						bottom: "30%",
 						left: "14%",

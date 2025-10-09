@@ -4,7 +4,6 @@ import axios from "axios";
 import MessageToast from "../../components/MessageToast";
 
 
-
 const Dashboard = () => {
     const navigate = useNavigate();
 
@@ -13,7 +12,6 @@ const Dashboard = () => {
 		.split(";")
 		.find((row) => row.startsWith("perfectToken="))
 		?.split("=")[1];
-    // console.log(token);
 	axios.defaults.headers.common["Authorization"] = token;
 
     //02 登出處理

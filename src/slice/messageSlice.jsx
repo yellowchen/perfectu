@@ -6,7 +6,6 @@ export const messageSlice = createSlice({
     reducers: {
         //方法
         createMessage(state, action) {
-            console.log(action);
             if(action.payload.success) {
                 state.push({
 					id: action.payload.id,
@@ -27,7 +26,6 @@ export const messageSlice = createSlice({
             
         },
         removeMessage(state, action) {
-            // console.log(action.payload);
             const index = state.findIndex(item => item === action.payload);
             state.splice(index, 1);
         }
@@ -38,7 +36,6 @@ export const messageSlice = createSlice({
 //createASyncThunk(自定義名稱, async(payload, params) => {})
 export const createAsyncMessage = createAsyncThunk(
     "message/createAsyncMessage", async(payload, {dispatch, requestId}) => {
-        console.log("createAsyncMessage: ", payload);
         dispatch(
             createMessage({
                 ...payload,

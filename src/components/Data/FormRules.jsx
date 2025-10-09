@@ -1,4 +1,4 @@
-
+//Admin
 export const ProductModalFirstInputRules = [
 	{
 		id: "category",
@@ -133,6 +133,8 @@ export const InputRules = [
 	},
 ];
 
+
+//Front
 export const CheckRules = [
 	{
 		id: "payRadios1",

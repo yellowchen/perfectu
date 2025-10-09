@@ -7,7 +7,6 @@ import Pagination from './../../components/Pagination';
 import { thousandFormat } from "./../../utils/string-utils";
 
 
-
 const AdminOrders = () => {
     const [orders, setOrders] = useState([]);
     const [tempOrder, setTempOrder] = useState({});
@@ -17,7 +16,6 @@ const AdminOrders = () => {
     const getOrders = async (page = 1) => {
         try {
             const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/orders?page=${page}`);
-            console.log(res.data);
             setOrders(res.data.orders);
             setPagination(res.data.pagination);
         } catch (err) {
@@ -44,7 +42,11 @@ const AdminOrders = () => {
     };
     return (
 		<div className='p-1'>
-			<OrderModal closeModal={closeOrderModal} tempOrder={tempOrder} getOrders={getOrders} />
+			<OrderModal 
+                closeModal={closeOrderModal} 
+                tempOrder={tempOrder} 
+                getOrders={getOrders} 
+            />
 			<h4 className='pt-3'>Orders</h4>
 			<hr />
 			<table className='table text-center align-middle table-fixed'>
