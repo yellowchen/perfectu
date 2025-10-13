@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/perfectu/static/css/main.9db60f3c.css",
-    "main.js": "/perfectu/static/js/main.2e2db977.js",
+    "main.css": "/perfectu/static/css/main.a17eb29d.css",
+    "main.js": "/perfectu/static/js/main.b6192641.js",
     "static/media/bootstrap-icons.woff?": "/perfectu/static/media/bootstrap-icons.1295669cd4e305c97f2c.woff",
     "static/media/bootstrap-icons.woff2?": "/perfectu/static/media/bootstrap-icons.92ea18a81d737146ff04.woff2",
     "static/media/slick.svg": "/perfectu/static/media/slick.2630a3e3eab21c607e21.svg",
@@ -9,11 +9,11 @@
     "static/media/slick.ttf": "/perfectu/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/perfectu/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/perfectu/index.html",
-    "main.9db60f3c.css.map": "/perfectu/static/css/main.9db60f3c.css.map",
-    "main.2e2db977.js.map": "/perfectu/static/js/main.2e2db977.js.map"
+    "main.a17eb29d.css.map": "/perfectu/static/css/main.a17eb29d.css.map",
+    "main.b6192641.js.map": "/perfectu/static/js/main.b6192641.js.map"
   },
   "entrypoints": [
-    "static/css/main.9db60f3c.css",
-    "static/js/main.2e2db977.js"
+    "static/css/main.a17eb29d.css",
+    "static/js/main.b6192641.js"
   ]
 }
