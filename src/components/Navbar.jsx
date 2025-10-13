@@ -32,12 +32,12 @@ const Navbar = ({cartData}) => {
 						style={{
 							top: "0",
 							right: "0",
-							transform: "translate(0%, 35%)",
+							transform: "translate(0%, 40%)",
 						}}
 					>
 						<NavLink className='nav-link position-relative' to='/cart' style={{ color: "#309DC1" }}>
 							<i className='bi bi-bag-fill'></i>
-							<span className='position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger'>
+							<span className='position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger' style={{aspectRatio: "1"}}>
 								{carts?.length}
 							</span>
 						</NavLink>
@@ -54,7 +54,7 @@ const Navbar = ({cartData}) => {
 						aria-label='Toggle navigation'
 						style={{ color: "#309DC1" }}
 					>
-						<i className='bi bi-list'></i>
+						<i className='bi bi-list fs-2'></i>
 					</button>
 
 					{/* menu */}
@@ -65,7 +65,7 @@ const Navbar = ({cartData}) => {
 							transition: ".3s ease-out",
 						}}
 					>
-						<ul className='navbar-nav mb-lg-0 text-end'>
+						<ul className='navbar-nav mb-lg-0 text-end pe-3 limelight'>
 							<li className='nav-item mt-2 mt-lg-0'>
 								<NavLink
 									className='nav-link mx-lg-2'

@@ -52,6 +52,7 @@ a {
 }
 
 .btn {
+    outline: none;
     &:focus {
         outline: none;
         border: none;
