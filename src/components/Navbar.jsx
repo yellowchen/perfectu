@@ -37,7 +37,10 @@ const Navbar = ({cartData}) => {
 					>
 						<NavLink className='nav-link position-relative' to='/cart' style={{ color: "#309DC1" }}>
 							<i className='bi bi-bag-fill'></i>
-							<span className='position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger' style={{aspectRatio: "1"}}>
+							<span
+								className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'
+								style={{ aspectRatio: "1", verticalAlign: "top", badgePadding: "2rem" }}
+							>
 								{carts?.length}
 							</span>
 						</NavLink>

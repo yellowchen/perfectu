@@ -59,6 +59,12 @@ a {
     }
 }
 
+ul {
+    li {
+        list-style: none;
+    }
+}
+
 .flex-1 {
     flex-grow: 0;   
     @include media-md {

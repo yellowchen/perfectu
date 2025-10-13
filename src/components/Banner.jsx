@@ -3,22 +3,11 @@
 const Banner = ({imgUrl, position}) => {
     return (
 		<div className='position-relative'>
-			{/* <img
-				className='banner'
-				src={imgUrl}
-				alt='cover'
-				style={{
-					width: "100%",
-					height: "350px",
-					opacity: "0.8",
-                    backgroundPosition: "top",
-				}}
-			/> */}
 			<div
 				className='banner'
 				style={{
 					width: "100%",
-					height: "450px",
+					height: "350px",
 					backgroundImage: imgUrl,
 					backgroundSize: "cover",
                     backgroundPosition: position,
@@ -30,13 +19,13 @@ const Banner = ({imgUrl, position}) => {
 				style={{
 					top: "0%",
 					width: "100%",
-					height: "450px",
+					height: "350px",
 					backdropFilter: "blur(4px)",
 					// border: "2px solid red",
 				}}
 			>
 				<h1
-					className='play_write position-absolute'
+					className='play_write position-absolute position-relative'
 					style={{
 						top: "30%",
 						left: "13%",
@@ -46,7 +35,7 @@ const Banner = ({imgUrl, position}) => {
 				>
 					Perfect You
 					<div
-						className='navbar-brand d-block position-absolute'
+						className='navbar-brand d-block position-absolute border border-danger'
 						to='/'
 						style={{
 							width: "50px",
@@ -54,7 +43,6 @@ const Banner = ({imgUrl, position}) => {
 							left: "-15%",
 							aspectRatio: "1/1",
 							overflow: "hidden",
-							// border: "2px solid red"
 						}}
 					>
 						<img

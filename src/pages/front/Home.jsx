@@ -69,15 +69,15 @@ const Home = () => {
 				imgUrl='url(https://res.cloudinary.com/da85u8p5e/image/upload/v1754556524/sergey-shmidt-koy6FlCCy5s-unsplash_pyw5fq.jpg)'
 				position='center 45%'
 			/>
-			<p
-				className='edu_tas text-center'
+			<div
+				className='edu_tas text-center px-5 fs-1'
 				style={{
-					fontSize: "2rem",
 					margin: "10vw auto",
 				}}
 			>
-				”Smell is a word, perfume is literature.”——Jean-Claude Ellena
-			</p>
+				<p>”Smell is a word, perfume is literature.”</p>
+				<p>——Jean-Claude Ellena</p>
+			</div>
 			<Slider {...sliderSetting}>
 				{products.map((item) => (
 					<CarouselCard
