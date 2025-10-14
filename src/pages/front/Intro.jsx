@@ -7,14 +7,14 @@ const Intro = () => {
 		<div className='container'>
 			<h1 className='title limelight'>Our Story</h1>
 			<div
-				className='mb-3 p-2 m-auto border-0 row row-cols-lg-2 justify-content-center'
+				className='mb-3 m-auto row row-cols-lg-2 justify-content-center'
 				style={{ maxWidth: "100%" }}
 			>
 				{IntroStory.map((item) => (
 					<StoryCard
 						key={item.id}
 						borderRadius_out={item.borderRadius_out}
-                        direction={item.direction}
+						direction={item.direction}
 						imgUrl={item.imgUrl}
 						name={item.name}
 						borderRadius_in={item.borderRadius_in}

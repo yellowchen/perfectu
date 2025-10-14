@@ -14,67 +14,71 @@ const Banner = ({imgUrl, position}) => {
 					opacity: ".9",
 				}}
 			></div>
-			<div
-				className='position-absolute'
+			{/* <div
+				className='navbar-brand d-block position-relative'
 				style={{
-					top: "0%",
-					width: "100%",
-					height: "350px",
-					backdropFilter: "blur(4px)",
-					// border: "2px solid red",
+					width: "50px",
+					top: "7%",
+					left: "-15%",
+					aspectRatio: "1/1",
+					overflow: "hidden",
+					zIndex: "-1",
 				}}
 			>
-				<div
-					className='play_write position-absolute'
+				<img
+					src='https://res.cloudinary.com/da85u8p5e/image/upload/v1754450026/logo_gozatp.png'
+					alt='logo'
 					style={{
-						top: "30%",
-						left: "13%",
-						textShadow: "3px 5px #f7ebbb",
+						width: "110px",
+						height: "auto",
+						marginTop: "-11px",
+						marginLeft: "-30px",
+						objectFit: "cover",
+						zIndex: "1",
+					}}
+				/>
+			</div> */}
+			<div>
+				<div
+					className='position-absolute'
+					style={{
+						top: "0%",
+						width: "100%",
+						height: "350px",
+						backdropFilter: "blur(4px)",
+						// border: "2px solid red",
 					}}
 				>
-					<h1
-						style={{
-							fontSize: "3.2rem",
-							textShadow: "3px 5px #f7ebbb",
-						}}
-					>
-						Perfect You
-					</h1>
 					<div
-						className='navbar-brand d-block position-absolute'
+						className='play_write position-absolute'
 						style={{
-							width: "50px",
-							top: "7%",
-							left: "-15%",
-							aspectRatio: "1/1",
-							overflow: "hidden",
-                            zIndex: "0",
+                            width: "90%",
+							top: "30%",
+							left: "10%",
 						}}
 					>
-						<img
-							src='https://res.cloudinary.com/da85u8p5e/image/upload/v1754450026/logo_gozatp.png'
-							alt='logo'
+						<h1
 							style={{
-								width: "110px",
-								height: "auto",
-								marginTop: "-11px",
-								marginLeft: "-30px",
-								objectFit: "cover",
+								fontSize: "3.2rem",
+								textShadow: "3px 5px #f7ebbb",
 							}}
-						/>
+						>
+							Perfect You
+						</h1>
+						<h3
+							className='position-absolute'
+							style={{
+								// bottom: "30%",
+								// left: "14%",
+								top: "130%",
+								left: "7%",
+								fontSize: "1.8rem",
+							}}
+						>
+							your perfect perfume
+						</h3>
 					</div>
 				</div>
-				<h3
-					className='position-absolute play_write'
-					style={{
-						bottom: "30%",
-						left: "14%",
-						fontSize: "1.8rem",
-						// textShadow: "3px 5px #f7ebbb",
-					}}
-				>
-					your perfect perfume
-				</h3>
 			</div>
 		</div>
 	);

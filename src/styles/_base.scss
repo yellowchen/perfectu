@@ -452,8 +452,8 @@ ul {
     .shape-RT {
         @include media-md {
             float: left;
-            width: 15%; 
-            height: 120px;
+            width: 22%; 
+            height: 150px;
             shape-outside: radial-gradient(farthest-side ellipse at right top, transparent 100%, #fff);
         }
     }

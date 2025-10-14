@@ -6,7 +6,7 @@ export const StoryCard = ({borderRadius_out, direction, imgUrl, name, borderRadi
 				style={{
 					background: "#efdebf",
 					borderRadius: borderRadius_out,
-					border: "1rem double #E47C01",
+					border: ".8rem double #E47C01",
 					overflow: "hidden",
 				}}
 			>
@@ -21,11 +21,11 @@ export const StoryCard = ({borderRadius_out, direction, imgUrl, name, borderRadi
 						}}
 					/>
 				</div>
-				<div className='col-md-8 m-0 p-3' style={{ height: "200px" }}>
+				<div className='col-md-8 m-0 p-3' style={{ height: "210px" }}>
 					<div className='card-body'>
 						<h4 className='card-title subTitle limelight'>Principle</h4>
 						<div className={shape}></div>
-						<p className='card-text lh-lg' style={{ textAlign: "justify" }}>
+						<p className='card-text px-0 p-md-3 lh-lg' style={{ textAlign: "justify" }}>
 							{content}
 						</p>
 					</div>
