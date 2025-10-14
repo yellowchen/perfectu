@@ -1,6 +1,6 @@
 //style-utils
 export const sliderSetting = {
-	slidesToShow: 5,
+	slidesToShow: 3,
 	slidesToScroll: 1,
 	dots: false,
 	infinite: true,
@@ -12,6 +12,14 @@ export const sliderSetting = {
 	centerMode: true,
 	centerPadding: "56px",
 	responsive: [
+		{
+			breakpoint: 1920,
+			settings: {
+				slidesToShow: 5,
+				slidesToScroll: 1,
+				dots: true,
+			},
+		},
 		{
 			breakpoint: 992,
 			settings: {

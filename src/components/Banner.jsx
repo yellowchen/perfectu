@@ -41,13 +41,14 @@ const Banner = ({imgUrl, position}) => {
 						Perfect You
 					</h1>
 					<div
-						className='navbar-brand d-block position-absolute border border-danger'
+						className='navbar-brand d-block position-absolute'
 						style={{
 							width: "50px",
 							top: "7%",
 							left: "-15%",
 							aspectRatio: "1/1",
 							overflow: "hidden",
+                            zIndex: "0",
 						}}
 					>
 						<img

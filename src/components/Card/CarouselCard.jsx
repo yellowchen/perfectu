@@ -16,7 +16,7 @@ const CarouselCard = ({id, img, title, price}) => {
 				>
 					<h5 className=''>{title}</h5>
 					<hr
-						style={{ width: "28%", color: "black", borderWidth: "1px", borderColor: "black" }}
+						style={{ width: "25%", color: "black", borderWidth: "1px", borderColor: "black" }}
 						className='pb-2'
 					/>
 					<h6 className=''>${thousandFormat(price)}</h6>

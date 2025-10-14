@@ -6,8 +6,8 @@ const Footer = () => {
     return (
 		<div className='flex-shrink-0 position-relative'>
 			<Wave />
-			<div className='px-5' style={{ backgroundColor: "#309dc1" }}>
-				<div className='d-flex flex-column flex-md-row justify-content-center justify-content-around align-items-center'>
+			<div className='px-4' style={{ backgroundColor: "#309dc1" }}>
+				<div className='d-flex flex-column flex-md-row align-items-center justify-content-around justify-content-md-center gap-md-5'>
 					<div className='footer-logo'>
 						<div className='d-flex flex-column flex-md-row align-items-center gap-0 gap-md-4'>
 							<NavLink
@@ -85,7 +85,7 @@ const Footer = () => {
 						</ul>
 					</div>
 				</div>
-				<hr className="m-0 text-white border-2" />
+				<hr className='m-0 text-white border-2' />
 				<div className='copyright text-white text-center py-2 d-flex flex-column flex-md-row justify-content-center'>
 					<small>© Copyright perfectU All right Reserved.</small>
 					<small className=''>本網站為技術練習作品，不具任何商業行為</small>
