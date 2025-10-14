@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { thousandFormat } from './../../utils/string-utils';
 
 const CarouselCard = ({id, img, title, price}) => {
     return (
@@ -15,10 +16,10 @@ const CarouselCard = ({id, img, title, price}) => {
 				>
 					<h5 className=''>{title}</h5>
 					<hr
-						style={{ width: "4rem", color: "black", borderWidth: "1px", borderColor: "black" }}
+						style={{ width: "28%", color: "black", borderWidth: "1px", borderColor: "black" }}
 						className='pb-2'
 					/>
-					<h6 className=''>${price}</h6>
+					<h6 className=''>${thousandFormat(price)}</h6>
 				</div>
 			</NavLink>
 		</>

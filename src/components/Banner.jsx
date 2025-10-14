@@ -10,8 +10,8 @@ const Banner = ({imgUrl, position}) => {
 					height: "350px",
 					backgroundImage: imgUrl,
 					backgroundSize: "cover",
-                    backgroundPosition: position,
-                    opacity: ".9"
+					backgroundPosition: position,
+					opacity: ".9",
 				}}
 			></div>
 			<div
@@ -24,19 +24,24 @@ const Banner = ({imgUrl, position}) => {
 					// border: "2px solid red",
 				}}
 			>
-				<h1
-					className='play_write position-absolute position-relative'
+				<div
+					className='play_write position-absolute'
 					style={{
 						top: "30%",
 						left: "13%",
-						fontSize: "3.2rem",
 						textShadow: "3px 5px #f7ebbb",
 					}}
 				>
-					Perfect You
+					<h1
+						style={{
+							fontSize: "3.2rem",
+							textShadow: "3px 5px #f7ebbb",
+						}}
+					>
+						Perfect You
+					</h1>
 					<div
 						className='navbar-brand d-block position-absolute border border-danger'
-						to='/'
 						style={{
 							width: "50px",
 							top: "7%",
@@ -57,7 +62,7 @@ const Banner = ({imgUrl, position}) => {
 							}}
 						/>
 					</div>
-				</h1>
+				</div>
 				<h3
 					className='position-absolute play_write'
 					style={{

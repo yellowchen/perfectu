@@ -2,7 +2,7 @@
 export const sliderSetting = {
 	slidesToShow: 5,
 	slidesToScroll: 1,
-	dots: true,
+	dots: false,
 	infinite: true,
 	speed: 500,
 	easing: "linear",
