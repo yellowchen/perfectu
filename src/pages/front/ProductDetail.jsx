@@ -77,7 +77,7 @@ const ProductDetail = () => {
 			</div>
 
 			<button
-				className='btn btn-outline-primary rounded-circle float-end'
+				className='btn btn-outline-primary rounded-circle float-end mt-5'
 				style={{ width: "60px", height: "60px", }}
 				onClick={() => {
 					navigate(-1);

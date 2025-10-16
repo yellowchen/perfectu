@@ -73,7 +73,7 @@ const Footer = () => {
 							<li>
 								<p>
 									<i className='bi bi-telephone pe-3'></i>
-									06-299-1111
+									(06)299-1111
 								</p>
 							</li>
 							<li>

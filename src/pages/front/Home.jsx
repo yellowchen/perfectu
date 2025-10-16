@@ -173,6 +173,7 @@ const Home = () => {
 						</div>
 						<div className='cloud'></div>
 						<div className='cloud'></div>
+						<div className='cloud'></div>
 					</div>
 				)}
 			</div>

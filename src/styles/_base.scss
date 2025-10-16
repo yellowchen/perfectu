@@ -314,7 +314,7 @@ ul {
             border-radius: 180px 180px 100px 100px;
             position: relative;
             z-index: 999;
-            box-shadow: rgba(186, 186, 186, 0.9) 12px 13px 12px 1px;
+            box-shadow: rgba(186, 186, 186, 0.9) 12px 10px 12px 1px;
             &::before, &::after {
                 content: "";
                 position: absolute;
@@ -341,7 +341,7 @@ ul {
         }   
         .cloud:nth-child(2) {
             position: absolute;
-            width: 23%;
+            width: 24%;
             top: 6rem;
             left: 13%;
             display: block;
@@ -361,6 +361,19 @@ ul {
             display: block;
             background-color: #c4e7f2;
             color: #c4e7f2;
+            @include media-lg {
+                display: none;
+            }
+        }
+        .cloud:nth-child(4) {
+            position: absolute;
+            width: 17%;
+            top: 12rem;
+            right: 17%;
+            display: block;
+            background-color: #c4e7f2;
+            color: #c4e7f2;
+            z-index: 1;
             @include media-lg {
                 display: none;
             }
@@ -505,6 +518,13 @@ ul {
         right: 10px;
         z-index: 1;
     }
+    div {
+        .btn {
+            &:hover {
+                background-color: #f7ae5b;
+            }
+        }
+    }
 }
 .card-product-content {
     &::before {
@@ -524,7 +544,7 @@ ul {
         border-bottom: transparent 50px solid;
         border-right: currentColor 154px solid; 
         overflow: hidden;
-        border-radius: 0 25px 0 0,
+        border-radius: 0 25px 0 0;
     }
 }
 

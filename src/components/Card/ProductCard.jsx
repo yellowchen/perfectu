@@ -22,13 +22,13 @@ const ProductCard = ({ item, wish }) => {
 				borderRadius: "25px",
 				boxShadow: "0 5px 15px 0 rgba(0, 0, 0, .4)",
 				margin: "3rem 2rem",
-				background: "#f7ae5b",
+				background: "#fff",
 			}}
 		>
 			<button
 				className='btn rounded-circle btn-wish'
 				style={{
-					background: "#f7ae5b",
+					background: "#fff",
 				}}
 				onClick={() => {
 					toggleWishlist(item);
@@ -50,31 +50,27 @@ const ProductCard = ({ item, wish }) => {
 					></i>
 				)}
 			</button>
-			<NavLink 
-                to={`/product/${id}`}
-                style={{}}
-            >
+			<NavLink to={`/product/${id}`} style={{}}>
 				<img
 					src={imageUrl}
 					className='card-img-top position-relative'
 					alt={title}
 					style={{
 						height: "230px",
-                        border: "10px solid #f7ae5b",
+						border: "6px solid #309dc1",
 						borderRadius: "25px 25px 0 0 ",
 					}}
 				/>
 			</NavLink>
 			<div
 				style={{
-					height: "120px",
-					color: "#f7ae5b",
+					// color: "#f7ae5b",
+					color: "#fff",
 					borderRadius: " 0 0 25px 25px",
-					background:
-						"linear-gradient(175deg,rgba(247, 174, 91, 1) 0%, rgba(247, 186, 112, 1) 35%, rgba(252, 230, 204, 1) 100%)",
+					background: "#fff",
 				}}
 			>
-				<div className='card-body card-product-content'>
+				<div className='card-product-content m-3'>
 					<h4
 						className='card-title uoq_mun'
 						style={{
@@ -95,18 +91,18 @@ const ProductCard = ({ item, wish }) => {
 						NT$ {thousandFormat(price)}
 					</p>
 				</div>
-				<div className='d-flex justify-content-between mb-3 px-4'>
+				<div className='d-flex justify-content-between px-3'>
 					<NavLink
-						className='btn rounded-3 px-5'
-						style={{ background: "#fff", color: "#309dc1" }}
+						className='btn rounded-4 px-5'
+						style={{ border: "3px solid #309dc1", color: "#309dc1" }}
 						to={`/product/${id}`}
 					>
 						<i className='bi bi-info-circle-fill'></i>
 					</NavLink>
 
 					<button
-						className='btn rounded-3 px-5'
-						style={{ background: "#fff", color: "#309dc1" }}
+						className='btn rounded-4 px-5'
+						style={{ border: "3px solid #309dc1", color: "#309dc1" }}
 						onClick={() => {
 							addToCart(id);
 						}}
