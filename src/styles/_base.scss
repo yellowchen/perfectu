@@ -430,7 +430,7 @@ ul {
 
 //[Intro]
 .title {
-    margin: 3vw 0 6vw 0;
+    margin: 3vh 0 8vh 0;
     display: flex;
     &::before,
     &::after {
@@ -487,21 +487,44 @@ ul {
 
 
 //[Product]
+.product {
+    div > i {
+        width: 18rem;
+        margin: 3rem 2rem;
+    }
+}
 .card-product {
+    position: relative;
     &:hover {
-        transform: translate(0%, -5%);
+        transform: translate(0%, -8%);
         transition: all .3s ease;
+    }
+    .btn-wish {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        z-index: 1;
     }
 }
 .card-product-content {
     &::before {
         content: "";
         position: absolute;
-        top: 47%;
+        bottom: 118px;
         left: 0%;
         border-top: transparent 50px solid;
-        border-left: #f4d3ad 154px solid; 
+        border-left: currentColor 154px solid; 
         overflow: hidden;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0%;
+        right: 0%;
+        border-bottom: transparent 50px solid;
+        border-right: currentColor 154px solid; 
+        overflow: hidden;
+        border-radius: 0 25px 0 0,
     }
 }
 

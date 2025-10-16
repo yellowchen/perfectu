@@ -56,7 +56,7 @@ const Checkout = () => {
 				) : (
 					<>
 						{/* Order */}
-						<div className='col-md-4 p-3 bg-light'>
+						<div className='col-md-4 p-3 bg-light rounded-2'>
 							<h3 className='mb-5 text-center limelight'>Order Detail</h3>
 							{carts?.map((item) => (
 								<CheckoutCard item={item} key={item.id} />
@@ -78,8 +78,8 @@ const Checkout = () => {
 						</div>
 
 						{/* Info */}
-						<form className='col-md-6 p-3 bg-light' onSubmit={handleSubmit(onSubmit)}>
-							<div className='bg-white mb-5'>
+						<form className='col-md-6 p-3 bg-light rounded-2' onSubmit={handleSubmit(onSubmit)}>
+							<div className='mb-5 px-1'>
 								<h3 className='mb-5 text-center limelight'>Contact Information</h3>
 								{InputRules.map((item) => (
 									<FormInput key={item.id} item={item} register={register} errors={errors} />
@@ -100,7 +100,7 @@ const Checkout = () => {
 							<div className='d-flex justify-content-between'>
 								<button
 									type='button'
-									className='btn fs-4'
+									className='btn fs-5 fw-bold'
 									onClick={() => {
 										navigate(-1);
 									}}

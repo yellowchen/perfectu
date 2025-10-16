@@ -21,6 +21,7 @@ const Home = () => {
     const [tag, setTag] = useState([])
     const [products, setProducts] = useState([]);
 
+    //slide
     const slideRef = useRef();
     const checkSlide = () => {
         const slideTxt = slideRef.current?.children[0].children[1];
@@ -32,7 +33,7 @@ const Home = () => {
     }
     window.addEventListener("scroll", debounce(checkSlide));
     
-
+    //products
     const getProducts = async(page = 1) => {
         try {
             const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`);
@@ -46,6 +47,7 @@ const Home = () => {
     }, [])
 
     
+    //article
     const getArticle = async() => {
         const id = articles[Math.floor(Math.random() * (articles?.length - 1 - 0 + 1) + 0)].id;
         const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/article/${id}`);
@@ -61,6 +63,7 @@ const Home = () => {
         getArticles();
     }, []);
     
+    //tag
     const tagId = products.filter(item => item.title === tag[0])[0]?.id;
 
     return (
@@ -113,7 +116,6 @@ const Home = () => {
 					))}
 			</div>
 			<div className='game p-3 my-0'>
-				{/* <h4 className='title'>心情抽籤</h4> */}
 				<div className='neumorphism limelight'>
 					<h3 className=''>Choose Your Today Flower</h3>
 					<button

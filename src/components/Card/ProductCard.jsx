@@ -1,13 +1,12 @@
 
 import { useDispatch } from "react-redux";
-import { Link, NavLink, useOutletContext } from "react-router-dom";
+import { NavLink, useOutletContext } from "react-router-dom";
 import { thousandFormat } from "./../../utils/string-utils";
 import { toggleWishItem } from "../../slice/wishSlice";
 
 const ProductCard = ({ item, wish }) => {
 	const { addToCart } = useOutletContext();
 	const { id, imageUrl, title, price } = item;
-	// console.log("p-card: ", wish);
 
 	const dispatch = useDispatch();
 	const toggleWishlist = (wishItem) => {
@@ -19,27 +18,68 @@ const ProductCard = ({ item, wish }) => {
 			className='card p-0 border-0 card-product'
 			style={{
 				width: "18rem",
-				background: "#f4d3ad",
-				borderRadius: "30px",
+				height: "350px",
+				borderRadius: "25px",
 				boxShadow: "0 5px 15px 0 rgba(0, 0, 0, .4)",
+				margin: "3rem 2rem",
+				background: "#f7ae5b",
 			}}
 		>
-			<Link to={`/product/${id}`}>
+			<button
+				className='btn rounded-circle btn-wish'
+				style={{
+					background: "#f7ae5b",
+				}}
+				onClick={() => {
+					toggleWishlist(item);
+				}}
+			>
+				{wish?.wishlistItems?.some((wish) => wish.id === item.id) ? (
+					<i
+						className='bi bi-suit-heart-fill'
+						style={{
+							color: "red",
+						}}
+					></i>
+				) : (
+					<i
+						className='bi bi-suit-heart-fill'
+						style={{
+							color: "#309dc1",
+						}}
+					></i>
+				)}
+			</button>
+			<NavLink 
+                to={`/product/${id}`}
+                style={{}}
+            >
 				<img
 					src={imageUrl}
 					className='card-img-top position-relative'
 					alt={title}
 					style={{
-						height: "200px",
-						borderRadius: "30px 30px 0 0 ",
+						height: "230px",
+                        border: "10px solid #f7ae5b",
+						borderRadius: "25px 25px 0 0 ",
 					}}
 				/>
+			</NavLink>
+			<div
+				style={{
+					height: "120px",
+					color: "#f7ae5b",
+					borderRadius: " 0 0 25px 25px",
+					background:
+						"linear-gradient(175deg,rgba(247, 174, 91, 1) 0%, rgba(247, 186, 112, 1) 35%, rgba(252, 230, 204, 1) 100%)",
+				}}
+			>
 				<div className='card-body card-product-content'>
 					<h4
 						className='card-title uoq_mun'
 						style={{
 							position: "absolute",
-							top: "55%",
+							top: "60%",
 							color: "#309dc1",
 							letterSpacing: "1rem",
 						}}
@@ -47,7 +87,7 @@ const ProductCard = ({ item, wish }) => {
 						{title}
 					</h4>
 					<p
-						className='text-end limelight'
+						className='limelight'
 						style={{
 							color: "#309dc1",
 						}}
@@ -55,47 +95,25 @@ const ProductCard = ({ item, wish }) => {
 						NT$ {thousandFormat(price)}
 					</p>
 				</div>
-			</Link>
-			<div className='d-flex justify-content-around gap-3 mb-3 px-4'>
-				<NavLink
-					className='btn rounded-circle'
-					style={{ background: "#fff", color: "#EA9C3F" }}
-					to={`/product/${id}`}
-				>
-					<i className='bi bi-info-circle-fill'></i>
-				</NavLink>
-				<button
-					className='btn rounded-circle'
-					style={{ background: "#fff" }}
-					onClick={() => {
-						toggleWishlist(item);
-					}}
-				>
-					{wish?.wishlistItems?.some((wish) => wish.id === item.id) ? (
-						<i
-							className='bi bi-suit-heart-fill'
-							style={{
-								color: "red",
-							}}
-						></i>
-					) : (
-						<i
-							className='bi bi-suit-heart-fill'
-							style={{
-								color: "#EA9C3F",
-							}}
-						></i>
-					)}
-				</button>
-				<button
-					className='btn rounded-circle'
-					style={{ background: "#fff", color: "#EA9C3F" }}
-					onClick={() => {
-						addToCart(id);
-					}}
-				>
-					<i className='bi bi-cart-fill'></i>
-				</button>
+				<div className='d-flex justify-content-between mb-3 px-4'>
+					<NavLink
+						className='btn rounded-3 px-5'
+						style={{ background: "#fff", color: "#309dc1" }}
+						to={`/product/${id}`}
+					>
+						<i className='bi bi-info-circle-fill'></i>
+					</NavLink>
+
+					<button
+						className='btn rounded-3 px-5'
+						style={{ background: "#fff", color: "#309dc1" }}
+						onClick={() => {
+							addToCart(id);
+						}}
+					>
+						<i className='bi bi-cart-fill'></i>
+					</button>
+				</div>
 			</div>
 		</div>
 	);

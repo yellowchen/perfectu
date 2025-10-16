@@ -24,16 +24,18 @@ const Product = () => {
 	}, [wish]);
 
 
-
     return (
-		<div className='container my-5'>
+		<div className='product container my-5'>
 			<h1 className='title limelight'>Products</h1>
-			<div className='d-flex flex-wrap justify-content-center gap-5'>
+			<div
+				className='d-flex justify-content-around flex-wrap'
+			>
 				{products
 					.sort((a, b) => (a.num > b.num ? -1 : 1))
 					.map((item) => (
 						<ProductCard item={item} key={item.id} wish={wish} />
-					))}
+				))}
+                <i></i><i></i>
 			</div>
 		</div>
 	);

@@ -21,8 +21,11 @@ export const StoryCard = ({borderRadius_out, direction, imgUrl, name, borderRadi
 						}}
 					/>
 				</div>
-				<div className='col-md-8 m-0 p-3' style={{ height: "210px" }}>
-					<div className='card-body'>
+				<div
+					className='col-md-8 m-0 px-3 px-md-0 py-0'
+					style={{ height: "200px" }}
+				>
+					<div className='card-body mt-2'>
 						<h4 className='card-title subTitle limelight'>Principle</h4>
 						<div className={shape}></div>
 						<p className='card-text px-0 p-md-3 lh-lg' style={{ textAlign: "justify" }}>
