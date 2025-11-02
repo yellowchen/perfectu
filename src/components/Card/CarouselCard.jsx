@@ -19,7 +19,7 @@ const CarouselCard = ({id, img, title, price}) => {
 						style={{ width: "25%", color: "black", borderWidth: "1px", borderColor: "black" }}
 						className='pb-2'
 					/>
-					<p className='fs-6'>NT$ {thousandFormat(price)}</p>
+					<small className='fs-6'>NT$ {thousandFormat(price)}</small>
 				</div>
 			</NavLink>
 		</>

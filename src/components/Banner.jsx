@@ -14,30 +14,6 @@ const Banner = ({imgUrl, position}) => {
 					opacity: ".9",
 				}}
 			></div>
-			{/* <div
-				className='navbar-brand d-block position-relative'
-				style={{
-					width: "50px",
-					top: "7%",
-					left: "-15%",
-					aspectRatio: "1/1",
-					overflow: "hidden",
-					zIndex: "-1",
-				}}
-			>
-				<img
-					src='https://res.cloudinary.com/da85u8p5e/image/upload/v1754450026/logo_gozatp.png'
-					alt='logo'
-					style={{
-						width: "110px",
-						height: "auto",
-						marginTop: "-11px",
-						marginLeft: "-30px",
-						objectFit: "cover",
-						zIndex: "1",
-					}}
-				/>
-			</div> */}
 			<div>
 				<div
 					className='position-absolute'
@@ -46,7 +22,6 @@ const Banner = ({imgUrl, position}) => {
 						width: "100%",
 						height: "350px",
 						backdropFilter: "blur(4px)",
-						// border: "2px solid red",
 					}}
 				>
 					<div
@@ -68,11 +43,11 @@ const Banner = ({imgUrl, position}) => {
 						<h3
 							className='position-absolute'
 							style={{
-								// bottom: "30%",
-								// left: "14%",
 								top: "130%",
-								left: "7%",
+								left: "10%",
 								fontSize: "1.8rem",
+                                lineHeight: "1.5",
+                                textIndent: "-2rem",
 							}}
 						>
 							your perfect perfume
