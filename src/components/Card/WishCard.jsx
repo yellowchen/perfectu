@@ -25,17 +25,17 @@ const WishCard = ({item}) => {
 					/>
 				</Link>
 			</div>
-			<div className='p-1'>
+			<div className='px-3'>
 				<h5 className='card-title'>
 					{title}
 					<br />
 					<small>NT$ {thousandFormat(price)}</small>
 				</h5>
 
-				<div className='p-0 d-flex gap-3'>
+				<div className='p-0 d-flex'>
 					<button
-						className='btn p-2 rounded-circle'
-						style={{ color: "red" }}
+						className='btn px-2'
+						style={{ color: "#f7ae5b" }}
 						onClick={() => {
 							removeFromWishlist(item);
 						}}
@@ -43,8 +43,8 @@ const WishCard = ({item}) => {
 						<i className='bi bi-suit-heart-fill'></i>
 					</button>
 					<button
-						className='btn p-2 rounded-circle'
-						style={{ color: "#EA9C3F" }}
+						className='btn px-2'
+						style={{ color: "#309DC1" }}
 						onClick={() => {
 							addToCart(id);
 						}}

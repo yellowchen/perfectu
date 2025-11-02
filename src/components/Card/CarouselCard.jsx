@@ -14,12 +14,12 @@ const CarouselCard = ({id, img, title, price}) => {
 					className='d-flex flex-column align-items-center'
 					style={{ maxWidth: "100%", aspectRatio: "3/2", color: "#f29e3e" }}
 				>
-					<h5 className=''>{title}</h5>
+					<p className='fs-4'>{title}</p>
 					<hr
 						style={{ width: "25%", color: "black", borderWidth: "1px", borderColor: "black" }}
 						className='pb-2'
 					/>
-					<h6 className=''>${thousandFormat(price)}</h6>
+					<p className='fs-6'>NT$ {thousandFormat(price)}</p>
 				</div>
 			</NavLink>
 		</>

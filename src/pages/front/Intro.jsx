@@ -19,6 +19,7 @@ const Intro = () => {
 						name={item.name}
 						borderRadius_in={item.borderRadius_in}
 						shape={item.shape}
+                        title={item.title}
 						content={item.content}
 					/>
 				))}

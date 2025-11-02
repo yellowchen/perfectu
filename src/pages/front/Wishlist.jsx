@@ -1,6 +1,7 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import WishCard from '../../components/Card/WishCard';
+import { BackButton } from './../../utils/button/Button';
 
 const Wishlist = () => {
     const navigate = useNavigate();
@@ -21,15 +22,20 @@ const Wishlist = () => {
 						{wish.wishlistItems?.map((item) => (
 							<WishCard item={item} key={item.id} />
 						))}
-						<button
-							className='btn btn-outline-primary rounded-circle float-end mt-5'
+						{/* <button
+							className='btn btn-outline-primary rounded-circle float-end mt-5 noto_serif'
 							style={{ width: "60px", height: "60px" }}
 							onClick={() => {
 								navigate(-1);
 							}}
 						>
 							Back
-						</button>
+						</button> */}
+                        <BackButton
+                            action={() => {
+                                navigate(-1);
+                            }}
+                        />
 					</div>
 				</div>
 			)}

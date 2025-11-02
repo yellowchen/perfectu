@@ -27,13 +27,3 @@ export const debounce = (func, wait = 20, immediate = true) => {
 		if (callNow) func.apply(context, args); //B.立即執行，下次再隔wait(20s)
 	};
 };
-
-// const debounced = (fn, wait="1000") => {
-//     let timer;
-//     return (...arg) => {
-//         clearTimeout(timer);
-//         timer = setTimeout(() => {
-//             fn(...arg)
-//         }, wait)
-//     }
-// }

@@ -18,7 +18,8 @@ import { debounce } from "../../utils/ui-utils";
 const Home = () => {
     const [articles, setArticles] = useState();
     const [article, setArticle] = useState();
-    const [tag, setTag] = useState([])
+    const [tag, setTag] = useState([]);
+    console.log(tag);
     const [products, setProducts] = useState([]);
 
     //slide
@@ -65,6 +66,10 @@ const Home = () => {
     
     //tag
     const tagId = products.filter(item => item.title === tag[0])[0]?.id;
+    // const tagId = products.filter((item) => item.title.include(tag))[0]?.id;
+    
+    console.log(products);
+    console.log(tagId);
 
     return (
 		<>
@@ -94,7 +99,7 @@ const Home = () => {
 			</Slider>
 			<div className='my-5 pb-5 container'>
 				{products
-					.filter((item) => item.category === "season-autumn")
+					.filter((item) => item.title === "秋鴛")
 					.map((item) => (
 						<div key={item.id} className='recommend' ref={slideRef}>
 							<div className='txt'>
@@ -104,8 +109,8 @@ const Home = () => {
 								</h1>
 								<div className='p-4'>
 									<h5 className=''>{item.content}</h5>
-									<NavLink to={`/product/${item.id}`} className='px-3 py-2 rounded-2'>
-										Know More
+									<NavLink to={`/product/${item.id}`} className='px-1 py-2 rounded-2 btn-secondary btn w-25 align-self-end text-light'>
+										More
 									</NavLink>
 								</div>
 							</div>
@@ -117,7 +122,7 @@ const Home = () => {
 			</div>
 			<div className='game p-3 my-0'>
 				<div className='neumorphism limelight'>
-					<h3 className=''>Choose Your Today Flower</h3>
+					<h3 className=''>Which flower are you today?</h3>
 					<button
 						type='button'
 						className='circle btn'
@@ -159,13 +164,15 @@ const Home = () => {
 									<i className='bi bi-flower1 me-1'></i>
 									{article?.description}
 								</p>
-								<div className='m-0'>
+								<div className='m-0 d-flex'>
+									<div>
+										<i className='bi bi-flower1 me-1'></i>推薦：
+									</div>
 									{tag.map((item, index) => (
-										<div key={index}>
-											<span>
-												<i className='bi bi-flower1 me-1'></i>推薦：
-											</span>
-											<NavLink to={`/product/${tagId}`}>#{item}</NavLink>
+										<div key={index} className='d-flex'>
+											<NavLink to={`/product/${tagId}`} className='mx-1'>
+												#{item}
+											</NavLink>
 										</div>
 									))}
 								</div>

@@ -4,7 +4,7 @@ import Wave from './Effect/Wave';
 
 const Footer = () => {
     return (
-		<div className='flex-shrink-0 position-relative'>
+		<div className='flex-shrink-0 position-relative roboto_slab'>
 			<Wave />
 			<div className='px-4' style={{ backgroundColor: "#309dc1" }}>
 				<div className='d-flex flex-column flex-md-row align-items-center justify-content-around justify-content-md-center gap-md-5'>
@@ -19,7 +19,6 @@ const Footer = () => {
 									left: "45%",
 									aspectRatio: "1/1",
 									overflow: "hidden",
-									// border: "2px solid red",
 								}}
 							>
 								<img
@@ -61,7 +60,7 @@ const Footer = () => {
 							</ul>
 						</div>
 					</div>
-					<div className='footer-contact text-white mx-md-5 roboto_slab'>
+					<div className='footer-contact text-white mx-md-5'>
 						<h4 className='mb-4 text-center text-md-start'>Contact Us</h4>
 						<ul className='p-0 m-auto' style={{ fontSize: "1.2rem" }}>
 							<li>
@@ -88,7 +87,7 @@ const Footer = () => {
 				<hr className='m-0 text-white border-2' />
 				<div className='copyright text-white text-center py-2 d-flex flex-column flex-md-row justify-content-center'>
 					<small>© Copyright perfectU All right Reserved.</small>
-					<small className=''>本網站為技術練習作品，不具任何商業行為</small>
+					<small>本網站為技術練習作品，不具任何商業行為</small>
 				</div>
 			</div>
 		</div>

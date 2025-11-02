@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate, useOutletContext } from "react-router-dom";
 import axios from "axios";
 import { thousandFormat } from './../../utils/string-utils';
-
+import { AccordionItem } from "../../components/AccordionItem";
+import { DetailInformation } from "../../components/Data/DetailInformation";
+import { TextButton, BackButton } from "../../utils/button/Button";
 
 
 const ProductDetail = () => {
@@ -10,7 +12,7 @@ const ProductDetail = () => {
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const { setCartQuantity, cartQuantity, addToCart, setIsLoading } = useOutletContext();
-	const { description, imageUrl, price, title } = product;
+	const { imageUrl, price, title, category, unit, content, origin_price } = product;
 
 	useEffect(() => {
         const getProduct = async (id) => {
@@ -28,9 +30,9 @@ const ProductDetail = () => {
 
 	return (
 		<div className='container my-5 clearfix'>
-			<h1 className='title uoq_mun'>{title}</h1>
+			<h1 className='title uoq_mun text-uppercase'>{category}</h1>
 
-			<div className='card m-4 border-0'>
+			<div className='card mx-3 mb-5 border-0 '>
 				<div className='row g-0'>
 					<div className='col-md-5'>
 						<img
@@ -41,50 +43,72 @@ const ProductDetail = () => {
 						/>
 					</div>
 					<div className='col-md-7'>
-						<div className='card-body'>
-							<p className='limelight'>NT$ {thousandFormat(price)}</p>
-							<p className='card-text'>{description}</p>
-							<div className='input-group mt-5'>
-								<button
-									className='input-group-text'
-									onClick={() => {
-										setCartQuantity((prev) => (prev === 1 ? 1 : prev - 1));
-									}}
-								>
-									<i className='bi bi-dash-lg'></i>
-								</button>
-								<input className='form-control text-center' readOnly value={cartQuantity} />
-								<button
-									className='input-group-text'
-									onClick={() => {
-										setCartQuantity((prev) => prev + 1);
-									}}
-								>
-									<i className='bi bi-plus-lg'></i>
-								</button>
+						<div className='card-body d-flex flex-column'>
+							<div className='card-txt'>
+								<div className='card-title d-flex justify-content-between align-items-end'>
+									<div>
+										<h3 className='uoq_mun'>{title}</h3>/ <small>{unit}</small>
+									</div>
+									<div>
+										<p className='m-0'>NT$ {thousandFormat(price)}</p>
+										<small className='text-decoration-line-through' style={{color: "#aaa"}}>
+											NT$ {thousandFormat(origin_price)}
+										</small>
+									</div>
+								</div>
+
+								<p className='mt-3 lh-lg text-justify'>{content}</p>
 							</div>
-							<button
-								className='form-control btn btn-dark mt-3'
-								onClick={() => {
-									addToCart(id);
-								}}
-							>
-								Add To Cart
-							</button>
+							<div className='card-btn d-flex gap-2 flex-column flex-lg-row mt-5'>
+								<div className='input-group w-50 mt-2 align-self-end'>
+									<button
+										className='input-group-text'
+										onClick={() => {
+											setCartQuantity((prev) => (prev === 1 ? 1 : prev - 1));
+										}}
+									>
+										<i className='bi bi-dash-lg'></i>
+									</button>
+									<input className='form-control text-center' readOnly value={cartQuantity} />
+									<button
+										className='input-group-text'
+										onClick={() => {
+											setCartQuantity((prev) => prev + 1);
+										}}
+									>
+										<i className='bi bi-plus-lg'></i>
+									</button>
+								</div>
+								<TextButton
+									className={`form-control w-100 mt-2`}
+									action={() => {
+										addToCart(id);
+									}}
+									text={`Add To Cart`}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<button
-				className='btn btn-outline-primary rounded-circle float-end mt-5'
-				style={{ width: "60px", height: "60px", }}
-				onClick={() => {
+			<div className='mx-2 mx-lg-5'>
+				<h4
+					className='text-center text-capitalize text-wrao'
+					style={{ wordSpacing: "10px", margin: "6rem 0 3rem" }}
+				>
+					Product Information
+				</h4>
+				<div className='accordion px-2 mx-0 mx-lg-5 lxgw_wenkai' id='accordionPanel'>
+					{DetailInformation.map((item) => (
+						<AccordionItem key={item.id} id={item.id} title={item.title} content={item.content} />
+					))}
+				</div>
+			</div>
+			<BackButton
+				action={() => {
 					navigate(-1);
 				}}
-			>
-				Back
-			</button>
+			/>
 		</div>
 	);
 };

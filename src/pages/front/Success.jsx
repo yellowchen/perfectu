@@ -5,6 +5,7 @@ import CheckoutCard from './../../components/Card/CheckoutCard';
 import { thousandFormat } from './../../utils/string-utils';
 import { PaymentContext } from './FrontLayout';
 import Banner from './../../components/Banner';
+import { ProgressBar } from "../../utils/data-utils";
 
 
 const Success = () => {
@@ -33,6 +34,7 @@ const Success = () => {
 	console.log(orderId);
 	return (
 		<>
+			<ProgressBar step={3} />
 			<Banner
 				imgUrl='url(https://res.cloudinary.com/da85u8p5e/image/upload/v1759912280/pexels-vlada-karpovich-4452373_p9rs8a.jpg)'
 				position='center 40%'
@@ -41,21 +43,21 @@ const Success = () => {
 				<div className='row text-center'>
 					<div className='col-md-6 mt-5 p-3'>
 						<h3 className='mb-4 limelight'>Checkout Success</h3>
-						<p className='mt-5'>Your Payment is Completed.</p>
+						<p className='mt-5'>Your Order is Completed.</p>
 						<NavLink to='/' className='btn btn-outline-dark rounded-0 mt-5'>
 							Back To Home
 						</NavLink>
 					</div>
-					<div className='card col-md-6 p-3 mt-5 bg-light rounded-0'>
+					<div className='card col-md-6 p-3 mt-5 bg-light rounded-0 uoq_mun'>
 						<h3 className='mb-4 text-center limelight'>Order Detail</h3>
 						{Object.values(orderData?.products || {}).map((item) => (
 							<CheckoutCard item={item} key={item.id} />
 						))}
 						<hr />
-						<div className='d-flex justify-content-between'>
-							<p className='fw-bolder'>SubTotal</p>
+						{/* <div className='d-flex justify-content-between'>
+							<p className='fw-bolder'>Coupon</p>
 							<p className=''>NT$ {thousandFormat(orderData.total)}</p>
-						</div>
+						</div> */}
 						<div className='d-flex justify-content-between'>
 							<p className='fw-bolder mb-0'>Payment</p>
 							<p className='mb-0'>{payment}</p>

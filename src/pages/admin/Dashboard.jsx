@@ -24,7 +24,7 @@ const Dashboard = () => {
 		if (!token) {
 			navigate("/login");
 		}
-        //在token、重新導向，兩個變動下要驗證token
+        //在token、重新導向，有變動下要驗證token
 		(async () => {
 			try {
 				await axios.post(`/v2/api/user/check`);
@@ -35,7 +35,7 @@ const Dashboard = () => {
 	}, [navigate, token]);
 
 	return (
-		<div className='d-flex flex-column min-vh-100'>
+		<div className='d-flex flex-column min-vh-100 noto_serif'>
 			<MessageToast />
 			<nav className='navbar bg-body-tertiary p-0'>
 				<div className='container-fluid bg-dark'>

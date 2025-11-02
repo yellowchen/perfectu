@@ -8,7 +8,7 @@ const MessageToast = () => {
     //Message版型
     return (
 		<>
-			<div className='toast-container position-fixed' style={{ top: "2rem", right: "10px" }}>
+			<div className='toast-container position-fixed' style={{ top: "4rem", right: "10px", width: "220px" }}>
 				{
 					messages?.map((item) => (
 						<div className='toast show' role='alert' aria-live='assertive' aria-atomic='true' key={item.id}>

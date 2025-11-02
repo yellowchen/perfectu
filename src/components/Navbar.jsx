@@ -28,11 +28,11 @@ const Navbar = ({cartData}) => {
 
 					{/* cart */}
 					<div
-						className='position-absolute text-center cart-icon'
+						className='position-absolute text-center cart-icon noto_serif'
 						style={{
 							top: "0",
 							right: "0",
-							transform: "translate(0%, 40%)",
+							transform: "translate(0%, 30%)",
 						}}
 					>
 						<NavLink className='nav-link position-relative' to='/cart' style={{ color: "#309DC1" }}>
@@ -48,7 +48,7 @@ const Navbar = ({cartData}) => {
 
 					{/* toggle */}
 					<button
-						className='navbar-toggler me-0 btn border-0'
+						className='navbar-toggler me-0 btn border-0 collapsed'
 						type='button'
 						data-bs-toggle='collapse'
 						data-bs-target='#navbarNav'
@@ -57,7 +57,10 @@ const Navbar = ({cartData}) => {
 						aria-label='Toggle navigation'
 						style={{ color: "#309DC1" }}
 					>
-						<i className='bi bi-list fs-2'></i>
+						{/* <i className='bi bi-list fs-2'></i> */}
+						<span></span>
+						<span></span>
+						<span></span>
 					</button>
 
 					{/* menu */}
@@ -68,39 +71,29 @@ const Navbar = ({cartData}) => {
 							transition: ".3s ease-out",
 						}}
 					>
-						<ul className='navbar-nav mb-lg-0 text-end pe-3 limelight'>
-							<li className='nav-item mt-2 mt-lg-0'>
-								<NavLink
-									className='nav-link mx-lg-2'
-									aria-current='page'
-									to='/intro'
-									style={{ color: "#309DC1" }}
-								>
-									<span className='nav-menu' data-bs-toggle='collapse' data-bs-target='#navbarNav'>
+						<ul className='navbar-nav mt-3 mt-lg-0 pe-1 limelight text-end'>
+							<li className='nav-item'>
+								<NavLink className='nav-link' aria-current='page' to='/intro'>
+									<span className='nav-list' data-bs-toggle='collapse' data-bs-target='#navbarNav'>
 										Story
 										<i className='bi bi-book-fill ps-2'></i>
 									</span>
 								</NavLink>
 							</li>
 							<li className='nav-item'>
-								<NavLink className='nav-link mx-lg-2' to='/product' style={{ color: "#309DC1" }}>
-									<span className='nav-menu' data-bs-toggle='collapse' data-bs-target='#navbarNav'>
+								<NavLink className='nav-link' aria-current='page' to='/product'>
+									<span className='nav-list' data-bs-toggle='collapse' data-bs-target='#navbarNav'>
 										Product
 										<i className='bi bi-box-seam-fill ps-2'></i>
 									</span>
 								</NavLink>
 							</li>
 							<li className='nav-item'>
-								<NavLink
-									className='nav-link mx-lg-2'
-									aria-current='page'
-									to='/wishlist'
-									style={{ color: "#309DC1" }}
-								>
-									<span className='nav-menu' data-bs-toggle='collapse' data-bs-target='#navbarNav'>
+								<NavLink className='nav-link' aria-current='page' to='/wishlist'>
+									<span className='nav-list' data-bs-toggle='collapse' data-bs-target='#navbarNav'>
 										Wishlist
 										{wish?.wishlistItems?.length > 0 ? (
-											<i className='bi bi-suit-heart-fill ps-2' style={{ color: "red" }}></i>
+											<i className='bi bi-suit-heart-fill ps-2' style={{ color: "#f7ae5b" }}></i>
 										) : (
 											<i className='bi bi-suit-heart-fill ps-2'></i>
 										)}

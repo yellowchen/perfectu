@@ -1,0 +1,16 @@
+.icon-btn {
+    &:hover {
+        background-color: #f7ae5b;    
+    }
+}
+
+.back-btn {
+    color: #309dc1;
+    border: 3px solid #309dc1;
+    width: 60px;
+    aspect-ratio: 1;
+    &:hover {
+        background-color: #f7ae5b; 
+        color: #fff;  
+    }
+}

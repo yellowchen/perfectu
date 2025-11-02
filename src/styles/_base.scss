@@ -5,22 +5,26 @@
 //Limelight (limelight)
 @import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
 
-//Noto Serif
+//Noto Serif (noto_serif)
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
-//Noto Sans TC
+//Noto Sans TC 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
 
 //Playwrite Tanzania (play_write)
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@100..400&family=Playwrite+NO+Guides&family=Playwrite+TZ:wght@100..400&display=swap');
+
+//Edu TAS Beginner (edu_tas)
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&display=swap');
+
+//
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 
 //【Chinese】
 //UoqMunThenKhung (uoq_mun)
 @import url('https://fonts.googleapis.com/css2?family=UoqMunThenKhung&display=swap');
 
-//Edu TAS Beginner (edu_tas)
-@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&display=swap');
 
 *,
 *::before,
@@ -32,13 +36,12 @@
 }
 
 html {
-    font-family: 'Noto Serif', "Noto Sans TC";
     font-size: 16px;  //16px
-    // font-weight: $fw-bold;
 }
 
 body {
     // line-height: $lh-base;
+    font-family: 'Limelight', "UoqMunThenKhung";
     background-color: #eee;
 }
 
@@ -55,7 +58,7 @@ a {
     outline: none;
     &:focus {
         outline: none;
-        border: none;
+        border: transparent;
     }
 }
 
@@ -73,6 +76,10 @@ ul {
     }
 }
 
+.text-justify {
+    text-align: justify;
+}
+
 //【Font-Size】
 .limelight {
     font-family: "Limelight", sans-serif;
@@ -81,7 +88,7 @@ ul {
 }
 
 .roboto_slab {
-    font-family: "Roboto Slab", serif;
+    font-family: "Roboto Slab", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -94,18 +101,28 @@ ul {
     font-style: normal;
 }
 
-.uoq_mun {
-    font-family: "UoqMunThenKhung", serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
 .play_write {
     font-family: "Playwrite TZ", cursive;
     font-weight: 400;
     font-style: normal;
 }
 
+.noto_serif {
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+}
+
+.uoq_mun {
+    font-family: "UoqMunThenKhung", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.lxgw_wenkai {
+    font-family: "LXGW WenKai Mono TC", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
 
 
 //【Backend】
@@ -168,46 +185,6 @@ ul {
 
 
 //【Front】
-
-//navbar
-.cart-icon {
-    @include media-lg {
-        margin-right: 3.8rem;
-    }
-}
-.nav-logo {
-    width: 80px;
-    height: auto;
-    margin-top: -20px;
-    margin-left: -16px;
-    @include media-md {
-        width: 60px;
-        padding-top: 8px;
-    }
-}
-.nav-menu {
-    position: relative;
-    &::before {
-        content: "";
-        position: absolute;
-        height: 2px;
-        width: 0%;
-        background-color: currentColor;
-        left: 50%;
-        bottom: -10px;
-    }
-    &:hover {
-        &::before {
-            width: 100%;
-            left: 0;
-            transition: .3s ease;
-        }
-    }
-}
-
-//footer
-
-
 //[Home]
 .recommend {
     display: flex;
@@ -237,11 +214,6 @@ ul {
             h5 {
                 margin: 3rem 0;
                 line-height: 1.5;
-            }
-            a {
-                color: #fff;
-                align-self: end;
-                background: #f4d3ad;
             }
         }
         @include media-lg {
@@ -332,8 +304,7 @@ ul {
             &::after {
                 min-width: 48%;
                 right: 13%;
-                bottom: 25%;
-                
+                bottom: 25%;        
             }
             @include media-lg {
                 margin-top: 25vw;
@@ -497,13 +468,33 @@ ul {
 }
 
 
-
-
 //[Product]
 .product {
     div > i {
-        width: 18rem;
+        min-width: 330px;
         margin: 3rem 2rem;
+    }
+    div{
+        // margin-bottom: 4vw;
+        .btn-category {
+            font-size: 18px;
+            width: 100px;
+            margin: 0 3px;
+            padding: .8rem 0;
+            border: transparent;
+            color: #309dc1;
+            border-bottom: 3px solid #309dc1;
+            outline: none;
+            &:focus {
+                outline: none;
+                border: none;
+            }
+        }
+        .btn-category.underline {
+            color: #f7ae5b;
+            border: transparent;
+            border-bottom: 10px solid $secondary;
+        }
     }
 }
 .card-product {
@@ -513,44 +504,51 @@ ul {
         transition: all .3s ease;
     }
     .btn-wish {
+        background: transparent;
+		font-size: 1.3rem;
         position: absolute;
-        top: 0;
-        right: 10px;
+        top: 2%;
+        right: 3%;
         z-index: 1;
-    }
-    div {
-        .btn {
-            &:hover {
-                background-color: #f7ae5b;
-            }
-        }
     }
 }
 .card-product-content {
     &::before {
         content: "";
         position: absolute;
-        bottom: 118px;
-        left: 0%;
-        border-top: transparent 50px solid;
-        border-left: currentColor 154px solid; 
         overflow: hidden;
+        bottom: 195px;
+        // bottom: 149px;
+
+        left: 2.1%;
+        border-top: transparent 50px solid;
+        border-left: currentColor 175px solid; 
+        // border-top: transparent 55px solid;
+        // border-left: #309dc1 180px solid; 
+        // z-index: 1;
     }
     &::after {
         content: "";
         position: absolute;
-        top: 0%;
-        right: 0%;
+        top: 7px;
+        right: 2%;
         border-bottom: transparent 50px solid;
-        border-right: currentColor 154px solid; 
+        border-right: currentColor 155px solid; 
         overflow: hidden;
         border-radius: 0 25px 0 0;
     }
 }
 
+.accordion-button {
+    &::after {
+        color: blue;
+    }
+}
 
-
-
-
-
-
+.accordion-button {
+    &:not(.collapsed) {
+        &::after {
+            color: red;
+        }
+    }
+}

@@ -1,0 +1,143 @@
+//navbar
+@keyframes nav-slideIn_1 {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes nav-slideIn_2 {
+    0% {
+        opacity: 0;
+        transform: translateX(130px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes nav-slideIn_3 {
+    0% {
+        opacity: 0;
+        transform: translateX(230px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+//logo
+.nav-logo {
+    width: 80px;
+    height: auto;
+    margin-top: -20px;
+    margin-left: -16px;
+    @include media-md {
+        width: 60px;
+        padding-top: 8px;
+    }
+}
+//cart
+.cart-icon {
+    a {
+        i {
+            font-size: 20px;
+            @include media-lg {
+                font-size: 18px;
+            }
+        }
+    }
+    @include media-lg {
+        margin-right: 4rem;
+    }
+}
+//toggle
+.navbar-toggler {
+    span {
+        display: block;
+        width: 24px;
+        height: 3px;
+        background-color: #309DC1;
+        margin: 5px;
+        transform: translateY(0px) rotate(0deg);
+        transition: all 0.35s ease-out;
+    }
+    &:focus {
+        outline: none;
+        border: none;
+        box-shadow: none;
+    }
+    &:active {
+        outline: none;
+        border: none;
+        box-shadow: none;
+    }
+    &:not(.collapsed) {
+        span {
+            &:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+    }
+}
+//menu
+.navbar-nav {
+    .nav-item {
+        .nav-link {
+            color: #309DC1;
+            margin: 0 1rem;
+            @include  media-lg {
+                margin: .5rem 1rem;
+            }
+        }
+        @include media-lg {
+            animation-duration: .5s;
+            &:nth-child(1) {
+                animation-name: nav-slideIn_1;
+            }
+            &:nth-child(2) {
+                animation-name: nav-slideIn_2;
+            }
+            &:nth-child(3) {
+                animation-name: nav-slideIn_3;
+            }
+        }        
+    }   
+}
+
+.nav-link {
+    .nav-list {
+        font-size: 20px;
+        @include media-lg {
+            font-size: 18px;
+        }
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            height: 2px;
+            width: 0%;
+            background-color: currentColor;
+            left: 50%;
+            bottom: -10px;
+        }
+        &:hover {
+            &::before {
+                width: 100%;
+                left: 0;
+                transition: .3s ease;
+            }
+        }
+    }
+}

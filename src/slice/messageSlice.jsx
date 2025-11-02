@@ -46,7 +46,7 @@ export const createAsyncMessage = createAsyncThunk(
             dispatch(
                 removeMessage(requestId)
             )
-        }, 3000)
+        }, 1000)
     } 
 );
 

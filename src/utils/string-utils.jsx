@@ -21,11 +21,12 @@ export const setTextIndicator = (tagInputRef) => {
 	tagInputRef.current.focus();
 }
 
+//
 export const removeAllSpace = (text) => {
     // return text.replace(/^\s+|\s+$/gm, "");
     return text.replace(/\s/g, "");
 }
-
+//
 export const trimAllSpace = (text) => {
 	return text.replace(/^\s+|\s+$/gm, "");
 }

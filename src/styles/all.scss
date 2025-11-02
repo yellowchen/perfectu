@@ -3,10 +3,10 @@
 @import "_mixin.scss";
 @import 'bootstrap/scss/bootstrap';
 @import "bootstrap-icons/font/bootstrap-icons";
-@import "_base.scss";
-@import "_bootstrap.scss";
-@import "_utils.scss";
 
+@import "_base.scss";
+@import "_navbar.scss";
 @import "_wave.scss";
 @import "_carousel.scss";
+@import "_btn.scss";
 

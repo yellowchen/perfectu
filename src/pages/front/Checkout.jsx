@@ -8,11 +8,12 @@ import CheckoutCard from '../../components/Card/CheckoutCard';
 import { FormInput, FormSelect } from "./../../components/FormElements";
 import { InputRules, CheckRules } from '../../components/Data/FormRules';
 import { PaymentContext } from './FrontLayout';
+import { ProgressBar } from '../../utils/data-utils';
 
 
 const Checkout = () => {
-	const { cartData } = useOutletContext();
-	const { carts, total } = cartData;
+	const { cartData, getCart } = useOutletContext();
+	const { carts, total, final_total } = cartData;
     const {payment, setPayment} = useContext(PaymentContext);
     const navigate = useNavigate();
 
@@ -42,6 +43,7 @@ const Checkout = () => {
 		try {
 			const res = await axios.post(`/v2/api/${process.env.REACT_APP_API_PATH}/order`, form);
             navigate(`/success/${res.data.orderId}`);
+            getCart();
 		} catch (err) {
 			console.log(err);
 		}
@@ -49,14 +51,15 @@ const Checkout = () => {
 
 
 	return (
-		<div className='container'>
+		<div className='container uoq_mun'>
+			<ProgressBar step={2} />
 			<div className='row my-5 mx-2 gap-5 justify-content-center'>
 				{cartData?.carts?.length === 0 ? (
 					<Navigate to='/product' />
 				) : (
 					<>
 						{/* Order */}
-						<div className='col-md-4 p-3 bg-light rounded-2'>
+						<div className='col-md-5 p-3 bg-light rounded-2'>
 							<h3 className='mb-5 text-center limelight'>Order Detail</h3>
 							{carts?.map((item) => (
 								<CheckoutCard item={item} key={item.id} />
@@ -67,13 +70,17 @@ const Checkout = () => {
 								<p className=''>NT$ {thousandFormat(total)}</p>
 							</div>
 							<div className='d-flex justify-content-between'>
+								<p className='fw-bolder'>使用優惠券</p>
+								<p className='text-danger'>NT$ {thousandFormat(final_total - total)}</p>
+							</div>
+							<div className='d-flex justify-content-between'>
 								<p className='fw-bolder mb-0'>Payment</p>
 								<p className='mb-0'>{payment}</p>
 							</div>
 							<hr />
 							<div className='d-flex justify-content-between'>
 								<h5 className='fw-bolder'>Total</h5>
-								<h5 className='fw-bolder'>NT$ {thousandFormat(total)}</h5>
+								<h5 className='fw-bolder'>NT$ {thousandFormat(final_total)}</h5>
 							</div>
 						</div>
 
@@ -100,14 +107,14 @@ const Checkout = () => {
 							<div className='d-flex justify-content-between'>
 								<button
 									type='button'
-									className='btn fs-5 fw-bold'
+									className='btn fw-bold'
 									onClick={() => {
 										navigate(-1);
 									}}
 								>
-									<i className='fas fa-chevron-left me-2'></i>Back To Cart
+									<i className='fas fa-chevron-left me-1'></i>Back To Cart
 								</button>
-								<button type='submit' className='btn btn-dark rounded-0'>
+								<button type='submit' className='btn btn-primary text-light w-50 limelight'>
 									Check Out
 								</button>
 							</div>
