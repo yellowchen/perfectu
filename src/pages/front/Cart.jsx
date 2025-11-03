@@ -116,7 +116,7 @@ const Cart = () => {
 										//labelText=""
 										type='text'
 										name='couponCode'
-										placeholder='請輸入優惠券代碼'
+										placeholder='優惠碼HelloAutumn'
 										value={couponCode}
 										className='w-50 ps-3'
 										onChange={(e) => {
