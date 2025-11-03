@@ -94,7 +94,7 @@ const ProductDetail = () => {
 			<div className='mx-2 mx-lg-5'>
 				<h4
 					className='text-center text-capitalize text-wrao'
-					style={{ wordSpacing: "10px", margin: "6rem 0 3rem" }}
+					style={{ wordSpacing: "10px", margin: "6rem 0 2rem" }}
 				>
 					Product Information
 				</h4>

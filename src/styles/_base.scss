@@ -484,10 +484,16 @@ ul {
             border: transparent;
             color: #309dc1;
             border-bottom: 3px solid #309dc1;
+            background-color: #eee;
             outline: none;
+            transform: translateX(0px);
+            transition: all .35s ease-in-out;
             &:focus {
                 outline: none;
                 border: none;
+            }
+            &:hover {
+                transform: translateY(-12px);
             }
         }
         .btn-category.underline {

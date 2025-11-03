@@ -14,7 +14,7 @@ const WishCard = ({item}) => {
     }
 
     return (
-		<div className='d-flex align-items-center g-0 mb-4 position-relative bg-light border border-1'>
+		<div className='d-flex align-items-center g-0 mb-4 position-relative bg-light border border-1 uoq_mun'>
 			<div>
 				<Link to={`/product/${id}`}>
 					<img
@@ -32,9 +32,9 @@ const WishCard = ({item}) => {
 					<small>NT$ {thousandFormat(price)}</small>
 				</h5>
 
-				<div className='p-0 d-flex'>
+				<div className='pt-1 d-flex'>
 					<button
-						className='btn px-2'
+						className='btn ps-1'
 						style={{ color: "#f7ae5b" }}
 						onClick={() => {
 							removeFromWishlist(item);
@@ -43,7 +43,7 @@ const WishCard = ({item}) => {
 						<i className='bi bi-suit-heart-fill'></i>
 					</button>
 					<button
-						className='btn px-2'
+						className='btn'
 						style={{ color: "#309DC1" }}
 						onClick={() => {
 							addToCart(id);
@@ -59,6 +59,7 @@ const WishCard = ({item}) => {
 					style={{
 						right: ".3rem",
 						top: ".2rem",
+						color: "#aaa",
 					}}
 					onClick={() => {
 						removeFromWishlist(item);

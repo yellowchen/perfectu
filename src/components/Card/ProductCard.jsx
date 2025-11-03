@@ -96,7 +96,7 @@ const ProductCard = ({ item, wish }) => {
 								{title}
 							</h4>
 							<p
-								className='limelight'
+								className='uoq_mun'
 								style={{
 									color: "#309dc1",
 								}}

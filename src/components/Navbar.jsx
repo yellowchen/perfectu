@@ -7,7 +7,13 @@ const Navbar = ({cartData}) => {
     const wish = useSelector(state => state.wishlists);
     
     return (
-		<div className='sticky-top flex-shrink-0 ps-4 py-1' style={{ backgroundColor: "#eee" }}>
+		<div
+			className='sticky-top flex-shrink-0 ps-4 py-1'
+			style={{
+				backgroundColor: "#eee",
+				boxShadow: "rgba(186, 186, 186, 0.9) 0px 0px 0px 5px;",
+			}}
+		>
 			<div className='container'>
 				<nav className='navbar navbar-expand-lg m-0 m-md-3 p-0'>
 					{/* logo */}

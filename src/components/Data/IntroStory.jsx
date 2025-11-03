@@ -9,7 +9,7 @@ export const IntroStory = [
 		shape: "shape-RT",
 		title: "Perfect",
 		content:
-			"四時運轉，是為季節；生命即在此周而復始的規律變化裡流逝、滋長。PerfectU結合季節花草、在地花農，把生活中瞬變的獨特記憶轉化為香氛產品，伴你歲月。",
+			"四時運轉，是為季節；生命即在此周而復始的規律變化裡流逝、滋長。PerfectU 與臺灣在地優質花農合作，確保採用最純淨、高品質的當令花卉。",
 	},
 	{
 		id: "shape-RB",
@@ -21,7 +21,7 @@ export const IntroStory = [
 		shape: "shape-RB",
 		title: "Principle",
 		content:
-			"PerfectU的堅持手作，傳承古法，細心選作原料，每款皆為純天然香氛，亦不經動物測試，愛惜自己同時為地球出一分力。",
+			"PerfectU的堅持手作，傳承古法，細心選作原料，每款皆為純天然香氛，亦不經動物測試。我們以此愛護您的肌膚，同時為地球永續發展盡一份心力。",
 	},
 	{
 		id: "shape-LT",
@@ -32,7 +32,8 @@ export const IntroStory = [
 		borderRadius_in: "0 0 35% 0",
 		shape: "shape-LT",
 		title: "Present",
-		content: "您可以將PerfectU的每一份作品，作為禮物呈現給你和家人朋友，或獻給自己，視作美好的祝福。",
+		content:
+			"PerfectU 的每份作品，不僅是香氛，更是承載心意的記憶載體。您可以將這份美好和諧的馨香，作為禮物獻給家人朋友，或努力的自己，視作一份意義的美好祝福。",
 	},
 	{
 		id: "shape-LB",
@@ -42,8 +43,8 @@ export const IntroStory = [
 		name: "rose",
 		borderRadius_in: "0 35% 0 35%",
 		shape: "shape-LB",
-		title: "Personality",
+		title: "Pease",
 		content:
-			"透過專屬的香氛，自己決定擁有：好天氣與壞天氣、喜悅與痛苦、冬天與夏天、沮喪與快樂。在這兩極之間，學習如何保持平衡，學到了如何去生活。",
+			"讓專屬香氛引領您穿越情緒的兩極：從好天氣到壞天氣、從喜悅到痛苦、從低潮到振奮。學會在這對立之間保持內在的平靜與平衡，從而領悟生活的真諦。",
 	},
 ];
