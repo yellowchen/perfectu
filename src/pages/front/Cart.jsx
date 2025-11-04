@@ -18,10 +18,6 @@ const Cart = () => {
 	const [loadingItems, setLoadingItems] = useState([]);
     const dispatch = useDispatch();
 
-    console.log(cartData);
-    console.log(carts);
-    console.log(couponCode);
-
 	const updateCartItem = async (item, quantity) => {
 		const data = {
 			data: {
@@ -46,7 +42,7 @@ const Cart = () => {
     //coupon
     const handleCoupon = async(e) => { 
         //要增加判斷是否為 現有的code
-        if(e.target.id === "setCoupon") {
+        if(e.key === "Enter" || e.target.id === "setCoupon") {
             if(!couponCode.length) return
             setIsLoading(true);
             const data = {
@@ -56,19 +52,25 @@ const Cart = () => {
             };
             try {
 				const res = await axios.post(`/v2/api/${process.env.REACT_APP_API_PATH}/coupon`, data);
-				console.log(res.data.message);
+				console.log(res);
                 dispatch(createAsyncMessage(res.data));
                 getCart();
                 setCouponCode("");
-                setIsLoading(true);
 			} catch (err) {
 				console.log(err.response.data.message);
                 dispatch(createAsyncMessage(err.response.data));
-			}
-        }
-        if(e.target.id === "resetCoupon") {
-            setCouponCode("");
-            setIsLoading(true);
+			} finally {
+                setIsLoading(false);
+            }
+        }else if(e.target.id === "resetCoupon") {
+            try {
+                setCouponCode("");
+                setIsLoading(false);
+            }catch (err) {
+                console.log(err);
+            }finally {
+                setIsLoading(false);
+            }
         }
 	};
 
@@ -113,7 +115,6 @@ const Cart = () => {
 								>
 									<input
 										id='couponCode'
-										//labelText=""
 										type='text'
 										name='couponCode'
 										placeholder='優惠碼HelloAutumn'
@@ -122,8 +123,8 @@ const Cart = () => {
 										onChange={(e) => {
 											setCouponCode(e.target.value);
 										}}
+                                        onKeyDown={handleCoupon}
 										style={{
-											// border: "none",
 											outline: "none",
 											background: "transparent",
 											lineHeight: "36px",

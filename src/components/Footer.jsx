@@ -66,13 +66,13 @@ const Footer = () => {
 							<li>
 								<p>
 									<i className='bi bi-house pe-3'></i>
-									708 台南市安平區永華路二段6號
+									320 桃園市中壢區潮州街3號
 								</p>
 							</li>
 							<li>
 								<p>
 									<i className='bi bi-telephone pe-3'></i>
-									(06)299-1111
+									(03)299-1111
 								</p>
 							</li>
 							<li>

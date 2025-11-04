@@ -7,3 +7,11 @@ export const SubmitKey = (submit) => {
 		}
 	};
 }
+
+export const EnterKey = (submit) => {
+    return (e) => {
+        if(e.key === "Enter") {
+            submit();
+        }
+    }
+}

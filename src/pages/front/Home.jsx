@@ -19,8 +19,8 @@ const Home = () => {
     const [articles, setArticles] = useState();
     const [article, setArticle] = useState();
     const [tag, setTag] = useState([]);
-    console.log(tag);
     const [products, setProducts] = useState([]);
+    const [copyText, setCopyText] = useState("優惠碼複製");
 
     //slide
     const slideRef = useRef();
@@ -67,7 +67,16 @@ const Home = () => {
     //tag
     const tagId = products.filter(item => item.title === tag[0])[0]?.id;
     // const tagId = products.filter((item) => item.title.include(tag))[0]?.id;
-    
+
+    const CopyToClipBoard = () => {
+        navigator.clipboard.writeText("HelloAutumn")
+            .then(() => {
+                console.log("copy success");
+                setCopyText("複製成功");
+            })
+            .catch((err) => {console.log(err)})
+    }
+
     console.log(products);
     console.log(tagId);
 
@@ -109,7 +118,10 @@ const Home = () => {
 								</h1>
 								<div className='p-4'>
 									<h5 className=''>{item.content}</h5>
-									<NavLink to={`/product/${item.id}`} className='px-1 py-2 rounded-2 btn-secondary btn w-25 align-self-end text-light'>
+									<NavLink
+										to={`/product/${item.id}`}
+										className='px-1 py-2 rounded-2 btn-secondary btn w-25 align-self-end text-light'
+									>
 										More
 									</NavLink>
 								</div>
@@ -119,6 +131,15 @@ const Home = () => {
 							</div>
 						</div>
 					))}
+			</div>
+			<div className='coupon bg-primary w-75 mx-auto my-5 px-4 py-2 text-center rounded-2'>
+				<div className='px-3 py-5 rounded-3' style={{ border: "1px dashed #fff" }}>
+					<h3 className=''>輸入秋冬優惠碼，結帳即享折扣</h3>
+					<h3 className='noto_serif mb-3'>HelloAutumn</h3>
+					<button type='button' className='btn border border-light btn-primary' onClick={CopyToClipBoard}>
+						{copyText}
+					</button>
+				</div>
 			</div>
 			<div className='game p-3 my-0'>
 				<div className='neumorphism limelight'>
