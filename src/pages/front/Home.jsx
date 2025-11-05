@@ -171,7 +171,7 @@ const Home = () => {
 							</div>
 						</div>
 						<div
-							className='coupon-btn col-4 align-content-center'
+							className='coupon-btn col-4 align-content-center px-0'
 							style={{
 								borderLeft: "2px dashed #fff",
 								backdropFilter: "blur(2px)",
