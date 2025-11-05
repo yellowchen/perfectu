@@ -132,13 +132,64 @@ const Home = () => {
 						</div>
 					))}
 			</div>
-			<div className='coupon bg-primary w-75 mx-auto my-5 px-4 py-2 text-center rounded-2'>
-				<div className='px-3 py-5 rounded-3' style={{ border: "1px dashed #fff" }}>
-					<h3 className=''>輸入秋冬優惠碼，結帳即享折扣</h3>
-					<h3 className='noto_serif mb-3'>HelloAutumn</h3>
-					<button type='button' className='btn border border-light btn-primary' onClick={CopyToClipBoard}>
-						{copyText}
-					</button>
+			<div
+				className='container coupon my-5 mx-auto py-5 px-2 px-lg-0 text-center'
+				style={{
+					// width: "100%",
+					minWidth: "300px",
+					height: "auto",
+					aspectRatio: "3/1",
+				}}
+			>
+				<div
+					className='p-0 rounded-2'
+					style={{
+						backgroundImage:
+							"url(https://res.cloudinary.com/da85u8p5e/image/upload/v1762313546/autumn_birrao.jpg)",
+						backgroundSize: "cover",
+						backgroundPosition: "center center",
+					}}
+				>
+					<div
+						className='row m-0'
+						style={{
+							height: "100%",
+						}}
+					>
+						<div className='coupon-content col-8 py-3 rounded-3' style={{}}>
+							<div
+								className='py-5 my-2 ms-3 rounded-3'
+								style={{
+									border: "2px solid #fff",
+									backdropFilter: "blur(2px)",
+								}}
+							>
+								<h1>COUPON</h1>
+								<h3 className='uoq_mun'>
+									輸入<i className='bi bi-leaf-fill pe-1'></i>秋冬優惠碼，結帳即享85折扣
+								</h3>
+							</div>
+						</div>
+						<div
+							className='coupon-btn col-4 align-content-center'
+							style={{
+								borderLeft: "2px dashed #fff",
+								backdropFilter: "blur(2px)",
+							}}
+						>
+							<div className='noto_serif uoq_mun'>
+								<h5 className='fw-bolder'>HelloAutumn</h5>
+								<button
+									type='button'
+									className='btn border border-light btn-primary py-2 px-2 mb-4'
+									onClick={CopyToClipBoard}
+								>
+									{copyText}
+								</button>
+								<p>Expire 2025/12/31</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div className='game p-3 my-0'>

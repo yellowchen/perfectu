@@ -254,6 +254,48 @@ ul {
     }
 }
 
+.coupon > div {
+    position: relative;
+    &::before  {
+        content: "";
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #eee;
+        top: 40%;
+    }
+    &::before {
+        left: -35px;
+    }
+}
+
+.coupon-content {
+    @include media-md {
+        div {   
+            h1 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.coupon-btn {
+    @include media-md {
+        div {
+            h5 {
+                font-size: 16px;
+            }
+            button {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
 .game {
     background: linear-gradient(98deg,rgba(247, 225, 200, 1) 0%, rgba(244, 211, 173, 1) 41%, rgba(245, 187, 120, 1) 100%);
     position: relative;
