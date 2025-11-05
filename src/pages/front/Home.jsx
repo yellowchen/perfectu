@@ -133,7 +133,7 @@ const Home = () => {
 					))}
 			</div>
 			<div
-				className='container coupon my-5 mx-auto py-5 px-2 px-lg-0 text-center'
+				className='container coupon-ticket my-5 mx-auto py-5 px-2 px-lg-0 text-center'
 				style={{
 					// width: "100%",
 					minWidth: "300px",
