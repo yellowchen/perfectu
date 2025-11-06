@@ -59,6 +59,7 @@ const ProductCard = ({ item, wish }) => {
 						height: "220px",
 						border: "7px solid #309dc1",
 						borderRadius: "30px 30px 0 0 ",
+                        clipPath: "polygon(0 0, 50% 0, 100% 25%, 100% 100%, 58% 100%, 0 75%)"
 					}}
 				/>
 			</NavLink>

@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import CarouselCard from "../../components/Card/CarouselCard";
 
 import Banner from './../../components/Banner';
+import { CouponTicket } from "../../components/CouponTicket";
 import { sliderSetting } from "../../utils/data-utils";
 import { debounce } from "../../utils/ui-utils";
 
@@ -20,7 +21,7 @@ const Home = () => {
     const [article, setArticle] = useState();
     const [tag, setTag] = useState([]);
     const [products, setProducts] = useState([]);
-    const [copyText, setCopyText] = useState("優惠碼複製");
+    const [copyText, setCopyText] = useState("Copy Code");
 
     //slide
     const slideRef = useRef();
@@ -132,7 +133,11 @@ const Home = () => {
 						</div>
 					))}
 			</div>
-			<div
+            <CouponTicket 
+                copy={CopyToClipBoard}
+                text={copyText}
+            />
+			{/* <div
 				className='container coupon-ticket my-5 mx-auto py-5 px-2 px-lg-0 text-center'
 				style={{
 					// width: "100%",
@@ -181,7 +186,7 @@ const Home = () => {
 								<h5 className='fw-bolder'>HelloAutumn</h5>
 								<button
 									type='button'
-									className='btn border border-light btn-primary py-2 px-2 mb-4'
+									className='btn border border-light btn-primary py-2 px-2 my-2'
 									onClick={CopyToClipBoard}
 								>
 									{copyText}
@@ -191,7 +196,7 @@ const Home = () => {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 			<div className='game p-3 my-0'>
 				<div className='neumorphism limelight'>
 					<h3 className=''>Which flower are you today?</h3>

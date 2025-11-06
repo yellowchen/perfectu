@@ -254,45 +254,59 @@ ul {
     }
 }
 
-.coupon-ticket > div {
-    position: relative;
-    &::before  {
-        content: "";
-        position: absolute;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background-color: #eee;
-        top: 40%;
-    }
-    &::before {
-        left: -35px;
-    }
-}
+// .coupon-ticket > div {
+//     position: relative;
+//     &::before  {
+//         content: "";
+//         position: absolute;
+//         width: 60px;
+//         height: 60px;
+//         border-radius: 50%;
+//         background-color: #eee;
+//         top: 40%;
+//     }
+//     &::before {
+//         left: -35px;
+//     }
+// }
 
 .coupon-content {
-    @include media-md {
-        div {   
-            h1 {
-                font-size: 20px;
-            }
-            h3 {
-                font-size: 16px;
-            }
+     div {
+        h1 {
+            font-size: 60px;
+            color: #eee;
         }
-    }
+        h2 {
+            font-size: 50px;
+        }
+        @include media-md {
+            h1 {
+                font-size: 35px;
+            }
+            h2 {
+                font-size: 30px;
+            }
+        }          
+    }    
 }
 
 .coupon-btn {
-    @include media-md {
-        div {
-            h5 {
-                font-size: 16px;
+    div {
+        button {
+            font-size: 28px;
+        }
+        @include media-md {
+            h2 {
+            font-size: 16px;
             }
             button {
                 font-size: 14px;
             }
+            h4 {
+                font-size: 14px;
+            }
         }
+        
     }
 }
 
@@ -565,12 +579,11 @@ ul {
         content: "";
         position: absolute;
         overflow: hidden;
-        bottom: 195px;
+        bottom: 196px;
         // bottom: 149px;
-
-        left: 2.1%;
+        left: 2%;
         border-top: transparent 50px solid;
-        border-left: currentColor 175px solid; 
+        border-left: currentColor 170px solid; 
         // border-top: transparent 55px solid;
         // border-left: #309dc1 180px solid; 
         // z-index: 1;

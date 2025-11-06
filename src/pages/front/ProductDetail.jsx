@@ -32,7 +32,7 @@ const ProductDetail = () => {
 		<div className='container my-5 clearfix'>
 			<h1 className='title uoq_mun text-uppercase'>{category}</h1>
 
-			<div className='card mx-3 mb-5 border-0 '>
+			<div className='mx-3 mb-5'>
 				<div className='row g-0'>
 					<div className='col-md-5'>
 						<img
@@ -42,7 +42,7 @@ const ProductDetail = () => {
 							style={{ maxHeight: "400px", aspectRatio: "1/2" }}
 						/>
 					</div>
-					<div className='col-md-7'>
+					<div className='col-md-7 p-3 bg-light'>
 						<div className='card-body d-flex flex-column'>
 							<div className='card-txt'>
 								<div className='card-title d-flex justify-content-between align-items-end'>
@@ -51,7 +51,7 @@ const ProductDetail = () => {
 									</div>
 									<div>
 										<p className='m-0'>NT$ {thousandFormat(price)}</p>
-										<small className='text-decoration-line-through' style={{color: "#aaa"}}>
+										<small className='text-decoration-line-through' style={{ color: "#aaa" }}>
 											NT$ {thousandFormat(origin_price)}
 										</small>
 									</div>
@@ -59,7 +59,7 @@ const ProductDetail = () => {
 
 								<p className='mt-3 lh-lg text-justify'>{content}</p>
 							</div>
-							<div className='card-btn d-flex gap-2 flex-column flex-lg-row mt-5'>
+							<div className='card-btn d-flex gap-2 flex-column flex-lg-row my-3'>
 								<div className='input-group w-50 mt-2 align-self-end'>
 									<button
 										className='input-group-text'
