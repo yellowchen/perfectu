@@ -5,14 +5,13 @@ export const CouponTicket = ({copy, text}) => {
 		<div
 			className='container coupon-ticket my-5 mx-auto py-5 px-2 px-lg-0 text-center'
 			style={{
-				// width: "100%",
 				minWidth: "300px",
-				height: "auto",
+				// height: "auto",
 				aspectRatio: "3/1",
 			}}
 		>
 			<div
-				className='p-0'
+				className=''
 				style={{
 					backgroundImage:
 						"url(https://res.cloudinary.com/da85u8p5e/image/upload/v1762313546/autumn_birrao.jpg)",
@@ -23,7 +22,7 @@ export const CouponTicket = ({copy, text}) => {
 				<div
 					className='row m-0'
 					style={{
-						height: "100%",
+						// height: "100%",
 					}}
 				>
 					<div
@@ -34,18 +33,15 @@ export const CouponTicket = ({copy, text}) => {
 						}}
 					>
 						<div
-							className='py-5  rounded-2'
+							className='py-5 rounded-2'
 							style={{
 								border: "3px solid #eee",
 								backdropFilter: "blur(2px)",
 							}}
 						>
 							<h1 className='w-75 mx-auto my-0'>COUPON</h1>
-							<h2 className='m-0 '>
-								<i 
-                                    className='bi bi-gift fs-1 pe-3'
-                                    style={{verticalAlign: "middle"}}
-                                ></i>15% OFF
+							<h2 className='m-0'>
+								<i className='bi bi-gift fs-1 pe-3 text-danger' style={{ verticalAlign: "middle" }}></i>15% OFF
 							</h2>
 						</div>
 					</div>
@@ -61,13 +57,13 @@ export const CouponTicket = ({copy, text}) => {
 							className='noto_serif uoq_mun'
 							style={{
 								borderLeft: "2px dashed #eee",
-								padding: "20px 0",
+								padding: "30px 0",
 							}}
 						>
 							<h2 className='fw-bolder'>HelloAutumn</h2>
 							<button
 								type='button'
-								className='btn border border-light btn-primary py-1 px-3 mt-2 mb-4'
+								className='btn border border-light btn-primary py-1 px-3 mt-2 mb-4 text-light'
 								onClick={copy}
 							>
 								{text}

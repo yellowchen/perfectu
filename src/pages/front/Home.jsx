@@ -73,13 +73,11 @@ const Home = () => {
         navigator.clipboard.writeText("HelloAutumn")
             .then(() => {
                 console.log("copy success");
-                setCopyText("複製成功");
+                setCopyText("Copy Success");
             })
             .catch((err) => {console.log(err)})
     }
 
-    console.log(products);
-    console.log(tagId);
 
     return (
 		<>
@@ -118,7 +116,7 @@ const Home = () => {
 									{item.title}
 								</h1>
 								<div className='p-4'>
-									<h5 className=''>{item.content}</h5>
+									<h5 className='lh-lg'>{item.content}</h5>
 									<NavLink
 										to={`/product/${item.id}`}
 										className='px-1 py-2 rounded-2 btn-secondary btn w-25 align-self-end text-light'
@@ -133,70 +131,37 @@ const Home = () => {
 						</div>
 					))}
 			</div>
-            <CouponTicket 
-                copy={CopyToClipBoard}
-                text={copyText}
-            />
-			{/* <div
-				className='container coupon-ticket my-5 mx-auto py-5 px-2 px-lg-0 text-center'
+			<div
+				className='py-0'
 				style={{
-					// width: "100%",
-					minWidth: "300px",
-					height: "auto",
-					aspectRatio: "3/1",
+					backgroundImage:
+						"url(https://images.unsplash.com/photo-1496661415325-ef852f9e8e7c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2127)",
+					backgroundSize: "cover",
+					backgroundPosition: "top center",
+					backgroundAttachment: "fixed",
+					opacity: "0.9",
+					margin: "10vw auto",
 				}}
 			>
 				<div
-					className='p-0 rounded-2'
+					className='py-1 py-lg-4'
 					style={{
-						backgroundImage:
-							"url(https://res.cloudinary.com/da85u8p5e/image/upload/v1762313546/autumn_birrao.jpg)",
-						backgroundSize: "cover",
-						backgroundPosition: "center center",
+						backdropFilter: "blur(2px)",
 					}}
 				>
-					<div
-						className='row m-0'
-						style={{
-							height: "100%",
-						}}
-					>
-						<div className='coupon-content col-8 py-3 rounded-3' style={{}}>
-							<div
-								className='py-5 my-2 ms-3 rounded-3'
-								style={{
-									border: "2px solid #fff",
-									backdropFilter: "blur(2px)",
-								}}
-							>
-								<h1>COUPON</h1>
-								<h3 className='uoq_mun'>
-									輸入<i className='bi bi-leaf-fill pe-1'></i>秋冬優惠碼，結帳即享85折扣
-								</h3>
-							</div>
-						</div>
+					<div className='container edu_tas'>
 						<div
-							className='coupon-btn col-4 align-content-center px-0'
-							style={{
-								borderLeft: "2px dashed #fff",
-								backdropFilter: "blur(2px)",
-							}}
+							className='p-lg-4 text-light text-center text-lg-start fs-1 fw-medium d-flex flex-column'
+							style={{ textShadow: "2px 1px #aaa" }}
 						>
-							<div className='noto_serif uoq_mun'>
-								<h5 className='fw-bolder'>HelloAutumn</h5>
-								<button
-									type='button'
-									className='btn border border-light btn-primary py-2 px-2 my-2'
-									onClick={CopyToClipBoard}
-								>
-									{copyText}
-								</button>
-								<p>Expire 2025/12/31</p>
-							</div>
+							<p className=''>“No elegance is possible without perfume.</p>
+							<p className='ps-0 ps-lg-5'>It is the unseen, unforgettable, ultimate accessory.”</p>
+							<p className='align-self-end mb-0'>–– Coco Chanel</p>
 						</div>
 					</div>
 				</div>
-			</div> */}
+			</div>
+			<CouponTicket copy={CopyToClipBoard} text={copyText} />
 			<div className='game p-3 my-0'>
 				<div className='neumorphism limelight'>
 					<h3 className=''>Which flower are you today?</h3>

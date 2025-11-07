@@ -254,21 +254,6 @@ ul {
     }
 }
 
-// .coupon-ticket > div {
-//     position: relative;
-//     &::before  {
-//         content: "";
-//         position: absolute;
-//         width: 60px;
-//         height: 60px;
-//         border-radius: 50%;
-//         background-color: #eee;
-//         top: 40%;
-//     }
-//     &::before {
-//         left: -35px;
-//     }
-// }
 
 .coupon-content {
      div {
@@ -293,7 +278,7 @@ ul {
 .coupon-btn {
     div {
         button {
-            font-size: 28px;
+            font-size: 24px;
         }
         @include media-md {
             h2 {
@@ -448,7 +433,7 @@ ul {
         font-weight: 600;
         line-height: 2;
         @include media-md {
-            margin: 1rem 3rem;
+            margin: 1rem 2rem;
             line-height: 1.5;
         }
         @include media-sm {
