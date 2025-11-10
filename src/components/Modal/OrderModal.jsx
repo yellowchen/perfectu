@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { createAsyncMessage } from '../../slice/messageSlice';
 import { ModalFooter } from '../FormElements';
-
+import { thousandFormat } from './../../utils/string-utils';
 
 const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 	const [tempData, setTempData] = useState({
@@ -101,7 +101,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 									<input
 										readOnly
 										type='text'
-                                        id="name"
+										id='name'
 										className='form-control-plaintext'
 										defaultValue={tempData?.user?.name}
 									/>
@@ -113,7 +113,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 									<input
 										readOnly
 										type='text'
-                                        id="address"
+										id='address'
 										className='form-control-plaintext'
 										defaultValue={tempData?.user?.address}
 									/>
@@ -125,7 +125,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 									<input
 										readOnly
 										type='text'
-                                        id="message"
+										id='message'
 										className='form-control-plaintext'
 										defaultValue={tempData?.message}
 									/>
@@ -153,7 +153,9 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 										<tfoot>
 											<tr>
 												<td className='border-0 text-center'>總金額</td>
-												<td className='border-0 text-center'>$ {tempData.total}</td>
+												<td className='border-0 text-center'>
+													$ {thousandFormat(tempData.total)}
+												</td>
 											</tr>
 										</tfoot>
 									</table>
@@ -182,7 +184,9 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 										value={tempData?.status}
 										onChange={handleChange}
 									>
-										<option value='1' defaultValue>未確認</option>
+										<option value='1' defaultValue>
+											未確認
+										</option>
 										<option value='2'>已確認</option>
 										<option value='3'>外送中</option>
 										<option value='4'>已送達</option>
@@ -190,12 +194,8 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 								</div>
 							</div>
 						</div>
-                        {/* Footer */}
-                        <ModalFooter 
-                            handleCancel={handleCancel}
-                            handleSubmit={handleSubmit}
-                            data={tempOrder}
-                        />
+						{/* Footer */}
+						<ModalFooter handleCancel={handleCancel} handleSubmit={handleSubmit} data={tempOrder} />
 					</div>
 				</div>
 			</div>

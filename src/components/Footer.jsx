@@ -84,7 +84,7 @@ const Footer = () => {
 						</ul>
 					</div>
 				</div>
-				<hr className='m-0 text-white border-2' />
+				<hr className='mx-5 my-0 text-white border-2' />
 				<div className='copyright text-white text-center py-2 d-flex flex-column flex-md-row justify-content-center'>
 					<small>© Copyright perfectU All right Reserved.</small>
 					<small>本網站為技術練習作品，不具任何商業行為</small>
