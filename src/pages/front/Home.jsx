@@ -1,8 +1,6 @@
 import {useState, useEffect, useRef} from "react";
-import { NavLink } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
-
 
 //Slider
 import Slider from 'react-slick';
@@ -17,7 +15,6 @@ import Game from "./../../components/front/Game";
 
 import { sliderSetting } from "../../utils/data-utils";
 import { debounce } from "../../utils/ui-utils";
-
 
 
 const Home = () => {
@@ -100,12 +97,9 @@ const Home = () => {
 					/>
 				))}
 			</Slider>
-            <RecommendCard 
-                recommend={products}
-                slideRef={slideRef} 
-            />
+			<RecommendCard recommend={products} slideRef={slideRef} />
 			<div
-				className='py-0'
+				className='py-0 position-relative'
 				style={{
 					backgroundImage:
 						"url(https://images.unsplash.com/photo-1496661415325-ef852f9e8e7c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2127)",
@@ -122,7 +116,15 @@ const Home = () => {
 						backdropFilter: "blur(2px)",
 					}}
 				>
-					<div className='container edu_tas'>
+					<div
+						className='container edu_tas'
+						style={
+							{
+								// clipPath: "polygon(68% 0, 0 50%, 92% 100%)",
+								// backdropFilter: "contrast(",
+							}
+						}
+					>
 						<div
 							className='p-lg-4 text-light text-center text-lg-start fs-1 fw-medium d-flex flex-column'
 							style={{ textShadow: "2px 1px #aaa" }}
@@ -133,78 +135,20 @@ const Home = () => {
 						</div>
 					</div>
 				</div>
+				<div
+					className='position-absolute'
+					style={{
+						clipPath: "polygon(50% 0, 0 50%, 100% 100%)",
+						backdropFilter: "hue-rotate(45deg)",
+						top: "0",
+						left: "0",
+						width: "100%",
+						height: "100%",
+					}}
+				></div>
 			</div>
 			<CouponTicket copy={CopyToClipBoard} text={copyText} />
-            <Game 
-                article={article}
-                getArticle={getArticle}
-                tag={tag}
-                tagId={tagId}
-            />
-			{/* <div className='game p-3 my-0'>
-				<div className='neumorphism limelight'>
-					<h3 className=''>Which flower are you today?</h3>
-					<button
-						type='button'
-						className='circle btn'
-						onClick={() => {
-							getArticle();
-						}}
-					>
-						Click
-					</button>
-				</div>
-				{article && (
-					<div>
-						<div className='cloud'>
-							<div
-								className='rounded-circle'
-								style={{
-									position: "absolute",
-									bottom: "38%",
-									right: "14%",
-									border: ".5rem solid transparent",
-									width: "43%",
-								}}
-							>
-								<img
-									src={article?.image}
-									alt={article?.title}
-									className='rounded-circle'
-									style={{
-										height: "auto",
-										maxWidth: "96%",
-										aspectRatio: "1 / 1",
-									}}
-								/>
-							</div>
-
-							<div className='text'>
-								<p className='limelight'>{article?.title}</p>
-								<p>
-									<i className='bi bi-flower1 me-1'></i>
-									{article?.description}
-								</p>
-								<div className='m-0 d-flex'>
-									<div>
-										<i className='bi bi-flower1 me-1'></i>推薦：
-									</div>
-									{tag.map((item, index) => (
-										<div key={index} className='d-flex'>
-											<NavLink to={`/product/${tagId}`} className='mx-1'>
-												#{item}
-											</NavLink>
-										</div>
-									))}
-								</div>
-							</div>
-						</div>
-						<div className='cloud'></div>
-						<div className='cloud'></div>
-						<div className='cloud'></div>
-					</div>
-				)}
-			</div> */}
+			<Game article={article} getArticle={getArticle} tag={tag} tagId={tagId} />
 		</>
 	);
 }
