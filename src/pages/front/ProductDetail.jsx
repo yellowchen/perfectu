@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, useOutletContext } from "react-router-dom";
 import axios from "axios";
-import { thousandFormat } from './../../utils/string-utils';
-import { AccordionItem } from "../../components/AccordionItem";
-import { DetailInformation } from "../../components/Data/DetailInformation";
+
+import { AccordionItem } from "../../components/front/AccordionItem";
+import { DetailInformation } from "../../components/front/Data/DetailInformation";
 import { TextButton, BackButton } from "../../utils/button/Button";
+import { thousandFormat } from "./../../utils/string-utils";
 
 
 const ProductDetail = () => {

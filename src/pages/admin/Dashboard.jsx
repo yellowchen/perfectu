@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-import MessageToast from "../../components/MessageToast";
+
+import MessageToast from "../../components/share/MessageToast";
 
 
 const Dashboard = () => {

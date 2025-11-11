@@ -1,5 +1,6 @@
 import {useState, useEffect, useRef} from "react";
 import { NavLink } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 
 
@@ -7,10 +8,13 @@ import axios from "axios";
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import CarouselCard from "../../components/Card/CarouselCard";
+import CarouselCard from "../../components/front/Card/CarouselCard";
 
-import Banner from './../../components/Banner';
-import { CouponTicket } from "../../components/CouponTicket";
+import Banner from "./../../components/front/Banner";
+import { CouponTicket } from "../../components/front/CouponTicket";
+import { RecommendCard } from "../../components/front/Card/RecommendCard";
+import Game from "./../../components/front/Game";
+
 import { sliderSetting } from "../../utils/data-utils";
 import { debounce } from "../../utils/ui-utils";
 
@@ -20,8 +24,9 @@ const Home = () => {
     const [articles, setArticles] = useState();
     const [article, setArticle] = useState();
     const [tag, setTag] = useState([]);
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
     const [copyText, setCopyText] = useState("Copy Code");
+    const {products, getProducts} = useOutletContext();
 
     //slide
     const slideRef = useRef();
@@ -36,17 +41,9 @@ const Home = () => {
     window.addEventListener("scroll", debounce(checkSlide));
     
     //products
-    const getProducts = async(page = 1) => {
-        try {
-            const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`);
-            setProducts(res.data.products);
-        }catch(err) {
-            console.log(err);
-        }
-    }
     useEffect(() => {
         getProducts(1);
-    }, [])
+    }, []);
 
     
     //article
@@ -67,17 +64,15 @@ const Home = () => {
     
     //tag
     const tagId = products.filter(item => item.title === tag[0])[0]?.id;
-    // const tagId = products.filter((item) => item.title.include(tag))[0]?.id;
 
+    //CopyToClipBoard
     const CopyToClipBoard = () => {
         navigator.clipboard.writeText("HelloAutumn")
             .then(() => {
-                console.log("copy success");
                 setCopyText("Copy Success");
             })
             .catch((err) => {console.log(err)})
     }
-
 
     return (
 		<>
@@ -105,32 +100,10 @@ const Home = () => {
 					/>
 				))}
 			</Slider>
-			<div className='my-5 pb-5 container'>
-				{products
-					.filter((item) => item.title === "秋鴛")
-					.map((item) => (
-						<div key={item.id} className='recommend' ref={slideRef}>
-							<div className='txt'>
-								<h1>
-									<small>秋季推薦 - </small>
-									{item.title}
-								</h1>
-								<div className='p-4'>
-									<h5 className='lh-lg'>{item.content}</h5>
-									<NavLink
-										to={`/product/${item.id}`}
-										className='px-1 py-2 rounded-2 btn-secondary btn w-25 align-self-end text-light'
-									>
-										More
-									</NavLink>
-								</div>
-							</div>
-							<div className='img'>
-								<img className='img-fluid' src={item.imageUrl} alt={item.title} />
-							</div>
-						</div>
-					))}
-			</div>
+            <RecommendCard 
+                recommend={products}
+                slideRef={slideRef} 
+            />
 			<div
 				className='py-0'
 				style={{
@@ -162,7 +135,13 @@ const Home = () => {
 				</div>
 			</div>
 			<CouponTicket copy={CopyToClipBoard} text={copyText} />
-			<div className='game p-3 my-0'>
+            <Game 
+                article={article}
+                getArticle={getArticle}
+                tag={tag}
+                tagId={tagId}
+            />
+			{/* <div className='game p-3 my-0'>
 				<div className='neumorphism limelight'>
 					<h3 className=''>Which flower are you today?</h3>
 					<button
@@ -225,7 +204,7 @@ const Home = () => {
 						<div className='cloud'></div>
 					</div>
 				)}
-			</div>
+			</div> */}
 		</>
 	);
 }

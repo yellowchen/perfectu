@@ -1,14 +1,16 @@
 
 import { useDispatch } from "react-redux";
 import { NavLink, useOutletContext } from "react-router-dom";
-import { thousandFormat } from "./../../utils/string-utils";
-import { toggleWishItem } from "../../slice/wishSlice";
-import { IconButton } from "../../utils/button/Button";
+
+import { thousandFormat } from "../../../utils/string-utils";
+import { toggleWishItem } from "../../../slice/wishSlice";
+import { IconButton } from "../../../utils/button/Button";
+
 
 const ProductCard = ({ item, wish }) => {
     console.log(item);
 	const { addToCart } = useOutletContext();
-	const { id, imageUrl, title, price, description, unit } = item;
+	const { id, imageUrl, title, price, description } = item;
 
 	const dispatch = useDispatch();
 	const toggleWishlist = (wishItem) => {

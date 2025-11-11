@@ -2,9 +2,9 @@ import {useEffect, useState, useRef} from "react";
 import { Modal } from "bootstrap";
 import axios from "axios";
 
-import ArticleModal from "../../components/Modal/ArticleModal";
-import DeleteModal from '../../components/Modal/DeleteModal';
-import Pagination from '../../components/Pagination';
+import ArticleModal from "../../components/admin/Modal/ArticleModal";
+import DeleteModal from "../../components/admin/Modal/DeleteModal";
+import Pagination from "../../components/admin/Pagination";
 
 import { createAsyncMessage } from "../../slice/messageSlice";
 import { useDispatch } from 'react-redux';

@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { thousandFormat } from './../../utils/string-utils';
+import { thousandFormat } from '../../../utils/string-utils';
 
 const CarouselCard = ({id, img, title, price}) => {
     return (

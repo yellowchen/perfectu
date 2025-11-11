@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { createAsyncMessage } from '../../slice/messageSlice';
-import { ModalFooter } from '../FormElements';
-import { thousandFormat } from './../../utils/string-utils';
+
+import { ModalFooter } from "../../share/FormElements";
+
+import { createAsyncMessage } from '../../../slice/messageSlice';
+import { thousandFormat } from './../../../utils/string-utils';
+
 
 const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 	const [tempData, setTempData] = useState({

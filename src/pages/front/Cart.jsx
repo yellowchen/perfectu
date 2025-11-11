@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useOutletContext, Link, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { thousandFormat } from "./../../utils/string-utils";
-import CartCard from './../../components/Card/CartCard';
+
+import CartCard from './../../components/front/Card/CartCard';
+
 import { createAsyncMessage } from "../../slice/messageSlice";
 import { ProgressBar } from "../../utils/data-utils";
 import { TextButton } from "../../utils/button/Button";
-import { removeAllSpace } from "./../../utils/string-utils";
+import { removeAllSpace, thousandFormat } from "./../../utils/string-utils";
 
 
 const Cart = () => {

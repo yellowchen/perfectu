@@ -1,4 +1,4 @@
-import { dateAddZero } from './../utils/date-utils';
+import { dateAddZero } from '../../utils/date-utils';
 
 export const Input = ({ id, labelText, type, name, placeholder, value, onChange }) => {
 	return (

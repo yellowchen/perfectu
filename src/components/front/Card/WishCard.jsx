@@ -1,8 +1,8 @@
 
 import { Link, useOutletContext } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { removeWishItem } from "../../slice/wishSlice";
-import { thousandFormat } from "./../../utils/string-utils";
+import { removeWishItem } from "../../../slice/wishSlice";
+import { thousandFormat } from "../../../utils/string-utils";
 
 
 const WishCard = ({item}) => {

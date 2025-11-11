@@ -1,6 +1,6 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import WishCard from '../../components/Card/WishCard';
+import WishCard from '../../components/front/Card/WishCard';
 import { BackButton } from './../../utils/button/Button';
 
 const Wishlist = () => {

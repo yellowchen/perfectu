@@ -3,11 +3,12 @@ import {useForm} from "react-hook-form";
 import { useOutletContext, useNavigate, Navigate } from 'react-router-dom';
 import axios from "axios";
 
+import { PaymentContext } from "./FrontLayout";
+import CheckoutCard from "../../components/front/Card/CheckoutCard";
+import { FormInput, FormSelect } from "./../../components/share/FormElements";
+import { InputRules, CheckRules } from "../../components/front/Data/FrontFormRules";
+
 import { thousandFormat } from "../../utils/string-utils";
-import CheckoutCard from '../../components/Card/CheckoutCard';
-import { FormInput, FormSelect } from "./../../components/FormElements";
-import { InputRules, CheckRules } from '../../components/Data/FormRules';
-import { PaymentContext } from './FrontLayout';
 import { ProgressBar } from '../../utils/data-utils';
 
 
@@ -75,7 +76,7 @@ const Checkout = () => {
 							</div>
 							<div className='d-flex justify-content-between'>
 								<p className='fw-bolder mb-0'>Payment</p>
-								<p className='mb-0'>{payment}</p>
+								<p className='mb-0 text-primary'>{payment}</p>
 							</div>
 							<hr />
 							<div className='d-flex justify-content-between'>

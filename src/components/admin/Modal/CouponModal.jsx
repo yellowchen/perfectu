@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import { Input, DateInput, ModalInput, EnableCheck, ModalFooter } from "../FormElements";
-import { CouponModalInputRules } from "../Data/FormRules";
-import { createAsyncMessage } from "../../slice/messageSlice";
+import { Input, DateInput, ModalInput, EnableCheck, ModalFooter } from "../../share/FormElements";
+import { CouponModalInputRules } from "../Data/AdminFormRules";
+import { createAsyncMessage } from "../../../slice/messageSlice";
 
 
 

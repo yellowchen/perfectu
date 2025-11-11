@@ -2,8 +2,8 @@ import {useEffect, useState, useRef} from "react";
 import { Modal } from "bootstrap";
 import axios from "axios";
 
-import OrderModal from "../../components/Modal/OrderModal";
-import Pagination from './../../components/Pagination';
+import OrderModal from "../../components/admin/Modal/OrderModal";
+import Pagination from "./../../components/admin/Pagination";
 import { thousandFormat } from "./../../utils/string-utils";
 
 

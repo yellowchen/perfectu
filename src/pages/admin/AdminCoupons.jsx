@@ -3,9 +3,9 @@ import { Modal } from "bootstrap";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import DeleteModal from "../../components/Modal/DeleteModal";
-import CouponModal from "../../components/Modal/CouponModal";
-import Pagination from "./../../components/Pagination";
+import DeleteModal from "../../components/admin/Modal/DeleteModal";
+import CouponModal from "../../components/admin/Modal/CouponModal";
+import Pagination from "./../../components/admin/Pagination";
 import { createAsyncMessage } from "../../slice/messageSlice";
 
 

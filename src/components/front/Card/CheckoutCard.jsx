@@ -1,7 +1,7 @@
-import { thousandFormat } from "./../../utils/string-utils";
+import { thousandFormat } from "../../../utils/string-utils";
 
 const CheckoutCard = ({ item }) => {
-	const {product, qty, final_total} = item;
+	const {product, qty, total} = item;
 
 	return (
 		<div className='mb-3'>
@@ -21,9 +21,9 @@ const CheckoutCard = ({ item }) => {
 					</div>
 					<div className='d-flex justify-content-between'>
 						<p className='text-muted mb-0'>
-							<small className="text-decoration-line-through">NT$ {thousandFormat(product.price)}</small>
+							<small className="">NT$ {thousandFormat(product.price)}</small>
 						</p>
-						<p className='mb-0'>NT$ {thousandFormat(final_total)}</p>
+						<p className='mb-0'>NT$ {thousandFormat(total)}</p>
 					</div>
 				</div>
 			</div>

@@ -1,14 +1,15 @@
 import {useEffect, useState, useRef} from "react";
+import { useDispatch } from "react-redux";
 import { Modal } from "bootstrap";
 import axios from "axios";
 
-import ProductModal from '../../components/Modal/ProductModal';
-import DeleteModal from '../../components/Modal/DeleteModal';
-import Pagination from './../../components/Pagination';
+import ProductModal from "../../components/admin/Modal/ProductModal";
+import DeleteModal from "../../components/admin/Modal/DeleteModal";
+import Pagination from "./../../components/admin/Pagination";
 
 import { createAsyncMessage } from "../../slice/messageSlice";
 import { thousandFormat } from "./../../utils/string-utils";
-import { useDispatch } from 'react-redux';
+
 
 
 const AdminProducts = () => {

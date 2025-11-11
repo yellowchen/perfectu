@@ -1,5 +1,5 @@
-import { StoryCard } from "../../components/Card/StoryCard";
-import { IntroStory } from "../../components/Data/IntroStory";
+import { StoryCard } from "../../components/front/Card/StoryCard";
+import { IntroStory } from "../../components/front/Data/IntroStory";
 
 
 const Intro = () => {

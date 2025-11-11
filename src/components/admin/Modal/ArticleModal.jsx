@@ -2,12 +2,13 @@ import { useState, useEffect, useRef} from 'react';
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import { ArticleModalRules } from '../Data/FormRules';
-import { Input, DateInput, TagInput, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooter } from "../FormElements";
-import useImagePreviews from "../../utils/hooks/useImagePreviews";
-import { createAsyncMessage } from "../../slice/messageSlice";
-import { setTextIndicator } from '../../utils/string-utils';
-import { removeAllSpace } from '../../utils/string-utils';
+import { ArticleModalRules } from '../Data/AdminFormRules';
+
+import { Input, DateInput, TagInput, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooter } from "../../share/FormElements";
+import useImagePreviews from "../../../utils/hooks/useImagePreviews";
+import { createAsyncMessage } from "../../../slice/messageSlice";
+import { setTextIndicator, removeAllSpace } from "../../../utils/string-utils";
+
 
 
 const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {

@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
-import  axios  from 'axios';
-import ProductCard from '../../components/Card/ProductCard';
+import { useOutletContext } from "react-router-dom";
+// import  axios  from 'axios';
+
+import ProductCard from "../../components/front/Card/ProductCard";
+
 
 
 const Product = () => {
     const [category, setCategory] = useState("all");
-    const [products, setProducts] = useState([]);
+    const {products, getProducts} = useOutletContext();
+    // const [products, setProducts] = useState([]);
 
     //category
     const allProducts = products.filter(item => item);
@@ -20,17 +24,17 @@ const Product = () => {
 	}, [wish]);
 
     //products info
-    const getProducts = async(page = 1) => {
-        try {
-            const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`);
-            setProducts(res.data.products);
-        }catch(err) {
-            console.log(err);
-        }
-    }
+    // const getProducts = async(page = 1) => {
+    //     try {
+    //         const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`);
+    //         setProducts(res.data.products);
+    //     }catch(err) {
+    //         console.log(err);
+    //     }
+    // }
     useEffect(() => {
         getProducts(1);
-    }, [])
+    }, []);
 
 
 

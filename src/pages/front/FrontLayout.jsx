@@ -1,12 +1,14 @@
 import { useState, useEffect, createContext } from "react";
 import axios from "axios";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 import { Outlet } from "react-router-dom";
-import MessageToast from "../../components/MessageToast";
 import { useDispatch } from "react-redux";
+
+import Navbar from "../../components/front/Navbar";
+import Footer from "../../components/front/Footer";
+import MessageToast from "../../components/share/MessageToast";
+
 import { createAsyncMessage } from "../../slice/messageSlice";
-import Loading from "../../components/Effect/Loading";
+import Loading from "../../components/share/Loading";
 
 
 export const PaymentContext = createContext();
@@ -15,6 +17,7 @@ const FrontLayout = () => {
 	const [cartData, setCartData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 	const [cartQuantity, setCartQuantity] = useState(1);
+    const [products, setProducts] = useState([]);
     const dispatch = useDispatch();
 
     //付款方式
@@ -24,6 +27,7 @@ const FrontLayout = () => {
 		setPayment,
 	};
 
+    //cart
 	const getCart = async () => {
         setIsLoading(true);
 		try {
@@ -56,6 +60,16 @@ const FrontLayout = () => {
 		getCart();
 	}, []);
 
+    //getProducts
+    const getProducts = async (page = 1) => {
+		try {
+			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`);
+			setProducts(res.data.products);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	return (
 		<PaymentContext.Provider value={paymentValue}>
 			<Loading isLoading={isLoading} />
@@ -63,7 +77,7 @@ const FrontLayout = () => {
 				<Navbar cartData={cartData} />
 				<MessageToast />
 				<main className='flex-grow-1 flex-shrink-0'>
-					<Outlet context={{ addToCart, setCartQuantity, cartQuantity, cartData, getCart, setIsLoading, isLoading }} />
+					<Outlet context={{ addToCart, setCartQuantity, cartQuantity, cartData, getCart, setIsLoading, isLoading, products, setProducts, getProducts }} />
 				</main>
 				<Footer />
 			</div>

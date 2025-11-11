@@ -1,10 +1,12 @@
 import { useEffect, useState, useContext} from "react";
 import { useParams, NavLink } from "react-router-dom";
 import axios from "axios";
-import CheckoutCard from './../../components/Card/CheckoutCard';
+
+import { PaymentContext } from "./FrontLayout";
+import OrderCard from "../../components/front/Card/OrderCard";
+import Banner from "./../../components/front/Banner";
+
 import { thousandFormat } from './../../utils/string-utils';
-import { PaymentContext } from './FrontLayout';
-import Banner from './../../components/Banner';
 import { ProgressBar } from "../../utils/data-utils";
 
 
@@ -49,15 +51,15 @@ const Success = () => {
 						</NavLink>
 					</div>
 					<div className='card col-md-6 p-3 mt-5 bg-light rounded-0 uoq_mun'>
-						<h3 className='mb-4 text-center limelight'>Order Detail</h3>
+						<h3 className='mb-4 text-center limelight'>
+							Order
+                            <br />
+                            <small className="fs-5 text-primary">【{orderData.id}】</small>
+						</h3>
 						{Object.values(orderData?.products || {}).map((item) => (
-							<CheckoutCard item={item} key={item.id} />
+							<OrderCard item={item} key={item.id} />
 						))}
 						<hr />
-						{/* <div className='d-flex justify-content-between'>
-							<p className='fw-bolder'>Coupon</p>
-							<p className=''>NT$ {thousandFormat(orderData.total)}</p>
-						</div> */}
 						<div className='d-flex justify-content-between'>
 							<p className='fw-bolder mb-0'>Payment</p>
 							<p className='mb-0'>{payment}</p>

@@ -2,10 +2,10 @@ import { useState, useEffect} from 'react';
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import { Input, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooter } from "../FormElements";
-import { createAsyncMessage } from "../../slice/messageSlice";
-import { ProductModalFirstInputRules, ProductModalSecondInputRules } from '../Data/FormRules';
-import useImagePreviews from './../../utils/hooks/useImagePreviews';
+import { Input, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooter } from "../../share/FormElements";
+import { createAsyncMessage } from "../../../slice/messageSlice";
+import { ProductModalFirstInputRules, ProductModalSecondInputRules } from '../Data/AdminFormRules';
+import useImagePreviews from '../../../utils/hooks/useImagePreviews';
 
 
 const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {

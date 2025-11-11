@@ -1,6 +1,6 @@
 
 import { NavLink } from 'react-router-dom';
-import Wave from './Effect/Wave';
+import Wave from '../front/Wave';
 
 const Footer = () => {
     return (
