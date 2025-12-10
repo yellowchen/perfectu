@@ -1,14 +1,14 @@
 import { useState, useEffect} from 'react';
 import { useDispatch } from "react-redux";
-import axios from "axios";
 
-import { Input, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooter } from "../../share/FormElements";
+import { postProduct, editProduct } from '../../../api/admin';
+import { Input, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooterBtn } from "../../share/FormElements";
 import { createAsyncMessage } from "../../../slice/messageSlice";
 import { ProductModalFirstInputRules, ProductModalSecondInputRules } from '../Data/AdminFormRules';
 import useImagePreviews from '../../../utils/hooks/useImagePreviews';
 
 
-const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
+const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 	const [tempData, setTempData] = useState({
 		title: "",
 		category: "",
@@ -38,12 +38,12 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 				content: "",
 				is_enabled: 1, //0與1的切換
 				imageUrl: "",
-                num: 0,
+				num: 0,
 			});
 		} else if (type === "edit") {
-			setTempData(tempProduct);
+			setTempData(tempItem);
 		}
-	}, [type, tempProduct]);
+	}, [type, tempItem]);
 
 	//02 <input>輸入值轉型與否
 	const handleChange = (e) => {
@@ -72,21 +72,30 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 	//04 遞交輸入內容(新增產品內容、修產品改內容)
 	const handleSubmit = async () => {
 		try {
-			//create
-			let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product`;
-			let method = "post";
+            if(type === "create") {
+                const res = await postProduct(tempData)
+                dispatch(createAsyncMessage(res.data));
+            }else if(type === "edit") {
+                const res = await editProduct(tempItem.id, tempData);
+                dispatch(createAsyncMessage(res.data));
+            }
 
-			//edit
-			if (type === "edit") {
-				//全域變數
-				api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${tempProduct.id}`;
-				method = "put";
-			}
+			// //create
+			// let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product`;
+			// let method = "post";
 
-			const res = await axios[method](api, {
-				data: tempData, //資料沒寫全，就會failed axios
-			});
-            dispatch(createAsyncMessage(res.data));
+			// //edit
+			// if (type === "edit") {
+			// 	//全域變數
+			// 	api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${tempItem.id}`;
+			// 	method = "put";
+			// }
+
+			// const res = await axios[method](api, {
+			// 	data: tempData, //資料沒寫全，就會failed axios
+			// });
+
+            // dispatch(createAsyncMessage(res.data));
 			closeModal();
 			getProducts();
 		} catch (err) {
@@ -95,8 +104,8 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 		}
 	};
 	//有更改資料，卻直接關閉檔案，資料保持原樣
-	const handleCancel = (tempProduct) => {
-		setTempData(tempProduct);
+	const handleCancel = (tempItem) => {
+		setTempData(tempItem);
 		closeModal();
 	};
 
@@ -114,7 +123,7 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 						{/* Header */}
 						<div className='modal-header'>
 							<div className='modal-title' id='productModalLabel'>
-								<h5>{type === "create" ? "建立新商品" : `編輯：${tempProduct.title}`}</h5>
+								<h5>{type === "create" ? "建立新商品" : `編輯：${tempItem.title}`}</h5>
 							</div>
 							<button
 								type='button'
@@ -137,11 +146,11 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 										value={""}
 										onChange={handleUpload}
 									/>
-                                    <ImagePreview
-                                        title={tempData.title}
-                                        img={tempData.imageUrl}
-                                        handleRemove={handleRemove}
-                                    />
+									<ImagePreview
+										title={tempData.title}
+										img={tempData.imageUrl}
+										handleRemove={handleRemove}
+									/>
 								</div>
 								{/* RIGHT */}
 								<div className='col-sm-8 d-flex flex-column gap-2'>
@@ -157,11 +166,7 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 									<div className='row'>
 										{ProductModalFirstInputRules.map((item) => (
 											<div className='col-md-6' key={item.id}>
-												<ModalInput 
-                                                    item={item} 
-                                                    data={tempData} 
-                                                    onChange={handleChange} 
-                                                />
+												<ModalInput item={item} data={tempData} onChange={handleChange} />
 											</div>
 										))}
 									</div>
@@ -190,10 +195,10 @@ const ProductModal = ({closeModal, type, tempProduct, getProducts}) => {
 							</div>
 						</div>
 						{/* Footer */}
-                        <ModalFooter 
+						<ModalFooterBtn
                             handleCancel={handleCancel}
                             handleSubmit={handleSubmit}
-                            data={tempProduct}
+                            data={tempItem}
                         />
 					</div>
 				</div>

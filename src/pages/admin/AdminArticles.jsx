@@ -1,10 +1,11 @@
 import {useEffect, useState, useRef} from "react";
 import { Modal } from "bootstrap";
-import axios from "axios";
 
 import ArticleModal from "../../components/admin/Modal/ArticleModal";
-import DeleteModal from "../../components/admin/Modal/DeleteModal";
 import Pagination from "../../components/admin/Pagination";
+import { DeleteMessage } from "../../components/share/DeleteMessage";
+
+import { getArticles, getArticle, deleteArticle } from "../../api/admin";
 
 import { createAsyncMessage } from "../../slice/messageSlice";
 import { useDispatch } from 'react-redux';
@@ -20,52 +21,91 @@ const AdminArticles = () => {
 	const dispatch = useDispatch();
 
 	//01取得所有項目API
-	const getArticles = async (page = 1) => {
-		try {
-			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/articles?page=${page}`);
-			setArticles(res.data.articles);
-			setPagination(res.data.pagination);
-		} catch (err) {
-			console.log(err);
-		}
-	};
+    const getAllArticles = (page = 1) => {
+        getArticles(page)
+            .then(res => {
+                setArticles(res.data.articles);
+                setPagination(res.data.pagination);
+            })
+            .catch(err => {
+
+            })
+    }
+	// const getArticles = async (page = 1) => {
+	// 	try {
+	// 		const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/articles?page=${page}`);
+	// 		setArticles(res.data.articles);
+	// 		setPagination(res.data.pagination);
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 	}
+	// };
 
 	//getArticle
-	const getArticle = async (id) => {
-		try {
-			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/article/${id}`);
+    const getOneArticle = async(id) => {
+        // setIsLoading(true);
+        try {
+            const res = await getArticle(id);
             await setTempArticle(res.data.article);
-		} catch (err) {
-			console.log(err);
-		}
-	};
+        }catch(err) {
+            console.log(err);
+        }
+        // getArticle(id)
+        //     .then(res => {
+        //         setTempArticle(res.data.article);
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     })
+    }
+	// const getArticle = async (id) => {
+	// 	try {
+	// 		const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/article/${id}`);
+    //         await setTempArticle(res.data.article);
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 	}
+	// };
 
 	//02刪除單個項目API
-	const deleteArticle = async (id) => {
-		try {
-			const res = await axios.delete(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/article/${id}`);
-			if (res.data.success) {
-				dispatch(createAsyncMessage(res.data));
-				closeDeleteModal();
-				getArticles();
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	};
+    const handleDeleteArticle = (id) => {
+        deleteArticle(id)
+            .then(res => {
+                if (res.data.success) {
+					dispatch(createAsyncMessage(res.data));
+					closeDeleteMessage();
+					getAllArticles();
+				}
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+	// const deleteArticle = async (id) => {
+	// 	try {
+	// 		const res = await axios.delete(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/article/${id}`);
+	// 		if (res.data.success) {
+	// 			dispatch(createAsyncMessage(res.data));
+	// 			closeDeleteModal();
+	// 			getAllArticles();
+	// 		}
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 	}
+	// };
 
 	//03 各功能Modal製作
 	const articleModal = useRef(null);
-	const deleteModal = useRef(null);
+	const deleteMessage = useRef(null);
 
 	useEffect(() => {
 		articleModal.current = new Modal("#articleModal", {
 			backdrop: "static",
 		});
-		deleteModal.current = new Modal("#deleteModal", {
+		deleteMessage.current = new Modal("#deleteMessage", {
 			backdrop: "static",
 		});
-		getArticles();
+		getAllArticles();
 	}, []);
 
 
@@ -73,7 +113,7 @@ const AdminArticles = () => {
 	const openArticleModal = async (type, item) => {
 		setType(type);
         if(item.id) {
-            await getArticle(item.id);
+            await getOneArticle(item.id);
         }else {
             setTempArticle(item);
         }
@@ -84,12 +124,12 @@ const AdminArticles = () => {
 	};
 
 	//DeleteModal
-	const openDeleteModal = (item) => {
+	const openDeleteMessage = (item) => {
 		setTempArticle(item);
-		deleteModal.current.show();
+		deleteMessage.current.show();
 	};
-	const closeDeleteModal = () => {
-		deleteModal.current.hide();
+	const closeDeleteMessage = () => {
+		deleteMessage.current.hide();
 	};
 
 	return (
@@ -98,9 +138,14 @@ const AdminArticles = () => {
 				closeModal={closeArticleModal}
 				type={type}
 				tempArticle={tempArticle}
-				getArticles={getArticles}
+				getArticles={getAllArticles}
 			/>
-			<DeleteModal closeModal={closeDeleteModal} tempItem={tempArticle} deleteItem={deleteArticle} />
+			<DeleteMessage
+                closeModal={closeDeleteMessage}
+                deleteItem={handleDeleteArticle}
+                id={tempArticle.id}
+                title={tempArticle.title}
+            />
 			<h4 className='pt-3'>Articles</h4>
 			<hr />
 			<div className='addNew text-end mb-3'>
@@ -141,7 +186,7 @@ const AdminArticles = () => {
 										className='rounded-1'
 									/>
 								</td>
-								<td>{item.isPublic ? "開放" : "未開放"}</td>
+								<td>{item.is_enabled ? "啟用" : "未啟用"}</td>
 								<td>
 									<button
 										type='button'
@@ -156,7 +201,7 @@ const AdminArticles = () => {
 										type='button'
 										className='btn btn-outline-danger p-1 m-1'
 										onClick={() => {
-											openDeleteModal(item);
+											openDeleteMessage(item);
 										}}
 									>
 										Del
@@ -167,7 +212,7 @@ const AdminArticles = () => {
 				</tbody>
 			</table>
 
-			<Pagination changePage={getArticles} pagination={pagination} />
+			<Pagination changePage={getAllArticles} pagination={pagination} />
 		</div>
 	);
 }

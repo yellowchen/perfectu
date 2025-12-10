@@ -6,7 +6,6 @@ export const CouponTicket = ({copy, text}) => {
 			className='container coupon-ticket my-5 mx-auto py-5 px-2 px-lg-0 text-center'
 			style={{
 				minWidth: "300px",
-				// height: "auto",
 				aspectRatio: "3/1",
 			}}
 		>
@@ -21,9 +20,6 @@ export const CouponTicket = ({copy, text}) => {
 			>
 				<div
 					className='row m-0'
-					style={{
-						// height: "100%",
-					}}
 				>
 					<div
 						className='coupon-content col-8 py-3'
@@ -41,7 +37,7 @@ export const CouponTicket = ({copy, text}) => {
 						>
 							<h1 className='w-75 mx-auto my-0'>COUPON</h1>
 							<h2 className='m-0'>
-								<i className='bi bi-gift fs-1 pe-3 text-danger' style={{ verticalAlign: "middle" }}></i>15% OFF
+								<i className='bi bi-gift fs-1 pe-3 text-danger' style={{ verticalAlign: "middle" }}></i>15% 折扣
 							</h2>
 						</div>
 					</div>
@@ -68,7 +64,7 @@ export const CouponTicket = ({copy, text}) => {
 							>
 								{text}
 							</button>
-							<h4>Expire 2025/12/31</h4>
+							<h4>有效期限 2025/12/31</h4>
 						</div>
 					</div>
 				</div>

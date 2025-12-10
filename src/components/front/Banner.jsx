@@ -1,8 +1,8 @@
+import { NavLink } from "react-router-dom";
 
-
-const Banner = ({imgUrl, position}) => {
-    return (
-		<div className='position-relative'>
+const Banner = ({ imgUrl, position }) => {
+	return (
+		<div className='position-relative mx-0 mx-md-3'>
 			<div
 				className='banner'
 				style={{
@@ -11,7 +11,7 @@ const Banner = ({imgUrl, position}) => {
 					backgroundImage: imgUrl,
 					backgroundSize: "cover",
 					backgroundPosition: position,
-					opacity: ".9",
+					opacity: ".8",
 				}}
 			></div>
 			<div>
@@ -25,11 +25,11 @@ const Banner = ({imgUrl, position}) => {
 					}}
 				>
 					<div
-						className='play_write position-absolute'
+						className='play_write position-absolute text-center text-sm-start ps-sm-5'
 						style={{
-                            width: "90%",
+							width: "100%",
 							top: "30%",
-							left: "10%",
+							left: "0%",
 						}}
 					>
 						<h1
@@ -40,23 +40,44 @@ const Banner = ({imgUrl, position}) => {
 						>
 							Perfect You
 						</h1>
-						<h3
-							className='position-absolute'
+						<div
+							className='position-absolute uoq_mun text-center ms-0 text-sm-start ps-sm-5 ms-sm-5'
 							style={{
-								top: "130%",
-								left: "10%",
-								fontSize: "1.8rem",
-                                lineHeight: "1.5",
-                                textIndent: "-2rem",
+								width: "100%",
+								top: "140%",
+								left: "0%",
+								fontSize: "2.3rem",
+								lineHeight: "1.5",
+								letterSpacing: "8px",
 							}}
 						>
-							your perfect perfume
-						</h3>
+							<p style={{ color: "#eee" }}>
+								完美你<span className='me-4'></span>的香水
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
+			<NavLink
+				type='button'
+				className='btn position-absolute'
+				style={{
+					bottom: "0%",
+					right: "8%",
+				}}
+                to={`/intro`}
+			>
+				<p
+					className='text-light fs-4'
+					style={{
+						letterSpacing: "6px",
+					}}
+				>
+					瞭解我們<i className='bi bi-chevron-double-right'></i>
+				</p>
+			</NavLink>
 		</div>
 	);
-}
+};
 
-export default Banner
+export default Banner;

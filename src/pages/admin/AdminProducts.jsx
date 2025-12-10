@@ -1,11 +1,12 @@
 import {useEffect, useState, useRef} from "react";
 import { useDispatch } from "react-redux";
 import { Modal } from "bootstrap";
-import axios from "axios";
+
+import { getProducts, deleteProduct } from "./../../api/admin";
 
 import ProductModal from "../../components/admin/Modal/ProductModal";
-import DeleteModal from "../../components/admin/Modal/DeleteModal";
 import Pagination from "./../../components/admin/Pagination";
+import { DeleteMessage } from "../../components/share/DeleteMessage";
 
 import { createAsyncMessage } from "../../slice/messageSlice";
 import { thousandFormat } from "./../../utils/string-utils";
@@ -18,46 +19,51 @@ const AdminProducts = () => {
 	const [tempProduct, setTempProduct] = useState({});
 	const [pagination, setPagination] = useState({});
 
+    console.log(products);
+
 	//04 Message推播處理
     const dispatch = useDispatch();
 
 	//01取得所有項目API
-	const getProducts = async (page = 1) => {
-		try {
-			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/products?page=${page}`);
-			setProducts(res.data.products);
-			setPagination(res.data.pagination);
-		} catch (err) {
-			console.log(err);
-		}
-	};
+    const getAllProducts = (page = 1) => {
+        getProducts(page)
+			.then((res) => {
+				setProducts(res.data.products);
+				setPagination(res.data.pagination);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+    }
+
 
 	//02刪除單個項目API
-	const deleteProduct = async (id) => {
-		try {
-			const res = await axios.delete(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${id}`);
-			if (res.data.success) {
-                dispatch(createAsyncMessage(res.data));
-				closeDeleteModal();
-				getProducts();
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	};
+    const handleDeleteProduct = (id) => {
+        deleteProduct(id)
+			.then((res) => {
+				if (res.data.success) {
+					dispatch(createAsyncMessage(res.data));
+					closeDeleteMessage();
+					getAllProducts();
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+    }
 
 	//03 各功能Modal製作
 	const productModal = useRef(null);
-	const deleteModal = useRef(null);
+	const deleteMessage = useRef(null);
 
 	useEffect(() => {
 		productModal.current = new Modal("#productModal", {
 			backdrop: "static",
 		});
-		deleteModal.current = new Modal("#deleteModal", {
+		deleteMessage.current = new Modal("#deleteMessage", {
 			backdrop: "static",
 		});
-		getProducts();
+		getAllProducts();
 	}, []);
 
 	//ProductModal
@@ -71,12 +77,12 @@ const AdminProducts = () => {
 	};
 
 	//DeleteModal
-	const openDeleteModal = (item) => {
+	const openDeleteMessage = (item) => {
 		setTempProduct(item);
-		deleteModal.current.show();
+		deleteMessage.current.show();
 	};
-	const closeDeleteModal = () => {
-		deleteModal.current.hide();
+	const closeDeleteMessage = () => {
+		deleteMessage.current.hide();
 	};
 
 	return (
@@ -84,13 +90,14 @@ const AdminProducts = () => {
 			<ProductModal
 				closeModal={closeProductModal}
 				type={type}
-				tempProduct={tempProduct}
-				getProducts={getProducts}
+				tempItem={tempProduct}
+				getProducts={getAllProducts}
 			/>
-			<DeleteModal 
-                closeModal={closeDeleteModal} 
-                tempItem={tempProduct} 
-                deleteItem={deleteProduct} 
+			<DeleteMessage
+                closeModal={closeDeleteMessage}
+                deleteItem={handleDeleteProduct}
+                id={tempProduct.id}
+                title={tempProduct.title}
             />
 			<h4 className='pt-3'>Products</h4>
 			<hr />
@@ -147,7 +154,7 @@ const AdminProducts = () => {
 										type='button'
 										className='btn btn-outline-danger p-1 m-1'
 										onClick={() => {
-											openDeleteModal(item);
+											openDeleteMessage(item);
 										}}
 									>
 										Del
@@ -157,7 +164,7 @@ const AdminProducts = () => {
 						))}
 				</tbody>
 			</table>
-			<Pagination changePage={getProducts} pagination={pagination} />
+			<Pagination changePage={getAllProducts} pagination={pagination} />
 		</div>
 	);
 }

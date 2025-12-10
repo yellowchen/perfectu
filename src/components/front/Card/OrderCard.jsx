@@ -11,18 +11,15 @@ const OrderCard = ({ item }) => {
 						src={product.imageUrl}
 						className='img-fluid rounded-1'
 						alt={product.title}
-						style={{ width: "48px", height: "48px" }}
+						style={{ width: "60px", height: "60px" }}
 					/>
 				</div>
-				<div className='w-100 px-2'>
-					<div className='d-flex justify-content-between fw-bold'>
+				<div className='w-100 px-2 d-flex justify-content-between'>
+					<div className='fw-bold d-flex align-items-center'>
 						<p className='mb-0'>{product.title}</p>
-						<p className='mb-0'>x {qty}</p>
 					</div>
-					<div className='d-flex justify-content-between'>
-						<p className='text-muted mb-0'>
-							<small className="text-decoration-line-through">NT$ {thousandFormat(product.price)}</small>
-						</p>
+					<div className=''>
+						<p className='mb-0 text-end'>x {qty}</p>
 						<p className='mb-0'>NT$ {thousandFormat(final_total)}</p>
 					</div>
 				</div>

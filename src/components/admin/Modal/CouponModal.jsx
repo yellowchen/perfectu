@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
-import axios from "axios";
 
-import { Input, DateInput, ModalInput, EnableCheck, ModalFooter } from "../../share/FormElements";
+import { postCoupon, editCoupon } from '../../../api/admin';
+
+import { Input, DateInput, ModalInput, EnableCheck, ModalFooterBtn } from "../../share/FormElements";
 import { CouponModalInputRules } from "../Data/AdminFormRules";
 import { createAsyncMessage } from "../../../slice/messageSlice";
 
@@ -29,7 +30,7 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 				due_date: "",
 				code: "",
 			});
-			setDate(new Date(new Date().setDate(new Date().getDate() + 1))); 
+			setDate(new Date(new Date().setDate(new Date().getDate() + 1)));
             //當是新增coupon，日期的顯示會以當天+1為主
 		} else if (type === "edit") {
 			setTempData(tempCoupon);
@@ -65,25 +66,19 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 	//04 遞交輸入內容(新增產品內容、修產品改內容)
 	const handleSubmit = async () => {
 		try {
-			//create
-			let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon`;
-			let method = "post";
-
-			//edit
-			if (type === "edit") {
-				//全域變數
-				api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon/${tempCoupon.id}`;
-				method = "put";
-			}
-
-			const res = await axios[method](api, {
-				data: {
-					...tempData,
-					due_date: date.getTime(),
-				}, //資料沒寫全，就會failed axios
-			});
-
-            dispatch(createAsyncMessage(res.data));
+            if(type === "create") {
+                const res = await postCoupon({
+                    ...tempData,
+                    due_date: date.getTime()
+                });
+                dispatch(createAsyncMessage(res.data));
+            }else if (type === "edit") {
+                const res = await editCoupon(tempCoupon.id, {
+                    ...tempData,
+                    due_date: date.getTime()
+                });
+                dispatch(createAsyncMessage(res.data));
+            }
 			closeModal();
 			getCoupons();
 		} catch (err) {
@@ -143,10 +138,10 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 							<div className='row'>
 								{CouponModalInputRules.map((item) => (
 									<div className='col-md-6 mb-2' key={item.id}>
-										<ModalInput 
-                                            item={item} 
-                                            data={tempData} 
-                                            onChange={handleChange} 
+										<ModalInput
+                                            item={item}
+                                            data={tempData}
+                                            onChange={handleChange}
                                         />
 									</div>
 								))}
@@ -171,7 +166,7 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 							/>
 						</div>
 						{/* Footer */}
-                        <ModalFooter 
+                        <ModalFooterBtn
                             handleCancel={handleCancel}
                             handleSubmit={handleSubmit}
                             data={tempCoupon}

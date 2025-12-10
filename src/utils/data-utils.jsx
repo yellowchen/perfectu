@@ -1,44 +1,153 @@
 //style-utils
+const arrowStyle = {
+	color: "#309DC1",
+	fontSize: "31px",
+	display: "block",
+	padding: ".6rem",
+	borderRadius: "10px",
+};
+
+const PrevArrow = (props) => {
+	const { className, onClick, style } = props;
+	return (
+		<div
+			className={`${className} d-none d-lg-block`}
+			style={{ ...style }}
+			onClick={onClick}
+		>
+			<i
+				className='bi bi-chevron-double-left'
+				style={arrowStyle}
+			></i>
+		</div>
+	);
+};
+
+const NextArrow = (props) => {
+    const { className, onClick, style } = props;
+    return (
+		<div
+			className={`${className} d-none d-lg-block`}
+			style={{ ...style }}
+			onClick={onClick}
+		>
+			<i
+				className='bi bi-chevron-double-right'
+				style={arrowStyle}
+			></i>
+		</div>
+	);
+}
+
 export const sliderSetting = {
-	slidesToShow: 3,
+	className: "center",
+	slidesToShow: 1,
 	slidesToScroll: 1,
-	dots: false,
+	// dots: true,
 	infinite: true,
 	speed: 500,
 	easing: "linear",
-	autoplay: true,
+	// autoplay: true,
 	autoplaySpeed: 3000,
-	arrows: false,
 	centerMode: true,
-	centerPadding: "56px",
+	centerPadding: "10%",
+	prevArrow: <PrevArrow />,
+	nextArrow: <NextArrow />,
+	adaptiveHeight: true,
 	responsive: [
 		{
 			breakpoint: 1920,
 			settings: {
-				slidesToShow: 5,
+				slidesToShow: 1,
 				slidesToScroll: 1,
-				dots: true,
+				dots: false,
+				centerPadding: "30%",
+			},
+		},
+		{
+			breakpoint: 1200,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				dots: false,
+				centerPadding: "25%",
 			},
 		},
 		{
 			breakpoint: 992,
 			settings: {
-				slidesToShow: 3,
+				slidesToShow: 1,
 				slidesToScroll: 1,
 				dots: false,
+				centerPadding: "10%",
 			},
 		},
 		{
-			breakpoint: 430,
+			breakpoint: 768,
 			settings: {
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				dots: false,
+				centerPadding: "0%",
 			},
 		},
 	],
 };
 
+export const sliderImageSetting = {
+	className: "center",
+	// slidesToShow: 1,
+	// slidesToScroll: 1,
+	// dots: true,
+	infinite: true,
+	speed: 500,
+	easing: "linear",
+	autoplay: true,
+	autoplaySpeed: 3000,
+	// centerMode: true,
+	centerPadding: "10%",
+	prevArrow: <PrevArrow />,
+	nextArrow: <NextArrow />,
+	adaptiveHeight: true,
+	responsive: [
+		{
+			breakpoint: 1920,
+			settings: {
+				slidesToShow: 4,
+				slidesToScroll: 1,
+				dots: false,
+				centerPadding: "25%",
+			},
+		},
+		{
+			breakpoint: 1400,
+			settings: {
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				dots: false,
+				centerPadding: "25%",
+			},
+		},
+		{
+			breakpoint: 992,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+				dots: false,
+				centerPadding: "10%",
+			},
+		},
+		{
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				dots: false,
+				centerPadding: "0%",
+			},
+		},
+	],
+};
 
 //Progressbar
 export const ProgressBar = ({ step }) => {
@@ -57,7 +166,10 @@ export const ProgressBar = ({ step }) => {
 	};
 
 	return (
-		<div className='w-75 mx-auto limelight' style={{ margin: "2rem 0 6rem" }}>
+		<div
+			className='w-50 mx-auto limelight'
+			style={{ margin: "2rem 0 6rem" }}
+		>
 			<div className='position-relative'>
 				{/* Progress bar line */}
 				<div
@@ -88,7 +200,7 @@ export const ProgressBar = ({ step }) => {
 						rounded-pill
                         btn
                         p-0
-						${step >= 1 ? "btn-secondary text-white" : "text-dark"}
+						${step >= 1 ? "btn-success text-white" : "text-dark"}
 						`}
 					style={btnStyle}
 				>
@@ -104,7 +216,7 @@ export const ProgressBar = ({ step }) => {
 						rounded-pill
                         btn
                         p-0
-						${step >= 2 ? "btn-secondary text-white" : "text-dark"}
+						${step >= 2 ? "btn-success text-white" : "text-dark"}
 						`}
 					style={btnStyle}
 				>
@@ -120,40 +232,40 @@ export const ProgressBar = ({ step }) => {
 						rounded-pill
                         btn
                         p-0
-						${step >= 3 ? "btn-secondary text-white" : "text-dark"}
+						${step >= 3 ? "btn-success text-white" : "text-dark"}
 						`}
 					style={btnStyle}
 				>
-					{step > 3 ? <i className='bi bi-flower2'></i> : "3"}
+					{step >= 4 ? <i className='bi bi-flower2'></i> : "3"}
 				</button>
 
 				{/* 進度文字 */}
 				<h6
 					className={`
                         position-absolute start-0 translate-middle-x
-                        ${step >= 1 ? "text-secondary" : "text-dark"}
+                        ${step >= 1 ? "text-success" : "text-dark"}
                     `}
 					style={wordStyle}
 				>
-					Cart
+					購物車
 				</h6>
 				<h6
 					className={`
                         position-absolute start-50 translate-middle-x
-                        ${step >= 2 ? "text-secondary" : "text-dark"}
+                        ${step >= 2 ? "text-success" : "text-dark"}
                     `}
 					style={wordStyle}
 				>
-					Filling Info
+					填寫收件資訊
 				</h6>
 				<h6
 					className={`
                         position-absolute start-100 translate-middle-x
-                        ${step >= 3 ? "text-secondary" : "text-dark"}
+                        ${step >= 3 ? "text-success" : "text-dark"}
                     `}
 					style={wordStyle}
 				>
-					Success
+					{`${step >= 4 ? "付款成功" : "付款方式"}`}
 				</h6>
 			</div>
 		</div>

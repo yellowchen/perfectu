@@ -1,4 +1,5 @@
 import { dateAddZero } from '../../utils/date-utils';
+import { FormatDate } from '../../utils/date-utils';
 
 export const Input = ({ id, labelText, type, name, placeholder, value, onChange }) => {
 	return (
@@ -30,13 +31,30 @@ export const DateInput = ({ id, labelText, type, name, placeholder, value, onCha
 					id={id}
 					name={name}
 					placeholder={placeholder}
-					value={`${date.getFullYear().toString()}-${dateAddZero(date.getMonth() + 1)}-${dateAddZero(date.getDate())}`}
+					value={FormatDate(date)}
 					onChange={onChange}
 				/>
 			</label>
 		</>
 	);
 };
+
+export const DefaultValueInput = ({title, value}) => {
+    return (
+		<div className='row'>
+			<span className='col-sm-2 col-form-label'>{title}</span>
+			<div className='col-sm-10'>
+				<input
+					readOnly
+					type='email'
+					id='email'
+					className='form-control-plaintext'
+					defaultValue={value}
+				/>
+			</div>
+		</div>
+	);
+}
 
 //另外又有資料引進(item)
 export const ModalInput = ({ item, onChange, data }) => {
@@ -150,15 +168,20 @@ export const TextArea = ({ id, labelText, name, placeholder, value, onChange }) 
 
 //React Hook Form
 export const FormInput = ({ item, register, errors }) => {
-	const { id, labelText, type, rules } = item;
+	const { id, labelText, type, rules, placeholder } = item;
 	return (
 		<div className='mb-3'>
-			<label className='w-100 form-label mb-0' htmlFor={id}>
+			<label
+				className='w-100 form-label mb-0'
+				htmlFor={id}
+			>
+				{rules && <span className='text-danger'>* </span>}
 				{labelText}
 				<input
 					type={type}
 					id={id}
-					className={`form-control ${errors[id] && "is-invalid"}`}
+					className={`form-control mt-2 ${errors[id] && "is-invalid"}`}
+					placeholder={placeholder}
 					{...register(id, rules)}
 				/>
 				{errors[id] && <div className='invalid-feedback'>{errors[id]?.message}</div>}
@@ -167,26 +190,79 @@ export const FormInput = ({ item, register, errors }) => {
 	);
 };
 
-export const FormSelect = ({ item, register, errors, setPayment }) => {
+//FormRadio
+export const FormRadio = ({ item, register, errors, setPayment }) => {
 	const { id, name, value, labelText, rules } = item;
 	return (
-		<div className='form-check mb-2'>
+		<div className='form-check mb-4'>
 			{/* Radio 使用 Name 欄位 */}
-			<label className='form-check-label' htmlFor={id}>
+			<label
+				className='form-check-label fs-5 fw-bold'
+				htmlFor={id}
+			>
+				{rules && <span className='text-danger'>* </span>}
+				{labelText}
 				<input
-					className={`form-check-input ${errors[name] && "is-invalid"}`}
+					className={`form-check-input mt-2 ${errors[name] && "is-invalid"}`}
 					type='radio'
 					name={name}
 					id={id}
 					value={value}
+					style={{ border: "1px solid #bbb" }}
 					{...register(name, rules)}
 					onClick={(e) => {
 						setPayment(e.target.value);
 					}}
 				/>
-				{labelText}
 			</label>
 			{errors[name] && <div className='invalid-feedback'>{errors[name]?.message}</div>}
+		</div>
+	);
+};
+
+//FormSelect
+export const FormSelect = ({ register, errors, className, id, name, labelText, rules, children}) => {
+	return (
+		<div className='mb-4'>
+			<label
+				htmlFor={id}
+				className={`form-label mb-0 ${className}`}
+			>
+				{rules && <span className='text-danger'>* </span>}
+				{labelText}
+
+				<select
+					id={id}
+					className={`form-select mt-2 ${errors[name] && "is-invalid"}`}
+					{...register(name, rules)}
+				>
+					{children}
+				</select>
+				{errors[name] && <div className='invalid-feedback'>{errors[name]?.message}</div>}
+			</label>
+		</div>
+	);
+};
+
+//FormTextArea
+export const FormTextArea = ({ item, register, className }) => {
+    const { id, name, placeholder, labelText } = item;
+	return (
+		<div className='mb-3'>
+			<label
+				className='w-100 form-label mb-0'
+				htmlFor={id}
+			>
+				{labelText}
+			</label>
+			<textarea
+				className='form-control mt-2'
+				placeholder={placeholder}
+				id={id}
+				name={name}
+				style={{ height: "100px" }}
+				{...register(id)}
+			></textarea>
 		</div>
 	);
 };
@@ -215,7 +291,7 @@ export const ImagePreview = ({title, img, handleRemove}) => {
 	);
 }
 
-export const ModalFooter = ({handleCancel, data, handleSubmit}) => {
+export const ModalFooterBtn = ({handleCancel, data, handleSubmit}) => {
     return (
 		<div className='modal-footer'>
 			<button

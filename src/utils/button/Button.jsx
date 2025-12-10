@@ -2,9 +2,13 @@
 export const IconButton = ({className, style, action, icon}) => {
   return (
 		<button
-            type="button"
-			className={`btn icon-btn ${className}`}
-			style={style}
+			type='button'
+			className={`btn hover-btn icon-btn rounded-4 px-5 mx-2`}
+			style={{
+                ...style,
+                border: "3px solid #309dc1",
+                color: "#309dc1"
+            }}
 			onClick={action}
 		>
 			{icon}
@@ -14,25 +18,51 @@ export const IconButton = ({className, style, action, icon}) => {
 
 export const TextButton = ({className, style, action, text}) => {
     return (
-        <button
-            type="button"
-            className={`btn text-btn btn-primary text-light ${className}`}
-            style={style}
-            onClick={action}
-        >
-            {text}
-        </button>
-    )
-}
-
-export const BackButton = ({action}) => {
-    return (
 		<button
 			type='button'
-			className={`btn back-btn rounded-circle float-end mt-5 noto_serif p-0 fw-bolder`}
+			className={`btn hover-btn text-btn ${className}`}
+			style={{
+                ...style,
+                border: "3px solid #309dc1",
+                color: "#309dc1"
+            }}
 			onClick={action}
 		>
-			Back
+			{text}
 		</button>
 	);
 }
+
+export const SubmitButton = ({ className, style, action, text }) => {
+	return (
+		<button
+			type='submit'
+			className={`btn hover-btn text-btn ${className}`}
+			style={{
+				...style,
+				border: "3px solid #309dc1",
+				color: "#309dc1",
+			}}
+			onClick={action}
+		>
+			{text}
+		</button>
+	);
+};
+
+// export const BackButton = ({ className, style, action}) => {
+// 	return (
+// 		<button
+// 			type='button'
+// 			className={`btn hover-btn text-btn fw-bolder rounded-4 ${className}`}
+// 			style={{
+// 				...style,
+// 				border: "3px solid #309dc1",
+// 				color: "#309dc1",
+// 			}}
+// 			onClick={action}
+// 		>
+// 			返回
+// 		</button>
+// 	);
+// };

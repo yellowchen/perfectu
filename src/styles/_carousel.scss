@@ -1,11 +1,37 @@
 .slick-slider {
+    .slick-arrow {
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        border-radius: 10px;
+        opacity: .7;
+        &:hover {
+            background-color: #eee;
+        }
+    }
+    .slick-arrow.slick-prev {
+        top: 50%;
+        left: 0%;
+        z-index: 1;
+    }
+    .slick-arrow.slick-next {
+        top: 50%;
+        right: 0%;
+        z-index: 1;
+
+    }
+    .slick-prev, .slick-next {
+        &::before {
+            display: none;
+        }
+    }
     .slick-list {
         .slick-track {
             margin-bottom: 16vh;
         }
     }
     .slick-dots {
-        margin: 6vw 0;
+        // margin: 6vw 0;
     }
 }
 

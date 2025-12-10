@@ -1,39 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import MessageToast from "../../components/share/MessageToast";
+import { AuthContext } from "../../context/AuthContext";
 
 
 const Dashboard = () => {
     const navigate = useNavigate();
+    const {isAuthenticated, logOut} = useContext(AuthContext);
 
-    // 01 取出token
-	const token = document.cookie
-		.split(";")
-		.find((row) => row.startsWith("perfectToken="))
-		?.split("=")[1];
-	axios.defaults.headers.common["Authorization"] = token;
-
-    //02 登出處理
-    const logOut = () => {
-        document.cookie = "perfectToken=;";
+    const handleLogOut = async () => {
+        await logOut();
         navigate("/login");
     }
 
     useEffect(() => {
-		if (!token) {
-			navigate("/login");
-		}
-        //在token、重新導向，有變動下要驗證token
-		(async () => {
-			try {
-				await axios.post(`/v2/api/user/check`);
-			} catch (err) {
-				navigate("/login");
-			}
-		})();
-	}, [navigate, token]);
+        if(!isAuthenticated) {
+            navigate("/login");
+        }
+    }, [isAuthenticated, navigate])
 
 	return (
 		<div className='d-flex flex-column min-vh-100 noto_serif'>
@@ -41,7 +26,7 @@ const Dashboard = () => {
 			<nav className='navbar bg-body-tertiary p-0'>
 				<div className='container-fluid bg-dark'>
 					<p className='navbar-brand text-light my-2'>Backend Admin</p>
-					<button className='btn btn-outline-light' type='submit' onClick={logOut}>
+					<button className='btn btn-outline-light' type='submit' onClick={handleLogOut}>
 						LogOut
 					</button>
 				</div>
@@ -93,7 +78,7 @@ const Dashboard = () => {
 						</NavLink>
 					</li>
 				</ul>
-				<div className='w-100'>{token && <Outlet />}</div>
+				<div className='w-100'>{isAuthenticated && <Outlet />}</div>
 			</div>
 		</div>
 	);

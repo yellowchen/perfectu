@@ -1,123 +1,178 @@
-import { useContext } from 'react';
-import {useForm} from "react-hook-form";
+import { useState, useEffect } from "react";
+import {useForm, useWatch} from "react-hook-form";
 import { useOutletContext, useNavigate, Navigate } from 'react-router-dom';
-import axios from "axios";
 
-import { PaymentContext } from "./FrontLayout";
+//API
+import { postOrder } from '../../api/front';
+
 import CheckoutCard from "../../components/front/Card/CheckoutCard";
-import { FormInput, FormSelect } from "./../../components/share/FormElements";
+import { FormInput, FormSelect, FormTextArea } from "./../../components/share/FormElements";
 import { InputRules, CheckRules } from "../../components/front/Data/FrontFormRules";
 
 import { thousandFormat } from "../../utils/string-utils";
 import { ProgressBar } from '../../utils/data-utils';
+import { TextButton, SubmitButton } from '../../utils/button/Button';
+
+import taiwanAddress from "../../components/front/Data/Taiwan.json";
+import { Address } from './../../components/front/Address';
+
+
 
 
 const Checkout = () => {
-	const { cartData, getCart } = useOutletContext();
+	const { cartData, getAllCart } = useOutletContext();
 	const { carts, total, final_total } = cartData;
-    const {payment, setPayment} = useContext(PaymentContext);
+    const [addressData, setAddressData] = useState([]);
     const navigate = useNavigate();
 
 	//react-hook-form[01]
 	const {
 		register,
 		handleSubmit,
+        control,
+        watch,
 		formState: { errors },
 	} = useForm({
 		mode: "onTouched",
 	});
 
 	//react-hook-form[02] --> <form></form>
-	const onSubmit = async (data) => {
-        const {name, email, tel, address} = data;
+	const onSubmit = async (data, postCode) => {
+        console.log(data);
 		const form = {
-			create_at: Date.now(),
 			data: {
 				user: {
-					name,
-					email,
-					tel,
-					address,
+					name: data.name,
+					email: data.email,
+					tel: data.tel,
+					address: data.city + data.district + data.road,
+                    message: data.message
 				},
 			},
 		};
 		try {
-			const res = await axios.post(`/v2/api/${process.env.REACT_APP_API_PATH}/order`, form);
-            navigate(`/success/${res.data.orderId}`);
-            getCart();
+            const res = await postOrder(form);
+            navigate(`/payment/${res.data.orderId}`);
+            getAllCart();
 		} catch (err) {
 			console.log(err);
 		}
 	};
 
+    //?
+    useEffect(() => {
+        const subscription = watch((value) => {
+			console.log(value);
+		});
+        return () => subscription.unsubscribe();
+    }, [watch]);
+
+    const watchCity = useWatch({
+        control,
+        name: "city",
+        defaultValue: ""
+    });
+
+    const watchDistrict = useWatch({
+        control,
+        name: "district",
+        defaultValue: ""
+    });
+    console.log(watchDistrict)
+
+    useEffect(() => {
+		setAddressData(taiwanAddress);
+	}, []);
+
 
 	return (
-		<div className='container uoq_mun'>
+		<div className='container'>
 			<ProgressBar step={2} />
-			<div className='row my-5 mx-2 gap-5 justify-content-center'>
+			<h1 className='title uoq_mun'>填寫收件資訊</h1>
+			<div className=''>
 				{cartData?.carts?.length === 0 ? (
 					<Navigate to='/product' />
 				) : (
 					<>
-						{/* Order */}
-						<div className='col-md-5 p-3 bg-light rounded-2'>
-							<h3 className='mb-5 text-center limelight'>Order Detail</h3>
-							{carts?.map((item) => (
-								<CheckoutCard item={item} key={item.id} />
-							))}
-							<hr />
-							<div className='d-flex justify-content-between'>
-								<p className='fw-bolder'>SubTotal</p>
-								<p className=''>NT$ {thousandFormat(total)}</p>
-							</div>
-							<div className='d-flex justify-content-between'>
-								<p className='fw-bolder'>使用優惠券</p>
-								<p className='text-danger'>NT$ {thousandFormat(final_total - total)}</p>
-							</div>
-							<div className='d-flex justify-content-between'>
-								<p className='fw-bolder mb-0'>Payment</p>
-								<p className='mb-0 text-primary'>{payment}</p>
-							</div>
-							<hr />
-							<div className='d-flex justify-content-between'>
-								<h5 className='fw-bolder'>Total</h5>
-								<h5 className='fw-bolder'>NT$ {thousandFormat(final_total)}</h5>
-							</div>
-						</div>
-
-						{/* Info */}
-						<form className='col-md-6 p-3 bg-light rounded-2' onSubmit={handleSubmit(onSubmit)}>
-							<div className='mb-5 px-1'>
-								<h3 className='mb-5 text-center limelight'>Contact Information</h3>
-								{InputRules.map((item) => (
-									<FormInput key={item.id} item={item} register={register} errors={errors} />
-								))}
-								<p className='mb-1'>Payment</p>
-								{CheckRules.map((item) => (
-									<FormSelect
-										key={item.id}
-										item={item}
-										register={register}
-										errors={errors}
-										setPayment={setPayment}
-									/>
-								))}
-							</div>
-
-							{/* Submit */}
-							<div className='d-flex justify-content-between'>
-								<button
-									type='button'
-									className='btn fw-bold'
-									onClick={() => {
-										navigate(-1);
-									}}
+						<form
+							className='row g-0'
+							onSubmit={handleSubmit(onSubmit)}
+						>
+							<div className='d-flex gap-4 flex-column flex-lg-row px-0 px-md-2'>
+								{/* Order */}
+								<div
+									className='w-100 p-3 bg-light align-self-start'
+									style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
 								>
-									<i className='fas fa-chevron-left me-1'></i>Back To Cart
-								</button>
-								<button type='submit' className='btn btn-primary text-light w-50 limelight'>
-									Check Out
-								</button>
+									<h3 className='mb-5 text-center'>結帳明細</h3>
+									{carts?.map((item) => (
+										<CheckoutCard
+											item={item}
+											key={item.id}
+										/>
+									))}
+									<hr />
+									<div className='d-flex justify-content-between my-3'>
+										<h5 className=''>小計</h5>
+										<h5 className=''>NT$ {thousandFormat(total)}</h5>
+									</div>
+									<div className='d-flex justify-content-between my-3'>
+										<h5 className=''>使用優惠券</h5>
+										<h5 className='text-danger'>NT$ {thousandFormat(final_total - total)}</h5>
+									</div>
+									<hr />
+									<div className='d-flex justify-content-between'>
+										<h5 className=''>總計</h5>
+										<h5 className=''>NT$ {thousandFormat(final_total)}</h5>
+									</div>
+								</div>
+								{/* Info */}
+								<div className='col-12 col-lg-7 d-flex flex-column'>
+									<div
+										className='p-3 bg-light'
+										style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
+									>
+										<h3 className='mb-5 text-center'>寄件資料填寫</h3>
+										{InputRules.map((item) => (
+											<FormInput
+												key={item.id}
+												item={item}
+												register={register}
+												errors={errors}
+											/>
+										))}
+                                        <Address
+                                            register={register}
+                                            errors={errors}
+                                            addressData={addressData}
+                                            watchCity={watchCity}
+                                            watchDistrict={watchDistrict}
+                                        />
+										<FormTextArea
+											item={{
+												id: "message",
+												name: "message",
+												placeholder: "",
+												labelText: "訂單備註",
+											}}
+											register={register}
+										/>
+									</div>
+									{/* Submit */}
+									<div className='d-flex justify-content-around mx-0 mx-md-3 mt-5 px-3 py-2'>
+										<TextButton
+											className='rounded-4 mx-4 w-50 py-2'
+											text='返回購物車'
+											action={() => {
+												navigate(-1);
+											}}
+										/>
+										<SubmitButton
+											className='rounded-4 mx-4 w-50 py-2'
+											text='確認結帳'
+										/>
+									</div>
+								</div>
 							</div>
 						</form>
 					</>

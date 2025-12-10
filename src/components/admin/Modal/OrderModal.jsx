@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
-import axios from "axios";
 
-import { ModalFooter } from "../../share/FormElements";
+import { editOrder } from '../../../api/admin';
+import { DefaultValueInput, ModalFooterBtn } from "../../share/FormElements";
 
 import { createAsyncMessage } from '../../../slice/messageSlice';
 import { thousandFormat } from './../../../utils/string-utils';
@@ -14,8 +14,8 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
         is_paid: "",
         status: 0
 	});
-    
-    //01 
+
+    //01
 	useEffect(() => {
 		setTempData({
 			...tempOrder,
@@ -46,7 +46,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 	//04 遞交輸入內容(新增產品內容、修產品改內容)
 	const handleSubmit = async () => {
 		try {
-			const res = await axios.put(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/order/${tempOrder.id}`, {data: tempData});
+            const res = await editOrder(tempOrder.id, tempData)
             dispatch(createAsyncMessage(res.data));
 			closeModal();
 			getOrders();
@@ -61,6 +61,25 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 		closeModal();
 	};
 
+    const OrderDefaultValue = [
+		{
+			title: "Email",
+			value: tempData?.user?.email,
+		},
+		{
+			title: "訂購者",
+			value: tempData?.user?.name,
+		},
+		{
+			title: "地址",
+			value: tempData?.user?.address,
+		},
+		{
+			title: "留言",
+			value: tempData?.user?.message,
+		},
+	];
+
 	return (
 		<>
 			<div
@@ -73,7 +92,10 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 				<div className='modal-dialog modal-lg'>
 					<div className='modal-content'>
 						<div className='modal-header'>
-							<div className='modal-title' id='orderModalLabel'>
+							<div
+								className='modal-title'
+								id='orderModalLabel'
+							>
 								<h5>{`編輯訂單： ${tempData?.id}`}</h5>
 							</div>
 							<button
@@ -86,55 +108,13 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 						</div>
 						{/* content */}
 						<div className='modal-body d-flex flex-column row-gap-3'>
-							<div className='row'>
-								<span className='col-sm-2 col-form-label'>Email</span>
-								<div className='col-sm-10'>
-									<input
-										readOnly
-										type='email'
-										id='email'
-										className='form-control-plaintext'
-										defaultValue={tempData?.user?.email}
-									/>
-								</div>
-							</div>
-							<div className='row'>
-								<span className='col-sm-2 col-form-label'>訂購者</span>
-								<div className='col-sm-10'>
-									<input
-										readOnly
-										type='text'
-										id='name'
-										className='form-control-plaintext'
-										defaultValue={tempData?.user?.name}
-									/>
-								</div>
-							</div>
-							<div className='row'>
-								<span className='col-sm-2 col-form-label'>地址</span>
-								<div className='col-sm-10'>
-									<input
-										readOnly
-										type='text'
-										id='address'
-										className='form-control-plaintext'
-										defaultValue={tempData?.user?.address}
-									/>
-								</div>
-							</div>
-							<div className='row'>
-								<span className='col-sm-2 col-form-label'>留言</span>
-								<div className='col-sm-10'>
-									<input
-										readOnly
-										type='text'
-										id='message'
-										className='form-control-plaintext'
-										defaultValue={tempData?.message}
-									/>
-								</div>
-							</div>
-
+							{OrderDefaultValue.map((item) => (
+								<DefaultValueInput
+                                    key={item.title}
+                                    title={item.title}
+                                    value={item.value}
+                                />
+							))}s
 							<div className='row'>
 								<span className='col-sm-2 col-form-label'>商品</span>
 								{tempData?.products && (
@@ -165,10 +145,13 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 								)}
 							</div>
 							<div className='row'>
-								<span>修改訂單狀態</span>
-								<label className='form-check-label' htmlFor='is_paid'>
+								<span className='col-2'>修改訂單狀態</span>
+								<label
+									className='form-check-label col-5'
+									htmlFor='is_paid'
+								>
 									<input
-										className='form-check-input me-2'
+										className='form-check-input me-2 border-1 border-secondary'
 										type='checkbox'
 										id='is_paid'
 										name='is_paid'
@@ -179,7 +162,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 								</label>
 							</div>
 							<div className='row'>
-								<div className='col-3'>
+								<div className='col-5 col-md-3'>
 									<span>處理進度</span>
 									<select
 										name='status'
@@ -187,7 +170,10 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 										value={tempData?.status}
 										onChange={handleChange}
 									>
-										<option value='1' defaultValue>
+										<option
+											value='1'
+											defaultValue
+										>
 											未確認
 										</option>
 										<option value='2'>已確認</option>
@@ -198,7 +184,11 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 							</div>
 						</div>
 						{/* Footer */}
-						<ModalFooter handleCancel={handleCancel} handleSubmit={handleSubmit} data={tempOrder} />
+						<ModalFooterBtn
+							handleCancel={handleCancel}
+							handleSubmit={handleSubmit}
+							data={tempOrder}
+						/>
 					</div>
 				</div>
 			</div>

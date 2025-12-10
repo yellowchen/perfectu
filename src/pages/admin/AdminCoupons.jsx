@@ -1,11 +1,13 @@
 import {useEffect, useState, useRef} from "react";
 import { Modal } from "bootstrap";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 
-import DeleteModal from "../../components/admin/Modal/DeleteModal";
+import { getCoupons, deleteCoupon } from "./../../api/admin";
+
 import CouponModal from "../../components/admin/Modal/CouponModal";
 import Pagination from "./../../components/admin/Pagination";
+import { DeleteMessage } from "../../components/share/DeleteMessage";
+
 import { createAsyncMessage } from "../../slice/messageSlice";
 
 
@@ -19,42 +21,44 @@ const AdminCoupons = () => {
     const dispatch = useDispatch();
 
 	//01取得所有項目API
-	const getCoupons = async (page = 1) => {
-		try {
-			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupons?page=${page}`);
-			setCoupons(res.data.coupons);
-			setPagination(res.data.pagination);
-		} catch (err) {
-			console.log(err);
-		}
-	};
+    const getAllCoupons = (page = 1) => {
+        getCoupons(page)
+            .then(res => {
+                setCoupons(res.data.coupons);
+                setPagination(res.data.pagination);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
 	//02刪除單個項目API
-	const deleteCoupon = async (id) => {
-		try {
-			const res = await axios.delete(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon/${id}`);
-			if (res.data.success) {
-                dispatch(createAsyncMessage(res.data));
-				closeDeleteModal();
-				getCoupons();
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	};
+    const handleDeleteCoupon = (id) => {
+        deleteCoupon(id)
+            .then(res => {
+                if (res.data.success) {
+                    dispatch(createAsyncMessage(res.data));
+                    closeDeleteMessage();
+                    getAllCoupons();
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
 	//03 各功能Modal製作
 	const couponModal = useRef(null);
-	const deleteModal = useRef(null);
+	const deleteMessage = useRef(null);
 
 	useEffect(() => {
 		couponModal.current = new Modal("#couponModal", {
 			backdrop: "static",
 		});
-		deleteModal.current = new Modal("#deleteModal", {
+		deleteMessage.current = new Modal("#deleteMessage", {
 			backdrop: "static",
 		});
-		getCoupons();
+		getAllCoupons();
 	}, []);
 
 	//ProductModal
@@ -68,28 +72,29 @@ const AdminCoupons = () => {
 	};
 
 	//DeleteModal
-	const openDeleteModal = (item) => {
+	const openDeleteMessage = (item) => {
 		setTempCoupon(item);
-		deleteModal.current.show();
+		deleteMessage.current.show();
 	};
-	const closeDeleteModal = () => {
-		deleteModal.current.hide();
+	const closeDeleteMessage = () => {
+		deleteMessage.current.hide();
 	};
 	console.log(new Date());
 
 	return (
 		<div className='p-1'>
-			<CouponModal 
-                closeModal={closeCouponModal} 
-                type={type} 
-                tempCoupon={tempCoupon} 
-                getCoupons={getCoupons} 
-            />
-			<DeleteModal 
-                closeModal={closeDeleteModal} 
-                tempItem={tempCoupon} 
-                deleteItem={deleteCoupon} 
-            />
+			<CouponModal
+				closeModal={closeCouponModal}
+				type={type}
+				tempCoupon={tempCoupon}
+				getCoupons={getAllCoupons}
+			/>
+			<DeleteMessage
+				closeModal={closeDeleteMessage}
+				deleteItem={handleDeleteCoupon}
+				id={tempCoupon.id}
+				title={tempCoupon.title}
+			/>
 			<h4 className='pt-3'>Coupons</h4>
 			<hr />
 			<div className='addNew text-end mb-3'>
@@ -147,7 +152,7 @@ const AdminCoupons = () => {
 										type='button'
 										className='btn btn-outline-danger p-1 m-1'
 										onClick={() => {
-											openDeleteModal(item);
+											openDeleteMessage(item);
 										}}
 									>
 										Del
@@ -157,7 +162,10 @@ const AdminCoupons = () => {
 						))}
 				</tbody>
 			</table>
-			<Pagination changePage={getCoupons} pagination={pagination} />
+			<Pagination
+				changePage={getAllCoupons}
+				pagination={pagination}
+			/>
 		</div>
 	);
 };

@@ -31,11 +31,11 @@ const Wishlist = () => {
 						>
 							Back
 						</button> */}
-                        <BackButton
+                        {/* <BackButton
                             action={() => {
                                 navigate(-1);
                             }}
-                        />
+                        /> */}
 					</div>
 				</div>
 			)}

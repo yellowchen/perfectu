@@ -1,6 +1,7 @@
 import {useEffect, useState, useRef} from "react";
 import { Modal } from "bootstrap";
-import axios from "axios";
+
+import { getOrders } from "../../api/admin";
 
 import OrderModal from "../../components/admin/Modal/OrderModal";
 import Pagination from "./../../components/admin/Pagination";
@@ -13,15 +14,18 @@ const AdminOrders = () => {
     const [pagination, setPagination] = useState({});
 
     //01取得所有項目API
-    const getOrders = async (page = 1) => {
-        try {
-            const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/orders?page=${page}`);
-            setOrders(res.data.orders);
-            setPagination(res.data.pagination);
-        } catch (err) {
-            console.log(err);
-        }
-    };
+    const getAllOrders = (page = 1) => {
+        getOrders(page)
+            .then(res => {
+                setOrders(res.data.orders);
+                setPagination(res.data.pagination);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    console.log(orders);
 
     //03 各功能Modal製作
     const orderModal = useRef(null);
@@ -29,7 +33,7 @@ const AdminOrders = () => {
         orderModal.current = new Modal("#orderModal", {
             backdrop: "static",
         });
-        getOrders();
+        getAllOrders();
     }, []);
 
     //OrderModal
@@ -42,10 +46,10 @@ const AdminOrders = () => {
     };
     return (
 		<div className='p-1'>
-			<OrderModal 
-                closeModal={closeOrderModal} 
-                tempOrder={tempOrder} 
-                getOrders={getOrders} 
+			<OrderModal
+                closeModal={closeOrderModal}
+                tempOrder={tempOrder}
+                getOrders={getAllOrders}
             />
 			<h4 className='pt-3'>Orders</h4>
 			<hr />
@@ -71,7 +75,7 @@ const AdminOrders = () => {
 							<td className='text-ellipsis'>{thousandFormat(item.total)}</td>
 							<td>{item.is_paid ? <span className='text-success fw-bold'>付款完成</span> : "未付款"}</td>
 							<td>{item.status ? <span>{item.status}</span> : "1"}</td>
-							<td>{item.message}</td>
+							<td>{item.user.message}</td>
 							<td>
 								<button
 									type='button'
@@ -87,7 +91,7 @@ const AdminOrders = () => {
 					))}
 				</tbody>
 			</table>
-			<Pagination changePage={getOrders} pagination={pagination} />
+			<Pagination changePage={getAllOrders} pagination={pagination} />
 		</div>
 	);
 }

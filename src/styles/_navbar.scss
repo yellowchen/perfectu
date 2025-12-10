@@ -33,13 +33,20 @@
 
 //logo
 .nav-logo {
-    width: 80px;
-    height: auto;
-    margin-top: -20px;
-    margin-left: -16px;
+    width: 120px;
+    height: 30px;
+    // margin-top: -45px;
+    // margin-left: -50px;
+    margin-top: -45px;
+    margin-left: -18%;
+    img {
+        width: 100%;
+    }
     @include media-md {
-        width: 60px;
-        padding-top: 8px;
+        margin-Top: -35px;
+        img {
+            width: 80%;
+        }
     }
 }
 //cart
@@ -54,6 +61,7 @@
     }
     @include media-lg {
         margin-right: 4rem;
+        margin-top: 3.5px;
     }
 }
 //toggle
@@ -112,8 +120,8 @@
             &:nth-child(3) {
                 animation-name: nav-slideIn_3;
             }
-        }        
-    }   
+        }
+    }
 }
 
 .nav-link {

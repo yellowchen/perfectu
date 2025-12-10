@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef} from 'react';
 import { useDispatch } from "react-redux";
-import axios from "axios";
 
+import { postArticle, editArticle } from '../../../api/admin';
 import { ArticleModalRules } from '../Data/AdminFormRules';
 
-import { Input, DateInput, TagInput, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooter } from "../../share/FormElements";
+import { Input, DateInput, TagInput, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooterBtn } from "../../share/FormElements";
 import useImagePreviews from "../../../utils/hooks/useImagePreviews";
 import { createAsyncMessage } from "../../../slice/messageSlice";
 import { setTextIndicator, removeAllSpace } from "../../../utils/string-utils";
@@ -13,7 +13,7 @@ import { setTextIndicator, removeAllSpace } from "../../../utils/string-utils";
 
 const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 	const [date, setDate] = useState(new Date());
-
+    console.log(tempArticle);
 	//tag
 	const [typing, setTyping] = useState(false);
 	const [editLast, setEditLast] = useState(false);
@@ -25,6 +25,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 		create_at: "",
 		author: "",
 		isPublic: true,
+		is_enabled: 1,
 		content: "",
 		description: "",
 		tag: [],
@@ -42,6 +43,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 				create_at: "",
 				author: "",
 				isPublic: true,
+				is_enabled: 1,
 				content: "",
 				description: "",
 				tag: [],
@@ -67,6 +69,11 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 			setTempData((prevState) => ({
 				...prevState,
 				[name]: e.target.checked,
+			}));
+		} else if (name === "is_enabled") {
+			setTempData((prevState) => ({
+				...prevState,
+				[name]: +e.target.checked,
 			}));
 		} else {
 			setTempData((prevState) => ({
@@ -129,25 +136,39 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 	//06 遞交輸入內容(新增產品內容、修產品改內容)
 	const handleSubmit = async () => {
 		try {
-			//create
-			let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/article`;
-			let method = "post";
-
-			//edit
-			if (type === "edit") {
-				//全域變數
-				api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/article/${tempArticle.id}`;
-				method = "put";
-			}
-			const res = await axios[method](api, {
-				data: {
+            if(type === "create") {
+                const res = await postArticle({
 					...tempData,
 					create_at: date.getTime(),
-				}, //資料沒寫全，就會failed axios
-			});
+				});
+                dispatch(createAsyncMessage(res.data));
+            }else if(type === "edit") {
+                const res = await editArticle(tempArticle.id, {
+					...tempData,
+					create_at: date.getTime(),
+				});
+                dispatch(createAsyncMessage(res.data));
+            }
+
+			// //create
+			// let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/article`;
+			// let method = "post";
+
+			// //edit
+			// if (type === "edit") {
+			// 	//全域變數
+			// 	api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/article/${tempArticle.id}`;
+			// 	method = "put";
+			// }
+			// const res = await axios[method](api, {
+			// 	data: {
+			// 		...tempData,
+			// 		create_at: date.getTime(),
+			// 	}, //資料沒寫全，就會failed axios
+			// });
 
 			//console.log(res);
-			dispatch(createAsyncMessage(res.data));
+			// dispatch(createAsyncMessage(res.data));
 			closeModal();
 			getArticles();
 		} catch (err) {
@@ -221,10 +242,10 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 										<div className='row mb-2'>
 											{ArticleModalRules.map((item) => (
 												<div className='col-md-6' key={item.id}>
-													<ModalInput 
-                                                        item={item} 
-                                                        data={tempData} 
-                                                        onChange={handleChange} 
+													<ModalInput
+                                                        item={item}
+                                                        data={tempData}
+                                                        onChange={handleChange}
                                                     />
 												</div>
 											))}
@@ -270,7 +291,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 							</div>
 						</div>
 						{/* Footer */}
-                        <ModalFooter 
+                        <ModalFooterBtn
                             handleCancel={handleCancel}
                             handleSubmit={handleSubmit}
                             data={tempArticle}

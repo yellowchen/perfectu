@@ -1,4 +1,6 @@
 import {Routes, Route, Navigate} from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+
 import Login from './pages/Login';
 import Dashboard from './pages/admin/Dashboard';
 import AdminProducts from "./pages/admin/AdminProducts";
@@ -13,7 +15,9 @@ import ProductDetail from "./pages/front/ProductDetail";
 import Wishlist from './pages/front/Wishlist';
 import Cart from './pages/front/Cart';
 import Checkout from './pages/front/Checkout';
+import Payment from "./pages/front/Payment";
 import Success from "./pages/front/Success";
+import Service from "./pages/front/Service";
 import NotFound from './pages/front/NotFound';
 
 
@@ -22,27 +26,88 @@ import NotFound from './pages/front/NotFound';
 function App() {
     return (
 		<div className='App'>
-			<Routes>
-				<Route path='/login' element={<Login />} />
-				<Route path='/admin' element={<Dashboard />}>
-					<Route path='products' element={<AdminProducts />} />
-					<Route path='orders' element={<AdminOrders />} />
-					<Route path='coupon' element={<AdminCoupons />} />
-                    <Route path="articles" element={<AdminArticles/>}  />
-				</Route>
-				<Route path='/' element={<FrontLayout />}>
-					<Route path='/' element={<Home />} />
-					<Route path='/intro' element={<Intro />} />
-					<Route path='/product' element={<Product />} />
-					<Route path='/product/:id' element={<ProductDetail />} />
-					<Route path='/wishlist' element={<Wishlist />} />
-					<Route path='/cart' element={<Cart />} />
-					<Route path='/checkout' element={<Checkout />} />
-                    <Route path="/success/:orderId" element={<Success/>} />
-					<Route path='/notFound' element={<NotFound />} />
-					<Route path='*' element={<Navigate to='/NotFound' />} />
-				</Route>
-			</Routes>
+			<AuthProvider>
+				<Routes>
+					<Route
+						path='/login'
+						element={<Login />}
+					/>
+					<Route
+						path='/admin'
+						element={<Dashboard />}
+					>
+						<Route
+							path='products'
+							element={<AdminProducts />}
+						/>
+						<Route
+							path='orders'
+							element={<AdminOrders />}
+						/>
+						<Route
+							path='coupon'
+							element={<AdminCoupons />}
+						/>
+						<Route
+							path='articles'
+							element={<AdminArticles />}
+						/>
+					</Route>
+					<Route
+						path='/'
+						element={<FrontLayout />}
+					>
+						<Route
+							path='/'
+							element={<Home />}
+						/>
+						<Route
+							path='/intro'
+							element={<Intro />}
+						/>
+						<Route
+							path='/product'
+							element={<Product />}
+						/>
+						<Route
+							path='/product/:id'
+							element={<ProductDetail />}
+						/>
+						<Route
+							path='/wishlist'
+							element={<Wishlist />}
+						/>
+						<Route
+							path='/cart'
+							element={<Cart />}
+						/>
+						<Route
+							path='/checkout'
+							element={<Checkout />}
+						/>
+						<Route
+							path='/payment/:orderId'
+							element={<Payment />}
+						/>
+						<Route
+							path='/success/:orderId'
+							element={<Success />}
+						/>
+						<Route
+							path='/service'
+							element={<Service />}
+						/>
+						<Route
+							path='/notFound'
+							element={<NotFound />}
+						/>
+						<Route
+							path='*'
+							element={<Navigate to='/NotFound' />}
+						/>
+					</Route>
+				</Routes>
+			</AuthProvider>
 		</div>
 	);
 }

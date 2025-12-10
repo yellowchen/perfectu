@@ -1,17 +1,20 @@
-import { useState, useEffect, createContext } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+// import axios from "axios";
 import { Outlet } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
+import { PaymentProvider } from "../../context/PaymentContext";
 import Navbar from "../../components/front/Navbar";
 import Footer from "../../components/front/Footer";
 import MessageToast from "../../components/share/MessageToast";
+import {toggleWishItem} from "../../slice/wishSlice";
 
+import { getCart, postCart, getProducts } from "../../api/front";
 import { createAsyncMessage } from "../../slice/messageSlice";
 import Loading from "../../components/share/Loading";
 
 
-export const PaymentContext = createContext();
+// export const PaymentContext = createContext();
 
 const FrontLayout = () => {
 	const [cartData, setCartData] = useState([]);
@@ -20,20 +23,11 @@ const FrontLayout = () => {
     const [products, setProducts] = useState([]);
     const dispatch = useDispatch();
 
-    //付款方式
-	const [payment, setPayment] = useState("");
-	const paymentValue = {
-		payment,
-		setPayment,
-	};
-
-    //cart
-	const getCart = async () => {
-        setIsLoading(true);
+    //getCart
+	const getAllCart = async () => {
 		try {
-			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/cart`);
+			const res = await getCart();
 			setCartData(res.data.data);
-            setIsLoading(false);
 		} catch (err) {
 			console.log(err);
 		}
@@ -47,41 +41,67 @@ const FrontLayout = () => {
 			},
 		};
 		try {
-			const res = await axios.post(`/v2/api/${process.env.REACT_APP_API_PATH}/cart`, data);
+            const res = await postCart(data)
             dispatch(createAsyncMessage(res.data));
-			getCart();
+			getAllCart();
 		} catch (err) {
-			console.log(err);
             dispatch(createAsyncMessage(err.response.data));
 		}
 	};
 
 	useEffect(() => {
-		getCart();
+		getAllCart();
 	}, []);
 
     //getProducts
-    const getProducts = async (page = 1) => {
+    const getAllProducts = async (page = 1) => {
+        setIsLoading(true);
 		try {
-			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`);
+            const res = await getProducts(page);
 			setProducts(res.data.products);
 		} catch (err) {
 			console.log(err);
-		}
+		} finally {
+            setIsLoading(false);
+        }
 	};
 
+    //getWish
+    const wish = useSelector((state) => state.wishlists);
+    useEffect(() => {
+		localStorage.setItem("wishlistItems", JSON.stringify(wish.wishlistItems));
+	}, [wish]);
+
+    const toggleWishlist = (wishItem) => {
+        dispatch(toggleWishItem(wishItem));
+    };
+
 	return (
-		<PaymentContext.Provider value={paymentValue}>
+		<PaymentProvider>
 			<Loading isLoading={isLoading} />
 			<div className='d-flex flex-column min-vh-100'>
 				<Navbar cartData={cartData} />
 				<MessageToast />
 				<main className='flex-grow-1 flex-shrink-0'>
-					<Outlet context={{ addToCart, setCartQuantity, cartQuantity, cartData, getCart, setIsLoading, isLoading, products, setProducts, getProducts }} />
+					<Outlet
+                        context={{
+                            addToCart,
+                            setCartQuantity,
+                            cartQuantity,
+                            cartData,
+                            getAllCart,
+                            setIsLoading,
+                            isLoading,
+                            products,
+                            setProducts,
+                            getAllProducts,
+                            wish,
+                            toggleWishlist
+                        }} />
 				</main>
 				<Footer />
 			</div>
-		</PaymentContext.Provider>
+		</PaymentProvider>
 	);
 };
 

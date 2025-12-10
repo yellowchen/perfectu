@@ -7,7 +7,6 @@ const ScrollToTop = () => {
 
     //btn
     const toggleVisibility = () => {
-        console.log(window.scrollY);
         if(window.scrollY > 300) {
             setBtnVisible(true);
         }else {
@@ -41,7 +40,7 @@ const ScrollToTop = () => {
 		<>
 			{btnVisible && (
 				<div
-					className='btn btn-secondary position-fixed rounded-circle d-flex justify-content-center align-items-center'
+					className='btn btn-success position-fixed rounded-circle d-flex justify-content-center align-items-center'
 					style={{
 						bottom: "30px",
 						right: "20px",

@@ -7,41 +7,51 @@
 	"CSSNavigation.enableClassNameDefinitionDiagnostic": false,
 
 	//【Prettier】
-	//使用Prettier排版
+	// 使用Prettier排版
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	//控制編輯器是否應自動設定貼上的內容格式。格式器必須可供使用，而且格式器應該能夠設定文件中一個範圍的格式。
+	// 控制編輯器是否應自動設定貼上的內容格式。格式器必須可供使用，而且格式器應該能夠設定文件中一個範圍的格式。
 	"editor.formatOnPaste": true,
-	//在儲存時設定檔案格式。格式器必須處於可用狀態、檔案不得自動儲存，且編輯器不得關機。
+	// 在儲存時設定檔案格式。格式器必須處於可用狀態、檔案不得自動儲存，且編輯器不得關機。
 	"editor.formatOnSave": false,
-	//針對特定文件，設定Prettier為格式化程序的優先工具
-	"[html,javascript]": {
+	"editor.detectIndentation": false,
+	"editor.hover.enabled": false,
+	"editor.wordWrap": "on",
+	"editor.guides.bracketPairs": true,
+	// 針對特定文件，設定Prettier為格式化程序的優先工具
+	"[html,javascript, scss, json]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-
-	//在jsx使用單引號而不是雙引號
-	"prettier.jsxSingleQuote": true,
-	//設定代碼最佳長度，超過則執行換行
-	"prettier.printWidth": 120,
-	//縮排空兩格
-	"prettier.tabWidth": 4,
-	// "editor.tabSize": 4,
-	"editor.detectIndentation": false,
-	//結束時加分號
-	"prettier.semi": true,
-	"editor.hover.enabled": false,
+	// 切換視窗自動儲存
+	"files.autoSave": "onFocusChange",
 	"files.defaultLanguage": "html",
-	//讓函式(名)和後面的括號間，產生空格
-	"javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+	// 儲存檔案時，自動修正空格
+	"files.trimTrailingWhitespace": true,
 
-	"editor.wordWrap": "on",
+	// 在jsx使用單引號而不是雙引號
+	"prettier.jsxSingleQuote": true,
+	// 設定代碼最佳長度，超過則執行換行
+	"prettier.printWidth": 120,
+	// 縮排空兩格
+	"prettier.tabWidth": 4,
+	// 句尾加分號
+	"prettier.semi": true,
+	// 字與括號保有空格
+	"prettier.bracketSpacing": true,
+	"prettier.singleAttributePerLine": true,
 	"prettier.useTabs": true,
-	"editor.guides.bracketPairs": true,
+
+	"[json]": {
+		"editor.quickSuggestions": {
+			"strings": true
+		}
+	},
+	"json.schemas": [],
+
 	"terminal.explorerKind": "external",
 	"terminal.integrated.defaultProfile.windows": "Git Bash",
 
 	// emmet tab 自動展開
 	"emmet.triggerExpansionOnTab": true,
-
 	// template 展開(快速使用HTML標籤)
 	"emmet.includeLanguages": {
 		"javascript": "javascriptreact",
@@ -57,5 +67,7 @@
 	"html.format.wrapAttributes": "force-expand-multiline",
 
 	"workbench.colorTheme": "Default High Contrast",
-	"javascript.updateImportsOnFileMove.enabled": "always"
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	// 讓函式(名)和後面的括號間，產生空格
+	"javascript.format.insertSpaceBeforeFunctionParenthesis": true
 }

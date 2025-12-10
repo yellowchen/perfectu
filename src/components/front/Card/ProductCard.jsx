@@ -7,15 +7,15 @@ import { toggleWishItem } from "../../../slice/wishSlice";
 import { IconButton } from "../../../utils/button/Button";
 
 
-const ProductCard = ({ item, wish }) => {
+const ProductCard = ({ item, wish, toggleWishlist }) => {
     console.log(item);
 	const { addToCart } = useOutletContext();
 	const { id, imageUrl, title, price, description } = item;
 
-	const dispatch = useDispatch();
-	const toggleWishlist = (wishItem) => {
-		dispatch(toggleWishItem(wishItem));
-	};
+	// const dispatch = useDispatch();
+	// const toggleWishlist = (wishItem) => {
+	// 	dispatch(toggleWishItem(wishItem));
+	// };
 
 	return (
 		<div
@@ -24,12 +24,16 @@ const ProductCard = ({ item, wish }) => {
 				// width: "30%",
 				minWidth: "330px",
 				height: "420px",
-				borderRadius: "5px",
+
+				// borderRadius: "5px",
+				borderRadius: "20px",
+
 				boxShadow: "0 5px 15px 0 rgba(0, 0, 0, .4)",
 				margin: "3rem 2rem",
-				background: "#309dc1",
+				// background: "#309dc1",
 			}}
 		>
+			{/* wish */}
 			<button
 				className='btn rounded-circle btn-wish'
 				onClick={() => {
@@ -40,34 +44,39 @@ const ProductCard = ({ item, wish }) => {
 					<i
 						className='bi bi-suit-heart-fill'
 						style={{
-							color: "#f7ae5b",
+							color: "#309dc1",
 						}}
 					></i>
 				) : (
 					<i
 						className='bi bi-suit-heart-fill'
 						style={{
-							color: "#309dc1",
+							color: "#bdbebf",
 						}}
 					></i>
 				)}
 			</button>
-			<NavLink to={`/product/${id}`} style={{}}>
+			{/* IMG */}
+			<NavLink
+				to={`/product/${id}`}
+				style={{}}
+                className="border-0"
+			>
 				<img
 					src={imageUrl}
 					className='card-img-top position-relative'
 					alt={title}
 					style={{
 						height: "220px",
-						border: "7px solid #309dc1",
-						borderRadius: "30px 30px 0 0 ",
-                        clipPath: "polygon(0 0, 50% 0, 100% 25%, 100% 100%, 58% 100%, 0 75%)"
+						// border: "7px solid #309dc1",
+						borderRadius: "20px 20px 0 0 ",
+						clipPath: "polygon(0 0, 50% 0, 100% 25%, 100% 100%, 50% 100%, 0 75%)",
 					}}
 				/>
 			</NavLink>
+			{/* txt */}
 			<div
 				style={{
-					// color: "#f7ae5b",
 					color: "#fff",
 					borderRadius: " 0 0 30px 30px",
 					background: "#fff",
@@ -90,9 +99,6 @@ const ProductCard = ({ item, wish }) => {
 						>
 							<h4
 								style={{
-									// position: "absolute",
-									// top: "55%",
-
 									letterSpacing: "1rem",
 								}}
 							>
@@ -101,7 +107,7 @@ const ProductCard = ({ item, wish }) => {
 							<p
 								className='uoq_mun'
 								style={{
-									color: "#309dc1",
+									color: "#777",
 								}}
 							>
 								NT$ {thousandFormat(price)}
@@ -109,12 +115,12 @@ const ProductCard = ({ item, wish }) => {
 						</div>
 						<div className='card-description'>
 							<p
-								className='uoq_mun'
+								className='noto_serif'
 								style={{
 									position: "absolute",
-									width: "55%",
-									top: "63%",
-									right: "5%",
+									width: "80%",
+									top: "68%",
+									left: "10%",
 									color: "#000",
 									textAlign: "justify",
 								}}
@@ -127,19 +133,12 @@ const ProductCard = ({ item, wish }) => {
 						className='card-btn px-2'
 						style={{
 							position: "absolute",
-							bottom: "1rem",
+							bottom: "5%",
+							right: "2%",
 						}}
 					>
-						<NavLink to={`/product/${id}`}>
-							<IconButton
-								className={`rounded-4 px-5 mx-2`}
-								style={{ border: "3px solid #309dc1", color: "#309dc1" }}
-								icon={<i className='bi bi-info-circle-fill'></i>}
-							/>
-						</NavLink>
 						<IconButton
-							className={`rounded-4 px-5 mx-2`}
-							style={{ border: "3px solid #309dc1", color: "#309dc1" }}
+							style={{ padding: "5px" }}
 							action={() => {
 								addToCart(id);
 							}}

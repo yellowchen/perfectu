@@ -1,4 +1,7 @@
-export const StoryCard = ({borderRadius_out, direction, imgUrl, name, borderRadius_in, shape, title, content}) => {
+export const StoryCard = ({item}) => {
+
+    const {borderRadius_out, direction, imgUrl, borderRadius_in, shape, title, content} = item;
+
     return (
 		<div>
 			<div

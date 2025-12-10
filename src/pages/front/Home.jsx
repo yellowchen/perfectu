@@ -1,19 +1,21 @@
 import {useState, useEffect, useRef} from "react";
 import { useOutletContext } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 //Slider
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import CarouselCard from "../../components/front/Card/CarouselCard";
+import { sliderSetting } from "../../utils/data-utils";
+
+//API
+import { getArticles, getArticle } from "../../api/front";
 
 import Banner from "./../../components/front/Banner";
-import { CouponTicket } from "../../components/front/CouponTicket";
+import { CouponBanner } from "../../components/front/CouponBanner";
+import { ProductBanner } from "../../components/front/ProductBanner";
 import { RecommendCard } from "../../components/front/Card/RecommendCard";
 import Game from "./../../components/front/Game";
-
-import { sliderSetting } from "../../utils/data-utils";
 import { debounce } from "../../utils/ui-utils";
 
 
@@ -21,9 +23,8 @@ const Home = () => {
     const [articles, setArticles] = useState();
     const [article, setArticle] = useState();
     const [tag, setTag] = useState([]);
-    // const [products, setProducts] = useState([]);
-    const [copyText, setCopyText] = useState("Copy Code");
-    const {products, getProducts} = useOutletContext();
+    const [copyText, setCopyText] = useState("複製優惠碼");
+    const {products, getAllProducts, setIsLoading} = useOutletContext();
 
     //slide
     const slideRef = useRef();
@@ -36,29 +37,37 @@ const Home = () => {
 		}
     }
     window.addEventListener("scroll", debounce(checkSlide));
-    
+
     //products
     useEffect(() => {
-        getProducts(1);
+        getAllProducts(1);
     }, []);
 
-    
+
     //article
-    const getArticle = async() => {
+    const getOneArticle = async() => {
+        setIsLoading(true);
         const id = articles[Math.floor(Math.random() * (articles?.length - 1 - 0 + 1) + 0)].id;
-        const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/article/${id}`);
-        setArticle(res.data.article);
-        setTag(res.data.article.tag);
+        try {
+			const res = await getArticle(id);
+			setArticle(res.data.article);
+			setTag(res.data.article.tag);
+		} catch (err) {
+			console.log(err);
+		} finally {
+			setIsLoading(false);
+		}
+
     }
-    
+
     useEffect(() => {
-        const getArticles = async () => {
-			const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/articles`);
+        const getAllArticles = async () => {
+            const res = await getArticles();
 			await setArticles(res.data.articles);
 		};
-        getArticles();
+        getAllArticles();
     }, []);
-    
+
     //tag
     const tagId = products.filter(item => item.title === tag[0])[0]?.id;
 
@@ -66,17 +75,31 @@ const Home = () => {
     const CopyToClipBoard = () => {
         navigator.clipboard.writeText("HelloAutumn")
             .then(() => {
-                setCopyText("Copy Success");
+                setCopyText("複製成功");
             })
             .catch((err) => {console.log(err)})
     }
 
     return (
 		<>
-			<Banner
-				imgUrl='url(https://res.cloudinary.com/da85u8p5e/image/upload/v1754556524/sergey-shmidt-koy6FlCCy5s-unsplash_pyw5fq.jpg)'
-				position='center 45%'
-			/>
+			<div className='slider-container'>
+				<Slider {...sliderSetting}>
+					<Banner
+						imgUrl='url(https://res.cloudinary.com/da85u8p5e/image/upload/v1754556524/sergey-shmidt-koy6FlCCy5s-unsplash_pyw5fq.jpg)'
+						position='center 45%'
+					/>
+					<ProductBanner
+						imgUrl='url(https://res.cloudinary.com/da85u8p5e/image/upload/v1764232234/lavender_jjblw0.jpg)'
+						position='left 65%'
+					/>
+					<CouponBanner
+						imgUrl='url(https://res.cloudinary.com/da85u8p5e/image/upload/v1762313546/autumn_birrao.jpg)'
+						position='center 45%'
+						copy={CopyToClipBoard}
+						text={copyText}
+					/>
+				</Slider>
+			</div>
 			<div
 				className='edu_tas text-center px-5 fs-1'
 				style={{
@@ -86,18 +109,11 @@ const Home = () => {
 				<p>”Smell is a word, perfume is literature.”</p>
 				<p>——Jean-Claude Ellena</p>
 			</div>
-			<Slider {...sliderSetting}>
-				{products.map((item) => (
-					<CarouselCard
-						key={item.id}
-						id={item.id}
-						img={item.imageUrl}
-						title={item.title}
-						price={item.price}
-					/>
-				))}
-			</Slider>
-			<RecommendCard recommend={products} slideRef={slideRef} />
+
+			<RecommendCard
+				recommend={products}
+				slideRef={slideRef}
+			/>
 			<div
 				className='py-0 position-relative'
 				style={{
@@ -118,12 +134,6 @@ const Home = () => {
 				>
 					<div
 						className='container edu_tas'
-						style={
-							{
-								// clipPath: "polygon(68% 0, 0 50%, 92% 100%)",
-								// backdropFilter: "contrast(",
-							}
-						}
 					>
 						<div
 							className='p-lg-4 text-light text-center text-lg-start fs-1 fw-medium d-flex flex-column'
@@ -147,8 +157,12 @@ const Home = () => {
 					}}
 				></div>
 			</div>
-			<CouponTicket copy={CopyToClipBoard} text={copyText} />
-			<Game article={article} getArticle={getArticle} tag={tag} tagId={tagId} />
+			<Game
+				article={article}
+				getArticle={getOneArticle}
+				tag={tag}
+				tagId={tagId}
+			/>
 		</>
 	);
 }

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { TextButton } from "../../../utils/button/Button";
 
 export const RecommendCard = ({recommend, slideRef}) => {
 	return (
@@ -6,7 +7,11 @@ export const RecommendCard = ({recommend, slideRef}) => {
 			{recommend
 				.filter((item) => item.title === "秋鴛")
 				.map((item) => (
-					<div key={item.id} className='recommend' ref={slideRef}>
+					<div
+						key={item.id}
+						className='recommend'
+						ref={slideRef}
+					>
 						<div className='txt'>
 							<h1>
 								<small>秋季推薦 - </small>
@@ -16,14 +21,22 @@ export const RecommendCard = ({recommend, slideRef}) => {
 								<h5 className='lh-lg'>{item.content}</h5>
 								<NavLink
 									to={`/product/${item.id}`}
-									className='px-1 py-2 rounded-2 btn-secondary btn w-25 align-self-end text-light'
+									className='btn align-self-end text-light'
 								>
-									More
+									<TextButton
+										className='rounded-4 py-2'
+										style={{}}
+										text={`瞭解更多`}
+									/>
 								</NavLink>
 							</div>
 						</div>
 						<div className='img'>
-							<img className='img-fluid' src={item.imageUrl} alt={item.title} />
+							<img
+								className='img-fluid'
+								src={item.imageUrl}
+								alt={item.title}
+							/>
 						</div>
 					</div>
 				))}

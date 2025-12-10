@@ -8,7 +8,7 @@
 //Noto Serif (noto_serif)
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
-//Noto Sans TC 
+//Noto Sans TC
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
 
 //Playwrite Tanzania (play_write)
@@ -32,7 +32,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    
+
 }
 
 html {
@@ -41,7 +41,7 @@ html {
 
 body {
     // line-height: $lh-base;
-    font-family: 'Limelight', "UoqMunThenKhung";
+    font-family: "Noto Serif", serif;;
     background-color: #eee;
 }
 
@@ -69,7 +69,7 @@ ul {
 }
 
 .flex-1 {
-    flex-grow: 0;   
+    flex-grow: 0;
     @include media-md {
         flex-grow: 1;
         width: 0;
@@ -199,7 +199,7 @@ ul {
         flex-direction: column;
         width: 50%;
         h1 {
-            background: #f29e3e; 
+            background: #f29e3e;
             padding: 2rem 1rem;
             small {
                 font-size: 1.8rem;
@@ -232,7 +232,7 @@ ul {
             content: "";
             position: absolute;
             background: #eee;
-            border: 2rem solid #f4d3ad;
+            border: 1.5rem solid #f4d3ad;
             width: 70%;
             aspect-ratio: 1/1;
             top: 18%;
@@ -271,8 +271,8 @@ ul {
             h2 {
                 font-size: 30px;
             }
-        }          
-    }    
+        }
+    }
 }
 
 .coupon-btn {
@@ -291,12 +291,12 @@ ul {
                 font-size: 14px;
             }
         }
-        
+
     }
 }
 
 .game {
-    background: linear-gradient(98deg,rgba(247, 225, 200, 1) 0%, rgba(244, 211, 173, 1) 41%, rgba(245, 187, 120, 1) 100%);
+    // background: linear-gradient(98deg,rgba(247, 225, 200, 1) 0%, rgba(244, 211, 173, 1) 41%, rgba(245, 187, 120, 1) 100%);
     position: relative;
     &::before, &::after {
         content: "";
@@ -314,9 +314,9 @@ ul {
         right: 0;
     }
     div {
-        .cloud {   
-            opacity: .8;         
-            margin: 15vw auto 7vw;
+        .cloud {
+            opacity: .8;
+            margin: 16vw auto 7vw;
             padding: 1rem;
             max-width: 700px;
             min-width: 200px;
@@ -345,17 +345,17 @@ ul {
             &::after {
                 min-width: 48%;
                 right: 13%;
-                bottom: 25%;        
+                bottom: 25%;
             }
             @include media-lg {
                 margin-top: 25vw;
             }
-        }   
+        }
         .cloud:nth-child(2) {
             position: absolute;
             width: 24%;
-            top: 6rem;
-            left: 13%;
+            top: 5rem;
+            left: 12%;
             display: block;
             background-color: #c4e7f2;
             color: #c4e7f2;
@@ -394,35 +394,50 @@ ul {
 }
 
 .neumorphism {
-    padding-top: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    h3 {
-        padding: 0 0 26px;
-    }
-    .circle {
-        margin: 2rem 2rem 4rem;
-        display: inline-block;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background-color: #f4d3ad;
-        transition: box-shadow 0.5s;
-        box-shadow:
-            5px 5px 20px #f29e3e,
-            -5px -5px 20px #f2e9de,
-            inset 5px 5px 20px transparent,
-            inset -5px -5px 20px transparent;
-        &:hover {
-            box-shadow:
-                5px 5px 20px transparent,
-                -5px -5px 20px transparent,
-                inset 5px 5px 20px #f29e3e,
-                inset -5px -5px 20px #f2e9de,
-        }
-    }
+    // padding-top: 2rem;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // flex-wrap: wrap;
+    // h3 {
+    //     padding: 0 0 26px;
+    // }
+    // button {
+    //     position: relative;
+    //     z-index: 10;
+    //     &::before {
+    //         content: "";
+    //         position: absolute;
+    //         top: -20px;
+    //         left: 15px;
+    //         background-color: $primary;
+    //         width: 40px;
+    //         height: 120px;
+    //         border-radius: 20px;
+    //         z-index: -999;
+    //     }
+    // }
+    // .circle {
+    //     margin: 2rem 2rem 4rem;
+    //     display: inline-block;
+    //     width: 100px;
+    //     height: 100px;
+    //     border-radius: 50%;
+    //     background-color: #f4d3ad;
+    //     transition: box-shadow 0.5s;
+    //     box-shadow:
+    //         5px 5px 20px #f29e3e,
+    //         -5px -5px 20px #f2e9de,
+    //         inset 5px 5px 20px transparent,
+    //         inset -5px -5px 20px transparent;
+    //     &:hover {
+    //         box-shadow:
+    //             5px 5px 20px transparent,
+    //             -5px -5px 20px transparent,
+    //             inset 5px 5px 20px #f29e3e,
+    //             inset -5px -5px 20px #f2e9de,
+    //     }
+    // }
 }
 
 .cloud {
@@ -477,7 +492,7 @@ ul {
     .shape-RT {
         @include media-md {
             float: left;
-            width: 22%; 
+            width: 22%;
             height: 150px;
             shape-outside: radial-gradient(farthest-side ellipse at right top, transparent 100%, #fff);
         }
@@ -485,7 +500,7 @@ ul {
     .shape-RB {
         @include media-md {
             float: left;
-            width: 12%; 
+            width: 12%;
             height: 100px;
             shape-outside: radial-gradient(farthest-side ellipse at right bottom, transparent 100%, #fff);
         }
@@ -493,7 +508,7 @@ ul {
     .shape-LT {
         @include media-md {
             float: right;
-            width: 15%; 
+            width: 15%;
             height: 100px;
             shape-outside: radial-gradient(farthest-side ellipse at left top, transparent 100%, #fff);
         }
@@ -501,7 +516,7 @@ ul {
     .shape-LB {
         @include media-md {
             float: right;
-            width: 12%; 
+            width: 12%;
             height: 100px;
             shape-outside: radial-gradient(farthest-side ellipse at left bottom, transparent 100%, #fff);
         }
@@ -515,46 +530,19 @@ ul {
         min-width: 330px;
         margin: 3rem 2rem;
     }
-    div{
-        // margin-bottom: 4vw;
-        .btn-category {
-            font-size: 18px;
-            width: 100px;
-            margin: 0 3px;
-            padding: .8rem 0;
-            border: transparent;
-            color: #309dc1;
-            border-bottom: 3px solid #309dc1;
-            background-color: #eee;
-            outline: none;
-            transform: translateX(0px);
-            transition: all .35s ease-in-out;
-            &:focus {
-                outline: none;
-                border: none;
-            }
-            &:hover {
-                transform: translateY(-12px);
-            }
-        }
-        .btn-category.underline {
-            color: #f7ae5b;
-            border: transparent;
-            border-bottom: 10px solid $secondary;
-        }
-    }
 }
 .card-product {
     position: relative;
     &:hover {
-        transform: translate(0%, -8%);
+        // transform: translate(0%, -8%);
+        transform: scale(1.05);
         transition: all .3s ease;
     }
     .btn-wish {
         background: transparent;
 		font-size: 1.3rem;
         position: absolute;
-        top: 2%;
+        top: 0%;
         right: 3%;
         z-index: 1;
     }
@@ -568,18 +556,18 @@ ul {
         // bottom: 149px;
         left: 2%;
         border-top: transparent 50px solid;
-        border-left: currentColor 170px solid; 
+        border-left: currentColor 170px solid;
         // border-top: transparent 55px solid;
-        // border-left: #309dc1 180px solid; 
+        // border-left: #309dc1 180px solid;
         // z-index: 1;
     }
     &::after {
         content: "";
         position: absolute;
-        top: 7px;
-        right: 2%;
+        top: 0%;
+        right: 0%;
         border-bottom: transparent 50px solid;
-        border-right: currentColor 155px solid; 
+        border-right: currentColor 155px solid;
         overflow: hidden;
         border-radius: 0 25px 0 0;
     }

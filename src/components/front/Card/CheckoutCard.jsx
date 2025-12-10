@@ -11,18 +11,22 @@ const CheckoutCard = ({ item }) => {
 						src={product.imageUrl}
 						className='img-fluid rounded-1'
 						alt={product.title}
-						style={{ width: "48px", height: "48px" }}
+						style={{ width: "60px", height: "60px" }}
 					/>
 				</div>
 				<div className='w-100 px-2'>
-					<div className='d-flex justify-content-between fw-bold'>
-						<p className='mb-0'>{product.title}</p>
-						<p className='mb-0'>x {qty}</p>
+					<div className='d-flex justify-content-between'>
+						<p className='mb-0 fw-bold'>
+							{product.title}
+							<small className='text-dark'> / 50ml</small>
+						</p>
+						<p className='text-black-50 mb-0'>
+							<small className=''>NT$ {thousandFormat(product.price)}</small>
+						</p>
 					</div>
 					<div className='d-flex justify-content-between'>
-						<p className='text-muted mb-0'>
-							<small className="">NT$ {thousandFormat(product.price)}</small>
-						</p>
+						<p className='mb-0 ps-1'>x {qty}</p>
+
 						<p className='mb-0'>NT$ {thousandFormat(total)}</p>
 					</div>
 				</div>
