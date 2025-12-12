@@ -12,7 +12,7 @@ export const OrderInformation = ({ orderData, user, payment }) => {
 			<div className=''>
 				<h3 className='mb-4 text-center'>寄件資訊</h3>
 				<hr className='mx-1' />
-				<div className='p-3'>
+				<div className='p-2'>
 					<h5 className='d-flex'>
 						<p className='pe-3 fw-bolder'>姓名：</p>
 						<p>{user?.name}</p>
@@ -35,7 +35,7 @@ export const OrderInformation = ({ orderData, user, payment }) => {
 			<div className='mb-4'>
 				<h3 className='mb-4 text-center'>訂單資訊</h3>
 				<hr className='my-3 mx-1' />
-				<div className='p-3'>
+				<div className='p-2'>
 					<h5 className='d-flex flex-wrap'>
 						<p className='pe-3 fw-bolder'>訂單編號：</p>
 						<p>{orderData?.id}</p>

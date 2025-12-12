@@ -29,11 +29,11 @@ export const CheckoutInputRules = [
 		id: "tel",
 		labelText: "手機號碼",
 		type: "tel",
-		placeholder: "09xx-xxx-xxx",
+		placeholder: "09xxxxxxxx",
 		rules: {
 			required: "手機為必填",
 			pattern: {
-				value: /^09\d{2}-\d{3}-\d{3}$/,
+				value: /^09\d{8}$/,
 				message: "手機格式不正確",
 			},
 		},

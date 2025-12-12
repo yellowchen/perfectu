@@ -8,7 +8,7 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 
 	return (
 		<div
-			className='row g-0 align-items-center mb-4 bg-light text-center'
+			className='row g-0 align-items-center mb-2 bg-light text-center'
 			style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
 		>
 			{/* img */}

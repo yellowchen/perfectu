@@ -54,8 +54,6 @@ const Checkout = () => {
 			console.log(err);
 		}
 	};
-
-    //?
     useEffect(() => {
         const subscription = watch((value) => {
 			console.log(value);
@@ -157,14 +155,14 @@ const Checkout = () => {
 									{/* Submit */}
 									<div className='d-flex justify-content-around mx-0 mx-md-3 mt-5 px-3 py-2'>
 										<ClickedButton
-											className='rounded-4 mx-4 w-50 py-2'
+											className='rounded-4 mx-4 w-50 py-2 px-1'
 											content='返回購物車'
 											action={() => {
 												navigate(-1);
 											}}
 										/>
 										<SubmitButton
-											className='rounded-4 mx-4 w-50 py-2'
+											className='rounded-4 mx-4 w-50 py-2 px-1'
 											text='確認結帳'
 										/>
 									</div>

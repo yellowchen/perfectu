@@ -44,8 +44,10 @@ const Success = () => {
 			<div className='container'>
 				<h1 className='title uoq_mun'>訂購完成</h1>
 				<div className='row g-0 my-5 mx-0 mx-md-5 p-0'>
-					<p className='fs-2 fw-bold text-center text-primary'>
-						您的訂購已完成，請等待1~3天的時間<i className='bi bi-person-arms-up fs-1'></i>
+					<p className='fs-2 fw-bold text-center text-primary lh-lg'>
+						感謝您的惠顧 <i className='bi bi-person-arms-up fs-1'></i>
+						<br />
+						商品預計在訂單付款後的3個工作天後出貨
 					</p>
 					<OrderInformation
 						orderData={orderData}

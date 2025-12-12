@@ -57,7 +57,7 @@ const Payment = () => {
 			<div className='container'>
 				<h1 className='title uoq_mun'>付款方式</h1>
 				<div className='row g-0'>
-					<div className='d-flex gap-4 flex-column flex-lg-row align-items-start p-3 rounded-0'>
+					<div className='d-flex gap-4 flex-column flex-lg-row align-items-start rounded-0'>
 						<OrderInformation
 							orderData={orderData}
 							user={user}
