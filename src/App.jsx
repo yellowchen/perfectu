@@ -1,26 +1,26 @@
 import {Routes, Route, Navigate} from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./Common/context/AuthContext";
 
-import Login from './pages/Login';
-import Dashboard from './pages/admin/Dashboard';
-import AdminProducts from "./pages/admin/AdminProducts";
-import AdminCoupons from './pages/admin/AdminCoupons';
-import AdminOrders from "./pages/admin/AdminOrders";
-import AdminArticles from "./pages/admin/AdminArticles";
-import FrontLayout from "./pages/front/FrontLayout";
-import Intro from "./pages/front/Intro";
-import Home from "./pages/front/Home";
-import Product from './pages/front/Product';
-import ProductDetail from "./pages/front/ProductDetail";
-import Wishlist from './pages/front/Wishlist';
-import Cart from './pages/front/Cart';
-import Checkout from './pages/front/Checkout';
-import Payment from "./pages/front/Payment";
-import Success from "./pages/front/Success";
-import Service from "./pages/front/Service";
-import NotFound from './pages/front/NotFound';
+import Login from './Server/pages/login/Login';
 
+import Dashboard from "./Server/pages/Dashboard";
+import AdminProducts from "./Server/pages/product/AdminProducts";
+import AdminCoupons from "./Server/pages/coupon/AdminCoupons";
+import AdminOrders from "./Server/pages/order/AdminOrders";
+import AdminArticles from "./Server/pages/article/AdminArticles";
 
+import FrontLayout from "./Client/pages/FrontLayout";
+import Intro from "./Client/pages/intro/Intro";
+import Home from "./Client/pages/home/Home";
+import Product from "./Client/pages/product/Product";
+import ProductDetail from "./Client/pages/product/ProductDetail";
+import Wishlist from "./Client/pages/wishlist/Wishlist";
+import Cart from "./Client/pages/cart/Cart";
+import Checkout from "./Client/pages/checkout/Checkout";
+import Payment from "./Client/pages/checkout/Payment";
+import Success from "./Client/pages/checkout/Success";
+import Service from "./Client/pages/service/Service";
+import NotFound from "./Client/pages/NotFound";
 
 
 function App() {

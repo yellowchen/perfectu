@@ -14,7 +14,7 @@
 	// 在儲存時設定檔案格式。格式器必須處於可用狀態、檔案不得自動儲存，且編輯器不得關機。
 	"editor.formatOnSave": false,
 	"editor.detectIndentation": false,
-	"editor.hover.enabled": false,
+	"editor.hover.enabled": "off",
 	"editor.wordWrap": "on",
 	"editor.guides.bracketPairs": true,
 	// 針對特定文件，設定Prettier為格式化程序的優先工具

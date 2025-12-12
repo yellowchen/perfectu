@@ -1,6 +1,7 @@
 import {configureStore} from "@reduxjs/toolkit";
-import messageReducer from "./slice/messageSlice";
-import wishReducer from "./slice/wishSlice";
+
+import wishReducer from "./Client/common/slice/wishSlice";
+import messageReducer from "./Common/slice/messageSlice";
 
 
 export const store = configureStore({

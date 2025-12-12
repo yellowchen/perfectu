@@ -1,0 +1,16 @@
+export const ArticleModalRules = [
+	{
+		id: "author",
+		labelText: "作者",
+		type: "text",
+		name: "author",
+		placeholder: "請輸入作者",
+	},
+	{
+		id: "title",
+		labelText: "標題",
+		type: "text",
+		name: "title",
+		placeholder: "請輸入標題",
+	},
+];
