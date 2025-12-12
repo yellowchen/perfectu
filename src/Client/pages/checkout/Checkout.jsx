@@ -2,17 +2,17 @@ import { useState, useEffect } from "react";
 import {useForm, useWatch} from "react-hook-form";
 import { useOutletContext, useNavigate, Navigate } from 'react-router-dom';
 
-import { postOrder } from "./../../common/api/front";
-import { ProgressBar } from "./../../common/utils/dataUtils/ProgressBar";
-import { SubmitButton, ClickedButton } from "./../../common/utils/Button";
-
 import CheckoutCard from "./component/card/CheckoutCard";
 import { Address } from "./component/Address";
 import taiwanAddress from "./data/Taiwan.json";
 import { CheckoutInputRules } from "./data/checkoutInputRules";
 
-import { FormTextArea, FormInput } from "./../../../Common/FormElements";
-import { thousandFormat } from "./../../../Common/utils/stringUtils/string-utils";
+import { postOrder } from "../../common/api/front";
+import { ProgressBar } from "../../common/utils/dataUtils/ProgressBar";
+import { SubmitButton, ClickedButton } from "../../common/utils/Button";
+
+import { FormTextArea, FormInput } from "../../../Common/FormElements";
+import { thousandFormat } from "../../../Common/utils/stringUtils/string-utils";
 
 
 const Checkout = () => {
@@ -21,7 +21,6 @@ const Checkout = () => {
     const [addressData, setAddressData] = useState([]);
     const navigate = useNavigate();
 
-	//react-hook-form[01]
 	const {
 		register,
 		handleSubmit,
@@ -32,9 +31,7 @@ const Checkout = () => {
 		mode: "onTouched",
 	});
 
-	//react-hook-form[02] --> <form></form>
 	const onSubmit = async (data, postCode) => {
-        console.log(data);
 		const form = {
 			data: {
 				user: {
@@ -66,13 +63,11 @@ const Checkout = () => {
         name: "city",
         defaultValue: ""
     });
-
     const watchDistrict = useWatch({
         control,
         name: "district",
         defaultValue: ""
     });
-    console.log(watchDistrict)
 
     useEffect(() => {
 		setAddressData(taiwanAddress);
@@ -93,7 +88,7 @@ const Checkout = () => {
 							onSubmit={handleSubmit(onSubmit)}
 						>
 							<div className='d-flex gap-4 flex-column flex-lg-row px-0 px-md-2'>
-								{/* Order */}
+
 								<div
 									className='w-100 p-3 bg-light align-self-start'
 									style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
@@ -120,7 +115,7 @@ const Checkout = () => {
 										<h5 className=''>NT$ {thousandFormat(final_total)}</h5>
 									</div>
 								</div>
-								{/* Info */}
+
 								<div className='col-12 col-lg-7 d-flex flex-column'>
 									<div
 										className='p-3 bg-light'
@@ -152,7 +147,7 @@ const Checkout = () => {
 											register={register}
 										/>
 									</div>
-									{/* Submit */}
+
 									<div className='d-flex justify-content-around mx-0 mx-md-3 mt-5 px-3 py-2'>
 										<ClickedButton
 											className='rounded-4 mx-4 w-50 py-2 px-1'

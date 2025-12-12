@@ -55,7 +55,6 @@ export const CouponBanner = ({ imgUrl, position, copy, text }) => {
 							top: "0%",
 							width: "100%",
 							height: "350px",
-							// backdropFilter: "blur(4px)",
 						}}
 					>
 						<div
@@ -95,14 +94,6 @@ export const CouponBanner = ({ imgUrl, position, copy, text }) => {
 									action={copy}
 									content={text}
 								/>
-								{/* <button
-									type='button'
-									className='btn hover-btn rounded-5 py-2 px-4 mt-2 mb-4 fs-3'
-									onClick={copy}
-									// style={{ border: "4px solid #309dc1"}}
-								>
-									{text}
-								</button> */}
 							</div>
 						</div>
 					</div>

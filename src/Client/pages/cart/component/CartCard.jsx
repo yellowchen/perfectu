@@ -1,17 +1,13 @@
 import { Link } from "react-router-dom";
-
 import { thousandFormat } from "../../../../Common/utils/stringUtils/string-utils";
 
 const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWishlist }) => {
-
 	const { qty, product_id, product } = item;
-
 	return (
 		<div
 			className='row g-0 align-items-center mb-2 bg-light text-center'
 			style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
 		>
-			{/* img */}
 			<div className='col-2 p-0'>
 				<Link to={`/product/${product_id}`}>
 					<img
@@ -22,14 +18,11 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 					/>
 				</Link>
 			</div>
-			{/* title */}
 			<p className='col-3 col-sm-2 my-0'>
 				{product.title}
 				<small className='text-dark'>/50ml</small>
 			</p>
-			{/* price */}
 			<p className='col-3 col-sm-2 my-0'>NT$ {thousandFormat(product.price)}</p>
-			{/* number */}
 			<div className='col-4 col-lg-3'>
 				<div className='input-group px-3'>
 					<button
@@ -60,9 +53,7 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 					</button>
 				</div>
 			</div>
-			{/* sum */}
 			<p className='col-0 col-sm-2 d-none d-sm-block my-0'>NT$ {thousandFormat(product.price * qty)}</p>
-			{/* wish & delete */}
 			<div className='col-0 col-lg-1 d-none d-lg-block d-flex flex-column'>
 				<button
 					className='btn btn-wish p-0 w-50 text-dark d-block mx-auto mb-3'

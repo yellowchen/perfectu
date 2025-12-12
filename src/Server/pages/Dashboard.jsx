@@ -21,7 +21,7 @@ const Dashboard = () => {
     }, [isAuthenticated, navigate])
 
 	return (
-		<div className='d-flex flex-column min-vh-100 noto_serif'>
+		<div className='d-flex flex-column min-vh-100'>
 			<MessageToast />
 			<nav className='navbar bg-body-tertiary p-0'>
 				<div className='container-fluid bg-dark'>

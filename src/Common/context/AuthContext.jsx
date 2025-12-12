@@ -1,6 +1,5 @@
 import { useState, useEffect, createContext } from "react";
 import { useLocation } from "react-router-dom";
-
 import { logInApi, checkPermission } from './../../Server/common/api/auth';
 
 export const AuthContext = createContext({

@@ -5,7 +5,7 @@ import { DetailInformation } from "./data/DetailInformation";
 import { getProduct } from "../../common/api/front";
 import { ClickedButton } from "../../common/utils/Button";
 import { Tabs } from "../../common/Tabs";
-import { thousandFormat } from './../../../Common/utils/stringUtils/string-utils';
+import { thousandFormat } from '../../../Common/utils/stringUtils/string-utils';
 
 
 const ProductDetail = () => {
@@ -120,12 +120,6 @@ const ProductDetail = () => {
 					</h5>
 					<p className='mx-lg-5 mt-4 mb-5 bg-light p-3 lh-lg'>{description}</p>
 				</div>
-
-				{/* <Tab
-					TabData={DetailInformation}
-					activeTab={activeTab}
-					setActiveTab={setActiveTab}
-				/> */}
 				<Tabs
 					tabData={DetailInformation}
 					activeTab={activeTab}

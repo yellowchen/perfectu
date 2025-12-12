@@ -8,7 +8,6 @@ export const OrderInformation = ({ orderData, user, payment }) => {
 			className='mb-5 w-100 bg-light p-3'
 			style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
 		>
-			{/* 寄件資訊 */}
 			<div className=''>
 				<h3 className='mb-4 text-center'>寄件資訊</h3>
 				<hr className='mx-1' />
@@ -31,7 +30,7 @@ export const OrderInformation = ({ orderData, user, payment }) => {
 					</h5>
 				</div>
 			</div>
-			{/* 訂單資訊 */}
+
 			<div className='mb-4'>
 				<h3 className='mb-4 text-center'>訂單資訊</h3>
 				<hr className='my-3 mx-1' />
@@ -58,7 +57,7 @@ export const OrderInformation = ({ orderData, user, payment }) => {
 					)}
 				</div>
 			</div>
-			{/* 商品明細 */}
+
 			<div>
 				<h3 className='mb-4 text-center'>商品明細</h3>
 				<hr className='my-3 mx-1' />

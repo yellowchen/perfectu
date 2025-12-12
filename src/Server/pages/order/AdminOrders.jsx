@@ -1,10 +1,10 @@
 import {useEffect, useState, useRef} from "react";
 import { Modal } from "bootstrap";
 
-
 import OrderModal from "./OrderModal";
 import { getOrders } from '../../common/api/admin';
 import Pagination from '../../common/Pagination';
+
 import { thousandFormat } from './../../../Common/utils/stringUtils/string-utils';
 
 
@@ -13,7 +13,6 @@ const AdminOrders = () => {
     const [tempOrder, setTempOrder] = useState({});
     const [pagination, setPagination] = useState({});
 
-    //01取得所有項目API
     const getAllOrders = (page = 1) => {
         getOrders(page)
             .then(res => {
@@ -25,9 +24,6 @@ const AdminOrders = () => {
             })
     }
 
-    console.log(orders);
-
-    //03 各功能Modal製作
     const orderModal = useRef(null);
     useEffect(() => {
         orderModal.current = new Modal("#orderModal", {
@@ -36,7 +32,6 @@ const AdminOrders = () => {
         getAllOrders();
     }, []);
 
-    //OrderModal
     const openOrderModal = (item) => {
         setTempOrder(item);
         orderModal.current.show();
@@ -44,6 +39,7 @@ const AdminOrders = () => {
     const closeOrderModal = () => {
         orderModal.current.hide();
     };
+
     return (
 		<div className='p-1'>
 			<OrderModal

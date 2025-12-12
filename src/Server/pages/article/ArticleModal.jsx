@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef} from 'react';
 import { useDispatch } from "react-redux";
 
-
 import { ArticleModalRules } from './ArticleInputRules';
-import { editArticle, postArticle } from "./../../common/api/admin";
+import { editArticle, postArticle } from "../../common/api/admin";
+
 import {
 	Input,
 	DateInput,
@@ -13,22 +13,17 @@ import {
 	TextArea,
 	ImagePreview,
 	ModalFooterBtn,
-} from "./../../../Common/FormElements";
-import useImagePreviews from "./../../../Common/utils/hooks/useImagePreviews";
+} from "../../../Common/FormElements";
+import useImagePreviews from "../../../Common/utils/hooks/useImagePreviews";
 import createAsyncMessage from "../../../Common/slice/messageSlice"
-import { setTextIndicator } from './../../../Common/utils/uiUtils/SetTextIndicator';
+import { setTextIndicator } from '../../../Common/utils/uiUtils/SetTextIndicator';
 import { removeAllSpace } from '../../../Common/utils/stringUtils/string-utils';
-
 
 
 const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 	const [date, setDate] = useState(new Date());
-    console.log(tempArticle);
-	//tag
 	const [typing, setTyping] = useState(false);
 	const [editLast, setEditLast] = useState(false);
-	const tagInputRef = useRef(null);
-
 	const [tempData, setTempData] = useState({
 		title: "",
 		image: "",
@@ -40,11 +35,9 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 		description: "",
 		tag: [],
 	});
-
-	//00 Message推播處理
+    const tagInputRef = useRef(null);
 	const dispatch = useDispatch();
 
-	//01 判斷是格式是新增還是修改
 	useEffect(() => {
 		if (type === "create") {
 			setTempData({
@@ -72,7 +65,6 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 		}
 	}, [type, tempArticle]);
 
-	//02 <input>輸入值轉型與否
 	const handleChange = (e) => {
 		const { value, name } = e.target;
 		if (name === "isPublic") {
@@ -93,7 +85,6 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 		}
 	};
 
-	//03 設定選擇的時間範圍(起碼不能小於當前日期)
 	const handleDateRange = (e) => {
 		if (new Date(e.target.value).getTime() < new Date().getTime()) {
 			alert("創建日期不能小於當前日期");
@@ -102,10 +93,8 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 		}
 	};
 
-	//04 圖片處理
 	const { handleUpload, handleRemove } = useImagePreviews({ setTempData, tempData });
 
-	//05 Tag標籤
 	const handleTag = (e) => {
 		if (e.key === "Enter") {
 			e.preventDefault();
@@ -128,7 +117,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 						tag: tempData.tag.filter((item) => lastTag !== item),
 					}));
 					tagInputRef.current.textContent = lastTag;
-					setTextIndicator(tagInputRef); //將輸入鍵移至尾端
+					setTextIndicator(tagInputRef);
 					setEditLast(false);
 				} else {
 					setEditLast(true);
@@ -143,7 +132,6 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 		}));
 	};
 
-	//06 遞交輸入內容(新增產品內容、修產品改內容)
 	const handleSubmit = async () => {
 		try {
             if(type === "create") {
@@ -159,34 +147,13 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 				});
                 dispatch(createAsyncMessage(res.data));
             }
-
-			// //create
-			// let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/article`;
-			// let method = "post";
-
-			// //edit
-			// if (type === "edit") {
-			// 	//全域變數
-			// 	api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/article/${tempArticle.id}`;
-			// 	method = "put";
-			// }
-			// const res = await axios[method](api, {
-			// 	data: {
-			// 		...tempData,
-			// 		create_at: date.getTime(),
-			// 	}, //資料沒寫全，就會failed axios
-			// });
-
-			//console.log(res);
-			// dispatch(createAsyncMessage(res.data));
 			closeModal();
 			getArticles();
 		} catch (err) {
-			console.log(err);
 			dispatch(createAsyncMessage(err.response.data));
 		}
 	};
-	//有更改資料，卻直接關閉檔案，資料保持原樣
+
 	const handleCancel = (tempArticle) => {
 		setTempData(tempArticle);
 		closeModal();

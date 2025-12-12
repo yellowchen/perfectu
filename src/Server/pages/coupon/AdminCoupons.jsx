@@ -3,10 +3,11 @@ import { Modal } from "bootstrap";
 import { useDispatch } from "react-redux";
 
 import CouponModal from "./CouponModal";
-import Pagination from "./../../common/Pagination";
-import { getCoupons, deleteCoupon } from './../../common/api/admin';
+import Pagination from "../../common/Pagination";
+
+import { getCoupons, deleteCoupon } from '../../common/api/admin';
 import createAsyncMessage from "../../../Common/slice/messageSlice"
-import { DeleteMessage } from './../../../Common/DeleteMessage';
+import { DeleteMessage } from '../../../Common/DeleteMessage';
 
 
 const AdminCoupons = () => {
@@ -14,11 +15,8 @@ const AdminCoupons = () => {
 	const [type, setType] = useState("create");
 	const [tempCoupon, setTempCoupon] = useState({});
 	const [pagination, setPagination] = useState({});
-
-	//04 Message推播處理
     const dispatch = useDispatch();
 
-	//01取得所有項目API
     const getAllCoupons = (page = 1) => {
         getCoupons(page)
             .then(res => {
@@ -30,7 +28,6 @@ const AdminCoupons = () => {
             })
     }
 
-	//02刪除單個項目API
     const handleDeleteCoupon = (id) => {
         deleteCoupon(id)
             .then(res => {
@@ -45,10 +42,8 @@ const AdminCoupons = () => {
             })
     }
 
-	//03 各功能Modal製作
 	const couponModal = useRef(null);
 	const deleteMessage = useRef(null);
-
 	useEffect(() => {
 		couponModal.current = new Modal("#couponModal", {
 			backdrop: "static",
@@ -59,7 +54,6 @@ const AdminCoupons = () => {
 		getAllCoupons();
 	}, []);
 
-	//ProductModal
 	const openCouponModal = (type, item) => {
 		setType(type);
 		setTempCoupon(item);
@@ -69,7 +63,6 @@ const AdminCoupons = () => {
 		couponModal.current.hide();
 	};
 
-	//DeleteModal
 	const openDeleteMessage = (item) => {
 		setTempCoupon(item);
 		deleteMessage.current.show();
@@ -77,7 +70,6 @@ const AdminCoupons = () => {
 	const closeDeleteMessage = () => {
 		deleteMessage.current.hide();
 	};
-	console.log(new Date());
 
 	return (
 		<div className='p-1'>

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { ClickedButton } from "../../../../common/utils/Button";
+import { ClickedButton } from "../../../common/utils/Button";
 
 export const RecommendCard = ({recommend, slideRef}) => {
 	return (

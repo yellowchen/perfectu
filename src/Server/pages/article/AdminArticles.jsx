@@ -4,8 +4,9 @@ import { Modal } from "bootstrap";
 
 import ArticleModal from './ArticleModal';
 import Pagination from './../../common/Pagination';
-import { getArticles, getArticle, deleteArticle } from "./../../common/api/admin";
-import { DeleteMessage } from "./../../../Common/DeleteMessage";
+import { getArticles, getArticle, deleteArticle } from "../../common/api/admin";
+
+import { DeleteMessage } from "../../../Common/DeleteMessage";
 import createAsyncMessage from "../../../Common/slice/messageSlice"
 
 
@@ -14,11 +15,8 @@ const AdminArticles = () => {
 	const [type, setType] = useState("create");
 	const [tempArticle, setTempArticle] = useState({});
 	const [pagination, setPagination] = useState({});
-
-	//04 Message推播處理
 	const dispatch = useDispatch();
 
-	//01取得所有項目API
     const getAllArticles = (page = 1) => {
         getArticles(page)
             .then(res => {
@@ -30,10 +28,7 @@ const AdminArticles = () => {
             })
     }
 
-
-	//getArticle
     const getOneArticle = async(id) => {
-        // setIsLoading(true);
         try {
             const res = await getArticle(id);
             await setTempArticle(res.data.article);
@@ -42,7 +37,6 @@ const AdminArticles = () => {
         }
     }
 
-	//02刪除單個項目API
     const handleDeleteArticle = (id) => {
         deleteArticle(id)
             .then(res => {
@@ -57,10 +51,9 @@ const AdminArticles = () => {
             })
     }
 
-	//03 各功能Modal製作
+
 	const articleModal = useRef(null);
 	const deleteMessage = useRef(null);
-
 	useEffect(() => {
 		articleModal.current = new Modal("#articleModal", {
 			backdrop: "static",
@@ -72,7 +65,6 @@ const AdminArticles = () => {
 	}, []);
 
 
-	//ArticleModal
 	const openArticleModal = async (type, item) => {
 		setType(type);
         if(item.id) {
@@ -86,7 +78,7 @@ const AdminArticles = () => {
 		articleModal.current.hide();
 	};
 
-	//DeleteModal
+
 	const openDeleteMessage = (item) => {
 		setTempArticle(item);
 		deleteMessage.current.show();
@@ -174,7 +166,6 @@ const AdminArticles = () => {
 						))}
 				</tbody>
 			</table>
-
 			<Pagination changePage={getAllArticles} pagination={pagination} />
 		</div>
 	);

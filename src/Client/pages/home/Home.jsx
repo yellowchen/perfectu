@@ -11,8 +11,8 @@ import Banner from './component/Banner';
 import { CouponBanner } from './component/CouponBanner';
 import { ProductBanner } from './component/ProductBanner';
 import Game from './component/Game';
+import { RecommendCard } from "./component/RecommendCard";
 import { getArticles, getArticle } from "./../../common/api/front";
-import { RecommendCard } from "./../checkout/component/card/RecommendCard";
 import { debounce } from './../../../Common/utils/uiUtils/Debounce';
 
 
@@ -23,7 +23,7 @@ const Home = () => {
     const [copyText, setCopyText] = useState("複製優惠碼");
     const {products, getAllProducts, setIsLoading} = useOutletContext();
 
-    //slide
+
     const slideRef = useRef();
     const checkSlide = () => {
         const slideTxt = slideRef.current?.children[0].children[1];
@@ -35,13 +35,13 @@ const Home = () => {
     }
     window.addEventListener("scroll", debounce(checkSlide));
 
-    //products
+
     useEffect(() => {
         getAllProducts(1);
     }, []);
 
 
-    //article
+
     const getOneArticle = async() => {
         setIsLoading(true);
         const id = articles[Math.floor(Math.random() * (articles?.length - 1 - 0 + 1) + 0)].id;
@@ -65,10 +65,10 @@ const Home = () => {
         getAllArticles();
     }, []);
 
-    //tag
+
     const tagId = products.filter(item => item.title === tag[0])[0]?.id;
 
-    //CopyToClipBoard
+
     const CopyToClipBoard = () => {
         navigator.clipboard.writeText("HelloAutumn")
             .then(() => {

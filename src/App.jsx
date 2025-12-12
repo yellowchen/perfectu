@@ -2,7 +2,6 @@ import {Routes, Route, Navigate} from "react-router-dom";
 import { AuthProvider } from "./Common/context/AuthContext";
 
 import Login from './Server/pages/login/Login';
-
 import Dashboard from "./Server/pages/Dashboard";
 import AdminProducts from "./Server/pages/product/AdminProducts";
 import AdminCoupons from "./Server/pages/coupon/AdminCoupons";

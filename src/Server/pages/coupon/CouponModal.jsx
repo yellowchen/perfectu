@@ -11,34 +11,30 @@ import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 	const [tempData, setTempData] = useState({
 		title: "",
-		is_enabled: 1, //0與1的切換
+		is_enabled: 1,
 		percent: 80,
 		due_date: "",
 		code: "",
 	});
-
 	const [date, setDate] = useState(new Date());
+    const dispatch = useDispatch();
 
-	//01 判斷是格式是新增還是修改
 	useEffect(() => {
 		if (type === "create") {
 			setTempData({
 				title: "",
-				is_enabled: 1, //0與1的切換
+				is_enabled: 1,
 				percent: 80,
 				due_date: "",
 				code: "",
 			});
 			setDate(new Date(new Date().setDate(new Date().getDate() + 1)));
-            //當是新增coupon，日期的顯示會以當天+1為主
 		} else if (type === "edit") {
 			setTempData(tempCoupon);
 			setDate(new Date(tempCoupon.due_date));
 		}
 	}, [type, tempCoupon]);
 
-
-	//02 <input>輸入值轉型與否
 	const handleChange = (e) => {
 		const { value, name } = e.target;
 		if (["num", "percent"].includes(name)) {
@@ -59,10 +55,6 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 		}
 	};
 
-	//03 Message處理
-    const dispatch = useDispatch();
-
-	//04 遞交輸入內容(新增產品內容、修產品改內容)
 	const handleSubmit = async () => {
 		try {
             if(type === "create") {
@@ -85,13 +77,12 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
             dispatch(createAsyncMessage(err.data));
 		}
 	};
-	//有更改資料，卻直接關閉檔案，資料保持原樣
+
 	const handleCancel = (tempCoupon) => {
 		setTempData(tempCoupon);
 		closeModal();
 	};
 
-    //設定選擇的時間範圍(起碼不能小於當前日期)
     const handleDateRange = (e) => {
         if(new Date(e.target.value).getTime() < new Date().getTime()) {
             alert("到期日不能小於當前日期")

@@ -42,7 +42,6 @@ const Cart = () => {
         }
 	};
 
-	//coupon
 	const handleCoupon = async (e) => {
 		if (e.key === "Enter" || e.target.id === "setCoupon") {
 			if (!couponCode.length) return;
@@ -91,7 +90,7 @@ const Cart = () => {
 		getAllCart();
 	}, []);
 
-	//DeleteMessage
+
 	const openDeleteMessage = (item) => {
 		setTempItem(item);
 		deleteMessage.current.show();
@@ -123,7 +122,7 @@ const Cart = () => {
 				</div>
 			) : (
 				<div className='d-flex gap-4 flex-column flex-lg-row px-0 px-md-2'>
-					{/* Left */}
+
 					<div className='px-0'>
 						<div className='row g-0 border-top border-bottom px-2 py-3 mb-0 bg-light text-center fw-bolder'>
 							<div className='col-5 col-sm-4 text-start'>商品明細</div>
@@ -145,7 +144,7 @@ const Cart = () => {
 							/>
 						))}
 					</div>
-					{/* Right */}
+
 					<div className='col-12 col-lg-5 d-flex flex-column'>
 						<div
 							className='px-3 bg-light'
@@ -158,7 +157,7 @@ const Cart = () => {
 									<h5>NT$ {thousandFormat(total)}</h5>
 								</div>
 								<hr />
-								{/* coupon section */}
+
 								<div className='coupon my-4'>
 									<div
 										className='w-100 d-flex align-items-center mb-4'

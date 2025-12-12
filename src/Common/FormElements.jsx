@@ -55,7 +55,7 @@ export const DefaultValueInput = ({title, value}) => {
 	);
 }
 
-//另外又有資料引進(item)
+
 export const ModalInput = ({ item, onChange, data }) => {
 	const { id, labelText, type, name, placeholder } = item;
 	return (

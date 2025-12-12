@@ -1,12 +1,7 @@
 import {useSelector} from "react-redux";
 
 const MessageToast = () => {
-
-    //寫入訊息內容
     const messages = useSelector(state => state.message);
-    console.log(messages);
-
-    //Message版型
     return (
 		<>
 			<div
@@ -30,14 +25,6 @@ const MessageToast = () => {
 								aria-label='Close'
 							></button>
 						</div>
-						{/* <div
-                            className="m-0 p-0"
-							style={{
-								width: "100%",
-								height: "5px",
-								background: "linear-gradient(90deg, #aaa 0%, #aaa 100%)",
-							}}
-						/> */}
 						<div
 							className='toast-body'
 							style={{ whiteSpace: "pre-line" }}

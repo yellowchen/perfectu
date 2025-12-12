@@ -1,22 +1,19 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams, useOutletContext, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
+import { OrderInformation } from "./component/OrderInformation";
+import { PaymentCheckRules } from "./data/PaymentCheckRules";
 
 import { getOrder, postPayment } from "../../common/api/front";
 import { PaymentContext } from "../../common/context/PaymentContext";
 import { ProgressBar } from "../../common/utils/dataUtils/ProgressBar";
 import { SubmitButton } from "../../common/utils/Button";
 
-import { OrderInformation } from "./component/OrderInformation";
-import { PaymentCheckRules } from "./data/PaymentCheckRules";
-
 import { FormRadio } from '../../../Common/FormElements';
 
 
 const Payment = () => {
-	const { products } = useOutletContext();
-	console.log(products);
 	const [orderData, setOrderData] = useState([]);
 	const { orderId } = useParams();
 	const { payment, setPayment } = useContext(PaymentContext);
@@ -34,8 +31,6 @@ const Payment = () => {
 	const getOrderData = async () => {
 		try {
 			const res = await getOrder(orderId);
-			console.log(res);
-			console.log(res.data.order);
 			setOrderData(res.data.order);
 		} catch (err) {
 			console.log(err);
@@ -63,7 +58,6 @@ const Payment = () => {
 							user={user}
 							payment={payment}
 						/>
-						{/* 付款選擇 */}
 						<form
 							className='col-12 col-lg-7'
 							onSubmit={handleSubmit(onSubmit)}

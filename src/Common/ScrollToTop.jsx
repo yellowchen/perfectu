@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 const ScrollToTop = () => {
     const [btnVisible, setBtnVisible] = useState(true);
 
-    //btn
     const toggleVisibility = () => {
         if(window.scrollY > 300) {
             setBtnVisible(true);
@@ -21,7 +20,6 @@ const ScrollToTop = () => {
         })
     })
 
-    //change page
 	const { pathname } = useLocation();
     const scrollToTop = () => {
         window.scrollTo({
@@ -33,7 +31,6 @@ const ScrollToTop = () => {
         scrollToTop()
 	}, [pathname]);
 
-    //refresh
     window.history.scrollRestoration = "manual";
 
     return (

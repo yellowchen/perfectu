@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 
-
 import { editOrder } from '../../common/api/admin';
 
 import { createAsyncMessage } from '../../../Common/slice/messageSlice';
@@ -15,8 +14,8 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
         is_paid: "",
         status: 0
 	});
+    const dispatch = useDispatch();
 
-    //01
 	useEffect(() => {
 		setTempData({
 			...tempOrder,
@@ -25,7 +24,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 		});
 	}, [tempOrder]);
 
-	//02 <input>輸入值轉型與否
+
 	const handleChange = (e) => {
 		const { value, name, checked } = e.target;
 		if (["is_paid"].includes(name)) {
@@ -41,10 +40,6 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 		}
 	};
 
-	//03 Message處理
-    const dispatch = useDispatch();
-
-	//04 遞交輸入內容(新增產品內容、修產品改內容)
 	const handleSubmit = async () => {
 		try {
             const res = await editOrder(tempOrder.id, tempData)
@@ -56,7 +51,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
             dispatch(createAsyncMessage(err));
 		}
 	};
-	//有更改資料，卻直接關閉檔案，資料保持原樣
+
 	const handleCancel = (tempOrder) => {
 		setTempData(tempOrder);
 		closeModal();
@@ -115,7 +110,7 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
                                     title={item.title}
                                     value={item.value}
                                 />
-							))}s
+							))}
 							<div className='row'>
 								<span className='col-sm-2 col-form-label'>商品</span>
 								{tempData?.products && (
@@ -184,7 +179,6 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 								</div>
 							</div>
 						</div>
-						{/* Footer */}
 						<ModalFooterBtn
 							handleCancel={handleCancel}
 							handleSubmit={handleSubmit}

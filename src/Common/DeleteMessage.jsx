@@ -22,7 +22,6 @@ export const DeleteMessage = ({ closeModal, deleteItem, id, title }) => {
 							data-bs-dismiss='modal'
 							aria-label='Close'
 							onClick={closeModal}
-							// style={{color: "#fff"}}
 						></button>
 					</div>
 					<div className='modal-body text-center fs-5 my-4'>確定刪除「{title}」?</div>

@@ -42,7 +42,6 @@ export const CouponTicket = ({copy, text}) => {
 					<div
 						className='coupon-btn col-4 align-content-center px-0'
 						style={{
-							// borderLeft: "2px dashed #eee",
 							background:
 								"radial-gradient(circle at top left, #eee 20px, transparent 0), radial-gradient(circle at bottom left, #eee 20px, transparent 0)",
 						}}

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { ProductModalFirstInputRules, ProductModalSecondInputRules } from "./ProductInputRules";
 import { postProduct, editProduct } from "../../common/api/admin";
+
 import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 import { Input, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooterBtn } from "../../../Common/FormElements";
 import useImagePreviews from '../../../Common/utils/hooks/useImagePreviews';
@@ -17,15 +18,12 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 		unit: "",
 		description: "",
 		content: "",
-		is_enabled: 1, //0與1的切換
+		is_enabled: 1,
 		imageUrl: "",
         num: 0,
 	});
-
-	//dMessage推播處理
     const dispatch = useDispatch();
 
-	//01 判斷是格式是新增還是修改
 	useEffect(() => {
 		if (type === "create") {
 			setTempData({
@@ -45,7 +43,6 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 		}
 	}, [type, tempItem]);
 
-	//02 <input>輸入值轉型與否
 	const handleChange = (e) => {
 		const { value, name } = e.target;
 		if (["origin_price", "price", "num"].includes(name)) {
@@ -66,10 +63,9 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 		}
 	};
 
-    //03 圖片處理
+
     const {handleUpload, handleRemove} = useImagePreviews({setTempData, tempData});
 
-	//04 遞交輸入內容(新增產品內容、修產品改內容)
 	const handleSubmit = async () => {
 		try {
             if(type === "create") {
@@ -79,23 +75,6 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
                 const res = await editProduct(tempItem.id, tempData);
                 dispatch(createAsyncMessage(res.data));
             }
-
-			// //create
-			// let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product`;
-			// let method = "post";
-
-			// //edit
-			// if (type === "edit") {
-			// 	//全域變數
-			// 	api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${tempItem.id}`;
-			// 	method = "put";
-			// }
-
-			// const res = await axios[method](api, {
-			// 	data: tempData, //資料沒寫全，就會failed axios
-			// });
-
-            // dispatch(createAsyncMessage(res.data));
 			closeModal();
 			getProducts();
 		} catch (err) {
@@ -103,7 +82,7 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
             dispatch(createAsyncMessage(err.data));
 		}
 	};
-	//有更改資料，卻直接關閉檔案，資料保持原樣
+
 	const handleCancel = (tempItem) => {
 		setTempData(tempItem);
 		closeModal();
@@ -120,7 +99,7 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 			>
 				<div className='modal-dialog modal-lg'>
 					<div className='modal-content'>
-						{/* Header */}
+
 						<div className='modal-header'>
 							<div className='modal-title' id='productModalLabel'>
 								<h5>{type === "create" ? "建立新商品" : `編輯：${tempItem.title}`}</h5>
@@ -132,10 +111,10 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 								aria-label='Close'
 							></button>
 						</div>
-						{/* Body */}
+
 						<div className='modal-body'>
 							<div className='row'>
-								{/* LEFT */}
+
 								<div className='col-sm-4 d-flex flex-column gap-2'>
 									<Input
 										id='customFile'
@@ -152,7 +131,7 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 										handleRemove={handleRemove}
 									/>
 								</div>
-								{/* RIGHT */}
+
 								<div className='col-sm-8 d-flex flex-column gap-2'>
 									<Input
 										id='title'
@@ -194,7 +173,7 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 								</div>
 							</div>
 						</div>
-						{/* Footer */}
+
 						<ModalFooterBtn
                             handleCancel={handleCancel}
                             handleSubmit={handleSubmit}

@@ -4,7 +4,6 @@ export const messageSlice = createSlice({
     name: "message",
     initialState: [],
     reducers: {
-        //方法
         createMessage(state, action) {
             if(action.payload.success) {
                 state.push({
@@ -32,8 +31,7 @@ export const messageSlice = createSlice({
     }
 })
 
-//處理非同步行為
-//createASyncThunk(自定義名稱, async(payload, params) => {})
+
 export const createAsyncMessage = createAsyncThunk(
     "message/createAsyncMessage", async(payload, {dispatch, requestId}) => {
         dispatch(

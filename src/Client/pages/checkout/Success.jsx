@@ -8,17 +8,14 @@ import "slick-carousel/slick/slick-theme.css";
 import { sliderImageSetting } from "./../../common/utils/dataUtils/SliderSetting";
 
 import { OrderInformation } from "./component/OrderInformation";
-
 import { getOrder } from "../../common/api/front";
 import { ProgressBar } from "../../common/utils/dataUtils/ProgressBar";
 import { PaymentContext } from "../../common/context/PaymentContext";
 import { ClickedButton } from "../../common/utils/Button";
-import { thousandFormat } from '../../../Common/utils/stringUtils/string-utils';
 
 
 const Success = () => {
     const { products, getAllProducts } = useOutletContext();
-    console.log(products);
     const [orderData, setOrderData] = useState([]);
 	const { orderId } = useParams();
     const { payment } = useContext(PaymentContext);
@@ -27,8 +24,6 @@ const Success = () => {
 	const getOrderData = async () => {
 		try {
             const res = await getOrder(orderId);
-            console.log(res);
-            console.log(res.data.order);
             setOrderData(res.data.order);
 		} catch (err) {
 			console.log(err);
@@ -68,7 +63,7 @@ const Success = () => {
 					</div>
 				</div>
 			</div>
-			{/* 商品推薦 */}
+
 			<div className='my-5 py-5 bg-light'>
 				<div className='container d-flex justify-content-between mb-5'>
 					<h2>其他商品推薦</h2>
@@ -104,16 +99,6 @@ const Success = () => {
 											clipPath: "polygon(0 0, 50% 0, 100% 25%, 100% 100%, 50% 100%, 0 75%)",
 										}}
 									/>
-									{/* <p
-										className='position-absolute uoq_mun fs-5'
-										style={{
-											bottom: "-11%",
-											left: "110px",
-											letterSpacing: "10px",
-										}}
-									>
-										{item.title}
-									</p> */}
 								</NavLink>
 							</div>
 						))}

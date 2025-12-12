@@ -1,14 +1,14 @@
-import {useEffect, useState, useRef} from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Modal } from "bootstrap";
 
 import ProductModal from "./ProductModal";
 import Pagination from "../../common/Pagination";
 import { getProducts, deleteProduct } from "../../common/api/admin";
+
 import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 import { thousandFormat } from '../../../Common/utils/stringUtils/string-utils';
 import { DeleteMessage } from '../../../Common/DeleteMessage';
-
 
 
 const AdminProducts = () => {
@@ -16,13 +16,8 @@ const AdminProducts = () => {
 	const [type, setType] = useState("create");
 	const [tempProduct, setTempProduct] = useState({});
 	const [pagination, setPagination] = useState({});
-
-    console.log(products);
-
-	//04 Message推播處理
     const dispatch = useDispatch();
 
-	//01取得所有項目API
     const getAllProducts = (page = 1) => {
         getProducts(page)
 			.then((res) => {
@@ -34,8 +29,6 @@ const AdminProducts = () => {
 			});
     }
 
-
-	//02刪除單個項目API
     const handleDeleteProduct = (id) => {
         deleteProduct(id)
 			.then((res) => {
@@ -50,10 +43,8 @@ const AdminProducts = () => {
 			});
     }
 
-	//03 各功能Modal製作
 	const productModal = useRef(null);
 	const deleteMessage = useRef(null);
-
 	useEffect(() => {
 		productModal.current = new Modal("#productModal", {
 			backdrop: "static",
@@ -64,7 +55,7 @@ const AdminProducts = () => {
 		getAllProducts();
 	}, []);
 
-	//ProductModal
+
 	const openProductModal = (type, item) => {
 		setType(type);
 		setTempProduct(item);
@@ -74,7 +65,7 @@ const AdminProducts = () => {
 		productModal.current.hide();
 	};
 
-	//DeleteModal
+
 	const openDeleteMessage = (item) => {
 		setTempProduct(item);
 		deleteMessage.current.show();

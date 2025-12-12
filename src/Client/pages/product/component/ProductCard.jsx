@@ -12,19 +12,13 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 		<div
 			className='card p-0 border-0 card-product'
 			style={{
-				// width: "30%",
 				minWidth: "330px",
 				height: "420px",
-
-				// borderRadius: "5px",
 				borderRadius: "20px",
-
 				boxShadow: "0 5px 15px 0 rgba(0, 0, 0, .4)",
 				margin: "3rem 2rem",
-				// background: "#309dc1",
 			}}
 		>
-			{/* wish */}
 			<button
 				className='btn rounded-circle btn-wish'
 				onClick={() => {
@@ -47,7 +41,7 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 					></i>
 				)}
 			</button>
-			{/* IMG */}
+
 			<NavLink
 				to={`/product/${id}`}
 				style={{}}
@@ -59,13 +53,12 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 					alt={title}
 					style={{
 						height: "220px",
-						// border: "7px solid #309dc1",
 						borderRadius: "20px 20px 0 0 ",
 						clipPath: "polygon(0 0, 50% 0, 100% 25%, 100% 100%, 50% 100%, 0 75%)",
 					}}
 				/>
 			</NavLink>
-			{/* txt */}
+
 			<div
 				style={{
 					color: "#fff",
