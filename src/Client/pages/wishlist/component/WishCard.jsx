@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { removeWishItem } from "../../../common/slice/wishSlice";
 import { thousandFormat } from './../../../../Common/utils/stringUtils/string-utils';
-
+import { ClickedButton } from './../../../common/utils/Button';
 
 const WishCard = ({item}) => {
     const {id, imageUrl, price, title} = item;
@@ -15,62 +15,47 @@ const WishCard = ({item}) => {
     }
 
     return (
-		<div className='d-flex align-items-center g-0 mb-4 position-relative bg-light border border-1 uoq_mun'>
-			<div>
-				<Link to={`/product/${id}`}>
-					<img
-						src={imageUrl}
-						className='img-fluid'
-						alt={title}
-						style={{ aspectRatio: "1/1", maxWidth: "100px" }}
-					/>
-				</Link>
-			</div>
-			<div className='px-3'>
-				<h5 className='card-title'>
-					{title}
-					<small> / 50ml</small>
-					<br />
-					<small>NT$ {thousandFormat(price)}</small>
-				</h5>
-
-				<div className='pt-1 d-flex'>
-					<button
-						className='btn ps-1'
-						style={{ color: "#f7ae5b" }}
-						onClick={() => {
-							removeFromWishlist(item);
-						}}
-					>
-						<i className='bi bi-suit-heart-fill'></i>
-					</button>
-					<button
-						className='btn'
-						style={{ color: "#309DC1" }}
-						onClick={() => {
-							addToCart(id);
-						}}
-					>
-						<i className='bi bi-cart-fill'></i>
-					</button>
-				</div>
-			</div>
-			<button
-				className='btn p-0 border-0'
-				type='button'
-			>
-				<i
-					className='bi bi-x-lg position-absolute p-2'
-					style={{
-						right: ".3rem",
-						top: ".2rem",
-						color: "#aaa",
-					}}
+		<div
+			className='row g-0 align-items-center'
+			style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
+		>
+			<div className='col-1'>
+				<button
+					className='btn fs-5 p-0 mx-auto d-block'
+					style={{ color: "#f7ae5b" }}
 					onClick={() => {
 						removeFromWishlist(item);
 					}}
-				></i>
-			</button>
+				>
+					<i className='bi bi-suit-heart-fill'></i>
+				</button>
+			</div>
+			<div className='col-11 row g-0 align-items-center bg-light text-center fw-bolder'>
+				<div className='col-2 p-0'>
+					<Link to={`/product/${id}`}>
+						<img
+							src={imageUrl}
+							className='img-fluid'
+							alt={title}
+							style={{ aspectRatio: "1/1" }}
+						/>
+					</Link>
+				</div>
+				<p className='col-4 my-0 fs-6'>
+					{title}
+					<small className='text-dark'> / 50ml</small>
+				</p>
+				<p className='col-4 my-0 fs-6'>NT$ {thousandFormat(price)}</p>
+				<div className='col-2 my-0'>
+					<ClickedButton
+						className='rounded-4 fs-6 px-md-4'
+						action={() => {
+							addToCart(id);
+						}}
+						content={<i className='bi bi-cart-fill'></i>}
+					/>
+				</div>
+			</div>
 		</div>
 	);
 }

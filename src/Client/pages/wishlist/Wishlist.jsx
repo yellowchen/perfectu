@@ -21,15 +21,15 @@ const Wishlist = () => {
 					</NavLink>
 				</div>
 			) : (
-				<div className='row justify-content-center'>
-					<div className='col-md-6 py-5'>
-						{wish.wishlistItems?.map((item) => (
+				<div className='row gx-3 row-cols-1 row-cols-lg-2 justify-content-center'>
+					{wish.wishlistItems?.map((item) => (
+						<div className='col mb-4'>
 							<WishCard
 								item={item}
 								key={item.id}
 							/>
-						))}
-					</div>
+						</div>
+					))}
 				</div>
 			)}
 		</div>
