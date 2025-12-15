@@ -147,6 +147,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 					...tempData,
 					create_at: date.getTime(),
 				});
+                console.log("article result: ", res.data);
                 dispatch(createAsyncMessage(res.data));
             }
 			closeModal();
