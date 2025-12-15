@@ -1,4 +1,4 @@
-import { FormatDate } from "./utils/dateUtils/date-utils";
+import { FormatDate, dateAddZero } from "./utils/dateUtils/date-utils";
 
 export const Input = ({ id, labelText, type, name, placeholder, value, onChange }) => {
 	return (
@@ -31,6 +31,9 @@ export const DateInput = ({ id, labelText, type, name, placeholder, value, onCha
 					name={name}
 					placeholder={placeholder}
 					value={FormatDate(date)}
+                    // value={`${date.getFullYear().toString()}-${dateAddZero(
+                    //         date.getMonth() + 1
+                    //     )}-${dateAddZero(date.getDate())}`}
 					onChange={onChange}
 				/>
 			</label>

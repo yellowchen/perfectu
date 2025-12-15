@@ -75,6 +75,7 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
                 const res = await editProduct(tempItem.id, tempData);
                 dispatch(createAsyncMessage(res.data));
             }
+
 			closeModal();
 			getProducts();
 		} catch (err) {

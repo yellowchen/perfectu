@@ -5,6 +5,7 @@ export const messageSlice = createSlice({
     initialState: [],
     reducers: {
         createMessage(state, action) {
+            console.log(action.payload);
             if(action.payload.success) {
                 state.push({
 					id: action.payload.id,

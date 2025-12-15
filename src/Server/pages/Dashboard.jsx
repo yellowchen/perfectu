@@ -2,7 +2,7 @@ import { useEffect, useContext } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 
 import MessageToast from './../../Common/MessageToast';
-import { AuthContext } from './../../Common/context/AuthContext';
+import { AuthContext } from '../../Server/common/context/AuthContext';
 
 
 const Dashboard = () => {

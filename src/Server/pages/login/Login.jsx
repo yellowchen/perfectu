@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-import { AuthContext } from '../../../Common/context/AuthContext';
+import { AuthContext } from '../../../Server/common/context/AuthContext';
 
 
 const Login = () => {

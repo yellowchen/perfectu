@@ -6,7 +6,7 @@ import CouponModal from "./CouponModal";
 import Pagination from "../../common/Pagination";
 
 import { getCoupons, deleteCoupon } from '../../common/api/admin';
-import createAsyncMessage from "../../../Common/slice/messageSlice"
+import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 import { DeleteMessage } from '../../../Common/DeleteMessage';
 
 
