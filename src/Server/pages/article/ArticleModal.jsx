@@ -15,7 +15,7 @@ import {
 	ModalFooterBtn,
 } from "../../../Common/FormElements";
 import useImagePreviews from "../../../Common/utils/hooks/useImagePreviews";
-import createAsyncMessage from "../../../Common/slice/messageSlice"
+import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 import { setTextIndicator } from '../../../Common/utils/uiUtils/SetTextIndicator';
 import { removeAllSpace } from '../../../Common/utils/stringUtils/string-utils';
 
@@ -24,6 +24,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 	const [date, setDate] = useState(new Date());
 	const [typing, setTyping] = useState(false);
 	const [editLast, setEditLast] = useState(false);
+    const dispatch = useDispatch();
 	const [tempData, setTempData] = useState({
 		title: "",
 		image: "",
@@ -36,7 +37,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 		tag: [],
 	});
     const tagInputRef = useRef(null);
-	const dispatch = useDispatch();
+
 
 	useEffect(() => {
 		if (type === "create") {
@@ -51,7 +52,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 				description: "",
 				tag: [],
 			});
-			setDate(new Date(new Date().setDate(new Date().getDate()))); //將當前時間多加一天
+			setDate(new Date(new Date().setDate(new Date().getDate())));
 		} else if (type === "edit") {
 			if (tempArticle.tag) {
 				setTempData(tempArticle);
@@ -139,6 +140,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 					...tempData,
 					create_at: date.getTime(),
 				});
+                console.log(res);
                 dispatch(createAsyncMessage(res.data));
             }else if(type === "edit") {
                 const res = await editArticle(tempArticle.id, {
@@ -150,6 +152,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 			closeModal();
 			getArticles();
 		} catch (err) {
+            console.log(err);
 			dispatch(createAsyncMessage(err.response.data));
 		}
 	};

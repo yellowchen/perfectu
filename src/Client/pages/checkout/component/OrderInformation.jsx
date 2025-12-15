@@ -1,5 +1,5 @@
 import OrderCard from "./card/OrderCard";
-import { FormatDate } from "../../../../Common/utils/dateUtils/date-utils";
+import { FormatDateTimesK } from "../../../../Common/utils/dateUtils/date-utils";
 import { thousandFormat } from "../../../../Common/utils/stringUtils/string-utils";
 
 export const OrderInformation = ({ orderData, user, payment }) => {
@@ -41,7 +41,7 @@ export const OrderInformation = ({ orderData, user, payment }) => {
 					</h5>
 					<h5 className='d-flex'>
 						<p className='pe-3 fw-bolder'>訂單日期：</p>
-						<p>{FormatDate(orderData?.create_at)}</p>
+						<p>{FormatDateTimesK(orderData?.create_at)}</p>
 					</h5>
 					<h5 className='d-flex'>
 						<p className='pe-3 fw-bolder'>訂單狀態：</p>

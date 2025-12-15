@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { Modal } from "bootstrap";
 
 import ArticleModal from './ArticleModal';
-import Pagination from './../../common/Pagination';
+import Pagination from '../../common/Pagination';
 import { getArticles, getArticle, deleteArticle } from "../../common/api/admin";
 
 import { DeleteMessage } from "../../../Common/DeleteMessage";
-import createAsyncMessage from "../../../Common/slice/messageSlice"
+import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 
 
 const AdminArticles = () => {
@@ -40,6 +40,7 @@ const AdminArticles = () => {
     const handleDeleteArticle = (id) => {
         deleteArticle(id)
             .then(res => {
+                console.log(res);
                 if (res.data.success) {
 					dispatch(createAsyncMessage(res.data));
 					closeDeleteMessage();

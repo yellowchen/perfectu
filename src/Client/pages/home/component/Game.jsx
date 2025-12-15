@@ -46,7 +46,7 @@ const Game = ({article, getArticle, tag, tagId}) => {
 						</div>
 
 						<div className='text'>
-							<p className='limelight'>{article?.title}</p>
+							<p className=''>【 {article?.title} 】</p>
 							<p>
 								<i className='bi bi-flower1 me-1'></i>
 								{article?.description}

@@ -25,7 +25,6 @@ export const DeleteMessage = ({ closeModal, deleteItem, id, title }) => {
 						></button>
 					</div>
 					<div className='modal-body text-center fs-5 my-4'>確定刪除「{title}」?</div>
-					{/* Footer */}
 					<div className='modal-footer'>
 						<button
 							type='button'

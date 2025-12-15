@@ -66,7 +66,7 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 							<i
 								className='bi bi-suit-heart-fill pe-1'
 								style={{
-									color: "#309dc1",
+									color: "#f7ae5b",
 								}}
 							></i>
 						</>
@@ -90,6 +90,7 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 						style={{
 							right: "0",
 							top: "0",
+							color: "#bdbebf",
 						}}
 						onClick={() => {
 							openDeleteMessage(item);

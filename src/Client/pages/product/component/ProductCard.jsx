@@ -29,7 +29,7 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 					<i
 						className='bi bi-suit-heart-fill'
 						style={{
-							color: "#309dc1",
+							color: "#f7ae5b",
 						}}
 					></i>
 				) : (
@@ -45,7 +45,7 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 			<NavLink
 				to={`/product/${id}`}
 				style={{}}
-                className="border-0"
+				className='border-0'
 			>
 				<img
 					src={imageUrl}
@@ -122,8 +122,8 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 						}}
 					>
 						<ClickedButton
-                            className="py-1 px-5 rounded-4"
-							style={{ }}
+							className='py-1 px-5 rounded-4'
+							style={{}}
 							action={() => {
 								addToCart(id);
 							}}

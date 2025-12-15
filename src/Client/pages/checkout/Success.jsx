@@ -39,8 +39,8 @@ const Success = () => {
 			<div className='container'>
 				<h1 className='title uoq_mun'>訂購完成</h1>
 				<div className='row g-0 my-5 mx-0 mx-md-5 p-0'>
-					<p className='fs-2 fw-bold text-center text-primary lh-lg'>
-						感謝您的惠顧 <i className='bi bi-person-arms-up fs-1'></i>
+					<p className='fs-2 fw-bold text-center text-primary lh-lg mb-5'>
+						感謝您的惠顧<i className='ps-1 bi bi-person-arms-up fs-1'></i>
 						<br />
 						商品預計在訂單付款後的3個工作天後出貨
 					</p>
@@ -55,7 +55,7 @@ const Success = () => {
 							className='d-flex justify-content-center'
 						>
 							<ClickedButton
-								className='rounded-4 py-2 w-50'
+								className='rounded-4 py-2 w-25'
 								style={{}}
 								content='返回首頁'
 							/>
@@ -66,7 +66,7 @@ const Success = () => {
 
 			<div className='my-5 py-5 bg-light'>
 				<div className='container d-flex justify-content-between mb-5'>
-					<h2>其他商品推薦</h2>
+					<h2>其他推薦商品</h2>
 
 					<h4 className=''>
 						<NavLink
@@ -90,13 +90,12 @@ const Success = () => {
 							>
 								<NavLink to={`/product/${item.id}`}>
 									<img
-										className='mx-auto rounded-0'
+										className='mx-auto rounded-4'
 										src={item.imageUrl}
 										alt={item.title}
 										style={{
 											width: "280px",
 											aspectRatio: "3/2",
-											clipPath: "polygon(0 0, 50% 0, 100% 25%, 100% 100%, 50% 100%, 0 75%)",
 										}}
 									/>
 								</NavLink>

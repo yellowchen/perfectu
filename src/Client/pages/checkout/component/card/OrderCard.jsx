@@ -16,7 +16,7 @@ const OrderCard = ({ item }) => {
 				</div>
 				<div className='w-100 px-2 d-flex justify-content-between'>
 					<div className='fw-bold d-flex align-items-center'>
-						<p className='mb-0'>{product.title}</p>
+						<p className='mb-0'>{product.title} <small>/ 50ml</small></p>
 					</div>
 					<div className=''>
 						<p className='mb-0 text-end'>x {qty}</p>

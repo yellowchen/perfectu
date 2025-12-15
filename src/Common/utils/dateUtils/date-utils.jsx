@@ -6,7 +6,13 @@ export const dateAddZero = (date) => {
 
 //FormatDate
 export const FormatDate = (date) => {
-	return `${new Date(date * 1000).getFullYear().toString()} - ${dateAddZero(
+	return `${date.getFullYear().toString()}-${dateAddZero(
+		date.getMonth() + 1
+	)}-${dateAddZero(date.getDate())}`;
+};
+
+export const FormatDateTimesK = (date) => {
+	return `${new Date(date * 1000).getFullYear().toString()}-${dateAddZero(
 		new Date(date * 1000).getMonth() + 1
-	)} - ${dateAddZero(new Date(date * 1000).getDate())}`;
+	)}-${dateAddZero(new Date(date * 1000).getDate())}`;
 };
