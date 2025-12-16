@@ -6,7 +6,7 @@ import { postProduct, editProduct } from "../../common/api/admin";
 
 import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 import { Input, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooterBtn } from "../../../Common/FormElements";
-import useImagePreviews from '../../../Common/utils/hooks/useImagePreviews';
+import useImagePreviews from './../../../Common/utils/hooks/useImagePreviews';
 
 
 const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
@@ -62,7 +62,6 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 			}));
 		}
 	};
-
 
     const {handleUpload, handleRemove} = useImagePreviews({setTempData, tempData});
 

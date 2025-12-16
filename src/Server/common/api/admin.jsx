@@ -96,3 +96,8 @@ export const postArticle = async (data) => {
 export const editArticle = async (id, data) => {
 	return await axiosInstance.put(`/article/${id}`, { data });
 };
+
+//image
+export const uploadImage = async (data) => {
+	return await axiosInstance.post(`/upload`, data );
+};

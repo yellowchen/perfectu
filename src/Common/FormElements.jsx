@@ -1,4 +1,4 @@
-import { FormatDate, dateAddZero } from "./utils/dateUtils/date-utils";
+import { FormatDate } from "./utils/dateUtils/date-utils";
 
 export const Input = ({ id, labelText, type, name, placeholder, value, onChange }) => {
 	return (
@@ -285,7 +285,7 @@ export const ImagePreview = ({title, img, handleRemove}) => {
 						className='btn btn-sm btn-close position-absolute'
 						style={{ top: ".5rem", right: ".5rem" }}
 					></button>
-					<p className='text-secondary'>《圖片預覽》</p>
+					<p className='text-dark'>《圖片預覽》</p>
 				</div>
 			)}
 		</>
