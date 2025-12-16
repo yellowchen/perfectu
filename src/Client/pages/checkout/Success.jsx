@@ -49,13 +49,13 @@ const Success = () => {
 						user={user}
 						payment={payment}
 					/>
-					<div className='my-5'>
+					<div className='my-5 px-0 px-xl-5'>
 						<NavLink
 							to='/'
 							className='d-flex justify-content-center'
 						>
 							<ClickedButton
-								className='rounded-4 py-2 w-25'
+								className='rounded-4 py-2 w-50'
 								style={{}}
 								content='返回首頁'
 							/>

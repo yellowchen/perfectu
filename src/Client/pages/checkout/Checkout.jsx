@@ -151,14 +151,14 @@ const Checkout = () => {
 									<div className='d-flex justify-content-around mx-0 mx-md-3 mt-5 px-3 py-2'>
 										<ClickedButton
 											className='rounded-4 mx-4 w-50 py-2 px-1'
-											content='返回購物車'
+											content='上一頁'
 											action={() => {
 												navigate(-1);
 											}}
 										/>
 										<SubmitButton
 											className='rounded-4 mx-4 w-50 py-2 px-1'
-											text='確認結帳'
+											text='下一步'
 										/>
 									</div>
 								</div>
