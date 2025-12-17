@@ -22,7 +22,7 @@ const Product = () => {
 							<button
 								key={index}
 								type='button'
-								className={`btn-tab text-uppercase limelight ${index === activeTab && "underline"}`}
+								className={`btn-tab text-uppercase limelight fs-5 ${index === activeTab && "underline"}`}
 								onClick={() => setActiveTab(index)}
 							>
 								{item}

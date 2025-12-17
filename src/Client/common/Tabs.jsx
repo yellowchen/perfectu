@@ -9,7 +9,7 @@ export const Tabs = ({tabData, activeTab, setActiveTab, tabContentClass, tabCont
 					<button
 						key={index}
 						type='button'
-						className={`btn-tab ${index === activeTab && "underline"}`}
+						className={`btn-tab fs-5 fw-medium ${index === activeTab && "underline"}`}
 						onClick={() => setActiveTab(index)}
 					>
 						{item.title}

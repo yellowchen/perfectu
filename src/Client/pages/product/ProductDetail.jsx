@@ -38,12 +38,12 @@ const ProductDetail = () => {
 					<div className='col-md-5'>
 						<img
 							src={imageUrl}
-							className='card-img-top'
+							className='card-img-top h-100'
 							alt={title}
-							style={{ maxHeight: "400px", aspectRatio: "1/2" }}
+							// style={{ maxHeight: "300px", aspectRatio: "1/2" }}
 						/>
 					</div>
-					<div className='col-md-7 p-3 bg-light'>
+					<div className='col-md-7 px-3 px-sm-4 py-3 bg-light'>
 						<div className='card-body d-flex flex-column'>
 							<div className='card-txt'>
 								<div className='card-title d-flex justify-content-between align-items-end'>
@@ -61,12 +61,12 @@ const ProductDetail = () => {
 									</div>
 								</div>
 
-								<p className='mt-3 lh-lg text-justify noto_serif'>{content}</p>
+								<p className='mt-3 lh-lg text-justify fs-5'>{content}</p>
 							</div>
-							<div className='card-btn d-flex gap-2 flex-column flex-lg-row my-3'>
+							<div className='card-btn d-flex gap-2 flex-column flex-lg-row my-2'>
 								<div className='input-group w-50 mt-2 align-self-end'>
 									<button
-										className='input-group-text'
+										className='input-group-text bg-secondary'
 										onClick={() => {
 											setCartQuantity((prev) => (prev === 1 ? 1 : prev - 1));
 										}}
@@ -79,7 +79,7 @@ const ProductDetail = () => {
 										value={cartQuantity}
 									/>
 									<button
-										className='input-group-text'
+										className='input-group-text bg-secondary'
 										onClick={() => {
 											setCartQuantity((prev) => prev + 1);
 										}}
@@ -111,7 +111,7 @@ const ProductDetail = () => {
 					<h5
 						className='text-center'
 						style={{
-							fontSize: "18px",
+							// fontSize: "18px",
 							color: "#309dc1",
 							border: "transparent",
 						}}
@@ -125,7 +125,7 @@ const ProductDetail = () => {
 					activeTab={activeTab}
 					setActiveTab={setActiveTab}
 					tabContentClass={`m-auto bg-light p-3 text-justify`}
-                    tabContentStyle={{ lineHeight: 2.5, whiteSpace: "pre-line" }}
+					tabContentStyle={{ lineHeight: 2.5, whiteSpace: "pre-line" }}
 				>
 					{DetailInformation[activeTab].content}
 				</Tabs>
