@@ -88,7 +88,7 @@ const ProductDetail = () => {
 									</button>
 								</div>
 								<ClickedButton
-									className={`form-control w-100 mt-2 rounded-4 fw-bolder`}
+									className={`w-100 mt-2 rounded-4 fw-bolder`}
 									action={() => {
 										addToCart(id);
 									}}
