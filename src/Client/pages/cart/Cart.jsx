@@ -153,8 +153,8 @@ const Cart = () => {
 								className='px-3 bg-light'
 								style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
 							>
-								<h3 className='text-center mt-3 mb-5'>結帳金額</h3>
-								<div>
+								<h3 className='text-start mt-3 mb-5'>結帳金額</h3>
+								<div className="px-2">
 									<div className='d-flex justify-content-between my-3'>
 										<h5>商品小計</h5>
 										<h5>NT$ {thousandFormat(total)}</h5>
@@ -188,31 +188,33 @@ const Cart = () => {
 											<button
 												type='button'
 												className='btn w-25 fw-bolder'
-												id='setCoupon'
-												onClick={handleCoupon}
-												style={{
-													background: "#309DC1",
-													borderRadius: "0px",
-												}}
-											>
-												使用
-											</button>
-											<button
-												type='button'
-												className='btn w-25 fw-bolder'
 												id='resetCoupon'
 												onClick={handleCoupon}
 												style={{
 													background: "#ced4da",
-													borderRadius: "0 8px 8px 0",
+													borderRadius: "0",
 												}}
 											>
 												取消
 											</button>
+											<button
+												type='button'
+												className='btn w-25 fw-bolder'
+												id='setCoupon'
+												onClick={handleCoupon}
+												style={{
+													background: "#309DC1",
+													borderRadius: "0 8px 8px 0",
+												}}
+											>
+												使用
+											</button>
 										</div>
 										<div className='d-flex justify-content-between align-items-center my-3'>
 											<h5>優惠券：{carts?.[0]?.coupon?.code}</h5>
-											<h5 className='text-danger'>NT$ {thousandFormat(final_total - total)}</h5>
+											<h5 className={carts?.[0]?.coupon ? "text-danger" : "text-dark"}>
+												NT$ {thousandFormat(final_total - total)}
+											</h5>
 										</div>
 									</div>
 									<hr />
@@ -223,7 +225,7 @@ const Cart = () => {
 								</div>
 							</div>
 							<NavLink
-								className='w-50 d-block mx-auto'
+								className='w-50 d-block ms-auto'
 								type='button'
 								to='/checkout'
 							>

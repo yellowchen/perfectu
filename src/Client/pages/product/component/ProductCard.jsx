@@ -10,12 +10,13 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 
 	return (
 		<div
-			className='card p-0 border-0 card-product'
+			className='card p-0 card-product'
 			style={{
 				minWidth: "330px",
 				height: "420px",
 				borderRadius: "20px",
-				boxShadow: "0 5px 15px 0 rgba(0, 0, 0, .4)",
+				// boxShadow: "0 5px 15px 0 rgba(0, 0, 0, .1)",
+                border: "1px solid #aaa",
 				margin: "3rem 2rem",
 			}}
 		>

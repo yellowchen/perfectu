@@ -130,15 +130,8 @@ const Navbar = ({cartData}) => {
 											data-bs-toggle='collapse'
 											data-bs-target='#navbarNav'
 										>
-										願望清單
-											{wish?.wishlistItems?.length > 0 ? (
-												<i
-													className='bi bi-suit-heart-fill ps-2'
-													style={{ color: "#f7ae5b" }}
-												></i>
-											) : (
-												<i className='bi bi-suit-heart-fill ps-2'></i>
-											)}
+                                            願望清單
+                                            <i className='bi bi-suit-heart-fill ps-2'></i>
 										</span>
 									</NavLink>
 								</li>

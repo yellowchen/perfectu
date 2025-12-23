@@ -13,7 +13,7 @@ const ProductDetail = () => {
     const [activeTab, setActiveTab] = useState(0);
 	const { id } = useParams();
 	const { setCartQuantity, cartQuantity, addToCart, setIsLoading } = useOutletContext();
-	const { imageUrl, price, title, category, unit, content, origin_price, description } = product;
+	const { imageUrl, price, title, unit, content, origin_price, description } = product;
 
 	useEffect(() => {
         const getProductDetail = async (id) => {
@@ -26,12 +26,13 @@ const ProductDetail = () => {
 				console.log(err);
 			}
 		};
+        setCartQuantity(1);
 		getProductDetail(id);
-	}, [id, setIsLoading]);
+	}, [id, setIsLoading, setCartQuantity]);
 
 	return (
 		<div className='container my-5 clearfix'>
-			<h1 className='title limelight text-uppercase'>{category}</h1>
+			{/* <h1 className='title limelight text-uppercase'>{category}</h1> */}
 
 			<div className='mx-3 mb-5'>
 				<div className='row g-0'>
@@ -40,7 +41,6 @@ const ProductDetail = () => {
 							src={imageUrl}
 							className='card-img-top h-100'
 							alt={title}
-							// style={{ maxHeight: "300px", aspectRatio: "1/2" }}
 						/>
 					</div>
 					<div className='col-md-7 px-3 px-sm-4 py-3 bg-light'>
@@ -48,7 +48,7 @@ const ProductDetail = () => {
 							<div className='card-txt'>
 								<div className='card-title d-flex justify-content-between align-items-end'>
 									<div>
-										<h3 className='uoq_mun'>{title}</h3>/ <small>{unit}</small>
+										<h3 className=''>{title}</h3>/ <small>{unit}</small>
 									</div>
 									<div>
 										<p className='m-0'>NT$ {thousandFormat(price)}</p>
@@ -106,10 +106,10 @@ const ProductDetail = () => {
 				>
 					產品資訊
 				</h4>
-				<hr className='my-5' />
+				<hr className='my-4' />
 				<div className=''>
 					<h5
-						className='text-center'
+						className='text-start mx-lg-5 ps-3'
 						style={{
 							// fontSize: "18px",
 							color: "#309dc1",
@@ -124,6 +124,7 @@ const ProductDetail = () => {
 					tabData={DetailInformation}
 					activeTab={activeTab}
 					setActiveTab={setActiveTab}
+                    tabHeaderClass={`text-start`}
 					tabContentClass={`m-auto bg-light p-3 text-justify`}
 					tabContentStyle={{ lineHeight: 2.5, whiteSpace: "pre-line" }}
 				>

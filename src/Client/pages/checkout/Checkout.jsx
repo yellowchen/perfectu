@@ -88,31 +88,34 @@ const Checkout = () => {
 							onSubmit={handleSubmit(onSubmit)}
 						>
 							<div className='d-flex gap-4 flex-column flex-lg-row px-0 px-md-2'>
-
 								<div
 									className='w-100 p-3 bg-light align-self-start'
 									style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
 								>
-									<h3 className='mb-5 text-center'>結帳明細</h3>
-									{carts?.map((item) => (
-										<CheckoutCard
-											item={item}
-											key={item.id}
-										/>
-									))}
-									<hr />
-									<div className='d-flex justify-content-between my-3'>
-										<h5 className=''>小計</h5>
-										<h5 className=''>NT$ {thousandFormat(total)}</h5>
-									</div>
-									<div className='d-flex justify-content-between my-3'>
-										<h5 className=''>使用優惠券</h5>
-										<h5 className='text-danger'>NT$ {thousandFormat(final_total - total)}</h5>
-									</div>
-									<hr />
-									<div className='d-flex justify-content-between'>
-										<h5 className=''>總計</h5>
-										<h5 className=''>NT$ {thousandFormat(final_total)}</h5>
+									<h3 className='mb-5 text-start'>結帳明細</h3>
+									<div className='px-2'>
+										{carts?.map((item) => (
+											<CheckoutCard
+												item={item}
+												key={item.id}
+											/>
+										))}
+										<hr />
+										<div className='d-flex justify-content-between my-3'>
+											<h5 className=''>小計</h5>
+											<h5 className=''>NT$ {thousandFormat(total)}</h5>
+										</div>
+										<div className='d-flex justify-content-between my-3'>
+											<h5 className=''>使用優惠券</h5>
+											<h5 className={final_total !== total ? "text-danger" : "text-dark"}>
+												NT$ {thousandFormat(final_total - total)}
+											</h5>
+										</div>
+										<hr />
+										<div className='d-flex justify-content-between'>
+											<h5 className=''>總計</h5>
+											<h5 className=''>NT$ {thousandFormat(final_total)}</h5>
+										</div>
 									</div>
 								</div>
 
@@ -121,31 +124,33 @@ const Checkout = () => {
 										className='p-3 bg-light'
 										style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
 									>
-										<h3 className='mb-5 text-center'>寄件資料填寫</h3>
-										{CheckoutInputRules.map((item) => (
-											<FormInput
-												key={item.id}
-												item={item}
+										<h3 className='mb-5 text-start'>寄件資料填寫</h3>
+										<div className="px-2">
+											{CheckoutInputRules.map((item) => (
+												<FormInput
+													key={item.id}
+													item={item}
+													register={register}
+													errors={errors}
+												/>
+											))}
+											<Address
 												register={register}
 												errors={errors}
+												addressData={addressData}
+												watchCity={watchCity}
+												watchDistrict={watchDistrict}
 											/>
-										))}
-                                        <Address
-                                            register={register}
-                                            errors={errors}
-                                            addressData={addressData}
-                                            watchCity={watchCity}
-                                            watchDistrict={watchDistrict}
-                                        />
-										<FormTextArea
-											item={{
-												id: "message",
-												name: "message",
-												placeholder: "",
-												labelText: "訂單備註",
-											}}
-											register={register}
-										/>
+											<FormTextArea
+												item={{
+													id: "message",
+													name: "message",
+													placeholder: "",
+													labelText: "訂單備註",
+												}}
+												register={register}
+											/>
+										</div>
 									</div>
 
 									<div className='d-flex justify-content-around mx-0 mx-md-3 mt-5 px-3 py-2'>

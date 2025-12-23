@@ -6,10 +6,11 @@ import ProductCard from "./component/ProductCard";
 const Product = () => {
     const [activeTab, setActiveTab] = useState(0);
 	const category = ["season", "nature"];
-    const {products, getAllProducts, wish, toggleWishlist} = useOutletContext();
+    const {products, getAllProducts, wish, toggleWishlist, setCartQuantity} = useOutletContext();
 
     useEffect(() => {
         getAllProducts(1);
+        setCartQuantity(1);
     }, []);
 
     return (

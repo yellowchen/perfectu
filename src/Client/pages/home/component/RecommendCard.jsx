@@ -13,7 +13,7 @@ export const RecommendCard = ({recommend, slideRef}) => {
 						ref={slideRef}
 					>
 						<div className='txt'>
-							<h1>
+							<h1 className="text-light">
 								<small>秋季推薦 - </small>
 								{item.title}
 							</h1>
@@ -24,7 +24,7 @@ export const RecommendCard = ({recommend, slideRef}) => {
 									className='btn align-self-end text-light'
 								>
 									<ClickedButton
-										className='rounded-4 py-2'
+										className='rounded-4 px-4 py-2'
 										content={`瞭解更多`}
 									/>
 								</NavLink>

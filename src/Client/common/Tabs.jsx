@@ -1,10 +1,10 @@
 
 
-export const Tabs = ({tabData, activeTab, setActiveTab, tabContentClass, tabContentStyle, children}) => {
+export const Tabs = ({tabData, activeTab, setActiveTab, tabHeaderClass, tabContentClass, tabContentStyle, children}) => {
 
     return (
 		<div className='tabs-container px-2 mx-0 mx-lg-5'>
-			<div className='tabs-header text-center my-3'>
+			<div className={`tabs-header my-3 ${tabHeaderClass}`}>
 				{tabData.map((item, index) => (
 					<button
 						key={index}

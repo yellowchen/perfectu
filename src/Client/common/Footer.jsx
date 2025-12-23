@@ -3,17 +3,16 @@ import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
     return (
-		<div className='flex-shrink-0 position-relative roboto_slab mt-5'>
+		<div className='flex-shrink-0 position-relative mt-5'>
 			<div
 				className='px-4 mt-5'
 				style={{ backgroundColor: "#309dc1" }}
 			>
-				<div className='d-flex flex-column flex-xl-row align-items-center justify-content-around justify-content-md-center gap-lg-1 py-5'>
-					{/* icon */}
-					<div className='footer-logo'>
+				<div className='container d-flex flex-column flex-xxl-row align-items-center justify-content-between gap-lg-1 py-5'>
+					<div className='d-xxl-none d-block footer-logo mx-3 mb-4 px-4'>
 						<div className=''>
 							<ul
-								className='d-flex flex-row flex-xl-column list-unstyled gap-5 gap-xl-0 ms-0 ms-xl-3'
+								className='d-flex flex-row list-unstyled gap-5 ms-0'
 								style={{ fontSize: "2.5rem" }}
 							>
 								<li>
@@ -24,7 +23,7 @@ const Footer = () => {
 									>
 										<i
 											className='fab fa-facebook'
-											style={{ color: "#E47C01" }}
+											style={{ color: "#fff" }}
 										></i>
 									</NavLink>
 								</li>
@@ -37,7 +36,7 @@ const Footer = () => {
 										<i
 											className='fab fa-instagram'
 											style={{
-												color: "#E47C01",
+												color: "#fff",
 											}}
 										></i>
 									</NavLink>
@@ -50,15 +49,61 @@ const Footer = () => {
 									>
 										<i
 											className='fab fa-line'
-											style={{ color: "#E47C01" }}
+											style={{ color: "#fff" }}
 										></i>
 									</NavLink>
 								</li>
 							</ul>
 						</div>
 					</div>
-					{/* text */}
-					<div className='footer-contact text-white d-flex flex-column flex-lg-row gap-5 mx-md-5'>
+					<div className='footer-contact text-white d-flex flex-column flex-lg-row gap-5'>
+						<div className="d-none d-xxl-block" style={{ width: "285px" }}>
+							<h4 className='text-center text-lg-start'>關注我們</h4>
+							<hr className='border-2 my-4'/>
+							<ul
+								className='p-0 m-auto d-flex justify-content-center justify-content-xl-start  gap-4'
+								style={{ fontSize: "2.5rem" }}
+							>
+								<li>
+									<NavLink
+										to='https://github.com/yellowchen/perfectu'
+										className='text-white'
+										target='_blank'
+									>
+										<i
+											className='fab fa-facebook'
+											style={{ color: "#fff" }}
+										></i>
+									</NavLink>
+								</li>
+								<li>
+									<NavLink
+										to='https://github.com/yellowchen/perfectu'
+										className='text-white'
+										target='_blank'
+									>
+										<i
+											className='fab fa-instagram'
+											style={{
+												color: "#fff",
+											}}
+										></i>
+									</NavLink>
+								</li>
+								<li>
+									<NavLink
+										to='https://github.com/yellowchen/perfectu'
+										className='text-white'
+										target='_blank'
+									>
+										<i
+											className='fab fa-line'
+											style={{ color: "#fff" }}
+										></i>
+									</NavLink>
+								</li>
+							</ul>
+						</div>
 						<div style={{ width: "285px" }}>
 							<h4 className='text-center text-lg-start'>聯絡我們</h4>
 							<hr className='border-2 my-4' />

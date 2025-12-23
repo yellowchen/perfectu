@@ -40,6 +40,7 @@ const FrontLayout = () => {
             const res = await postCart(data)
             dispatch(createAsyncMessage(res.data));
 			getAllCart();
+            setCartQuantity(1);
 		} catch (err) {
             dispatch(createAsyncMessage(err.response.data));
 		}
