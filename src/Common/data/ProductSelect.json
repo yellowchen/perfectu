@@ -1,0 +1,33 @@
+{
+	"productCategory": [
+		{
+			"id": 1,
+			"title": "香水",
+			"sort": "perfume"
+		},
+		{
+			"id": 2,
+			"title": "擴香瓶",
+			"sort": "diffuser"
+		},
+        {
+			"id": 3,
+			"title": "芬香蠟燭",
+			"sort": "candle"
+		}
+	],
+	"productUnit": [
+		{
+			"id": 1,
+			"title": "50ml"
+		},
+		{
+			"id": 2,
+			"title": "200ml"
+		},
+        {
+			"id": 3,
+			"title": "85g"
+		}
+	]
+}

@@ -5,7 +5,7 @@ const baseURL = process.env.REACT_APP_API_URL;
 const apiPath = process.env.REACT_APP_API_PATH;
 
 const axiosInstance = axios.create({
-	baseURL: `${baseURL}/v2/api/${apiPath}/`,
+	baseURL: `${baseURL}v2/api/${apiPath}/`,
 });
 
 axiosInstance.interceptors.response.use(
@@ -18,12 +18,20 @@ axiosInstance.interceptors.response.use(
 );
 
 //product
+export const getAllProducts = async(page) => {
+    return await axiosInstance.get(`products/all`);
+}
+
+export const getProduct = async (id) => {
+    return await axiosInstance.get(`product/${id}`);
+}
+
 export const getProducts = async (page) => {
 	return await axiosInstance.get(`products?page=${page}`);
 };
 
-export const getProduct = async (id) => {
-    return await axiosInstance.get(`product/${id}`);
+export const getProductSort = async(page, category) => {
+    return await axiosInstance.get(`products?page=${page}&category=${category}`);
 }
 
 //article

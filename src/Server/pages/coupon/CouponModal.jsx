@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 
-import { CouponModalInputRules } from "./CouponInputRules";
 import { postCoupon, editCoupon } from "../../common/api/admin";
+import data from "../../common/data/CouponData.json";
 
-import { Input, DateInput, ModalInput, EnableCheck, ModalFooterBtn } from "../../../Common/FormElements";
 import { createAsyncMessage } from "../../../Common/slice/messageSlice";
+import { Input, DateInput, ModalInput } from "./../../../Common/form/Input";
+import { ModalCheck } from './../../../Common/form/CheckBox';
+import { ModalFooterBtn } from './../../../Common/form/Button';
 
 
 const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
@@ -126,7 +128,7 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 								onChange={handleChange}
 							/>
 							<div className='row'>
-								{CouponModalInputRules.map((item) => (
+								{data.couponModalInputRules.map((item) => (
 									<div className='col-md-6 mb-2' key={item.id}>
 										<ModalInput
                                             item={item}
@@ -147,7 +149,7 @@ const CouponModal = ({closeModal, type, tempCoupon, getCoupons}) => {
 									/>
 								</div>
 							</div>
-							<EnableCheck
+							<ModalCheck
 								id='is_enabled'
 								name='is_enabled'
 								data={tempData}

@@ -1,14 +1,14 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { Modal } from "bootstrap";
 
 import ProductModal from "./ProductModal";
-import Pagination from "../../common/Pagination";
 import { getProducts, deleteProduct } from "../../common/api/admin";
 
 import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 import { thousandFormat } from '../../../Common/utils/stringUtils/string-utils';
 import { DeleteMessage } from '../../../Common/DeleteMessage';
+import Pagination from "../../../Common/Pagination";
 
 
 const AdminProducts = () => {
@@ -18,16 +18,18 @@ const AdminProducts = () => {
 	const [pagination, setPagination] = useState({});
     const dispatch = useDispatch();
 
-    const getAllProducts = (page = 1) => {
-        getProducts(page)
-			.then((res) => {
-				setProducts(res.data.products);
-				setPagination(res.data.pagination);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-    }
+    const getAllProducts = useCallback(
+        async (page) => {
+            try {
+                const res = await getProducts(page);
+                setProducts(res.data.products);
+                setPagination(res.data.pagination);
+                console.log(res);
+            } catch (err) {
+                console.log(err);
+            }
+        }, []
+    );
 
     const handleDeleteProduct = (id) => {
         deleteProduct(id)
@@ -53,7 +55,7 @@ const AdminProducts = () => {
 			backdrop: "static",
 		});
 		getAllProducts();
-	}, []);
+	}, [getAllProducts]);
 
 
 	const openProductModal = (type, item) => {
@@ -73,6 +75,7 @@ const AdminProducts = () => {
 	const closeDeleteMessage = () => {
 		deleteMessage.current.hide();
 	};
+    console.log(products);
 
 	return (
 		<div className='p-1'>
@@ -83,11 +86,11 @@ const AdminProducts = () => {
 				getProducts={getAllProducts}
 			/>
 			<DeleteMessage
-                closeModal={closeDeleteMessage}
-                deleteItem={handleDeleteProduct}
-                id={tempProduct.id}
-                title={tempProduct.title}
-            />
+				closeModal={closeDeleteMessage}
+				deleteItem={handleDeleteProduct}
+				id={tempProduct.id}
+				title={tempProduct.title}
+			/>
 			<h4 className='pt-3'>Products</h4>
 			<hr />
 			<div className='text-end mb-3'>
@@ -114,7 +117,7 @@ const AdminProducts = () => {
 				</thead>
 				<tbody>
 					{products
-						.sort((a, b) => (a.num > b.num ? -1 : 1))
+						.sort((a, b) => (a.category < b.category ? -1 : 1))
 						.map((item) => (
 							<tr key={item.id}>
 								<td>{item.category}</td>
@@ -153,7 +156,10 @@ const AdminProducts = () => {
 						))}
 				</tbody>
 			</table>
-			<Pagination changePage={getAllProducts} pagination={pagination} />
+			<Pagination
+				changePage={getAllProducts}
+				pagination={pagination}
+			/>
 		</div>
 	);
 }

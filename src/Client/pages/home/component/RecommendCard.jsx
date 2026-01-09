@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
-import { ClickedButton } from "../../../common/utils/Button";
+import { ClickedButton } from "../../../../Common/form/Button";
 
 export const RecommendCard = ({recommend, slideRef}) => {
+    console.log(recommend);
 	return (
 		<div className='my-5 pb-5 container'>
 			{recommend
-				.filter((item) => item.title === "秋鴛")
-				.map((item) => (
+				?.filter((item) => item.title === "秋鴛")
+				?.map((item) => (
 					<div
 						key={item.id}
 						className='recommend'

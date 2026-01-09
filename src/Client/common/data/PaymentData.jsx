@@ -1,11 +1,11 @@
-export const PaymentCheckRules = [
+export const paymentCheckRules = [
 	{
 		id: "payRadios1",
 		name: "payRadio",
 		value: "creditCard",
 		labelText: <i className='bi bi-credit-card-2-back fst-normal'> 信用卡</i>,
 		rules: {
-			required: "",
+			required: true,
 		},
 	},
 	{
@@ -14,7 +14,7 @@ export const PaymentCheckRules = [
 		value: "WebATM",
 		labelText: <i className='bi bi-bank fst-normal'> 網路ATM</i>,
 		rules: {
-			required: "",
+			required: true,
 		},
 	},
 	{

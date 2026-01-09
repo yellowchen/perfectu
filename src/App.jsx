@@ -65,11 +65,11 @@ function App() {
 							element={<Intro />}
 						/>
 						<Route
-							path='/product'
+							path='/product/:sort'
 							element={<Product />}
 						/>
 						<Route
-							path='/product/:id'
+							path='/detail/:id'
 							element={<ProductDetail />}
 						/>
 						<Route

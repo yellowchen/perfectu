@@ -1,24 +1,15 @@
 import { NavLink, useOutletContext } from "react-router-dom";
 import { thousandFormat } from '../../../../Common/utils/stringUtils/string-utils';
-import { ClickedButton } from '../../../common/utils/Button';
+import { ClickedButton } from '../../../../Common/form/Button';
 
 
 const ProductCard = ({ item, wish, toggleWishlist }) => {
-    console.log(item);
 	const { addToCart } = useOutletContext();
 	const { id, imageUrl, title, price, description } = item;
 
 	return (
 		<div
 			className='card p-0 card-product'
-			style={{
-				minWidth: "330px",
-				height: "420px",
-				borderRadius: "20px",
-				// boxShadow: "0 5px 15px 0 rgba(0, 0, 0, .1)",
-                border: "1px solid #aaa",
-				margin: "3rem 2rem",
-			}}
 		>
 			<button
 				className='btn rounded-circle btn-wish'
@@ -44,7 +35,7 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 			</button>
 
 			<NavLink
-				to={`/product/${id}`}
+				to={`/detail/${id}`}
 				style={{}}
 				className='border-0'
 			>
@@ -83,14 +74,15 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 							}}
 						>
 							<h4
+                                className="text-start"
 								style={{
-									letterSpacing: "1rem",
+									letterSpacing: ".2rem",
 								}}
 							>
 								{title}
 							</h4>
 							<p
-								className='uoq_mun'
+								className='uoq_mun text-start'
 								style={{
 									color: "#777",
 								}}

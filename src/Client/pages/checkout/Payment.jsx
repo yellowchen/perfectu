@@ -3,14 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import { OrderInformation } from "./component/OrderInformation";
-import { PaymentCheckRules } from "./data/PaymentCheckRules";
 
+import { paymentCheckRules } from "./../../common/data/PaymentData";
 import { getOrder, postPayment } from "../../common/api/front";
 import { PaymentContext } from "../../common/context/PaymentContext";
-import { ProgressBar } from "../../common/utils/dataUtils/ProgressBar";
-import { SubmitButton } from "../../common/utils/Button";
 
-import { FormRadio } from '../../../Common/FormElements';
+import { ProgressBar } from "./../../../Common/utils/dataUtils/ProgressBar";
+import { SubmitButton } from "../../../Common/form/Button";
+import { FormRadio } from '../../../Common/form/Radio';
 
 
 const Payment = () => {
@@ -69,7 +69,7 @@ const Payment = () => {
 								<h3 className='mb-4 text-center'>付款方式</h3>
 								<hr className='my-3 mx-1' />
 								<div className='p-3'>
-									{PaymentCheckRules.map((item) => (
+									{paymentCheckRules.map((item) => (
 										<FormRadio
 											key={item.id}
 											item={item}

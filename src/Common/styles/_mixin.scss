@@ -28,12 +28,14 @@
     }
 };
 
+//430
 @mixin media-xs {
     @media all and (max-width: $media-xs) {
         @content;
     }
 };
 
+//360
 @mixin xxs {
     @media all and (max-width: $media-xxs) {
         @content;

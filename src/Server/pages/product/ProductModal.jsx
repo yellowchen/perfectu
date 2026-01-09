@@ -1,12 +1,18 @@
 import { useState, useEffect} from 'react';
 import { useDispatch } from "react-redux";
 
-import { ProductModalFirstInputRules, ProductModalSecondInputRules } from "./ProductInputRules";
 import { postProduct, editProduct } from "../../common/api/admin";
+import data from "../../common/data/ProductData.json";
 
-import { createAsyncMessage } from "../../../Common/slice/messageSlice";
-import { Input, ModalInput, EnableCheck, TextArea, ImagePreview, ModalFooterBtn } from "../../../Common/FormElements";
 import useImagePreviews from './../../../Common/utils/hooks/useImagePreviews';
+import { createAsyncMessage } from "../../../Common/slice/messageSlice";
+import selection from "../../../Common/data/ProductSelect.json";
+import { Input, ModalInput } from './../../../Common/form/Input';
+import { ModalCheck } from './../../../Common/form/CheckBox';
+import { ModalFooterBtn } from './../../../Common/form/Button';
+import { ModalTextArea } from './../../../Common/form/TextArea';
+import {ModalSelect} from "./../../../Common/form/Select";
+import { ImagePreview } from './../../../Common/form/ImagePreview';
 
 
 const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
@@ -99,9 +105,11 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 			>
 				<div className='modal-dialog modal-lg'>
 					<div className='modal-content'>
-
 						<div className='modal-header'>
-							<div className='modal-title' id='productModalLabel'>
+							<div
+								className='modal-title'
+								id='productModalLabel'
+							>
 								<h5>{type === "create" ? "建立新商品" : `編輯：${tempItem.title}`}</h5>
 							</div>
 							<button
@@ -114,7 +122,6 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 
 						<div className='modal-body'>
 							<div className='row'>
-
 								<div className='col-sm-4 d-flex flex-column gap-2'>
 									<Input
 										id='customFile'
@@ -143,16 +150,54 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 										onChange={handleChange}
 									/>
 									<div className='row'>
-										{ProductModalFirstInputRules.map((item) => (
-											<div className='col-md-6' key={item.id}>
-												<ModalInput item={item} data={tempData} onChange={handleChange} />
+										{data.productModalSelectRules.map((item) => (
+											<div
+												className='col-md-6'
+												key={item.id}
+											>
+												<ModalSelect
+													item={item}
+													data={tempData}
+													onChange={handleChange}
+												>
+													{item.name === "category"
+														? selection.productCategory.map((item) => (
+																<option
+																	key={item.id}
+																	value={item.sort}
+																>
+																	{item.title}
+																</option>
+														))
+														: selection.productUnit.map((item) => (
+																<option
+																	key={item.id}
+																	value={item.title}
+																>
+																	{item.title}
+																</option>
+														))
+                                                    }
+												</ModalSelect>
+											</div>
+										))}
+										{data.productModalInputRules.map((item) => (
+											<div
+												className='col-md-6'
+												key={item.id}
+											>
+												<ModalInput
+													item={item}
+													data={tempData}
+													onChange={handleChange}
+												/>
 											</div>
 										))}
 									</div>
 									<hr />
-									{ProductModalSecondInputRules.map((item) => (
+									{data.productModalTextAreaRules.map((item) => (
 										<div key={item.id}>
-											<TextArea
+											<ModalTextArea
 												id={item.id}
 												labelText={item.labelText}
 												data={tempData}
@@ -163,7 +208,7 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 											/>
 										</div>
 									))}
-									<EnableCheck
+									<ModalCheck
 										id='is_enabled'
 										name='is_enabled'
 										data={tempData}
@@ -175,10 +220,10 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 						</div>
 
 						<ModalFooterBtn
-                            handleCancel={handleCancel}
-                            handleSubmit={handleSubmit}
-                            data={tempItem}
-                        />
+							handleCancel={handleCancel}
+							handleSubmit={handleSubmit}
+							data={tempItem}
+						/>
 					</div>
 				</div>
 			</div>

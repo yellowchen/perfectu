@@ -91,7 +91,7 @@ const Navbar = ({cartData}) => {
 									<NavLink
 										className='nav-link'
 										aria-current='page'
-										to='/product'
+										to='/product/perfume'
 									>
 										<span
 											className='nav-list'
@@ -130,8 +130,8 @@ const Navbar = ({cartData}) => {
 											data-bs-toggle='collapse'
 											data-bs-target='#navbarNav'
 										>
-                                            願望清單
-                                            <i className='bi bi-suit-heart-fill ps-2'></i>
+											願望清單
+											<i className='bi bi-suit-heart-fill ps-2'></i>
 										</span>
 									</NavLink>
 								</li>

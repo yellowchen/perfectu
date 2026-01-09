@@ -30,7 +30,7 @@ const Login = () => {
 
     return (
 		<div className='container py-5'>
-			<h1 className='text-center mb-5'>Backend Admin</h1>
+			<h1 className='text-center mb-5'>後臺管理者</h1>
 			<div className='row justify-content-center mb-5'>
 				<form
 					className='col-md-6 d-flex flex-column gap-4'
@@ -51,7 +51,7 @@ const Login = () => {
 							className='w-100 form-label mb-0'
 							htmlFor='email'
 						>
-							Email Address
+							帳號
 							<input
 								type='email'
 								id='username'
@@ -69,7 +69,7 @@ const Login = () => {
 					</div>
 
 					<div className='form-group position-relative'>
-						<label htmlFor='password'>Password</label>
+						<label htmlFor='password'>密碼</label>
 						<input
 							type={showPassword ? "text" : "password"}
 							id='password'
@@ -84,21 +84,12 @@ const Login = () => {
 						/>
 						{errors.password && <div className='invalid-feedback'>{errors.password?.message}</div>}
 						<div className='eyeToggle position-absolute'>
-							{showPassword ? (
-								<i
-									className='bi bi-eye-fill'
-									onClick={() => {
-										setShowPassword((prevState) => !prevState);
-									}}
-								></i>
-							) : (
-								<i
-									className='bi bi-eye-slash-fill'
-									onClick={() => {
-										setShowPassword((prevState) => !prevState);
-									}}
-								></i>
-							)}
+							<i
+								className={`bi ${showPassword ? "bi-eye-fill" : "bi-eye-slash-fill"}`}
+								onClick={() => {
+									setShowPassword((prevState) => !prevState);
+								}}
+							/>
 						</div>
 					</div>
 

@@ -4,15 +4,16 @@ import { useOutletContext, useNavigate, Navigate } from 'react-router-dom';
 
 import CheckoutCard from "./component/card/CheckoutCard";
 import { Address } from "./component/Address";
-import taiwanAddress from "./data/Taiwan.json";
-import { CheckoutInputRules } from "./data/checkoutInputRules";
-
+import taiwanAddress from "../../common/data/Taiwan.json";
+import { checkoutInputRules } from "../../common/data/CheckoutData";
 import { postOrder } from "../../common/api/front";
-import { ProgressBar } from "../../common/utils/dataUtils/ProgressBar";
-import { SubmitButton, ClickedButton } from "../../common/utils/Button";
 
-import { FormTextArea, FormInput } from "../../../Common/FormElements";
+import { ProgressBar } from "./../../../Common/utils/dataUtils/ProgressBar";
+import { SubmitButton, ClickedButton } from "../../../Common/form/Button";
+import { FormInput } from "../../../Common/form/Input";
+import { FormTextArea } from "../../../Common/form/TextArea";
 import { thousandFormat } from "../../../Common/utils/stringUtils/string-utils";
+
 
 
 const Checkout = () => {
@@ -126,7 +127,7 @@ const Checkout = () => {
 									>
 										<h3 className='mb-5 text-start'>寄件資料填寫</h3>
 										<div className="px-2">
-											{CheckoutInputRules.map((item) => (
+											{checkoutInputRules.map((item) => (
 												<FormInput
 													key={item.id}
 													item={item}

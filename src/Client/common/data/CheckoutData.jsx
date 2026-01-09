@@ -1,4 +1,4 @@
-export const CheckoutInputRules = [
+export const checkoutInputRules = [
 	{
 		id: "name",
 		labelText: "使用者名稱",

@@ -1,5 +1,5 @@
-import { ServiceInformation } from './data/ServiceInformation';
-import { AccordionItem } from './../../common/AccordionItem';
+import data from "../../common/data/ServiceData.json";
+import { AccordionItem } from '../../common/AccordionItem';
 
 const Service = () => {
   return (
@@ -9,7 +9,7 @@ const Service = () => {
 				className='accordion px-2 mx-0 mx-lg-5 lxgw_wenkai'
 				id='accordionPanel'
 			>
-				{ServiceInformation.map((item) => (
+				{data.serviceInformation.map((item) => (
 					<AccordionItem
 						key={item.id}
 						id={item.id}

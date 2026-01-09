@@ -1,4 +1,4 @@
-import { ClickedButton } from "../../../common/utils/Button";
+import { ClickedButton } from "../../../../Common/form/Button";
 
 export const CouponBanner = ({ imgUrl, position, copy, text }) => {
 	return (

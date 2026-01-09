@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 
 import { editOrder } from '../../common/api/admin';
+import data from "../../common/data/OrderData.json";
 
 import { createAsyncMessage } from '../../../Common/slice/messageSlice';
-import { DefaultValueInput, ModalFooterBtn } from "../../../Common/FormElements";
 import { thousandFormat } from '../../../Common/utils/stringUtils/string-utils';
+import { Select } from './../../../Common/form/Select';
+import { ModalFooterBtn } from './../../../Common/form/Button';
+import { DefaultValueInput } from './../../../Common/form/Input';
 
 
 const OrderModal = ({closeModal, tempOrder, getOrders}) => {
@@ -106,10 +109,10 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 						<div className='modal-body d-flex flex-column row-gap-3'>
 							{OrderDefaultValue.map((item) => (
 								<DefaultValueInput
-                                    key={item.title}
-                                    title={item.title}
-                                    value={item.value}
-                                />
+									key={item.title}
+									title={item.title}
+									value={item.value}
+								/>
 							))}
 							<div className='row'>
 								<span className='col-sm-2 col-form-label'>商品</span>
@@ -159,23 +162,19 @@ const OrderModal = ({closeModal, tempOrder, getOrders}) => {
 							</div>
 							<div className='row'>
 								<div className='col-5 col-md-3'>
-									<span>處理進度</span>
-									<select
-										name='status'
-										className='form-select'
+									<Select
+                                        id="status"
+                                        name="status"
+										labelText='處理進度'
 										value={tempData?.status}
 										onChange={handleChange}
 									>
-										<option
-											value='1'
-											defaultValue
-										>
-											未確認
-										</option>
-										<option value='2'>已確認</option>
-										<option value='3'>外送中</option>
-										<option value='4'>已送達</option>
-									</select>
+                                        {data.orderStatus.map(item => (
+                                            <option key={item.value} value={item.value}>
+                                                {item.content}
+                                            </option>
+                                        ))}
+									</Select>
 								</div>
 							</div>
 						</div>

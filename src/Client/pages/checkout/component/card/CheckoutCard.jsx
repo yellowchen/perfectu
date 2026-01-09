@@ -18,7 +18,7 @@ const CheckoutCard = ({ item }) => {
 					<div className='d-flex justify-content-between'>
 						<p className='mb-0 fw-bold'>
 							{product.title}
-							<small className='text-dark'> / 50ml</small>
+							<small className='text-dark'> / {product.unit}</small>
 						</p>
 						<p className='text-black-50 mb-0'>
 							<small className=''>NT$ {thousandFormat(product.price)}</small>

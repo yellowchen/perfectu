@@ -1,0 +1,57 @@
+//Login
+.eyeToggle {
+    top: 30px;
+    right: 30px;
+}
+
+//Modal
+.table-modal th {
+    min-width: 48px;
+}
+
+.table-fixed {
+    table-layout: fixed;
+    word-break: break-all;
+}
+
+.text-ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+//article
+.article-bg {
+    background-color: #c3ebf7;
+    height: 500px;
+    clip-path: polygon(0 0, 68% 35%, 100% 100%, 23% 71%);
+}
+
+.tag,
+.tag-edit {
+    border-radius: 15px;
+    padding: .3rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tag {
+    background: #ddd;
+    font-weight: bold;
+}
+.tag-edit {
+    background: #f4d3ad;
+}
+
+.tag-btn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #f4d3ad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #fff;
+}

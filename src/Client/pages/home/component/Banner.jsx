@@ -7,7 +7,7 @@ const Banner = ({ imgUrl, position }) => {
 				className='banner'
 				style={{
 					width: "100%",
-					height: "350px",
+					height: "80vh",
 					backgroundImage: imgUrl,
 					backgroundSize: "cover",
 					backgroundPosition: position,
@@ -20,15 +20,15 @@ const Banner = ({ imgUrl, position }) => {
 					style={{
 						top: "0%",
 						width: "100%",
-						height: "350px",
-						backdropFilter: "blur(4px)",
+						height: "80vh",
+						// backdropFilter: "blur(4px)",
 					}}
 				>
 					<div
 						className='play_write position-absolute text-center text-sm-start ps-sm-5'
 						style={{
 							width: "100%",
-							top: "30%",
+							top: "20%",
 							left: "0%",
 						}}
 					>
@@ -46,7 +46,7 @@ const Banner = ({ imgUrl, position }) => {
 								width: "100%",
 								top: "140%",
 								left: "0%",
-								fontSize: "2.3rem",
+								fontSize: "2.5rem",
 								lineHeight: "1.5",
 								letterSpacing: "8px",
 							}}
@@ -56,16 +56,40 @@ const Banner = ({ imgUrl, position }) => {
 							</p>
 						</div>
 					</div>
+					<div
+						className='position-absolute py-3'
+						style={{
+							width: "100%",
+							top: "50%",
+							left: "50%",
+							transform: "translateX(-50%)",
+							backdropFilter: "blur(4px)",
+
+						}}
+					>
+						<div></div>
+						<div
+							className='uoq_mun d-flex flex-column mt-3 mt-sm-0 mx-auto gap-0 text-center text-sm-end pe-sm-5 text-light fs-2'
+							style={{
+								width: "80%",
+							}}
+						>
+							<p>在這裡，找到屬於你的味道</p>
+							<p>找尋能"完美你"的香水</p>
+							<p>而他將成為你的"完美"香水</p>
+						</div>
+					</div>
 				</div>
 			</div>
-			<NavLink
+
+			{/* <NavLink
 				type='button'
 				className='btn position-absolute banner-link'
 				style={{
 					bottom: "0%",
 					right: "8%",
 				}}
-                to={`/intro`}
+				to={`/intro`}
 			>
 				<p
 					className='text-light fs-4 fw-bolder'
@@ -75,7 +99,7 @@ const Banner = ({ imgUrl, position }) => {
 				>
 					瞭解我們<i className='bi bi-chevron-double-right'></i>
 				</p>
-			</NavLink>
+			</NavLink> */}
 		</div>
 	);
 };

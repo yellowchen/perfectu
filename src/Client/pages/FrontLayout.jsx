@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
-import { getCart, postCart, getProducts } from "../common/api/front";
+import { getCart, postCart, getAllProducts} from "../common/api/front";
 import { PaymentProvider } from "../common/context/PaymentContext";
 import { toggleWishItem } from "../common/slice/wishSlice";
 
@@ -13,11 +13,13 @@ import Loading from "../../Common/Loading";
 import { createAsyncMessage } from "../../Common/slice/messageSlice";
 
 
+
 const FrontLayout = () => {
 	const [cartData, setCartData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 	const [cartQuantity, setCartQuantity] = useState(1);
-    const [products, setProducts] = useState([]);
+    const [allProducts, setAllProducts] = useState([]);
+    // const [pagination, setPagination] = useState({});
     const dispatch = useDispatch();
 
 	const getAllCart = async () => {
@@ -51,11 +53,12 @@ const FrontLayout = () => {
 	}, []);
 
 
-    const getAllProducts = async (page = 1) => {
+    const getAllProductsList = async () => {
         setIsLoading(true);
 		try {
-            const res = await getProducts(page);
-			setProducts(res.data.products);
+            const res = await getAllProducts();
+            console.log(res);
+			setAllProducts(res.data.products);
 		} catch (err) {
 			console.log(err);
 		} finally {
@@ -81,20 +84,21 @@ const FrontLayout = () => {
 				<MessageToast />
 				<main className='flex-grow-1 flex-shrink-0'>
 					<Outlet
-                        context={{
-                            addToCart,
-                            setCartQuantity,
-                            cartQuantity,
-                            cartData,
-                            getAllCart,
-                            setIsLoading,
-                            isLoading,
-                            products,
-                            setProducts,
-                            getAllProducts,
-                            wish,
-                            toggleWishlist
-                        }} />
+						context={{
+							addToCart,
+							cartQuantity,
+							setCartQuantity,
+							cartData,
+							getAllCart,
+							isLoading,
+							setIsLoading,
+							allProducts,
+							setAllProducts,
+							getAllProductsList,
+							wish,
+							toggleWishlist,
+						}}
+					/>
 				</main>
 				<Footer />
 			</div>

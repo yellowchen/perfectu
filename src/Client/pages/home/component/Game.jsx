@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { ClickedButton } from "../../../common/utils/Button";
+import { ClickedButton } from "../../../../Common/form/Button";
 
 const Game = ({article, getArticle, tag, tagId}) => {
 	return (

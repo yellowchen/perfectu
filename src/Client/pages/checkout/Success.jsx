@@ -1,38 +1,52 @@
-import { useEffect, useState, useContext} from "react";
+import { useEffect, useState, useContext, useRef} from "react";
 import { useParams, NavLink, useOutletContext } from "react-router-dom";
 
 //Slider
 import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { sliderImageSetting } from "./../../common/utils/dataUtils/SliderSetting";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import { sliderImageSetting } from "./../../../Common/utils/dataUtils/SliderSetting";
 
 import { OrderInformation } from "./component/OrderInformation";
 import { getOrder } from "../../common/api/front";
-import { ProgressBar } from "../../common/utils/dataUtils/ProgressBar";
 import { PaymentContext } from "../../common/context/PaymentContext";
-import { ClickedButton } from "../../common/utils/Button";
+import { ClickedButton } from "../../../Common/form/Button";
+
+import { ProgressBar } from "./../../../Common/utils/dataUtils/ProgressBar";
 
 
 const Success = () => {
-    const { products, getAllProducts } = useOutletContext();
-    const [orderData, setOrderData] = useState([]);
+	const { allProducts, getAllProductsList, setIsLoading } = useOutletContext();
+	const [orderData, setOrderData] = useState([]);
+	const [loaded, setLoaded] = useState(false);
 	const { orderId } = useParams();
-    const { payment } = useContext(PaymentContext);
-    const { user } = orderData;
+	const { payment } = useContext(PaymentContext);
+	const { user } = orderData;
+	const sliderRef = useRef();
 
 	const getOrderData = async () => {
 		try {
-            const res = await getOrder(orderId);
-            setOrderData(res.data.order);
+			const res = await getOrder(orderId);
+			setOrderData(res.data.order);
 		} catch (err) {
 			console.log(err);
 		}
 	};
-    useEffect(() => {
-        getOrderData();
-        getAllProducts();
-    }, []);
+	useEffect(() => {
+		getOrderData();
+	},);
+
+
+	useEffect(() => {
+        console.log("2")
+        console.log(sliderRef.current);
+        if(sliderRef.current) {
+            sliderRef.current.innerSlider.onWindowResized();
+        }
+
+	}, [allProducts.length])
+
+	// console.log(loaded);
 	return (
 		<>
 			<ProgressBar step={4} />
@@ -81,28 +95,48 @@ const Success = () => {
 						</NavLink>
 					</h4>
 				</div>
-				<div className=''>
-					<Slider {...sliderImageSetting}>
-						{products?.map((item) => (
+				{/* <div className='px-0 w-100'>
+					<Slider
+						{...sliderImageSetting}
+						ref={sliderRef}
+					>
+						{allProducts?.map((item) => (
 							<div
 								key={item.id}
-								className='position-relative'
+								className='px-5 w-100'
+								style={
+									{
+										// width: "280px",
+										// maxHeight: "180px",
+										// aspectRatio: "3/2",
+									}
+								}
 							>
-								<NavLink to={`/product/${item.id}`}>
+								<NavLink
+									to={`/detail/${item.id}`}
+									className='border border-danger d-block'
+                                    style={{}}
+								>
 									<img
-										className='mx-auto rounded-4'
+										className='mx-auto rounded-4 d-block object-fit-cover'
 										src={item.imageUrl}
 										alt={item.title}
 										style={{
-											width: "280px",
+											// maxWidth: "100%",
+											// height: "auto",
+											// width: "280px",
+											height: "180px",
 											aspectRatio: "3/2",
+											// display: loaded ? "none" : "none"
 										}}
+										// onLoad={() => window.dispatchEvent(new Event("resize"))}
+										// onLoad={() => setLoaded(true)}
 									/>
 								</NavLink>
 							</div>
 						))}
 					</Slider>
-				</div>
+				</div> */}
 			</div>
 		</>
 	);

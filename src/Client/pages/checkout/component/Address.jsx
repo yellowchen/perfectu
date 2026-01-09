@@ -1,4 +1,5 @@
-import { FormSelect, FormInput } from "../../../../Common/FormElements";
+import { FormSelect } from "../../../../Common/form/Select";
+import { FormInput } from "../../../../Common/form/Input";
 
 export const Address = ({register, errors, addressData, watchCity, watchDistrict}) => {
     return (
@@ -52,6 +53,10 @@ export const Address = ({register, errors, addressData, watchCity, watchDistrict
 					placeholder: "",
 					rules: {
 						required: "地址為必填",
+						minLength: {
+							value: 5,
+							message: "地址需超過5字以上",
+						},
 					},
 				}}
 				register={register}

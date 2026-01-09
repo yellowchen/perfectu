@@ -3,11 +3,11 @@ import { Modal } from "bootstrap";
 import { useDispatch } from "react-redux";
 
 import CouponModal from "./CouponModal";
-import Pagination from "../../common/Pagination";
 
 import { getCoupons, deleteCoupon } from '../../common/api/admin';
 import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 import { DeleteMessage } from '../../../Common/DeleteMessage';
+import Pagination from './../../../Common/Pagination';
 
 
 const AdminCoupons = () => {

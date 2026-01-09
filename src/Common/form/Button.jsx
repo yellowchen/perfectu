@@ -28,3 +28,25 @@ export const SubmitButton = ({ className, style, action, text }) => {
 		</button>
 	);
 };
+
+export const ModalFooterBtn = ({ handleCancel, data, handleSubmit }) => {
+	return (
+		<div className='modal-footer'>
+			<button
+				type='button'
+				className='btn btn-secondary'
+				data-bs-dismiss='modal'
+				onClick={() => handleCancel(data)}
+			>
+				Close
+			</button>
+			<button
+				type='button'
+				className='btn btn-primary'
+				onClick={handleSubmit}
+			>
+				Save changes
+			</button>
+		</div>
+	);
+};

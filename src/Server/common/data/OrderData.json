@@ -1,0 +1,20 @@
+{
+    "orderStatus": [
+        {
+            "value": 1,
+            "content": "未確認"
+        },
+        {
+			"value": 2,
+			"content": "已確認"
+		},
+        {
+			"value": 3,
+			"content": "外送中"
+		},
+        {
+			"value": 4,
+			"content": "已送達"
+		}
+    ]
+}

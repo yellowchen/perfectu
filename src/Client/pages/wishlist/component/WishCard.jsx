@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { removeWishItem } from "../../../common/slice/wishSlice";
 import { thousandFormat } from './../../../../Common/utils/stringUtils/string-utils';
-import { ClickedButton } from './../../../common/utils/Button';
+import { ClickedButton } from './../../../../Common/form/Button';
 
 const WishCard = ({item}) => {
     const {id, imageUrl, price, title} = item;

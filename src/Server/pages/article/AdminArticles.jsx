@@ -3,12 +3,11 @@ import { useDispatch } from "react-redux";
 import { Modal } from "bootstrap";
 
 import ArticleModal from './ArticleModal';
-import Pagination from '../../common/Pagination';
 import { getArticles, getArticle, deleteArticle } from "../../common/api/admin";
 
 import { DeleteMessage } from "../../../Common/DeleteMessage";
 import { createAsyncMessage } from "../../../Common/slice/messageSlice";
-
+import Pagination from './../../../Common/Pagination';
 
 const AdminArticles = () => {
 	const [articles, setArticles] = useState([]);

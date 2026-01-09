@@ -1,4 +1,4 @@
-// import axios from "axios";
+
 import { uploadImage } from "../../../Server/common/api/admin";
 
 const useImagePreviews = ({setTempData, tempData}) => {

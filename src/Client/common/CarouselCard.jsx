@@ -1,29 +1,26 @@
-import { NavLink } from 'react-router-dom';
-import { thousandFormat } from '../../../utils/string-utils';
+import { NavLink } from "react-router-dom";
 
-const CarouselCard = ({id, img, title, price}) => {
-    return (
-		<>
+const CarouselCard = ({ item }) => {
+
+	return (
+		<div className='px-5 w-100'>
 			<NavLink
-				to={`/product/${id}`}
-				className='d-flex flex-column align-items-center gap-3 uoq_mun'
-				style={{ padding: "1.5vw" }}
+				to={`/detail/${item.id}`}
+				className='d-block'
+				style={{}}
 			>
-				<img className='rounded-2' src={img} alt={title} style={{ maxWidth: "100%", aspectRatio: "3/2" }} />
-				<div
-					className='d-flex flex-column align-items-center'
-					style={{ maxWidth: "100%", aspectRatio: "3/2", color: "#f29e3e" }}
-				>
-					<p className='fs-4'>{title}</p>
-					<hr
-						style={{ width: "25%", color: "black", borderWidth: "1px", borderColor: "black" }}
-						className='pb-2'
-					/>
-					<small className='fs-6'>NT$ {thousandFormat(price)}</small>
-				</div>
+				<img
+					className='mx-auto rounded-4 object-fit-cover'
+					src={item.imageUrl}
+					alt={item.title}
+					style={{
+						height: "180px",
+						aspectRatio: "3/2",
+					}}
+				/>
 			</NavLink>
-		</>
+		</div>
 	);
-}
+};
 
-export default CarouselCard
+export default CarouselCard;

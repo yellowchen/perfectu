@@ -3,9 +3,9 @@ import { Modal } from "bootstrap";
 
 import OrderModal from "./OrderModal";
 import { getOrders } from '../../common/api/admin';
-import Pagination from '../../common/Pagination';
 
 import { thousandFormat } from './../../../Common/utils/stringUtils/string-utils';
+import Pagination from './../../../Common/Pagination';
 
 
 const AdminOrders = () => {

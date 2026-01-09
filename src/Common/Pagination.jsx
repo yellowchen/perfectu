@@ -2,7 +2,7 @@
 const Pagination = ({changePage, pagination}) => {
     return (
 		<nav aria-label='Page navigation'>
-			<ul className='pagination'>
+			<ul className='pagination d-flex justify-content-center pagination-lg'>
 				<li className='page-item'>
 					<a
 						className={`page-link ${pagination.has_pre ? "" : "disabled"}`}
@@ -13,13 +13,22 @@ const Pagination = ({changePage, pagination}) => {
 							changePage(pagination.current_page - 1);
 						}}
 					>
-						<span aria-hidden='true'>&laquo;</span>
+						<span
+							aria-hidden='true'
+							className='fs-5 fw-bolder'
+						>
+							<i className='bi bi-chevron-double-left'></i>
+						</span>
 					</a>
 				</li>
+
 				{[...new Array(pagination.total_pages)].map((_, i) => (
-					<li className={`page-item ${pagination.current_page === i + 1 && "active"}`} key={`${i}_page`}>
+					<li
+						className={`page-item ${pagination.current_page === i + 1 && "active"}`}
+						key={`${i}_page`}
+					>
 						<a
-							className='page-link'
+							className='page-link fs-5  fw-bolder'
 							href='/'
 							onClick={(e) => {
 								e.preventDefault();
@@ -41,7 +50,12 @@ const Pagination = ({changePage, pagination}) => {
 							changePage(pagination.current_page + 1);
 						}}
 					>
-						<span aria-hidden='true'>&raquo;</span>
+						<span
+							aria-hidden='true'
+							className='fs-5 fw-bolder'
+						>
+							<i className='bi bi-chevron-double-right'></i>
+						</span>
 					</a>
 				</li>
 			</ul>

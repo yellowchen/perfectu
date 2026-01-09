@@ -3,6 +3,7 @@ import { thousandFormat } from "../../../../Common/utils/stringUtils/string-util
 
 const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWishlist }) => {
 	const { qty, product_id, product } = item;
+    console.log(item);
 	return (
 		<div
 			className='row g-0 align-items-center mb-2 bg-light text-center'
@@ -18,9 +19,9 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 					/>
 				</Link>
 			</div>
-			<p className='col-3 col-sm-2 my-0'>
+			<p className='col-3 col-sm-2 my-0 text-center ps-2'>
 				{product.title}
-				<small className='text-dark'>/50ml</small>
+				<small className='text-dark'> / {product.unit}</small>
 			</p>
 			<p className='col-3 col-sm-2 my-0'>NT$ {thousandFormat(product.price)}</p>
 			<div className='col-4 col-lg-3'>

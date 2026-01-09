@@ -1,4 +1,8 @@
 @import "bootstrap/scss/functions";
+@import "slick-carousel/slick/slick";
+@import "slick-carousel/slick/slick-theme";
+// @import "../../../node_modules/slick-carousel/slick/slick.css";
+// @import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 @import "_variables";
 @import "_mixin.scss";
 @import 'bootstrap/scss/bootstrap';
@@ -9,4 +13,6 @@
 @import "_wave.scss";
 @import "_carousel.scss";
 @import "_btn.scss";
+@import "_server.scss";
+@import "_client.scss";
 

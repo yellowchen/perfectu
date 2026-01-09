@@ -1,23 +1,25 @@
 import { useState, useEffect, useRef} from 'react';
 import { useDispatch } from "react-redux";
 
-import { ArticleModalRules } from './ArticleInputRules';
 import { editArticle, postArticle } from "../../common/api/admin";
+import data from "../../common/data/ArticleData.json";
+
 
 import {
 	Input,
 	DateInput,
 	TagInput,
 	ModalInput,
-	EnableCheck,
-	TextArea,
-	ImagePreview,
-	ModalFooterBtn,
-} from "../../../Common/FormElements";
+} from "../../../Common/form/Input";
+import { ModalCheck } from "./../../../Common/form/CheckBox";
+import { ModalTextArea } from "./../../../Common/form/TextArea";
+import { ModalFooterBtn } from "./../../../Common/form/Button";
+import { ImagePreview } from "./../../../Common/form/ImagePreview";
+
 import useImagePreviews from "../../../Common/utils/hooks/useImagePreviews";
-import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 import { setTextIndicator } from '../../../Common/utils/uiUtils/SetTextIndicator';
 import { removeAllSpace } from '../../../Common/utils/stringUtils/string-utils';
+import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 
 
 const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
@@ -37,6 +39,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 		tag: [],
 	});
     const tagInputRef = useRef(null);
+    console.log(tempData);
 
 
 	useEffect(() => {
@@ -221,7 +224,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 											/>
 										</div>
 										<div className='row mb-2'>
-											{ArticleModalRules.map((item) => (
+											{data.articleModalInputRules.map((item) => (
 												<div className='col-md-6' key={item.id}>
 													<ModalInput
                                                         item={item}
@@ -248,7 +251,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 												tagInputRef={tagInputRef}
 											/>
 											<div>
-												<TextArea
+												<ModalTextArea
 													id='content'
 													labelText='文章內容'
 													data={tempData}
@@ -261,7 +264,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 										</div>
 									</div>
 									<hr />
-									<EnableCheck
+									<ModalCheck
 										id='is_enabled'
 										name='is_enabled'
 										data={tempData}
