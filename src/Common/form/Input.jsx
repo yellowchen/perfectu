@@ -47,6 +47,7 @@ export const ModalInput = ({ item, onChange, data }) => {
 
 export const FormInput = ({ item, register, errors }) => {
 	const { id, labelText, type, rules, placeholder } = item;
+
 	return (
 		<div className='mb-3'>
 			<label
@@ -63,6 +64,29 @@ export const FormInput = ({ item, register, errors }) => {
 					{...register(id, rules)}
 				/>
 				{errors[id] && <div className='invalid-feedback'>{errors[id]?.message}</div>}
+			</label>
+		</div>
+	);
+};
+
+export const FormImageInput = ({ item, register, errors, handleUpload }) => {
+	const { id, labelText, type, placeholder } = item;
+	return (
+		<div className='mb-3'>
+			<label
+				className='w-100 form-label mb-0'
+				htmlFor={id}
+			>
+                {labelText}
+				<input
+					type={type}
+					id={id}
+					className={`form-control mt-2 ${errors[id] && "is-invalid"}`}
+					placeholder={placeholder}
+					{...register(id, {
+						onChange: handleUpload,
+					})}
+				/>
 			</label>
 		</div>
 	);

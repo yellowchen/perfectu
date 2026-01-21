@@ -1,5 +1,23 @@
 {
-    "productModalSelectRules": [
+	"productModalImageRules": [
+		{
+			"id": "customFile",
+			"labelText": "上傳圖片",
+			"type": "file",
+			"name": "file-to-upload",
+			"placeholder": ""
+		}
+	],
+	"productModalTitleRules": [
+		{
+			"id": "title",
+			"labelText": "標題",
+			"type": "text",
+			"name": "title",
+			"placeholder": "請輸入標題"
+		}
+	],
+	"productModalSelectRules": [
 		{
 			"id": "category",
 			"labelText": "分類",
@@ -13,7 +31,7 @@
 			"placeholder": "請輸入單位"
 		}
 	],
-    "productModalInputRules": [
+	"productModalInputRules": [
 		{
 			"id": "origin_price",
 			"labelText": "原價",
@@ -29,7 +47,7 @@
 			"placeholder": "請輸入售價"
 		}
 	],
-    "productModalTextAreaRules": [
+	"productModalTextAreaRules": [
 		{
 			"id": "description",
 			"labelText": "產品描述",

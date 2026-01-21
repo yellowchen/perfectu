@@ -89,10 +89,7 @@ const Checkout = () => {
 							onSubmit={handleSubmit(onSubmit)}
 						>
 							<div className='d-flex gap-4 flex-column flex-lg-row px-0 px-md-2'>
-								<div
-									className='w-100 p-3 bg-light align-self-start'
-									style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
-								>
+								<div className='w-100 p-3 bg-light align-self-start card-shadow'>
 									<h3 className='mb-5 text-start'>結帳明細</h3>
 									<div className='px-2'>
 										{carts?.map((item) => (
@@ -121,12 +118,9 @@ const Checkout = () => {
 								</div>
 
 								<div className='col-12 col-lg-7 d-flex flex-column'>
-									<div
-										className='p-3 bg-light'
-										style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
-									>
+									<div className='p-3 bg-light card-shadow'>
 										<h3 className='mb-5 text-start'>寄件資料填寫</h3>
-										<div className="px-2">
+										<div className='px-2'>
 											{checkoutInputRules.map((item) => (
 												<FormInput
 													key={item.id}

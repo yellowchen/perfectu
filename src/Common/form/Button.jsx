@@ -29,7 +29,7 @@ export const SubmitButton = ({ className, style, action, text }) => {
 	);
 };
 
-export const ModalFooterBtn = ({ handleCancel, data, handleSubmit }) => {
+export const ModalFooterBtn = ({ handleCancel, data, handleSubmit, form }) => {
 	return (
 		<div className='modal-footer'>
 			<button
@@ -37,13 +37,15 @@ export const ModalFooterBtn = ({ handleCancel, data, handleSubmit }) => {
 				className='btn btn-secondary'
 				data-bs-dismiss='modal'
 				onClick={() => handleCancel(data)}
+				form={form}
 			>
 				Close
 			</button>
 			<button
-				type='button'
+				type='submit'
 				className='btn btn-primary'
 				onClick={handleSubmit}
+				form={form}
 			>
 				Save changes
 			</button>

@@ -2,10 +2,8 @@ import { useEffect, useState, useContext, useRef} from "react";
 import { useParams, NavLink, useOutletContext } from "react-router-dom";
 
 //Slider
-import Slider from 'react-slick';
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import { sliderImageSetting } from "./../../../Common/utils/dataUtils/SliderSetting";
+import Carousel from "./../../common/Carousel";
+import CarouselCard from "./../../common/CarouselCard";
 
 import { OrderInformation } from "./component/OrderInformation";
 import { getOrder } from "../../common/api/front";
@@ -15,6 +13,7 @@ import { ClickedButton } from "../../../Common/form/Button";
 import { ProgressBar } from "./../../../Common/utils/dataUtils/ProgressBar";
 
 
+
 const Success = () => {
 	const { allProducts, getAllProductsList, setIsLoading } = useOutletContext();
 	const [orderData, setOrderData] = useState([]);
@@ -22,7 +21,6 @@ const Success = () => {
 	const { orderId } = useParams();
 	const { payment } = useContext(PaymentContext);
 	const { user } = orderData;
-	const sliderRef = useRef();
 
 	const getOrderData = async () => {
 		try {
@@ -37,16 +35,15 @@ const Success = () => {
 	},);
 
 
-	useEffect(() => {
-        console.log("2")
-        console.log(sliderRef.current);
-        if(sliderRef.current) {
-            sliderRef.current.innerSlider.onWindowResized();
-        }
-
-	}, [allProducts.length])
-
-	// console.log(loaded);
+    const resizeSlides = (setSlidesToShow) => {
+		return () => {
+			const width = window.innerWidth;
+			if (width < 768) setSlidesToShow(1);
+			else if (width < 992) setSlidesToShow(2);
+			else if (width < 1400) setSlidesToShow(3);
+			else setSlidesToShow(4);
+		};
+	};
 	return (
 		<>
 			<ProgressBar step={4} />
@@ -95,48 +92,18 @@ const Success = () => {
 						</NavLink>
 					</h4>
 				</div>
-				{/* <div className='px-0 w-100'>
-					<Slider
-						{...sliderImageSetting}
-						ref={sliderRef}
-					>
+				<div className='px-0 w-100'>
+					<Carousel
+                        resizeSlides={resizeSlides}
+                    >
 						{allProducts?.map((item) => (
-							<div
+							<CarouselCard
+								item={item}
 								key={item.id}
-								className='px-5 w-100'
-								style={
-									{
-										// width: "280px",
-										// maxHeight: "180px",
-										// aspectRatio: "3/2",
-									}
-								}
-							>
-								<NavLink
-									to={`/detail/${item.id}`}
-									className='border border-danger d-block'
-                                    style={{}}
-								>
-									<img
-										className='mx-auto rounded-4 d-block object-fit-cover'
-										src={item.imageUrl}
-										alt={item.title}
-										style={{
-											// maxWidth: "100%",
-											// height: "auto",
-											// width: "280px",
-											height: "180px",
-											aspectRatio: "3/2",
-											// display: loaded ? "none" : "none"
-										}}
-										// onLoad={() => window.dispatchEvent(new Event("resize"))}
-										// onLoad={() => setLoaded(true)}
-									/>
-								</NavLink>
-							</div>
+							/>
 						))}
-					</Slider>
-				</div> */}
+					</Carousel>
+				</div>
 			</div>
 		</>
 	);

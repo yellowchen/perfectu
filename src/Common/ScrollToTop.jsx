@@ -24,6 +24,7 @@ const ScrollToTop = () => {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
+            left: 0,
             behavior: "smooth"
         })
     }
@@ -39,12 +40,12 @@ const ScrollToTop = () => {
 				<div
 					className='btn btn-success position-fixed rounded-circle d-flex justify-content-center align-items-center'
 					style={{
-						bottom: "30px",
-						right: "20px",
+						bottom: "3%",
+						right: "3%",
 						cursor: "pointer",
 						width: "45px",
 						height: "45px",
-						zIndex: "999",
+						zIndex: "9",
 					}}
 					onClick={scrollToTop}
 				>

@@ -5,8 +5,7 @@ import { thousandFormat } from "../../../../Common/utils/stringUtils/string-util
 export const OrderInformation = ({ orderData, user, payment }) => {
 	return (
 		<div
-			className='mb-5 w-100 bg-light p-3'
-			style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
+			className='mb-5 w-100 bg-light p-3 card-shadow'
 		>
 			<div className=''>
 				<h3 className='mb-4 text-center'>寄件資訊</h3>
@@ -62,12 +61,14 @@ export const OrderInformation = ({ orderData, user, payment }) => {
 				<h3 className='mb-4 text-center'>商品明細</h3>
 				<hr className='my-3 mx-1' />
 				<div className='p-3'>
-					{Object.values(orderData?.products || {}).map((item) => (
-						<OrderCard
-							item={item}
-							key={item.id}
-						/>
-					))}
+					{Object.values(orderData?.products || {})
+						?.sort((a, b) => (a.product.category > b.product.category ? -1 : 1))
+						?.map((item) => (
+							<OrderCard
+								item={item}
+								key={item.id}
+							/>
+						))}
 					<hr
 						className=''
 						style={{ border: "1px solid #aaa" }}

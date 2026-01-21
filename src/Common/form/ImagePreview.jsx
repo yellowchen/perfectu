@@ -1,12 +1,12 @@
-export const ImagePreview = ({ title, img, handleRemove }) => {
+export const ImagePreview = ({ title, image, handleRemove }) => {
 	return (
 		<>
-			{img && (
+			{image && (
 				<div className='text-center position-relative'>
 					<img
 						className='img-fluid rounded-2 mb-3'
 						style={{ width: "170px", aspectRatio: "1/1" }}
-						src={img || null}
+						src={image || null}
 						alt={title}
 					/>
 					<button

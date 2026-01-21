@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const Banner = ({ imgUrl, position }) => {
 	return (
-		<div className='position-relative mx-0 mx-md-3'>
+		<div className='position-relative mx-0'>
 			<div
 				className='banner'
 				style={{
@@ -21,7 +21,7 @@ const Banner = ({ imgUrl, position }) => {
 						top: "0%",
 						width: "100%",
 						height: "80vh",
-						// backdropFilter: "blur(4px)",
+						backdropFilter: "blur(4px)",
 					}}
 				>
 					<div
@@ -63,7 +63,7 @@ const Banner = ({ imgUrl, position }) => {
 							top: "50%",
 							left: "50%",
 							transform: "translateX(-50%)",
-							backdropFilter: "blur(4px)",
+							// backdropFilter: "blur(4px)",
 
 						}}
 					>

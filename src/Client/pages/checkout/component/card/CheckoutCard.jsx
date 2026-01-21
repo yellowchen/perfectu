@@ -11,7 +11,7 @@ const CheckoutCard = ({ item }) => {
 						src={product.imageUrl}
 						className='img-fluid rounded-1'
 						alt={product.title}
-						style={{ width: "60px", height: "60px" }}
+						style={{ width: "65px", height: "60px" }}
 					/>
 				</div>
 				<div className='w-100 px-2'>

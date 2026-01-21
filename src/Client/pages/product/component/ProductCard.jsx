@@ -9,7 +9,7 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 
 	return (
 		<div
-			className='card p-0 card-product'
+			className='p-0 card-product bg-light'
 		>
 			<button
 				className='btn rounded-circle btn-wish'

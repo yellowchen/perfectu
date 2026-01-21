@@ -2,7 +2,7 @@ import { useState, useEffect} from 'react';
 import { useDispatch } from "react-redux";
 
 import { postProduct, editProduct } from "../../common/api/admin";
-import data from "../../common/data/ProductData.json";
+import data from "../../common/data/ProductData";
 
 import useImagePreviews from './../../../Common/utils/hooks/useImagePreviews';
 import { createAsyncMessage } from "../../../Common/slice/messageSlice";
@@ -13,6 +13,7 @@ import { ModalFooterBtn } from './../../../Common/form/Button';
 import { ModalTextArea } from './../../../Common/form/TextArea';
 import {ModalSelect} from "./../../../Common/form/Select";
 import { ImagePreview } from './../../../Common/form/ImagePreview';
+
 
 
 const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
@@ -26,9 +27,9 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 		content: "",
 		is_enabled: 1,
 		imageUrl: "",
-        num: 0,
+	    num: 0,
 	});
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (type === "create") {
@@ -69,24 +70,27 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 		}
 	};
 
-    const {handleUpload, handleRemove} = useImagePreviews({setTempData, tempData});
+
+	const {handleUpload, handleRemove} = useImagePreviews({setTempData, tempData});
 
 	const handleSubmit = async () => {
-		try {
+        try {
             if(type === "create") {
                 const res = await postProduct(tempData)
                 dispatch(createAsyncMessage(res.data));
+                console.log("res create: ", res);
             }else if(type === "edit") {
                 const res = await editProduct(tempItem.id, tempData);
                 dispatch(createAsyncMessage(res.data));
+                console.log("res edit: ", res);
             }
-
-			closeModal();
-			getProducts();
-		} catch (err) {
-			console.log(err);
+            closeModal();
+            getProducts();
+            console.log("lala");
+        } catch (err) {
+            console.log("err: ", err);
             dispatch(createAsyncMessage(err.data));
-		}
+        }
 	};
 
 	const handleCancel = (tempItem) => {
@@ -119,7 +123,6 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 								aria-label='Close'
 							></button>
 						</div>
-
 						<div className='modal-body'>
 							<div className='row'>
 								<div className='col-sm-4 d-flex flex-column gap-2'>
@@ -134,7 +137,7 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 									/>
 									<ImagePreview
 										title={tempData.title}
-										img={tempData.imageUrl}
+										image={tempData.imageUrl}
 										handleRemove={handleRemove}
 									/>
 								</div>
@@ -218,10 +221,10 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 								</div>
 							</div>
 						</div>
-
 						<ModalFooterBtn
 							handleCancel={handleCancel}
 							handleSubmit={handleSubmit}
+							form='productModalForm'
 							data={tempItem}
 						/>
 					</div>

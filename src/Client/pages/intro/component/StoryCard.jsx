@@ -29,7 +29,7 @@ export const StoryCard = ({item}) => {
 					style={{ height: "200px" }}
 				>
 					<div className='card-body mt-2'>
-						<h4 className='card-title subTitle limelight text-primary'>{title}</h4>
+						<h4 className='card-title limelight text-primary'>{title}</h4>
 						<div className={shape}></div>
 						<p
 							className='card-text px-0 p-md-3 lh-lg'

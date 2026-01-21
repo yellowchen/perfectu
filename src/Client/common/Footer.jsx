@@ -57,9 +57,12 @@ const Footer = () => {
 						</div>
 					</div>
 					<div className='footer-contact text-white d-flex flex-column flex-lg-row gap-5'>
-						<div className="d-none d-xxl-block" style={{ width: "285px" }}>
+						<div
+							className='d-none d-xxl-block'
+							style={{ width: "285px" }}
+						>
 							<h4 className='text-center text-lg-start'>關注我們</h4>
-							<hr className='border-2 my-4'/>
+							<hr className='border-2 my-4' />
 							<ul
 								className='p-0 m-auto d-flex justify-content-center justify-content-xl-start  gap-4'
 								style={{ fontSize: "2.5rem" }}

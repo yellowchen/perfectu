@@ -4,9 +4,9 @@ import { ClickedButton } from "../../../../Common/form/Button";
 export const RecommendCard = ({recommend, slideRef}) => {
     console.log(recommend);
 	return (
-		<div className='my-5 pb-5 container'>
+		<div className='my-5 mx-2'>
 			{recommend
-				?.filter((item) => item.title === "秋鴛")
+				?.filter((item) => item.title === "冬火")
 				?.map((item) => (
 					<div
 						key={item.id}
@@ -14,18 +14,15 @@ export const RecommendCard = ({recommend, slideRef}) => {
 						ref={slideRef}
 					>
 						<div className='txt'>
-							<h1 className="text-light">
-								<small>秋季推薦 - </small>
-								{item.title}
-							</h1>
-							<div className='p-4'>
-								<h5 className='lh-lg'>{item.content}</h5>
+							<h1 className='text-light'>{item?.title}</h1>
+							<div className='p-2 p-lg-4'>
+								<p className='lh-lg fs-5 text-justify'>{item?.content}</p>
 								<NavLink
 									to={`/product/${item.id}`}
 									className='btn align-self-end text-light'
 								>
 									<ClickedButton
-										className='rounded-4 px-4 py-2'
+										className='rounded-4 me-0 px-4 py-2'
 										content={`瞭解更多`}
 									/>
 								</NavLink>
@@ -34,8 +31,8 @@ export const RecommendCard = ({recommend, slideRef}) => {
 						<div className='img'>
 							<img
 								className='img-fluid'
-								src={item.imageUrl}
-								alt={item.title}
+								src={item?.imageUrl}
+								alt={item?.title}
 							/>
 						</div>
 					</div>

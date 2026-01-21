@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import  Slider  from 'react-slick';
 
-const Carousel = ({children}) => {
+const Carousel = ({resizeSlides, children}) => {
     const [slidesToShow, setSlidesToShow] = useState(1);
 
     const arrowStyle = {
@@ -42,7 +42,7 @@ const Carousel = ({children}) => {
 		);
 	};
 
-    const sliderImageSetting = {
+    const sliderSetting = {
         className: "center",
         slidesToShow,
         slidesToScroll: 1,
@@ -59,22 +59,15 @@ const Carousel = ({children}) => {
     };
 
     useEffect(() => {
-        const handleResize = () => {
-            const width = window.innerWidth;
-            console.log(width);
-            if (width < 768) setSlidesToShow(1);
-            else if (width < 992) setSlidesToShow(2);
-            else if (width < 1400) setSlidesToShow(3);
-            else setSlidesToShow(4);
-        };
-        handleResize();
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
+		const handleResize = resizeSlides(setSlidesToShow);
+		handleResize();
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, [resizeSlides]);
 
     return (
         <Slider
-            {...sliderImageSetting}
+            {...sliderSetting}
         >
             {children}
         </Slider>
@@ -82,3 +75,6 @@ const Carousel = ({children}) => {
 }
 
 export default Carousel
+
+
+

@@ -28,15 +28,16 @@
             display: none;
         }
     }
-    .slick-list {
-        .slick-track {
-            // margin-bottom: 16vh;
-        }
-    }
+    // .slick-list {
+    //     .slick-track {
+    //     }
+    // }
 }
 
-.slick-slide {
-    // border: 2px solid blue;
+.slick-slide img {
+    &:hover {
+        filter: contrast(1.1);
+    }
 }
 
 .slick-dots {

@@ -1,8 +1,7 @@
 
 import { uploadImage } from "../../../Server/common/api/admin";
 
-const useImagePreviews = ({setTempData, tempData}) => {
-
+const useImagePreviews = ({ setTempData, tempData }) => {
 	const handleUpload = async (e) => {
 		const file = e.target.files[0];
 		if (!file) return;
@@ -13,25 +12,23 @@ const useImagePreviews = ({setTempData, tempData}) => {
 			setTempData({
 				...tempData,
 				imageUrl: imgUrl,
-                image: imgUrl
+				image: imgUrl,
 			});
 		} catch (err) {
 			console.log(err);
 		}
 	};
 
-
 	const uploadFile = async (formData) => {
-        const imgRes = await uploadImage(formData);
+		const imgRes = await uploadImage(formData);
 		return imgRes.data.imageUrl;
 	};
-
 
 	const handleRemove = (image) => {
 		setTempData({
 			...tempData,
 			imageUrl: "",
-            image: ""
+			image: "",
 		});
 	};
 
@@ -39,6 +36,6 @@ const useImagePreviews = ({setTempData, tempData}) => {
 		handleUpload,
 		handleRemove,
 	};
-}
+};
 
 export default useImagePreviews

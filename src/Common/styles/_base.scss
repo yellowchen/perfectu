@@ -66,6 +66,11 @@ ul {
     }
 }
 
+
+input::placeholder {
+    color: #ccc !important
+}
+
 .flex-1 {
     flex-grow: 0;
     @include media-md {
@@ -81,6 +86,33 @@ ul {
 .text-last-justify {
     text-align-last: justify;
 }
+
+.title {
+    margin: 3vh 0 8vh 0;
+    display: flex;
+    &::before,
+    &::after {
+        content: "";
+        top: 50%;
+        width: 0;
+        height: 3px;
+        background-color: currentColor;
+        flex-grow: 1;
+        margin: auto 2vw;
+    }
+}
+
+.card-shadow {
+    box-shadow: rgba(100, 100, 111, 0.1) 0px 5px 10px 0px;
+}
+
+.subTitle {
+    margin: 0;
+    padding-left: 1rem;
+    border-left: 4px solid currentColor;
+    background-color: #fff;
+}
+
 
 //((Font-Size))
 //e
@@ -117,3 +149,4 @@ ul {
     font-weight: 400;
     font-style: normal;
 }
+

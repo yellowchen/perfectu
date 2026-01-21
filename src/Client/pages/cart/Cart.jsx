@@ -115,7 +115,7 @@ const Cart = () => {
 					<div className='text-center limelight mt-5'>
 						<h4 className='my-5'>您的購物車目前是空的...</h4>
 						<NavLink
-							to='/product'
+							to='/product/perfume'
 							className='fs-2 fw-bold'
 						>
 							來逛逛我們的商品吧 <i className='bi bi-person-raised-hand fs-1'></i>
@@ -128,34 +128,35 @@ const Cart = () => {
 					<h1 className='title uoq_mun'>購物車</h1>
 					<div className='d-flex gap-4 flex-column flex-lg-row px-0 px-md-2'>
 						<div className='px-0'>
-							<div className='row g-0 border-top border-bottom px-2 py-3 mb-0 bg-light text-center fw-bolder'>
-								<div className='col-5 col-sm-4 text-start'>商品明細</div>
+							<div className='row g-0 border-top border-bottom px-0 py-3 mb-0 bg-light text-center fw-bolder mb-2'>
+								<div className='col-6 col-sm-4 text-start ps-2'>商品明細</div>
 								<div className='col-3 col-sm-2'>單價</div>
-								<div className='col-4 col-lg-3'>數量</div>
-								<div className='col-0 col-sm-2 d-none d-sm-block'>小計</div>
+								<div className='col-3'>數量</div>
+								<div className='col-0 col-sm-3 col-lg-2 d-none d-sm-block'>小計</div>
 								<div className='col-0 col-lg-1'></div>
 							</div>
-							{carts?.map((item) => (
-								<CartCard
-									key={item.id}
-									item={item}
-									remove={removeFromCart}
-									update={updateCartItem}
-									getAllCart={getAllCart}
-									openDeleteMessage={openDeleteMessage}
-									wish={wish}
-									toggleWishlist={toggleWishlist}
-								/>
-							))}
+							{carts
+								?.sort((a, b) => (a.product.category > b.product.category ? -1 : 1))
+								?.map((item) => (
+									<CartCard
+										key={item.id}
+										item={item}
+										remove={removeFromCart}
+										update={updateCartItem}
+										getAllCart={getAllCart}
+										openDeleteMessage={openDeleteMessage}
+										wish={wish}
+										toggleWishlist={toggleWishlist}
+									/>
+								))}
 						</div>
 
 						<div className='col-12 col-lg-5 d-flex flex-column'>
 							<div
-								className='px-3 bg-light'
-								style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
+								className='px-3 bg-light card-shadow'
 							>
 								<h3 className='text-start mt-3 mb-5'>結帳金額</h3>
-								<div className="px-2">
+								<div className='px-2'>
 									<div className='d-flex justify-content-between my-3'>
 										<h5>商品小計</h5>
 										<h5>NT$ {thousandFormat(total)}</h5>
