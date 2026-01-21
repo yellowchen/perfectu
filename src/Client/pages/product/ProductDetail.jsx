@@ -51,7 +51,7 @@ const ProductDetail = () => {
 
 		return (
 			<div className='container my-5 clearfix'>
-				<h4 className='mx-2'>
+				<h4 className='mx-2 mb-3'>
 					<NavLink
 						className='hover-text-btn'
 						to='/'
@@ -162,7 +162,6 @@ const ProductDetail = () => {
 							<h5
 								className='text-start mx-lg-5 ps-3'
 								style={{
-									// fontSize: "18px",
 									color: "#309dc1",
 									border: "transparent",
 								}}
@@ -181,70 +180,6 @@ const ProductDetail = () => {
 						>
 							{dataDetail[activeTab]?.content}
 						</Tabs>
-						{/* {(() => {
-							if (product.category === "perfume") {
-								return (
-									<Tabs
-										tabData={data.perfumeDetail}
-										activeTab={activeTab}
-										setActiveTab={setActiveTab}
-										tabHeaderClass={`text-start`}
-										tabContentClass={`m-auto bg-light p-3 text-justify`}
-										tabContentStyle={{ lineHeight: 2.7, whiteSpace: "pre-line" }}
-									>
-										{data.perfumeDetail[activeTab].content}
-									</Tabs>
-								);
-							} else if (product.category === "diffuser") {
-								return (
-									<Tabs
-										tabData={data.diffuserDetail}
-										activeTab={activeTab}
-										setActiveTab={setActiveTab}
-										tabHeaderClass={`text-start`}
-										tabContentClass={`m-auto bg-light p-3 text-justify`}
-										tabContentStyle={{
-											lineHeight: 2.7,
-											whiteSpace: "pre-line",
-										}}
-									>
-										{data.diffuserDetail[activeTab].content}
-									</Tabs>
-								);
-							} else if (product.category === "candle") {
-								return (
-									<Tabs
-										tabData={data.candleDetail}
-										activeTab={activeTab}
-										setActiveTab={setActiveTab}
-										tabHeaderClass={`text-start`}
-										tabContentClass={`m-auto bg-light p-3 text-justify`}
-										tabContentStyle={{
-											lineHeight: 2.7,
-											whiteSpace: "pre-line",
-										}}
-									>
-										{data.candleDetail[activeTab].content}
-									</Tabs>
-								);
-							} else if (product.category === "soap") {
-								return (
-									<Tabs
-										tabData={data.soapDetail}
-										activeTab={activeTab}
-										setActiveTab={setActiveTab}
-										tabHeaderClass={`text-start`}
-										tabContentClass={`m-auto bg-light p-3 text-justify`}
-										tabContentStyle={{
-											lineHeight: 2.7,
-											whiteSpace: "pre-line",
-										}}
-									>
-										{data.soapDetail[activeTab].content}
-									</Tabs>
-								);
-							}
-						})()} */}
 					</div>
 				</div>
 			</div>

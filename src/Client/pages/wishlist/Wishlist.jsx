@@ -21,9 +21,9 @@ const Wishlist = () => {
 					</NavLink>
 				</div>
 			) : (
-				<div className='row gx-5 row-cols-1 row-cols-lg-2 justify-content-center'>
+				<div className='row gx-5 row-cols-1 row-cols-lg-2 justify-content-start'>
 					{wish.wishlistItems?.map((item) => (
-						<div className='col mb-4'>
+						<div className='col mb-2'>
 							<WishCard
 								item={item}
 								key={item.id}

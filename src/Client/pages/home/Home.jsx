@@ -84,10 +84,9 @@ const Home = () => {
 				{/* 優點 */}
 				<div className='my-5'></div>
 				{/* 排行榜 */}
-
 				<div className=''>
 					<h1 className='subTitle'>熱銷排行</h1>
-					<div className='d-flex flex-column flex-md-row align-items-stretch gap-1 gap-md-2 gap-xl-3 mx-1 mx-md-3 my-5'>
+					<div className='d-flex flex-column flex-md-row align-items-stretch gap-1 gap-md-2 gap-xl-3 mx-0 mx-md-1 mx-lg-2 my-5'>
 						{allProducts
 							.filter((item) => data.allRankList.map((item) => item.title).includes(item.title))
 							.map((item, index) => (
@@ -102,7 +101,7 @@ const Home = () => {
 				<div className=''>
 					<h1 className='subTitle'>商品種類</h1>
 					<div
-						className='category-banner mx-2 mx-lg-5 my-5 rounded-4 d-flex position-relative'
+						className='category-banner mx-0 my-5 rounded-4 d-flex position-relative'
 						style={{ height: "200px" }}
 					>
 						{categoryRules.map((item) => (

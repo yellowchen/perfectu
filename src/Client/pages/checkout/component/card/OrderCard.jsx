@@ -16,7 +16,7 @@ const OrderCard = ({ item }) => {
 					/>
 				</div>
 				<div className='w-100 px-2 d-flex justify-content-between'>
-					<div className='fw-bold d-flex flex-column align-items-start'>
+					<div className='d-flex flex-column align-items-start'>
 						{data.productCategory
 							.filter((item) => item.sort === product.category)
 							.map((item) => (

@@ -16,7 +16,7 @@ const CheckoutCard = ({ item }) => {
 				</div>
 				<div className='w-100 px-2'>
 					<div className='d-flex justify-content-between'>
-						<p className='mb-0 fw-bold'>
+						<p className='mb-0'>
 							{product.title}
 							<small className='text-dark'> / {product.unit}</small>
 						</p>

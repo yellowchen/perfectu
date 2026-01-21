@@ -4,7 +4,7 @@ import { ClickedButton } from "../../../../Common/form/Button";
 export const RecommendCard = ({recommend, slideRef}) => {
     console.log(recommend);
 	return (
-		<div className='my-5 mx-2'>
+		<div className='my-5 mx-0'>
 			{recommend
 				?.filter((item) => item.title === "冬火")
 				?.map((item) => (
@@ -15,7 +15,7 @@ export const RecommendCard = ({recommend, slideRef}) => {
 					>
 						<div className='txt'>
 							<h1 className='text-light'>{item?.title}</h1>
-							<div className='p-2 p-lg-4'>
+							<div className='p-4 p-lg-4'>
 								<p className='lh-lg fs-5 text-justify'>{item?.content}</p>
 								<NavLink
 									to={`/product/${item.id}`}

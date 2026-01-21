@@ -8,7 +8,7 @@ import { ClickedButton } from './../../../../Common/form/Button';
 import selection from "../../../../Common/data/ProductSelect.json";
 
 const WishCard = ({item}) => {
-    const {id, imageUrl, price, title, category} = item;
+    const {id, imageUrl, price, title, category, unit} = item;
     const {addToCart} = useOutletContext();
     const dispatch = useDispatch();
     const removeFromWishlist = (wishItem) => {
@@ -16,10 +16,8 @@ const WishCard = ({item}) => {
     }
 
     return (
-		<div
-			className='row g-0 align-items-center bg-light rounded-1 card-shadow'
-		>
-			<div className='col-12 row g-0 align-items-center text-center fw-bolder'>
+		<div className='row g-0 align-items-center bg-light rounded-1 card-shadow'>
+			<div className='col-12 row g-0 align-items-center text-center'>
 				<div className='col-2 p-0'>
 					<Link to={`/product/${id}`}>
 						<img
@@ -52,7 +50,7 @@ const WishCard = ({item}) => {
 							style={{ fontSize: "12px" }}
 						>
 							{" "}
-							/ 50ml
+							/ {unit}
 						</small>
 					</p>
 				</div>

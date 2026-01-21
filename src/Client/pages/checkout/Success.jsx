@@ -81,8 +81,7 @@ const Success = () => {
 
 					<h4 className=''>
 						<NavLink
-							to='/product'
-							// className='btn btn-outline-dark rounded-0 mt-5'
+							to='/product/perfume'
 						>
 							<ClickedButton
 								className='rounded-4 px-4 py-1'
@@ -93,9 +92,7 @@ const Success = () => {
 					</h4>
 				</div>
 				<div className='px-0 w-100'>
-					<Carousel
-                        resizeSlides={resizeSlides}
-                    >
+					<Carousel resizeSlides={resizeSlides}>
 						{allProducts?.map((item) => (
 							<CarouselCard
 								item={item}

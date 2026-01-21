@@ -8,9 +8,7 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 	const { id, imageUrl, title, price, description } = item;
 
 	return (
-		<div
-			className='p-0 card-product bg-light'
-		>
+		<div className='p-0 card-product bg-light'>
 			<button
 				className='btn rounded-circle btn-wish'
 				onClick={() => {
@@ -52,29 +50,31 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 			</NavLink>
 
 			<div
-				style={{
-					color: "#fff",
-					borderRadius: " 0 0 30px 30px",
-					background: "#fff",
-					height: "190px",
-					width: "96%",
-					marginLeft: "2%",
-					marginTop: ".5%",
-				}}
+				style={
+					{
+						// color: "#fff",
+						// borderRadius: " 0 0 30px 30px",
+						// background: "blue",
+						// height: "190px",
+						// width: "100%",
+						// marginLeft: "0%",
+						// marginTop: "0%",
+					}
+				}
 			>
 				<div className='card-product-content m-3 w-100'>
 					<div className='card-text'>
 						<div
-							className='card-title uoq_mun'
+							className='card-title'
 							style={{
 								position: "absolute",
 								top: "50%",
-								left: "10%",
+								left: "7%",
 								color: "#309dc1",
 							}}
 						>
 							<h4
-                                className="text-start"
+								className='text-start'
 								style={{
 									letterSpacing: ".2rem",
 								}}
@@ -82,7 +82,7 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 								{title}
 							</h4>
 							<p
-								className='uoq_mun text-start'
+								className='text-start noto_serif'
 								style={{
 									color: "#777",
 								}}
@@ -95,9 +95,9 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 								className='noto_serif'
 								style={{
 									position: "absolute",
-									width: "80%",
+									width: "86%",
 									top: "68%",
-									left: "10%",
+									left: "7%",
 									color: "#000",
 									textAlign: "justify",
 								}}

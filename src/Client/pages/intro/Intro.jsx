@@ -9,9 +9,8 @@ const Intro = () => {
 					<h1 className='title uoq_mun'>{item.title}</h1>
 					<div className='position-relative'>
 						<p
-							className='text-justify fs-5 fw-medium'
+							className='text-justify fs-5 fw-medium lh-lg'
 							style={{
-								lineHeight: "2.5",
 								padding: " 2rem 10px 6rem",
 							}}
 						>

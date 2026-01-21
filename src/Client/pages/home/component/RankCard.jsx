@@ -7,10 +7,10 @@ const RankCard = ({item, index}) => {
 		<>
 			<NavLink
 				to={`/detail/${id}`}
-				className='rank mx-auto mb-3 text-dark border border-2 border-light rounded-6 position-relative'
-				style={{ width: "95%" }}
+				className='rank mx-0 mb-3 text-dark border border-1 border-light rounded-6 position-relative'
+				style={{ width: "100%" }}
 			>
-				<div className='mx-0 mx-md-1 px-0 px-md-1 px-lg-2 py-2 px-lg-3 position-relative'>
+				<div className='mx-0 mx-md-1 px-1 px-lg-2 py-2 px-lg-3 position-relative'>
 					<div
 						className='position-absolute'
 						style={{ zIndex: "2" }}
@@ -29,7 +29,7 @@ const RankCard = ({item, index}) => {
 						</span>
 					</div>
 					<div className='rank-image row g-0 align-items-center'>
-						<div className='rounded-circle px-1 col-6 col-md-12'>
+						<div className='rounded-circle px-1 col-5 col-md-12'>
 							<img
 								className='w-100 rounded-circle object-fit-cover'
 								style={{
@@ -39,7 +39,7 @@ const RankCard = ({item, index}) => {
 								alt={title}
 							/>
 						</div>
-						<div className='rank-text position-relative col-6 col-md-12'>
+						<div className='rank-text position-relative col-7 col-md-12'>
 							<h5 className='text-center position-absolute w-100 py-2 fw-bolder lh-base'>
 								{selection.productCategory
 									.filter((item) => item.sort === category)
@@ -58,7 +58,7 @@ const RankCard = ({item, index}) => {
 								<br />
 								{title}
 							</h5>
-							<p className='px-1 text-justify fs-5'>{description}</p>
+							<p className='px-2 text-justify fs-5'>{description}</p>
 						</div>
 					</div>
 				</div>
