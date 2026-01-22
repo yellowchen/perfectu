@@ -14,10 +14,6 @@ import { slideIn } from './../../../Common/utils/uiUtils/SlideIn';
 const Home = () => {
 	const [copyText, setCopyText] = useState("複製優惠碼");
 	const { allProducts, getAllProductsList } = useOutletContext();
-<<<<<<< HEAD
-=======
-    console.log(allProducts);
->>>>>>> a8713498c42df2a0ec933a1252656d8d3c5e3b82
 
     const slideRef = useRef();
     const slideText = slideRef?.current?.children[0]?.children[1];
