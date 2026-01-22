@@ -7,7 +7,7 @@ const RankCard = ({item, index}) => {
 		<>
 			<NavLink
 				to={`/detail/${id}`}
-				className='rank mx-0 mb-3 text-dark border border-1 border-light rounded-6 position-relative'
+				className='rank mx-0 mb-3 text-dark border border-2 border-light rounded-3 position-relative'
 				style={{ width: "100%" }}
 			>
 				<div className='mx-0 mx-md-1 px-1 px-lg-2 py-2 px-lg-3 position-relative'>

@@ -128,7 +128,7 @@ const Cart = () => {
 					<h1 className='title uoq_mun'>購物車</h1>
 					<div className='d-flex gap-4 flex-column flex-lg-row px-0 px-md-2'>
 						<div className='px-0'>
-							<div className='row g-0 border-top border-bottom px-0 py-3 mb-0 bg-light text-center fw-bolder mb-2'>
+							<div className='row g-0 border-top border-bottom px-0 py-3 mb-0 bg-white text-center fw-bolder mb-2'>
 								<div className='col-6 col-sm-4 text-start ps-2'>商品明細</div>
 								<div className='col-3 col-sm-2'>單價</div>
 								<div className='col-3'>數量</div>
@@ -152,9 +152,7 @@ const Cart = () => {
 						</div>
 
 						<div className='col-12 col-lg-5 d-flex flex-column'>
-							<div
-								className='px-3 bg-light card-shadow'
-							>
+							<div className='px-3 bg-white card-shadow'>
 								<h3 className='text-start mt-3 mb-5'>結帳金額</h3>
 								<div className='px-2'>
 									<div className='d-flex justify-content-between my-3'>

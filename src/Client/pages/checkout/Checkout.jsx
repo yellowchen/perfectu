@@ -9,7 +9,7 @@ import { checkoutInputRules } from "../../common/data/CheckoutData";
 import { postOrder } from "../../common/api/front";
 
 import { ProgressBar } from "./../../../Common/utils/dataUtils/ProgressBar";
-import { SubmitButton, ClickedButton } from "../../../Common/form/Button";
+import { SubmitButton, ClickedButton, PrevButton, NextButton } from "../../../Common/form/Button";
 import { FormInput } from "../../../Common/form/Input";
 import { FormTextArea } from "../../../Common/form/TextArea";
 import { thousandFormat } from "../../../Common/utils/stringUtils/string-utils";
@@ -89,7 +89,7 @@ const Checkout = () => {
 							onSubmit={handleSubmit(onSubmit)}
 						>
 							<div className='d-flex gap-4 flex-column flex-lg-row px-0 px-md-2'>
-								<div className='w-100 p-3 bg-light align-self-start card-shadow'>
+								<div className='w-100 p-3 bg-white align-self-start card-shadow'>
 									<h3 className='mb-5 text-start'>結帳明細</h3>
 									<div className='px-2'>
 										{carts?.map((item) => (
@@ -118,7 +118,7 @@ const Checkout = () => {
 								</div>
 
 								<div className='col-12 col-lg-7 d-flex flex-column'>
-									<div className='p-3 bg-light card-shadow'>
+									<div className='p-3 bg-white card-shadow'>
 										<h3 className='mb-5 text-start'>寄件資料填寫</h3>
 										<div className='px-2'>
 											{checkoutInputRules.map((item) => (
@@ -149,14 +149,15 @@ const Checkout = () => {
 									</div>
 
 									<div className='d-flex justify-content-around mx-0 mx-md-3 mt-5 px-3 py-2'>
-										<ClickedButton
+										<PrevButton
 											className='rounded-4 mx-4 w-50 py-2 px-1'
-											content='上一頁'
+											text='上一頁'
 											action={() => {
 												navigate(-1);
 											}}
 										/>
-										<SubmitButton
+										<NextButton
+                                            type="submit"
 											className='rounded-4 mx-4 w-50 py-2 px-1'
 											text='下一步'
 										/>

@@ -63,7 +63,7 @@ const Payment = () => {
 							onSubmit={handleSubmit(onSubmit)}
 						>
 							<div
-								className='bg-light p-3'
+								className='bg-white p-3'
 								style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 5px 10px 0px" }}
 							>
 								<h3 className='mb-4 text-center'>付款方式</h3>

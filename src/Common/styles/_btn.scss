@@ -9,11 +9,40 @@
     }
 }
 
+.prev_btn, .next_btn {
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid currentColor;
+    &:hover {
+        filter: contrast(1.1);
+        border: 1px solid currentColor;
+    }
+}
+
+.prev_btn,
+.prev_btn:focus{
+    color: #309dc1;
+    background: #fff;
+    &:hover {
+        color: #309dc1;
+        background: #fff;
+    }
+}
+
+.next_btn,
+.next_btn:focus {
+    color: #fff;
+    background: #309dc1;
+    &:hover {
+        color: #fff;
+        background: #309dc1;
+    }
+}
+
 
 .hover-btn,
 .hover-btn:focus {
     position: relative;
-    z-index: 0;
     font-size: 1rem;
     text-align: center;
     text-decoration: none;

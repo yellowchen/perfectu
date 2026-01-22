@@ -7,7 +7,7 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
     console.log(item);
 	return (
 		<div
-			className='row g-0 align-items-center mb-2 bg-light text-center card-shadow'
+			className='row g-0 align-items-center mb-2 bg-white text-center card-shadow'
 		>
 			<div className='col-2 p-0'>
 				<Link to={`/product/${product_id}`}>

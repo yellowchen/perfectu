@@ -75,14 +75,12 @@ const Success = () => {
 				</div>
 			</div>
 
-			<div className='my-5 py-5 bg-light'>
+			<div className='my-5 py-5 bg-white'>
 				<div className='container d-flex justify-content-between mb-5'>
 					<h2>其他推薦商品</h2>
 
 					<h4 className=''>
-						<NavLink
-							to='/product/perfume'
-						>
+						<NavLink to='/product/perfume'>
 							<ClickedButton
 								className='rounded-4 px-4 py-1'
 								style={{}}

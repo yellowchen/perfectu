@@ -14,6 +14,36 @@ export const ClickedButton = ({ className, style, action, content }) => {
 	);
 };
 
+export const PrevButton = ({ className, style, action, text}) => {
+	return (
+		<button
+			type='button'
+			className={`btn prev_btn  ${className}`}
+			style={{
+				...style,
+			}}
+			onClick={action}
+		>
+			{text}
+		</button>
+	);
+};
+
+export const NextButton = ({ type, className, style, action, text }) => {
+	return (
+		<button
+			type={type}
+			className={`btn next_btn  ${className}`}
+			style={{
+				...style,
+			}}
+			onClick={action}
+		>
+			{text}
+		</button>
+	);
+};
+
 export const SubmitButton = ({ className, style, action, text }) => {
 	return (
 		<button
@@ -52,3 +82,32 @@ export const ModalFooterBtn = ({ handleCancel, data, handleSubmit, form }) => {
 		</div>
 	);
 };
+
+export const WishButton = ({toggleWishlist, item, wish, wishStyle, className}) => {
+    return (
+		<button
+			type='button'
+			className={`btn ${className}`}
+			style={{ background: "transparent", fontSize: "1.3rem", ...wishStyle }}
+			onClick={() => {
+				toggleWishlist(item);
+			}}
+		>
+			{wish?.wishlistItems?.some((wish) => wish.id === item.id) ? (
+				<i
+					className='bi bi-suit-heart-fill'
+					style={{
+						color: "#f7ae5b",
+					}}
+				></i>
+			) : (
+				<i
+					className='bi bi-suit-heart-fill'
+					style={{
+						color: "#bdbebf",
+					}}
+				></i>
+			)}
+		</button>
+	);
+}

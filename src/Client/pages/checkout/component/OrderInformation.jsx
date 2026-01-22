@@ -4,9 +4,7 @@ import { thousandFormat } from "../../../../Common/utils/stringUtils/string-util
 
 export const OrderInformation = ({ orderData, user, payment }) => {
 	return (
-		<div
-			className='mb-5 w-100 bg-light p-3 card-shadow'
-		>
+		<div className='mb-5 w-100 bg-white p-3 card-shadow'>
 			<div className=''>
 				<h3 className='mb-4 text-center'>寄件資訊</h3>
 				<hr className='mx-1' />

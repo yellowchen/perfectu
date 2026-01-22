@@ -3,7 +3,7 @@ import { useParams, useOutletContext, NavLink } from "react-router-dom";
 
 import data from "../../common/data/DetailData.json"
 import { getProduct } from "../../common/api/front";
-import { ClickedButton } from "../../../Common/form/Button";
+import { ClickedButton, WishButton, PrevButton, NextButton } from "../../../Common/form/Button";
 import { Tabs } from "../../common/Tabs";
 import { thousandFormat } from '../../../Common/utils/stringUtils/string-utils';
 import selection from "../../../Common/data/ProductSelect.json"
@@ -14,7 +14,7 @@ const ProductDetail = () => {
     const [activeTab, setActiveTab] = useState(0);
     const [dataDetail, setDataDetail] = useState([]);
 	const { id } = useParams();
-	const { setCartQuantity, cartQuantity, addToCart, setIsLoading } = useOutletContext();
+	const { setCartQuantity, cartQuantity, addToCart, setIsLoading, toggleWishlist, wish } = useOutletContext();
 	const { imageUrl, price, title, unit, content, origin_price, description, category } = product;
 
 	useEffect(() => {
@@ -113,37 +113,62 @@ const ProductDetail = () => {
 											{content}
 										</p>
 									</div>
-									<div className='card-btn d-flex gap-2 flex-column flex-lg-row my-2'>
-										<div className='input-group w-50 mt-2 align-self-end'>
-											<button
-												className='input-group-text bg-secondary'
-												onClick={() => {
-													setCartQuantity((prev) => (prev === 1 ? 1 : prev - 1));
-												}}
-											>
-												<i className='bi bi-dash-lg'></i>
-											</button>
-											<input
-												className='form-control text-center'
-												readOnly
-												value={cartQuantity}
+									<div className='card-btn row row-col-sm-2 g-0'>
+										<div className='col-7 col-md-6 row g-0 gap-3 justify-content-end ms-auto pe-1'>
+											<WishButton
+												toggleWishlist={toggleWishlist}
+												item={product}
+												wish={wish}
+												className=''
+												wishStyle={{ width: "13%" }}
 											/>
-											<button
-												className='input-group-text bg-secondary'
-												onClick={() => {
-													setCartQuantity((prev) => prev + 1);
-												}}
+											<div
+												className='input-group my-1'
+												style={{ width: "70%" }}
 											>
-												<i className='bi bi-plus-lg'></i>
-											</button>
+												<button
+													className='input-group-text bg-secondary'
+													onClick={() => {
+														setCartQuantity((prev) => (prev === 1 ? 1 : prev - 1));
+													}}
+												>
+													<i className='bi bi-dash-lg'></i>
+												</button>
+												<input
+													className='form-control text-center'
+													readOnly
+													value={cartQuantity}
+												/>
+												<button
+													className='input-group-text bg-secondary'
+													onClick={() => {
+														setCartQuantity((prev) => prev + 1);
+													}}
+												>
+													<i className='bi bi-plus-lg'></i>
+												</button>
+											</div>
 										</div>
-										<ClickedButton
-											className={`w-100 mt-2 rounded-4 fw-bolder`}
-											action={() => {
-												addToCart(id);
-											}}
-											content={`加入購物車`}
-										/>
+										<div className='d-flex gap-3'>
+											<PrevButton
+												className={`w-50 mt-2 rounded-4 fw-bolder`}
+												action={() => {
+													addToCart(id);
+												}}
+												text={`加入購物車`}
+											/>
+											<NavLink className="w-50"
+                                            to="/cart">
+												<NextButton
+                                                    type="button"
+													className={`w-100 mt-2 rounded-4 fw-bolder`}
+													action={() => {
+														addToCart(id);
+													}}
+													text={`直接購買`}
+												/>
+											</NavLink>
+										</div>
 									</div>
 								</div>
 							</div>

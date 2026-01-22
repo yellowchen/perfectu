@@ -1,6 +1,6 @@
 import { NavLink, useOutletContext } from "react-router-dom";
 import { thousandFormat } from '../../../../Common/utils/stringUtils/string-utils';
-import { ClickedButton } from '../../../../Common/form/Button';
+import { ClickedButton, WishButton } from '../../../../Common/form/Button';
 
 
 const ProductCard = ({ item, wish, toggleWishlist }) => {
@@ -9,28 +9,12 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 
 	return (
 		<div className='p-0 card-product bg-light'>
-			<button
-				className='btn rounded-circle btn-wish'
-				onClick={() => {
-					toggleWishlist(item);
-				}}
-			>
-				{wish?.wishlistItems?.some((wish) => wish.id === item.id) ? (
-					<i
-						className='bi bi-suit-heart-fill'
-						style={{
-							color: "#f7ae5b",
-						}}
-					></i>
-				) : (
-					<i
-						className='bi bi-suit-heart-fill'
-						style={{
-							color: "#bdbebf",
-						}}
-					></i>
-				)}
-			</button>
+            <WishButton
+                toggleWishlist={toggleWishlist}
+                item={item}
+                wish={wish}
+                wishStyle={{position: "absolute", top: "0", right: "3%", zIndex: "1"}}
+            />
 
 			<NavLink
 				to={`/detail/${id}`}
@@ -49,19 +33,7 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 				/>
 			</NavLink>
 
-			<div
-				style={
-					{
-						// color: "#fff",
-						// borderRadius: " 0 0 30px 30px",
-						// background: "blue",
-						// height: "190px",
-						// width: "100%",
-						// marginLeft: "0%",
-						// marginTop: "0%",
-					}
-				}
-			>
+			<div>
 				<div className='card-product-content m-3 w-100'>
 					<div className='card-text'>
 						<div
