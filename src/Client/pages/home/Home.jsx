@@ -123,7 +123,7 @@ const Home = () => {
 				{/* Coupon */}
 				<div className='my-5'
                 style={{border: "1px solid #eee"}}>
-					<h1 className='subTitle'>優惠使用</h1>
+					{/* <h1 className='subTitle'>優惠使用</h1> */}
 					<CouponTicket
 						copy={CopyToClipBoard}
 						text={copyText}

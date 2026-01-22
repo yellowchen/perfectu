@@ -98,7 +98,7 @@ const AdminCoupons = () => {
 					Create New
 				</button>
 			</div>
-			<table className='table text-center align-middle table-modal'>
+			<table className='table text-center align-middle table-fixed'>
 				<thead>
 					<tr>
 						<th scope='col'>標題</th>
@@ -125,8 +125,8 @@ const AdminCoupons = () => {
 									{item.due_date < new Date().getTime()
 										? "未啟用"
 										: item.is_enabled
-										? "啟用"
-										: "未啟用"}
+											? "啟用"
+											: "未啟用"}
 								</td>
 								<td>
 									<button
