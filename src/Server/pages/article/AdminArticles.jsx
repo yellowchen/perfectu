@@ -9,6 +9,7 @@ import { DeleteMessage } from "../../../Common/DeleteMessage";
 import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 import Pagination from './../../../Common/Pagination';
 
+
 const AdminArticles = () => {
 	const [articles, setArticles] = useState([]);
 	const [type, setType] = useState("create");
@@ -39,7 +40,6 @@ const AdminArticles = () => {
     const handleDeleteArticle = (id) => {
         deleteArticle(id)
             .then(res => {
-                console.log(res);
                 if (res.data.success) {
 					dispatch(createAsyncMessage(res.data));
 					closeDeleteMessage();

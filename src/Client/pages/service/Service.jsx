@@ -6,7 +6,7 @@ const Service = () => {
 		<div className='container'>
 			<h1 className='title'>常見問題</h1>
 			<div
-				className='accordion px-2 mx-0 mx-lg-5 lxgw_wenkai'
+				className='accordion px-2 mx-0 mx-lg-5'
 				id='accordionPanel'
 			>
 				{data.serviceInformation.map((item) => (

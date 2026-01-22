@@ -24,7 +24,6 @@ const AdminProducts = () => {
                 const res = await getProducts(page);
                 setProducts(res.data.products);
                 setPagination(res.data.pagination);
-                console.log(res);
             } catch (err) {
                 console.log(err);
             }
@@ -75,7 +74,6 @@ const AdminProducts = () => {
 	const closeDeleteMessage = () => {
 		deleteMessage.current.hide();
 	};
-    console.log(products);
 
 	return (
 		<div className='p-1'>

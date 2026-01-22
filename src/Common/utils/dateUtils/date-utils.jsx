@@ -11,7 +11,7 @@ export const FormatDate = (date) => {
 	)}-${dateAddZero(date.getDate())}`;
 };
 
-export const FormatDateTimesK = (date) => {
+export const FormatDateTimesKilo = (date) => {
 	return `${new Date(date * 1000).getFullYear().toString()}-${dateAddZero(
 		new Date(date * 1000).getMonth() + 1
 	)}-${dateAddZero(new Date(date * 1000).getDate())}`;

@@ -3,7 +3,7 @@ import { useParams, useOutletContext, NavLink } from "react-router-dom";
 
 import data from "../../common/data/DetailData.json"
 import { getProduct } from "../../common/api/front";
-import { ClickedButton, WishButton, PrevButton, NextButton } from "../../../Common/form/Button";
+import { WishButton, PrevButton, NextButton } from "../../../Common/form/Button";
 import { Tabs } from "../../common/Tabs";
 import { thousandFormat } from '../../../Common/utils/stringUtils/string-utils';
 import selection from "../../../Common/data/ProductSelect.json"

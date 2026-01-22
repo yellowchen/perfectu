@@ -3,7 +3,6 @@ import { Modal } from "bootstrap";
 import { useDispatch } from "react-redux";
 
 import CouponModal from "./CouponModal";
-
 import { getCoupons, deleteCoupon } from '../../common/api/admin';
 import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 import { DeleteMessage } from '../../../Common/DeleteMessage';

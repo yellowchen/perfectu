@@ -1,23 +1,18 @@
-import { useEffect, useState, useContext, useRef} from "react";
+import { useEffect, useState, useContext} from "react";
 import { useParams, NavLink, useOutletContext } from "react-router-dom";
 
-//Slider
 import Carousel from "./../../common/Carousel";
 import CarouselCard from "./../../common/CarouselCard";
-
-import { OrderInformation } from "./component/OrderInformation";
 import { getOrder } from "../../common/api/front";
 import { PaymentContext } from "../../common/context/PaymentContext";
+import { OrderInformation } from "./component/OrderInformation";
 import { ClickedButton } from "../../../Common/form/Button";
-
 import { ProgressBar } from "./../../../Common/utils/dataUtils/ProgressBar";
 
 
-
 const Success = () => {
-	const { allProducts, getAllProductsList, setIsLoading } = useOutletContext();
+	const { allProducts } = useOutletContext();
 	const [orderData, setOrderData] = useState([]);
-	const [loaded, setLoaded] = useState(false);
 	const { orderId } = useParams();
 	const { payment } = useContext(PaymentContext);
 	const { user } = orderData;
@@ -44,6 +39,7 @@ const Success = () => {
 			else setSlidesToShow(4);
 		};
 	};
+
 	return (
 		<>
 			<ProgressBar step={4} />

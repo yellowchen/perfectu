@@ -13,13 +13,11 @@ import Loading from "../../Common/Loading";
 import { createAsyncMessage } from "../../Common/slice/messageSlice";
 
 
-
 const FrontLayout = () => {
 	const [cartData, setCartData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 	const [cartQuantity, setCartQuantity] = useState(1);
     const [allProducts, setAllProducts] = useState([]);
-    // const [pagination, setPagination] = useState({});
     const dispatch = useDispatch();
 
 	const getAllCart = async () => {
@@ -57,7 +55,6 @@ const FrontLayout = () => {
         setIsLoading(true);
 		try {
             const res = await getAllProducts();
-            console.log(res);
 			setAllProducts(res.data.products);
 		} catch (err) {
 			console.log(err);

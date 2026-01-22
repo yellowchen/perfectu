@@ -22,7 +22,6 @@ import Service from "./Client/pages/service/Service";
 import NotFound from "./Client/pages/NotFound";
 
 
-
 function App() {
     return (
 		<div className='App'>

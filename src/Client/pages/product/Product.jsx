@@ -3,10 +3,8 @@ import { useOutletContext, useParams} from "react-router-dom";
 
 import SideBar from './component/SideBar';
 import ProductCard from "./component/ProductCard";
-import Pagination from './../../../Common/Pagination';
-
 import { getProductSort } from './../../common/api/front';
-
+import Pagination from "./../../../Common/Pagination";
 
 const Product = () => {
     const { wish, toggleWishlist, setCartQuantity, setIsLoading} = useOutletContext();
@@ -32,11 +30,8 @@ const Product = () => {
 		getProductCategory();
 	}, [sort]);
 
-    // console.log("products: ", products);
-
     return (
 		<div className='product container my-5'>
-			{/* <h1 className='title uoq_mun'>產品介紹</h1> */}
 			<div className='mb-4 limelight'>
 				<div className='row g-0 tabs-container text-center'>
 					<div className='col-12 col-md-3 col-lg-2 tabs-header'>

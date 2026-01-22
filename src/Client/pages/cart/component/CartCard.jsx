@@ -4,7 +4,6 @@ import data from "../../../../Common/data/ProductSelect.json"
 
 const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWishlist }) => {
 	const { qty, product_id, product } = item;
-    console.log(item);
 	return (
 		<div
 			className='row g-0 align-items-center mb-2 bg-white text-center card-shadow'
@@ -24,6 +23,7 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 					.filter((item) => item.sort === product.category)
 					.map((item) => (
 						<small
+                            key={item.id}
 							className='m-0 px-2 rounded-4'
 							style={{
 								color: "#777",

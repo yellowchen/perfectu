@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 const CategoryBanner = ({item}) => {
     const {link, className, style, imageUrl, title, imageStyle} = item;
+
     return (
 		<>
 			<NavLink
