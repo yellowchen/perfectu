@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { editArticle, postArticle } from "../../common/api/admin";
 import data from "../../common/data/ArticleData.json";
 
-
 import {
 	Input,
 	DateInput,
@@ -15,7 +14,6 @@ import { ModalCheck } from "./../../../Common/form/CheckBox";
 import { ModalTextArea } from "./../../../Common/form/TextArea";
 import { ModalFooterBtn } from "./../../../Common/form/Button";
 import { ImagePreview } from "./../../../Common/form/ImagePreview";
-
 import useImagePreviews from "../../../Common/utils/hooks/useImagePreviews";
 import { setTextIndicator } from '../../../Common/utils/uiUtils/SetTextIndicator';
 import { removeAllSpace } from '../../../Common/utils/stringUtils/string-utils';
@@ -39,8 +37,6 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 		tag: [],
 	});
     const tagInputRef = useRef(null);
-    console.log(tempData);
-
 
 	useEffect(() => {
 		if (type === "create") {
@@ -143,14 +139,12 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 					...tempData,
 					create_at: date.getTime(),
 				});
-                console.log(res);
                 dispatch(createAsyncMessage(res.data));
             }else if(type === "edit") {
                 const res = await editArticle(tempArticle.id, {
 					...tempData,
 					create_at: date.getTime(),
 				});
-                console.log("article result: ", res.data);
                 dispatch(createAsyncMessage(res.data));
             }
 			closeModal();
@@ -177,7 +171,6 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 			>
 				<div className='modal-dialog modal-lg'>
 					<div className='modal-content'>
-						{/* Header */}
 						<div className='modal-header'>
 							<div className='modal-title' id='articleModalLabel'>
 								<h5>{type === "create" ? "建立新文章" : `編輯：${tempArticle.title}`}</h5>
@@ -189,10 +182,8 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 								aria-label='Close'
 							></button>
 						</div>
-						{/* Body */}
 						<div className='modal-body'>
 							<div className='row'>
-								{/* LEFT */}
 								<div className='col-sm-4 d-flex flex-column gap-2'>
 									<Input
 										id='customFile'
@@ -209,7 +200,6 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 										handleRemove={handleRemove}
 									/>
 								</div>
-								{/* RIGHT */}
 								<div className='col-sm-8 d-flex flex-column gap-2'>
 									<div className='row mb-2'>
 										<div className='col-md-6'>
@@ -274,7 +264,6 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 								</div>
 							</div>
 						</div>
-						{/* Footer */}
                         <ModalFooterBtn
                             handleCancel={handleCancel}
                             handleSubmit={handleSubmit}

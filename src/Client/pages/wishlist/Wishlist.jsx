@@ -1,11 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 import WishCard from './component/WishCard';
 
 const Wishlist = () => {
     const wish = useSelector((state) => state.wishlists);
-    console.log("wish: ", wish);
 
     return (
 		<div className='container'>

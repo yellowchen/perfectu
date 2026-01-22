@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import { ClickedButton } from "../../../../Common/form/Button";
 
 export const RecommendCard = ({recommend, slideRef}) => {
-    console.log(recommend);
 	return (
 		<div className='my-5 mx-0'>
 			{recommend

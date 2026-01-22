@@ -6,7 +6,6 @@ import { Modal } from "bootstrap";
 import CartCard from "./component/CartCard";
 import { editCart, deleteCart, postCoupon } from "../../common/api/front";
 
-
 import { DeleteMessage } from "../../../Common/DeleteMessage";
 import { createAsyncMessage } from "../../../Common/slice/messageSlice";
 import { removeAllSpace, thousandFormat } from "../../../Common/utils/stringUtils/string-utils";

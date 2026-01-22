@@ -15,7 +15,6 @@ import {ModalSelect} from "./../../../Common/form/Select";
 import { ImagePreview } from './../../../Common/form/ImagePreview';
 
 
-
 const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 	const [tempData, setTempData] = useState({
 		title: "",
@@ -27,7 +26,7 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
 		content: "",
 		is_enabled: 1,
 		imageUrl: "",
-	    num: 0,
+        num: 0,
 	});
 	const dispatch = useDispatch();
 
@@ -78,15 +77,12 @@ const ProductModal = ({closeModal, type, tempItem, getProducts}) => {
             if(type === "create") {
                 const res = await postProduct(tempData)
                 dispatch(createAsyncMessage(res.data));
-                console.log("res create: ", res);
             }else if(type === "edit") {
                 const res = await editProduct(tempItem.id, tempData);
                 dispatch(createAsyncMessage(res.data));
-                console.log("res edit: ", res);
             }
             closeModal();
             getProducts();
-            console.log("lala");
         } catch (err) {
             console.log("err: ", err);
             dispatch(createAsyncMessage(err.data));

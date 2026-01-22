@@ -45,6 +45,7 @@ const RankCard = ({item, index}) => {
 									.filter((item) => item.sort === category)
 									.map((item) => (
 										<small
+                                            key={item.id}
 											className='px-2 rounded-4'
 											style={{
 												color: "#777",

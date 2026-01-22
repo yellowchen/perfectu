@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {useForm, useWatch} from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { useOutletContext, useNavigate, Navigate } from 'react-router-dom';
 
 import CheckoutCard from "./component/card/CheckoutCard";
@@ -9,7 +9,7 @@ import { checkoutInputRules } from "../../common/data/CheckoutData";
 import { postOrder } from "../../common/api/front";
 
 import { ProgressBar } from "./../../../Common/utils/dataUtils/ProgressBar";
-import { SubmitButton, ClickedButton, PrevButton, NextButton } from "../../../Common/form/Button";
+import { PrevButton, NextButton } from "../../../Common/form/Button";
 import { FormInput } from "../../../Common/form/Input";
 import { FormTextArea } from "../../../Common/form/TextArea";
 import { thousandFormat } from "../../../Common/utils/stringUtils/string-utils";
@@ -73,7 +73,6 @@ const Checkout = () => {
     useEffect(() => {
 		setAddressData(taiwanAddress);
 	}, []);
-
 
 	return (
 		<div className='container'>

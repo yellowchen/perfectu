@@ -1,5 +1,3 @@
-import { NavLink } from "react-router-dom";
-
 const Banner = ({ imgUrl, position }) => {
 	return (
 		<div className='position-relative mx-0'>
@@ -63,8 +61,6 @@ const Banner = ({ imgUrl, position }) => {
 							top: "50%",
 							left: "50%",
 							transform: "translateX(-50%)",
-							// backdropFilter: "blur(4px)",
-
 						}}
 					>
 						<div></div>
@@ -81,25 +77,6 @@ const Banner = ({ imgUrl, position }) => {
 					</div>
 				</div>
 			</div>
-
-			{/* <NavLink
-				type='button'
-				className='btn position-absolute banner-link'
-				style={{
-					bottom: "0%",
-					right: "8%",
-				}}
-				to={`/intro`}
-			>
-				<p
-					className='text-light fs-4 fw-bolder'
-					style={{
-						letterSpacing: "6px",
-					}}
-				>
-					瞭解我們<i className='bi bi-chevron-double-right'></i>
-				</p>
-			</NavLink> */}
 		</div>
 	);
 };
