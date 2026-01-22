@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/perfectu/static/css/main.4ef3a125.css",
-    "main.js": "/perfectu/static/js/main.67213a3b.js",
+    "main.js": "/perfectu/static/js/main.9172f8a4.js",
     "static/media/bootstrap-icons.woff?": "/perfectu/static/media/bootstrap-icons.1295669cd4e305c97f2c.woff",
     "static/media/bootstrap-icons.woff2?": "/perfectu/static/media/bootstrap-icons.92ea18a81d737146ff04.woff2",
     "static/media/slick.svg": "/perfectu/static/media/slick.2630a3e3eab21c607e21.svg",
@@ -10,10 +10,10 @@
     "static/media/slick.woff": "/perfectu/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/perfectu/index.html",
     "main.4ef3a125.css.map": "/perfectu/static/css/main.4ef3a125.css.map",
-    "main.67213a3b.js.map": "/perfectu/static/js/main.67213a3b.js.map"
+    "main.9172f8a4.js.map": "/perfectu/static/js/main.9172f8a4.js.map"
   },
   "entrypoints": [
     "static/css/main.4ef3a125.css",
-    "static/js/main.67213a3b.js"
+    "static/js/main.9172f8a4.js"
   ]
 }
