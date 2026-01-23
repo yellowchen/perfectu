@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+## 【專案簡介】
+這是一個以手工香氛商品為主的電商網站，顧客能在前台網站中瀏覽產品，並將商品加入購物車或願望清單、填寫訂單資料並送出訂單；而管理者可在後台新增、編輯和刪除商品與優惠券，和查看訂單列表，確認訂單進度。
+<img src="https://res.cloudinary.com/da85u8p5e/image/upload/v1769160861/perfectu_aufajl.png">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [【Live Demo】]
+- 前台：https://yellowchen.github.io/perfectu/
+- 後台(管理者)：http://localhost:3000/perfectu#/login
+- 管理者帳號：yellowchen1103@gmail.com
+- 管理者密碼：yc1793
 
-## Available Scripts
+## 【功能介紹】
+【後台(管理者)】
+- 需登入有效之帳號密碼，才可操作使用
+- 使用者登入後，在 token 有效且尚未登出前，不需重複登入
+- 使用者可操作管理商品、優惠券、訂單
 
-In the project directory, you can run:
+【前台】
+- 顯示商品列表
+- 依類別篩選商品
+- 商品加入購物車
+- 顯示購物車列表
+- 商品加入願望清單
+- 顯示願望清單列表
+- 編輯購物車商品數量、刪除購物車
+- 購物車使用優惠券
+- 填寫顧客資訊，表單驗證與送出
+- RWD響應式網站，支援多種尺寸介面瀏覽
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 【使用技術】
+- 使用 Create React App 建立專案環境
+- 使用 React Functional components & hooks 進行開發
+- 使用 useReducer & useContext 進行狀態管理
+- 使用 React Hook Form 開發表單，實現表單監聽、驗證等功能
+- 使用 Sass、Bootstrap 5 進行 RWD 響應式網頁排版
+- 使用 Github Actions 將更新內容自動部署至 GitHub Pages
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 【專案安裝】
+```
+$ git clone https://github.com/yellowchen/perfectu
+$ cd Work-06
+$ npm install
+$ npm start
+```
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 【相關資源】
+- 圖片來源：[Unsplash](https://unsplash.com/)
+- Icon：Bootstrap Icons(https://icons.getbootstrap.com/)
+- 字形：Google Fonts(https://fonts.google.com/)

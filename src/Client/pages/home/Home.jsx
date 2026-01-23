@@ -11,6 +11,7 @@ import { categoryRules } from "../../common/data/CategoryData";
 import { slideIn } from './../../../Common/utils/uiUtils/SlideIn';
 
 
+
 const Home = () => {
 	const [copyText, setCopyText] = useState("複製優惠碼");
 	const { allProducts, getAllProductsList } = useOutletContext();
@@ -53,7 +54,7 @@ const Home = () => {
 							.filter((item) => data.allRankList.map((item) => item.title).includes(item.title))
 							.map((item, index) => (
 								<RankCard
-                                    key={index}
+									key={index}
 									item={item}
 									index={index}
 								/>
@@ -81,8 +82,10 @@ const Home = () => {
 						slideRef={slideRef}
 					/>
 				</div>
-				<div className='my-5'
-                style={{border: "1px solid #eee"}}>
+				<div
+					className='my-5'
+					style={{ border: "1px solid #eee" }}
+				>
 					<CouponTicket
 						copy={CopyToClipBoard}
 						text={copyText}
