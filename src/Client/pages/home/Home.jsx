@@ -23,7 +23,6 @@ const Home = () => {
 
 
 	useEffect(() => {
-        slideIn();
 		getAllProductsList();
 	}, []);
 

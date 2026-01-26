@@ -12,6 +12,7 @@ export const slideIn = (slideRef, slideText, slideImage) => {
 			slideText?.classList.add("active");
 			slideImage?.classList.add("active");
 		}
+        console.log("slide-in work");
 	};
 	window.addEventListener("scroll", debounce(checkSlideIn));
 };
