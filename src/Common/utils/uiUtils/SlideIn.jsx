@@ -14,5 +14,6 @@ export const slideIn = (slideRef, slideText, slideImage) => {
 		}
         console.log("slide-in work");
 	};
+    window.addEventListener("touchmove", debounce(checkSlideIn));
 	window.addEventListener("scroll", debounce(checkSlideIn));
 };

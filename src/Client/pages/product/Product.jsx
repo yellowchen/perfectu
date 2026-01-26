@@ -33,13 +33,11 @@ const Product = () => {
     return (
 		<div className='product container my-5'>
 			<div className='mb-4 limelight'>
-				<div className='row g-0 tabs-container text-center'>
+				<div className='row g-0 tabs-container text-center justify-content-center'>
 					<div className='col-12 col-md-3 col-lg-2 tabs-header'>
-                        <SideBar
-                            sort={sort}
-                        />
+						<SideBar sort={sort} />
 					</div>
-					<div className='col-12 col-md-9 col-lg-10'>
+					<div className='col-10 col-md-9 col-lg-10  border border-danger'>
 						<div className='tabs-content d-flex flex-wrap justify-content-center'>
 							{productSort
 								.sort((a, b) => (a.num > b.num ? -1 : 1))
