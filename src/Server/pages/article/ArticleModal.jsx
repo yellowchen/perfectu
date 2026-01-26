@@ -196,7 +196,7 @@ const ArticleModal = ({ closeModal, type, tempArticle, getArticles }) => {
 									/>
 									<ImagePreview
 										title={tempData.title}
-										img={tempData.image}
+										image={tempData.image}
 										handleRemove={handleRemove}
 									/>
 								</div>

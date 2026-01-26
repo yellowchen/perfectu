@@ -21,6 +21,7 @@ const OrderCard = ({ item }) => {
 							.filter((item) => item.sort === product.category)
 							.map((item) => (
 								<small
+                                    key={item.id}
 									className='px-2 rounded-4'
 									style={{
 										color: "#777",

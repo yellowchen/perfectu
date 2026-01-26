@@ -98,6 +98,22 @@ const Home = () => {
 					<p className=''>”Smell is a word, perfume is literature.”</p>
 					<p>——Jean-Claude Ellena</p>
 				</div>
+				<div className='my-5 row g-0 bg-light border border-danger'>
+					<div className='outfit-person col-3'>
+						<div className='w-100'>
+							<img
+								className='w-100'
+								src='https://res.cloudinary.com/da85u8p5e/image/upload/v1769164347/jonathan-borba-n1B6ftPB5Eg-unsplash_mp5sxn.jpg'
+								alt=''
+								style={{}}
+							/>
+						</div>
+						<div className='text'></div>
+					</div>
+					<div className='outfit-perfume col-9'>
+						<div className="bg-danger" style={{ clipPath: "polygon(50% 0%, 80% 51%, 50% 100%, 20% 52%)", width: "40%", height: "90%", transform: "translateY(-50px)" }}></div>
+					</div>
+				</div>
 			</div>
 		</>
 	);
