@@ -15,7 +15,7 @@ export const ProgressBar = ({ step }) => {
 
 	return (
 		<div
-			className='w-50 mx-auto limelight'
+			className='w-50 mx-auto'
 			style={{ margin: "2rem 0 6rem" }}
 		>
 			<div className='position-relative'>
@@ -34,7 +34,6 @@ export const ProgressBar = ({ step }) => {
 						aria-valuemax='100'
 						style={{
 							backgroundColor: "#f7ae5b",
-							// transition: "width .3s ease",
 						}}
 					></div>
 				</div>
@@ -52,7 +51,7 @@ export const ProgressBar = ({ step }) => {
 						`}
 					style={btnStyle}
 				>
-					{step > 1 ? <i className='bi bi-flower2'></i> : "1"}
+					{step > 1 ? <i className='bi bi-check-lg'></i> : "1"}
 				</button>
 				{/* 進度2 */}
 				<button
@@ -68,7 +67,7 @@ export const ProgressBar = ({ step }) => {
 						`}
 					style={btnStyle}
 				>
-					{step > 2 ? <i className='bi bi-flower2'></i> : "2"}
+					{step > 2 ? <i className='bi bi-check-lg'></i> : "2"}
 				</button>
 				{/* 進度3 */}
 				<button
@@ -84,7 +83,7 @@ export const ProgressBar = ({ step }) => {
 						`}
 					style={btnStyle}
 				>
-					{step >= 4 ? <i className='bi bi-flower2'></i> : "3"}
+					{step >= 4 ? <i className='bi bi-check-lg'></i> : "3"}
 				</button>
 
 				{/* 進度文字 */}
