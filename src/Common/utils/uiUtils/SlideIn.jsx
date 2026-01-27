@@ -1,10 +1,9 @@
-import { debounce } from './Debounce';
+import { debounce } from "./Debounce";
 
 export const slideIn = (slideRef, slideText, slideImage) => {
 	const checkSlideIn = () => {
 		const slideInAt = window.scrollY + window.innerHeight - slideRef?.current?.offsetHeight / 5;
-        const slideBottom = slideRef?.current?.offsetTop + slideRef?.current?.offsetHeight;
-
+		const slideBottom = slideRef?.current?.offsetTop + slideRef?.current?.offsetHeight;
 
 		const isScrolledTop = slideInAt > slideRef?.current?.offsetTop;
 		const isNotScrolledPast = window.scrollY < slideBottom;
@@ -12,9 +11,8 @@ export const slideIn = (slideRef, slideText, slideImage) => {
 		if (isScrolledTop && isNotScrolledPast) {
 			slideText?.classList.add("active");
 			slideImage?.classList.add("active");
-            console.log("slide-in work");
 		}
 	};
-    window.addEventListener("touchmove", debounce(checkSlideIn));
+	window.addEventListener("touchmove", debounce(checkSlideIn));
 	window.addEventListener("scroll", debounce(checkSlideIn));
 };

@@ -9,7 +9,7 @@ import RankCard from "./component/RankCard";
 import data from "../../common/data/RankData";
 import { categoryRules } from "../../common/data/CategoryData";
 import { slideIn } from './../../../Common/utils/uiUtils/SlideIn';
-
+import { debounce } from './../../../Common/utils/uiUtils/Debounce';
 
 
 const Home = () => {
@@ -19,12 +19,27 @@ const Home = () => {
     const slideRef = useRef();
     const slideText = slideRef?.current?.children[0]?.children[1];
 	const slideImage = slideRef?.current?.children[1]?.children[0];
-    slideIn(slideRef, slideText, slideImage);
+    // slideIn(slideRef, slideText, slideImage);
+
+    const checkSlideIn = () => {
+        const slideInAt = window.scrollY + window.innerHeight - slideRef?.current?.offsetHeight / 5;
+        const slideBottom = slideRef?.current?.offsetTop + slideRef?.current?.offsetHeight;
+
+        const isScrolledTop = slideInAt > slideRef?.current?.offsetTop;
+        const isNotScrolledPast = window.scrollY < slideBottom;
+
+        if (isScrolledTop && isNotScrolledPast) {
+            slideText?.classList.add("active");
+            slideImage?.classList.add("active");
+        }
+    };
+    window.addEventListener("touchmove", debounce(checkSlideIn));
+    window.addEventListener("scroll", debounce(checkSlideIn));
 
 
 	useEffect(() => {
 		getAllProductsList();
-        slideIn();
+        // slideIn();
 	}, []);
 
 
