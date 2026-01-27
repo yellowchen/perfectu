@@ -33,8 +33,13 @@ const Home = () => {
             slideImage?.classList.add("active");
         }
     };
-    window.addEventListener("touchmove", debounce(checkSlideIn));
-    window.addEventListener("scroll", debounce(checkSlideIn));
+    const debouncedScrollHandler = debounce(checkSlideIn);
+
+    // window.addEventListener("scroll", debounce(checkSlideIn));
+
+    useEffect(() => {
+		window.addEventListener("scroll", debouncedScrollHandler);
+	}, [debouncedScrollHandler]);
 
 
 	useEffect(() => {
