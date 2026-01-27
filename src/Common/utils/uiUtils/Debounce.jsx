@@ -1,4 +1,4 @@
-export const debounce = (func, wait = 20, immediate = true) => {
+export const debounce = (func, wait = 10, immediate = true) => {
 	//設定immediate為true，會讓debounce在wait時間開始計算之前就觸發函數（也就是沒有任何延遲就觸發函數），根據immediate的值來決定如何執行func
 	//A.
     //B.如果是immediate的情況下，我們立即執行func，並在wait時間內鎖住func的執行，wait時間之後再觸發，才會重新執行func

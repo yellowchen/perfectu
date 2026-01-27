@@ -31,13 +31,14 @@ const Home = () => {
         if (isScrolledTop && isNotScrolledPast) {
             slideText?.classList.add("active");
             slideImage?.classList.add("active");
+            console.log("classList adding work");
         }
     };
     const debouncedScrollHandler = debounce(checkSlideIn);
 
-    // window.addEventListener("scroll", debounce(checkSlideIn));
 
     useEffect(() => {
+        console.log("useEffect work");
 		window.addEventListener("scroll", debouncedScrollHandler);
         return () => {
 			window.removeEventListener("scroll", debouncedScrollHandler);
