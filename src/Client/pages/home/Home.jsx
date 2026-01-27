@@ -17,30 +17,42 @@ const Home = () => {
 	const { allProducts, getAllProductsList } = useOutletContext();
 
     const slideRef = useRef();
-    const slideText = slideRef?.current?.children[0]?.children[1];
-	const slideImage = slideRef?.current?.children[1]?.children[0];
+    const checkSlide = () => {
+        const slideTxt = slideRef.current?.children[0].children[1];
+		const slideImg = slideRef.current?.children[1].children[0];
+		if (window.scrollY + window.innerHeight > slideRef?.current?.offsetTop) {
+			slideTxt.classList.add("active");
+			slideImg.classList.add("active");
+		}
+    }
+    window.addEventListener("scroll", debounce(checkSlide));
 
-    const checkSlideIn = () => {
-        const slideInAt = window.scrollY + window.innerHeight - slideRef?.current?.offsetHeight / 5;
-        const slideBottom = slideRef?.current?.offsetTop + slideRef?.current?.offsetHeight;
 
-        const isScrolledTop = slideInAt > slideRef?.current?.offsetTop;
-        const isNotScrolledPast = window.scrollY < slideBottom;
 
-        if (isScrolledTop && isNotScrolledPast) {
-            slideText?.classList.add("active");
-            slideImage?.classList.add("active");
-            console.log("classList adding work");
-        }
-    };
-    const debouncedScrollHandler = debounce(checkSlideIn);
+    // const slideText = slideRef?.current?.children[0]?.children[1];
+	// const slideImage = slideRef?.current?.children[1]?.children[0];
 
-    useEffect(() => {
-		window.addEventListener("scroll", debouncedScrollHandler);
-        return () => {
-			window.removeEventListener("scroll", debouncedScrollHandler);
-		};
-	}, [debouncedScrollHandler]);
+    // const checkSlideIn = () => {
+    //     const slideInAt = window.scrollY + window.innerHeight - slideRef?.current?.offsetHeight / 5;
+    //     const slideBottom = slideRef?.current?.offsetTop + slideRef?.current?.offsetHeight;
+
+    //     const isScrolledTop = slideInAt > slideRef?.current?.offsetTop;
+    //     const isNotScrolledPast = window.scrollY < slideBottom;
+
+    //     if (isScrolledTop && isNotScrolledPast) {
+    //         slideText?.classList.add("active");
+    //         slideImage?.classList.add("active");
+    //         console.log("classList adding work");
+    //     }
+    // };
+    // const debouncedScrollHandler = debounce(checkSlideIn);
+
+    // useEffect(() => {
+	// 	window.addEventListener("scroll", debouncedScrollHandler);
+    //     return () => {
+	// 		window.removeEventListener("scroll", debouncedScrollHandler);
+	// 	};
+	// }, [debouncedScrollHandler]);
 
 
 	useEffect(() => {
