@@ -27,47 +27,18 @@ const Home = () => {
     }
     window.addEventListener("scroll", debounce(checkSlide));
 
-
-
-    // const slideText = slideRef?.current?.children[0]?.children[1];
-	// const slideImage = slideRef?.current?.children[1]?.children[0];
-
-    // const checkSlideIn = () => {
-    //     const slideInAt = window.scrollY + window.innerHeight - slideRef?.current?.offsetHeight / 5;
-    //     const slideBottom = slideRef?.current?.offsetTop + slideRef?.current?.offsetHeight;
-
-    //     const isScrolledTop = slideInAt > slideRef?.current?.offsetTop;
-    //     const isNotScrolledPast = window.scrollY < slideBottom;
-
-    //     if (isScrolledTop && isNotScrolledPast) {
-    //         slideText?.classList.add("active");
-    //         slideImage?.classList.add("active");
-    //         console.log("classList adding work");
-    //     }
-    // };
-    // const debouncedScrollHandler = debounce(checkSlideIn);
-
-    // useEffect(() => {
-	// 	window.addEventListener("scroll", debouncedScrollHandler);
-    //     return () => {
-	// 		window.removeEventListener("scroll", debouncedScrollHandler);
-	// 	};
-	// }, [debouncedScrollHandler]);
-
-
 	useEffect(() => {
 		getAllProductsList();
-
         //pageshow
-        const handlePageShow = (e) => {
-            if(e.persisted) {
-                window.location.reload();
-            }
-        }
-        window.addEventListener("pageshow", handlePageShow);
-        return () => {
-            window.removeEventListener("pageshow", handlePageShow);
-        }
+        // const handlePageShow = (e) => {
+        //     if(e.persisted) {
+        //         window.location.reload();
+        //     }
+        // }
+        // window.addEventListener("pageshow", handlePageShow);
+        // return () => {
+        //     window.removeEventListener("pageshow", handlePageShow);
+        // }
 	}, []);
 
 
