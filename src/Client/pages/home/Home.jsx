@@ -6,9 +6,9 @@ import { RecommendCard } from "./component/RecommendCard";
 import { CouponTicket } from "./component/CouponTicket";
 import CategoryBanner from "./component/CategoryBanner";
 import RankCard from "./component/RankCard";
+
 import data from "../../common/data/RankData";
 import { categoryRules } from "../../common/data/CategoryData";
-// import { slideIn } from './../../../Common/utils/uiUtils/SlideIn';
 import { debounce } from './../../../Common/utils/uiUtils/Debounce';
 
 
@@ -29,16 +29,6 @@ const Home = () => {
 
 	useEffect(() => {
 		getAllProductsList();
-        //pageshow
-        // const handlePageShow = (e) => {
-        //     if(e.persisted) {
-        //         window.location.reload();
-        //     }
-        // }
-        // window.addEventListener("pageshow", handlePageShow);
-        // return () => {
-        //     window.removeEventListener("pageshow", handlePageShow);
-        // }
 	}, []);
 
 
