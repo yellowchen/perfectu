@@ -3,7 +3,7 @@ import { ClickedButton } from "../../../../Common/form/Button";
 
 export const RecommendCard = ({recommend, slideRef}) => {
 	return (
-		<div className='my-5 mx-0 border border-primary'>
+		<div className='my-5 mx-0'>
 			{recommend
 				?.filter((item) => item.title === "冬火")
 				?.map((item) => (
@@ -13,7 +13,7 @@ export const RecommendCard = ({recommend, slideRef}) => {
 						ref={slideRef}
 					>
 						<div className='txt'>
-							<h1 className='text-light'>{item?.title}</h1>
+							<h1 className='text-light ps-4'>{item?.title}</h1>
 							<div className='p-4 p-lg-4'>
 								<p className='lh-lg fs-5 text-justify'>{item?.content}</p>
 								<NavLink

@@ -24,6 +24,7 @@ const Home = () => {
 
 	useEffect(() => {
 		getAllProductsList();
+        slideIn();
 	}, []);
 
 
@@ -40,13 +41,13 @@ const Home = () => {
 
 	return (
 		<>
-			<div className='slider-container mb-5 border border-danger'>
+			<div className='slider-container mb-5'>
 				<Banner
 					imgUrl='url(https://res.cloudinary.com/da85u8p5e/image/upload/v1754556524/sergey-shmidt-koy6FlCCy5s-unsplash_pyw5fq.jpg)'
 					position='center 45%'
 				/>
 			</div>
-			<div className='container border border-danger'>
+			<div className='container'>
 				<div className=''>
 					<h1 className='subTitle'>熱銷排行</h1>
 					<div className='d-flex flex-column flex-md-row align-items-stretch gap-1 gap-md-2 gap-xl-3 mx-0 mx-md-1 mx-lg-2 my-5'>
@@ -61,7 +62,7 @@ const Home = () => {
 							))}
 					</div>
 				</div>
-				<div className=' border border-danger'>
+				<div className=''>
 					<h1 className='subTitle'>商品種類</h1>
 					<div
 						className='category-banner mx-0 my-5 rounded-4 d-flex position-relative'
@@ -75,7 +76,7 @@ const Home = () => {
 						))}
 					</div>
 				</div>
-				<div className=' border border-danger'>
+				<div className=''>
 					<h1 className='subTitle'>本季推薦</h1>
 					<RecommendCard
 						recommend={allProducts}
@@ -83,7 +84,7 @@ const Home = () => {
 					/>
 				</div>
 				<div
-					className='my-5 border border-danger'
+					className='my-5'
 					style={{ border: "1px solid #eee" }}
 				>
 					<CouponTicket
@@ -92,13 +93,13 @@ const Home = () => {
 					/>
 				</div>
 				<div
-					className='edu_tas text-center px-5 fs-1 border border-danger'
+					className='edu_tas text-center px-5 fs-1'
 					style={{}}
 				>
 					<p className=''>”Smell is a word, perfume is literature.”</p>
 					<p>——Jean-Claude Ellena</p>
 				</div>
-				<div className='my-5 row g-0 bg-light border border-danger'>
+				<div className='my-5 row g-0 bg-light'>
 					<div className='outfit-person col-3'>
 						<div className='w-100'>
 							<img
