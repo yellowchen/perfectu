@@ -39,6 +39,9 @@ const Home = () => {
 
     useEffect(() => {
 		window.addEventListener("scroll", debouncedScrollHandler);
+        return () => {
+			window.removeEventListener("scroll", debouncedScrollHandler);
+		};
 	}, [debouncedScrollHandler]);
 
 
