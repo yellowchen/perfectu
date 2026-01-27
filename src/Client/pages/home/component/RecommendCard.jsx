@@ -17,7 +17,7 @@ export const RecommendCard = ({recommend, slideRef}) => {
 							<div className='p-4 p-lg-4'>
 								<p className='lh-lg fs-5 text-justify'>{item?.content}</p>
 								<NavLink
-									to={`/product/${item.id}`}
+									to={`/detail/${item.id}`}
 									className='btn align-self-end text-light'
 								>
 									<ClickedButton

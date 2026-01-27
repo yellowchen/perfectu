@@ -57,8 +57,8 @@
             transition: transform 2s ease-in-out;
             display: flex;
             flex-direction: column;
-            h5 {
-                margin: 3rem 0;
+            p {
+                margin: 2rem 0;
                 line-height: 1.5;
             }
         }
@@ -74,25 +74,24 @@
     .img {
         width: 40%;
         position: relative;
-        margin-bottom: 5rem;
-
+        margin-bottom: 8rem;
         &::before {
             content: "";
             position: absolute;
             background: #eee;
-            border: 1.5rem solid #b4deea;
+            border: 1.6rem solid #b4deea;
             width: 70%;
             aspect-ratio: 1/1;
             top: 25%;
             right: -25%;
             z-index: -1;
             @include media-lg {
-                top: 18%;
-                right: -18%;
+                top: 25%;
+                right: -25%;
             }
         }
         @include media-lg {
-            width: 85%
+            width: 80%;
         }
         img {
             opacity: 0;
@@ -311,7 +310,7 @@
 }
 .card-product {
     position: relative;
-    min-width: 330px;
+    width: 330px;
     height: 420px;
     border-radius: 20px;
     margin: 0 .8rem 3rem;
