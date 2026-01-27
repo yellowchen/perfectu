@@ -72,8 +72,7 @@ const Banner = ({ imgUrl, position }) => {
 							}}
 						>
 							<p className='my-1 m-sm-2'>在這裡，找到屬於你的味道</p>
-							<p className='my-1 m-sm-2'>找尋能"完美你"的香水</p>
-							<p className='my-1 m-sm-2'>而他將成為你的"完美"香水</p>
+							<p className='my-1 m-sm-2'>找尋"完美你"的香水</p>
 						</div>
 					</div>
 				</div>

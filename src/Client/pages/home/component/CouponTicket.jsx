@@ -3,7 +3,7 @@ import { ClickedButton } from './../../../../Common/form/Button';
 export const CouponTicket = ({copy, text}) => {
     return (
 		<div
-			className='coupon-ticket my-5 mx-2 mx-lg-5 px-2 px-lg-0 text-center'
+			className='coupon-ticket my-5 mx-0 px-2 px-lg-0 text-center'
 			style={{
 				minWidth: "300px",
 				aspectRatio: "3/1",

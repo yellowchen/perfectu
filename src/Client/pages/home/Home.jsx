@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef, useCallback} from "react";
+import {useState, useEffect, useRef} from "react";
 import { useOutletContext } from "react-router-dom";
 
 import Banner from './component/Banner';
@@ -19,7 +19,6 @@ const Home = () => {
     const slideRef = useRef();
     const slideText = slideRef?.current?.children[0]?.children[1];
 	const slideImage = slideRef?.current?.children[1]?.children[0];
-    // slideIn(slideRef, slideText, slideImage);
 
     const checkSlideIn = () => {
         const slideInAt = window.scrollY + window.innerHeight - slideRef?.current?.offsetHeight / 5;
@@ -36,9 +35,7 @@ const Home = () => {
     };
     const debouncedScrollHandler = debounce(checkSlideIn);
 
-
     useEffect(() => {
-        console.log("useEffect work");
 		window.addEventListener("scroll", debouncedScrollHandler);
         return () => {
 			window.removeEventListener("scroll", debouncedScrollHandler);
@@ -48,7 +45,7 @@ const Home = () => {
 
 	useEffect(() => {
 		getAllProductsList();
-        // slideIn();
+        debouncedScrollHandler();
 	}, []);
 
 
@@ -122,30 +119,6 @@ const Home = () => {
 				>
 					<p className=''>”Smell is a word, perfume is literature.”</p>
 					<p>——Jean-Claude Ellena</p>
-				</div>
-				<div className='my-5 row g-0 bg-light'>
-					<div className='outfit-person col-3'>
-						<div className='w-100'>
-							<img
-								className='w-100'
-								src='https://res.cloudinary.com/da85u8p5e/image/upload/v1769164347/jonathan-borba-n1B6ftPB5Eg-unsplash_mp5sxn.jpg'
-								alt=''
-								style={{}}
-							/>
-						</div>
-						<div className='text'></div>
-					</div>
-					<div className='outfit-perfume col-9'>
-						<div
-							className='bg-danger'
-							style={{
-								clipPath: "polygon(50% 0%, 80% 51%, 50% 100%, 20% 52%)",
-								width: "40%",
-								height: "90%",
-								transform: "translateY(-50px)",
-							}}
-						></div>
-					</div>
 				</div>
 			</div>
 		</>
