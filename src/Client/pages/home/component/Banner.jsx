@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 const Banner = ({ imgUrl, position }) => {
 	return (
 		<div className='position-relative mx-0'>
@@ -26,7 +28,7 @@ const Banner = ({ imgUrl, position }) => {
 						className='play_write position-absolute text-center text-sm-start ps-sm-5'
 						style={{
 							width: "90%",
-							top: "13%",
+							top: "10%",
 							left: "50%",
 							transform: "translateX(-50%)",
 						}}
@@ -43,7 +45,7 @@ const Banner = ({ imgUrl, position }) => {
 							className='position-absolute uoq_mun text-center ms-0 text-sm-start ps-sm-5 ms-sm-5'
 							style={{
 								width: "100%",
-								top: "130%",
+								top: "115%",
 								left: "0%",
 								fontSize: "2.5rem",
 								lineHeight: "1.5",
@@ -59,13 +61,13 @@ const Banner = ({ imgUrl, position }) => {
 						className='position-absolute py-3'
 						style={{
 							width: "100%",
-							top: "45%",
+							top: "40%",
 							left: "50%",
 							transform: "translateX(-50%)",
 						}}
 					>
 						<div
-							className='uoq_mun d-flex flex-column mt-5 mt-sm-2 mx-auto gap-0 text-center text-sm-end text-light pe-sm-5 fs-2'
+							className='uoq_mun d-flex flex-column mt-4 mt-sm-3 mx-auto gap-0 text-center text-sm-end text-light pe-sm-5 fs-2'
 							style={{
 								width: "80%",
 								textShadow: "0 0 3px #5b947f, 0 0 3px #5b947f, 0 0 3px #5b947f, 0 0 3px #5b947f",
@@ -75,6 +77,24 @@ const Banner = ({ imgUrl, position }) => {
 							<p className='my-1 m-sm-2'>找尋"完美你"的香水</p>
 						</div>
 					</div>
+					<NavLink
+						type='button'
+						className='btn position-absolute banner-link'
+						style={{
+							bottom: "0%",
+							right: "8%",
+						}}
+						to={`/intro`}
+					>
+						<p
+							className='text-light fs-4 fw-bolder'
+							style={{
+								letterSpacing: "6px",
+							}}
+						>
+							關於我們<i className='bi bi-chevron-double-right'></i>
+						</p>
+					</NavLink>
 				</div>
 			</div>
 		</div>

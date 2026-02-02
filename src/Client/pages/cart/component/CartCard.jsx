@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import { thousandFormat } from "../../../../Common/utils/stringUtils/string-utils";
 import data from "../../../../Common/data/ProductSelect.json"
+import { CartQuantityButton } from './../../../../Common/form/Button';
+
 
 const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWishlist }) => {
 	const { qty, product_id, product } = item;
 	return (
-		<div
-			className='row g-0 align-items-center mb-2 bg-white text-center card-shadow'
-		>
+		<div className='row g-0 align-items-center mb-2 bg-white text-center card-shadow'>
 			<div className='col-2 p-0'>
-				<Link to={`/product/${product_id}`}>
+				<Link to={`/detail/${product_id}`}>
 					<img
 						src={product.imageUrl}
 						className='img-fluid'
@@ -23,7 +23,7 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 					.filter((item) => item.sort === product.category)
 					.map((item) => (
 						<small
-                            key={item.id}
+							key={item.id}
 							className='m-0 px-2 rounded-4'
 							style={{
 								color: "#777",
@@ -47,7 +47,22 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 			</div>
 			<p className='col-3 col-sm-2 p-0 my-0 fs-6'>NT$ {thousandFormat(product.price)}</p>
 			<div className='col-3 col-lg-3'>
-				<div className='input-group px-1'>
+				<CartQuantityButton
+					className={`px-1`}
+					handleQtyMinus={() => {
+						update(item, qty > 1 ? qty - 1 : 1);
+						qty <= 1 && openDeleteMessage(item);
+					}}
+					handleQty={(e) => {
+						update(item, e.target.value * 1);
+					}}
+					handleQtyPlus={() => {
+						update(item, qty + 1);
+					}}
+					quantity={qty}
+					btnClassName={`p-1 p-sm-2`}
+				/>
+				{/* <div className='input-group px-1'>
 					<button
 						type='button'
 						className='input-group-text p-1 p-sm-2 bg-secondary'
@@ -74,7 +89,7 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 					>
 						<i className='bi bi-plus-lg'></i>
 					</button>
-				</div>
+				</div> */}
 			</div>
 			<p className='col-0 col-sm-3 col-lg-2 d-none d-sm-block my-0'>NT$ {thousandFormat(product.price * qty)}</p>
 			<div className='col-0 col-lg-1 d-none d-lg-block d-flex flex-column'>

@@ -3,10 +3,11 @@ import { useParams, useOutletContext, NavLink } from "react-router-dom";
 
 import data from "../../common/data/DetailData.json"
 import { getProduct } from "../../common/api/front";
-import { WishButton, PrevButton, NextButton } from "../../../Common/form/Button";
+import { WishButton, PrevButton, NextButton, QuantityButton } from "../../../Common/form/Button";
 import { Tabs } from "../../common/Tabs";
 import { thousandFormat } from '../../../Common/utils/stringUtils/string-utils';
 import selection from "../../../Common/data/ProductSelect.json"
+
 
 
 const ProductDetail = () => {
@@ -88,21 +89,40 @@ const ProductDetail = () => {
 									style={{ height: "470px" }}
 								/>
 							</div>
-							<div className='col-lg-7 px-3 px-sm-4 py-3 bg-light'>
-								<div className='card-body d-flex flex-column'>
+							<div className='col-lg-7 px-3 px-sm-4 py-4 bg-light'>
+								<div className='card-body h-100 d-flex flex-column justify-content-around'>
 									<div className='card-txt'>
-										<div className='card-title d-flex justify-content-between align-items-end'>
+										<div className='card-title d-flex justify-content-between align-items-center'>
 											<div>
-												<h3 className=''>{title}</h3>/ <small>{unit}</small>
+												<h3 className=''>
+													{title} <small style={{ fontSize: "16px" }}> / {unit}</small>
+												</h3>
+												<div>
+													<p className='m-0'>
+														NT$ {thousandFormat(price)}
+														<small
+															className='text-decoration-line-through'
+															style={{ color: "#aaa" }}
+														>
+															NT$ {thousandFormat(origin_price)}
+														</small>
+													</p>
+												</div>
 											</div>
-											<div>
-												<p className='m-0'>NT$ {thousandFormat(price)}</p>
-												<small
-													className='text-decoration-line-through'
-													style={{ color: "#aaa" }}
-												>
-													NT$ {thousandFormat(origin_price)}
-												</small>
+											<div className='d-flex flex-column'>
+												{/* <WishButton
+													toggleWishlist={toggleWishlist}
+													item={product}
+													wish={wish}
+													className='align-self-end'
+													wishStyle={{}}
+												/> */}
+												<QuantityButton
+													className={`my-1`}
+													handleQuantity={setCartQuantity}
+													quantity={cartQuantity}
+													style={{ width: "120px" }}
+												/>
 											</div>
 										</div>
 
@@ -113,54 +133,21 @@ const ProductDetail = () => {
 											{content}
 										</p>
 									</div>
-									<div className='card-btn row row-col-sm-2 g-0'>
-										<div className='col-7 col-md-6 row g-0 gap-3 justify-content-end ms-auto pe-1'>
-											<WishButton
-												toggleWishlist={toggleWishlist}
-												item={product}
-												wish={wish}
-												className=''
-												wishStyle={{ width: "13%" }}
-											/>
-											<div
-												className='input-group my-1'
-												style={{ width: "70%" }}
-											>
-												<button
-													className='input-group-text bg-secondary'
-													onClick={() => {
-														setCartQuantity((prev) => (prev === 1 ? 1 : prev - 1));
-													}}
-												>
-													<i className='bi bi-dash-lg'></i>
-												</button>
-												<input
-													className='form-control text-center'
-													readOnly
-													value={cartQuantity}
-												/>
-												<button
-													className='input-group-text bg-secondary'
-													onClick={() => {
-														setCartQuantity((prev) => prev + 1);
-													}}
-												>
-													<i className='bi bi-plus-lg'></i>
-												</button>
-											</div>
-										</div>
+									<div className='card-btn row row-col-sm-2 g-0 mt-4 mt-lg-0'>
 										<div className='d-flex gap-3'>
 											<PrevButton
-												className={`w-50 mt-2 rounded-4 fw-bolder`}
+												className={`w-50 mt-2 mx-0 rounded-4 fw-bolder`}
 												action={() => {
 													addToCart(id);
 												}}
 												text={`加入購物車`}
 											/>
-											<NavLink className="w-50"
-                                            to="/cart">
+											<NavLink
+												className='w-50 mx-0'
+												to='/cart'
+											>
 												<NextButton
-                                                    type="button"
+													type='button'
 													className={`w-100 mt-2 rounded-4 fw-bolder`}
 													action={() => {
 														addToCart(id);

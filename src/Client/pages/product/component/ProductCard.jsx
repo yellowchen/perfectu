@@ -9,17 +9,17 @@ const ProductCard = ({ item, wish, toggleWishlist }) => {
 
 	return (
 		<div className='p-0 card-product bg-light'>
-            <WishButton
-                toggleWishlist={toggleWishlist}
-                item={item}
-                wish={wish}
-                wishStyle={{position: "absolute", top: "0", right: "3%", zIndex: "1"}}
-            />
+			<WishButton
+				toggleWishlist={toggleWishlist}
+				item={item}
+				wish={wish}
+				wishStyle={{ position: "absolute", top: "0", right: "3%", zIndex: "1" }}
+			/>
 
 			<NavLink
 				to={`/detail/${id}`}
 				style={{}}
-				className='border-0'
+				className='border-0 product-link'
 			>
 				<img
 					src={imageUrl}

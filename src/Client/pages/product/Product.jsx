@@ -6,6 +6,7 @@ import ProductCard from "./component/ProductCard";
 import { getProductSort } from './../../common/api/front';
 import Pagination from "./../../../Common/Pagination";
 
+
 const Product = () => {
     const { wish, toggleWishlist, setCartQuantity, setIsLoading} = useOutletContext();
     const [pagination, setPagination] = useState({});
@@ -29,6 +30,7 @@ const Product = () => {
     useEffect(() => {
 		getProductCategory();
 	}, [sort]);
+
 
     return (
 		<div className='product container my-5'>

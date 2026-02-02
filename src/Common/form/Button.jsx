@@ -1,4 +1,3 @@
-
 export const ClickedButton = ({ className, style, action, content }) => {
 	return (
 		<button
@@ -14,7 +13,7 @@ export const ClickedButton = ({ className, style, action, content }) => {
 	);
 };
 
-export const PrevButton = ({ className, style, action, text}) => {
+export const PrevButton = ({ className, style, action, text }) => {
 	return (
 		<button
 			type='button'
@@ -83,8 +82,8 @@ export const ModalFooterBtn = ({ handleCancel, data, handleSubmit, form }) => {
 	);
 };
 
-export const WishButton = ({toggleWishlist, item, wish, wishStyle, className}) => {
-    return (
+export const WishButton = ({ toggleWishlist, item, wish, wishStyle, className }) => {
+	return (
 		<button
 			type='button'
 			className={`btn ${className}`}
@@ -110,4 +109,76 @@ export const WishButton = ({toggleWishlist, item, wish, wishStyle, className}) =
 			)}
 		</button>
 	);
-}
+};
+
+export const QuantityButton = ({
+    handleQuantity,
+	quantity,
+	style,
+	className,
+	btnClassName,
+}) => {
+	return (
+		<div
+			className={`input-group ${className}`}
+			style={{ ...style }}
+		>
+			<button
+				className={`input-group-text bg-primary text-light rounded-start-4 ${btnClassName}`}
+				onClick={() => {
+					handleQuantity((prev) => (prev === 1 ? 1 : prev - 1));
+				}}
+			>
+				<i className='bi bi-dash-lg'></i>
+			</button>
+			<input
+				className='form-control text-center'
+				readOnly
+				value={quantity < 1 ? 1 : quantity}
+			/>
+			<button
+				className={`input-group-text bg-primary text-light rounded-end-4 ${btnClassName}`}
+				onClick={() => {
+					handleQuantity((prev) => prev + 1);
+				}}
+			>
+				<i className='bi bi-plus-lg'></i>
+			</button>
+		</div>
+	);
+};
+
+export const CartQuantityButton = ({
+	handleQtyMinus,
+	handleQtyPlus,
+    handleQty,
+	quantity,
+	style,
+	className,
+	btnClassName,
+}) => {
+	return (
+		<div
+			className={`input-group ${className}`}
+			style={{ ...style }}
+		>
+			<button
+				className={`input-group-text bg-primary text-light rounded-start-3 ${btnClassName}`}
+				onClick={handleQtyMinus}
+			>
+				<i className='bi bi-dash-lg'></i>
+			</button>
+			<input
+				className='form-control text-center p-0'
+				value={quantity < 1 ? 1 : quantity}
+				onChange={handleQty}
+			/>
+			<button
+				className={`input-group-text bg-primary text-light rounded-end-3 ${btnClassName}`}
+				onClick={handleQtyPlus}
+			>
+				<i className='bi bi-plus-lg'></i>
+			</button>
+		</div>
+	);
+};

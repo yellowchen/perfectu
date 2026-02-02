@@ -186,7 +186,7 @@ const Cart = () => {
 											/>
 											<button
 												type='button'
-												className='btn w-25 fw-bolder'
+												className='btn w-25 fw-bolder text-light'
 												id='resetCoupon'
 												onClick={handleCoupon}
 												style={{
@@ -198,7 +198,7 @@ const Cart = () => {
 											</button>
 											<button
 												type='button'
-												className='btn w-25 fw-bolder'
+												className='btn w-25 fw-bolder text-light'
 												id='setCoupon'
 												onClick={handleCoupon}
 												style={{

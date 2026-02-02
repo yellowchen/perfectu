@@ -6,7 +6,6 @@ export const CouponTicket = ({copy, text}) => {
 			className='coupon-ticket my-5 mx-0 px-2 px-lg-0 text-center'
 			style={{
 				minWidth: "300px",
-				aspectRatio: "3/1",
 			}}
 		>
 			<div
@@ -19,9 +18,7 @@ export const CouponTicket = ({copy, text}) => {
 				}}
 			>
 				<div className='row m-0'>
-					<div
-						className='coupon-content col-12 col-md-8 py-3 position-relative'
-					>
+					<div className='coupon-content col-12 col-md-8 py-3 position-relative'>
 						<div
 							className='d-none d-md-block'
 							style={{
@@ -68,7 +65,7 @@ export const CouponTicket = ({copy, text}) => {
 								年末享優惠
 							</h1>
 							<p className='fs-1'>
-								<i className='bi bi-gift fs-1 pe-3 text-danger'></i>
+								<i className='bi bi-gift pe-3 text-danger'></i>
 								15% 折扣
 							</p>
 							<ClickedButton
@@ -93,9 +90,9 @@ export const CouponTicket = ({copy, text}) => {
 								padding: "30px 0",
 							}}
 						>
-							<h2 className='fw-bolder'>HelloAutumn</h2>
+							<h2 className='fw-bolder'>HappyWithYou</h2>
 							<ClickedButton
-								className='rounded-5 fs-3 px-4 py-2 mt-2 mb-4'
+								className='rounded-5 fs-3 px-4 py-2 my-3'
 								style={{}}
 								action={copy}
 								content={text}

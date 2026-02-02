@@ -34,7 +34,7 @@ const Home = () => {
 
 	const CopyToClipBoard = () => {
 		navigator.clipboard
-			.writeText("HelloAutumn")
+			.writeText("HappyWithYou")
 			.then(() => {
 				setCopyText("複製成功");
 			})
@@ -42,6 +42,11 @@ const Home = () => {
 				console.log(err);
 			});
 	};
+
+    const rankData = allProducts.map(allItem => {
+        let matchData = data.allRankList.find(rankItem => rankItem.title === allItem.title)
+        return matchData ? {...allItem, ...matchData} : allItem
+    });
 
 	return (
 		<>
@@ -55,8 +60,9 @@ const Home = () => {
 				<div className=''>
 					<h1 className='subTitle'>熱銷排行</h1>
 					<div className='d-flex flex-column flex-md-row align-items-stretch gap-1 gap-md-2 gap-xl-3 mx-0 mx-md-1 mx-lg-2 my-5'>
-						{allProducts
+						{rankData
 							.filter((item) => data.allRankList.map((item) => item.title).includes(item.title))
+							.sort((a, b) => (a.rank > b.rank ? 1 : -1))
 							.map((item, index) => (
 								<RankCard
 									key={index}
@@ -97,7 +103,7 @@ const Home = () => {
 					/>
 				</div>
 				<div
-					className='edu_tas text-center px-5 fs-1'
+					className='edu_tas text-center my-5 px-5 fs-1'
 					style={{}}
 				>
 					<p className=''>”Smell is a word, perfume is literature.”</p>

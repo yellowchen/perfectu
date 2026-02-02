@@ -1,19 +1,19 @@
 {
     "allRankList" : [
         {
-            "num": 1,
+            "rank": "1",
             "title": "春來"
         },
         {
-            "num": 2,
-            "title": "暉韻晚香"
+            "rank": "2",
+            "title": "原來"
         },
         {
-            "num": 3,
+            "rank": "3",
             "title": "清新鮮果"
         },
         {
-            "num": 4,
+            "rank": "4",
             "title": "薰衣草皂"
         }
     ]

@@ -9,7 +9,7 @@ import { PaymentProvider } from "../common/context/PaymentContext";
 import { toggleWishItem } from "../common/slice/wishSlice";
 
 import MessageToast from "../../Common/MessageToast";
-import Loading from "../../Common/Loading";
+import { Loading } from "../../Common/Loading";
 import { createAsyncMessage } from "../../Common/slice/messageSlice";
 
 

@@ -1,7 +1,7 @@
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-const Loading = ({isLoading}) => {
+export const Loading = ({isLoading}) => {
 	return (
 		<>
 			{isLoading && (
@@ -26,4 +26,3 @@ const Loading = ({isLoading}) => {
 	);
 };
 
-export default Loading;
