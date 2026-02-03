@@ -40,8 +40,7 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 						className='text-dark'
 						style={{ fontSize: "12px" }}
 					>
-						{" "}
-						/ {product.unit}
+					/{product.unit}
 					</small>
 				</p>
 			</div>
@@ -62,34 +61,6 @@ const CartCard = ({ item, update, getAllCart, openDeleteMessage, wish, toggleWis
 					quantity={qty}
 					btnClassName={`p-1 p-sm-2`}
 				/>
-				{/* <div className='input-group px-1'>
-					<button
-						type='button'
-						className='input-group-text p-1 p-sm-2 bg-secondary'
-						onClick={() => {
-							update(item, qty > 1 ? qty - 1 : 1);
-							qty <= 1 && openDeleteMessage(item);
-						}}
-					>
-						<i className='bi bi-dash-lg'></i>
-					</button>
-					<input
-						className='form-control text-center p-0'
-						value={item.qty < 1 ? 1 : item.qty}
-						onChange={(e) => {
-							update(item, e.target.value * 1);
-						}}
-					/>
-					<button
-						type='button'
-						className='input-group-text p-1 p-sm-2 bg-secondary'
-						onClick={() => {
-							update(item, qty + 1);
-						}}
-					>
-						<i className='bi bi-plus-lg'></i>
-					</button>
-				</div> */}
 			</div>
 			<p className='col-0 col-sm-3 col-lg-2 d-none d-sm-block my-0'>NT$ {thousandFormat(product.price * qty)}</p>
 			<div className='col-0 col-lg-1 d-none d-lg-block d-flex flex-column'>

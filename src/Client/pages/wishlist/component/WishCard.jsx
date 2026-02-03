@@ -49,8 +49,7 @@ const WishCard = ({item}) => {
 							className='text-dark'
 							style={{ fontSize: "12px" }}
 						>
-							{" "}
-							/ {unit}
+							{unit}
 						</small>
 					</p>
 				</div>
