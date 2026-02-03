@@ -38,7 +38,7 @@ const ScrollToTop = () => {
 		<>
 			{btnVisible && (
 				<div
-					className='btn btn-success position-fixed rounded-circle d-flex justify-content-center align-items-center'
+					className='btn btn-info position-fixed rounded-circle d-flex justify-content-center align-items-center'
 					style={{
 						bottom: "3%",
 						right: "3%",

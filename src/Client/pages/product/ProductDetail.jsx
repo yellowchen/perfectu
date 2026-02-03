@@ -100,6 +100,7 @@ const ProductDetail = () => {
 												<div>
 													<p className='m-0'>
 														NT$ {thousandFormat(price)}
+														{"\u00A0\u00A0"}
 														<small
 															className='text-decoration-line-through'
 															style={{ color: "#aaa" }}

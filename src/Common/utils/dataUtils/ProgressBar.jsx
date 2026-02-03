@@ -47,7 +47,7 @@ export const ProgressBar = ({ step }) => {
 						rounded-pill
                         btn
                         p-0
-						${step >= 1 ? "btn-success text-white" : "text-dark"}
+						${step >= 1 ? "btn-info text-white" : "text-dark"}
 						`}
 					style={btnStyle}
 				>
@@ -63,7 +63,7 @@ export const ProgressBar = ({ step }) => {
 						rounded-pill
                         btn
                         p-0
-						${step >= 2 ? "btn-success text-white" : "text-dark"}
+						${step >= 2 ? "btn-info text-white" : "text-dark"}
 						`}
 					style={btnStyle}
 				>
@@ -79,7 +79,7 @@ export const ProgressBar = ({ step }) => {
 						rounded-pill
                         btn
                         p-0
-						${step >= 3 ? "btn-success text-white" : "text-dark"}
+						${step >= 3 ? "btn-info text-white" : "text-dark"}
 						`}
 					style={btnStyle}
 				>
@@ -90,7 +90,7 @@ export const ProgressBar = ({ step }) => {
 				<h6
 					className={`
                         position-absolute start-0 translate-middle-x
-                        ${step >= 1 ? "text-success" : "text-dark"}
+                        ${step >= 1 ? "text-info" : "text-dark"}
                     `}
 					style={wordStyle}
 				>
@@ -99,7 +99,7 @@ export const ProgressBar = ({ step }) => {
 				<h6
 					className={`
                         position-absolute start-50 translate-middle-x
-                        ${step >= 2 ? "text-success" : "text-dark"}
+                        ${step >= 2 ? "text-info" : "text-dark"}
                     `}
 					style={wordStyle}
 				>
@@ -108,7 +108,7 @@ export const ProgressBar = ({ step }) => {
 				<h6
 					className={`
                         position-absolute start-100 translate-middle-x
-                        ${step >= 3 ? "text-success" : "text-dark"}
+                        ${step >= 3 ? "text-info" : "text-dark"}
                     `}
 					style={wordStyle}
 				>

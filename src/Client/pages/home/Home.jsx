@@ -43,10 +43,16 @@ const Home = () => {
 			});
 	};
 
-    const rankData = allProducts.map(allItem => {
-        let matchData = data.allRankList.find(rankItem => rankItem.title === allItem.title)
-        return matchData ? {...allItem, ...matchData} : allItem
-    });
+    const rankData = allProducts
+                        .map(allItem => {
+                            let matchData = data.allRankList.find(rankItem => rankItem.title === allItem.title)
+                            return matchData ? {...allItem, ...matchData} : allItem
+                        })
+                        .filter(item => data.allRankList
+                            .map(rankItem => rankItem.title)
+                            .includes(item.title)
+                        )
+                        .sort((a, b) => a.rank > b.rank ? 1 : -1);
 
 	return (
 		<>
@@ -61,8 +67,6 @@ const Home = () => {
 					<h1 className='subTitle'>熱銷排行</h1>
 					<div className='d-flex flex-column flex-md-row align-items-stretch gap-1 gap-md-2 gap-xl-3 mx-0 mx-md-1 mx-lg-2 my-5'>
 						{rankData
-							.filter((item) => data.allRankList.map((item) => item.title).includes(item.title))
-							.sort((a, b) => (a.rank > b.rank ? 1 : -1))
 							.map((item, index) => (
 								<RankCard
 									key={index}

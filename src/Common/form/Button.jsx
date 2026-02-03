@@ -120,7 +120,7 @@ export const QuantityButton = ({
 }) => {
 	return (
 		<div
-			className={`input-group ${className}`}
+			className={`input-group border-2 ${className}`}
 			style={{ ...style }}
 		>
 			<button
