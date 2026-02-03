@@ -34,10 +34,10 @@
 
 ## 【專案安裝】
 ```
-$ git clone https://github.com/yellowchen/perfectu
-$ cd Work-06
-$ npm install
-$ npm start
+git clone https://github.com/yellowchen/perfectu
+cd perfectu
+npm install
+npm start
 ```
 
 ## 【相關資源】
